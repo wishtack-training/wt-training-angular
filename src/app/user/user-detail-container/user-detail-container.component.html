@@ -1,0 +1,7 @@
+<wt-loading [isReady]="obsUser | async">
+
+    <wt-user-form
+            [user]="obsUser | async"
+            (onUserAdd)="updateUser($event)"></wt-user-form>
+
+</wt-loading>

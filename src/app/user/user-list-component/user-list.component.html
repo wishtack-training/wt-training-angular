@@ -1,0 +1,15 @@
+<ul>
+    <li *ngFor="let user of userList; trackBy:trackUser"
+        [class.wt-shake]="isRemovingUser(user)"
+        @showHideUser>
+
+        <span>{{ user.firstName }} {{ user.lastName }}</span>
+
+        <a [routerLink]="['/users', user.id]"><button>EDIT</button></a>
+
+        <button
+                [disabled]="isRemovingUser(user)"
+                (click)="removeUser(user)">REMOVE</button>
+
+    </li>
+</ul>
