@@ -6,10 +6,10 @@
  */
 
 import { NgModule } from '@angular/core';
-import { UserListContainerComponent } from './user-list-container-component/user-list-container.component';
+import { UserListContainerComponent } from './user-list-container/user-list-container.component';
 import { SharedModule } from '../shared/shared.module';
-import { UserFormComponent } from './user-form-component/user-form.component';
-import { UserListComponent } from './user-list-component/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
 import { UserStore } from './user-store';
 import { UserDetailContainerComponent } from './user-detail-container/user-detail-container.component';
 

@@ -16,7 +16,7 @@ import { Observable, ReplaySubject } from 'rxjs';
  */
 export class UserStore {
 
-    private static _RESOURCE_URL = 'http://wishtack-users.getsandbox.com/users';
+    private static _RESOURCE_URL = 'http://wt-users.getsandbox.com/users';
 
     private _userList: User[] = [];
 
