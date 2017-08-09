@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { HelpViewComponent } from './views/help-view/help-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import { HelpViewComponent } from './views/help-view/help-view.component';
         HelpViewComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         RouterModule.forRoot(ROUTES, {
             preloadingStrategy: PreloadAllModules
