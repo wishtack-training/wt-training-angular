@@ -1,28 +1,24 @@
-<form *ngIf="user" (ngSubmit)="addUser()">
+<form
+        *ngIf="userForm"
+        [formGroup]="userForm"
+        (ngSubmit)="addUser()">
 
   <input
-          [(ngModel)]="user.firstName"
+          *ngFor="let control of getControlList()"
+          [formControl]="control"
           class="wt-important"
-          name="firstName"
           type="text">
 
-  <input
-          [(ngModel)]="user.lastName"
-          class="wt-optional"
-          name="lastName"
-          type="text">
-
-  <input
-          [(ngModel)]="user.email"
-          class="wt-optional"
-          name="email"
-          type="text">
 
   <button
           *ngIf="isResetButtonDisplayed"
           (click)="reset()"
           type="button">RESET</button>
 
-  <button type="submit">{{ buttonLabel }}</button>
+
+  <button
+          *ngIf="userForm.valid"
+          type="submit">{{ buttonLabel }}</button>
+
 
 </form>

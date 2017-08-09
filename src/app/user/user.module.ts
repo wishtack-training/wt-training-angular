@@ -12,6 +12,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserStore } from './user-store';
 import { UserDetailContainerComponent } from './user-detail-container/user-detail-container.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { UserDetailContainerComponent } from './user-detail-container/user-detai
         UserDetailContainerComponent
     ],
     imports: [
+        ReactiveFormsModule,
         SharedModule
     ],
     providers: [

@@ -9,6 +9,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserStore } from '../user-store';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 @Component({
     selector: 'wt-user-list-container',
@@ -20,7 +21,7 @@ import { UserStore } from '../user-store';
                 (onUserAdd)="addUser($event)"></wt-user-form>
 
         <wt-user-list
-                [userList]="obsUserList | async"
+                [userList]="userList"
                 (onUserRemove)="removeUser($event)"></wt-user-list>
 
     `
@@ -29,6 +30,8 @@ export class UserListContainerComponent implements OnInit {
 
     obsUserList;
     isAdding = false;
+
+    userList: User[] = [];
 
     constructor(private _userStore: UserStore) {
     }
@@ -44,10 +47,11 @@ export class UserListContainerComponent implements OnInit {
     }
 
     addUser(user: User) {
-        this.isAdding = true;
-        this._userStore.addUser(user)
-            .finally(() => this.isAdding = false)
-            .subscribe();
+        // this.isAdding = true;
+        // this._userStore.addUser(user)
+        //     .finally(() => this.isAdding = false)
+        //     .subscribe();
+        this.userList = [...this.userList, user];
     }
 
     removeUser(user: User) {

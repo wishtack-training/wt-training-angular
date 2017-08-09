@@ -16,6 +16,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <a [routerLink]="['/help', 'tech', {mode: 'full'}]">Help Tech</a>
     <a [routerLink]="['/help', 'biz']">Help Biz</a>
 </footer>
+<wt-playground></wt-playground>
 `
 })
 export class AppComponent {

@@ -1,5 +1,6 @@
 import {
-    animate, Component, EventEmitter, Input, OnChanges, Output, state, style, transition,
+    animate, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, state,
+    style, transition,
     trigger
 } from '@angular/core';
 import { User } from '../user';
@@ -30,7 +31,13 @@ export class UserListComponent implements OnChanges {
 
     private _isRemovingUserIdList: string[] = [];
 
+    constructor(private _changeDetector: ChangeDetectorRef) {
+
+    }
+
     ngOnChanges(changes) {
+
+        console.log(changes);
 
         if (changes.userList) {
             this._cleanupIsRemovingUserIdSet();
