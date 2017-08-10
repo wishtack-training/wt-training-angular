@@ -25,7 +25,7 @@ export class UserStore {
     constructor(private _http: Http) {
     }
 
-    get obsUserList() {
+    get userList$() {
         return this._subjectUserList.asObservable();
     }
 

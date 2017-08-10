@@ -37,8 +37,6 @@ export class UserListComponent implements OnChanges {
 
     ngOnChanges(changes) {
 
-        console.log(changes);
-
         if (changes.userList) {
             this._cleanupIsRemovingUserIdSet();
         }

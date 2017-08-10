@@ -21,17 +21,15 @@ import { UserFormComponent } from '../user-form/user-form.component';
                 (onUserAdd)="addUser($event)"></wt-user-form>
 
         <wt-user-list
-                [userList]="userList"
+                [userList]="userList$ | async"
                 (onUserRemove)="removeUser($event)"></wt-user-list>
 
     `
 })
 export class UserListContainerComponent implements OnInit {
 
-    obsUserList;
+    userList$;
     isAdding = false;
-
-    userList: User[] = [];
 
     constructor(private _userStore: UserStore) {
     }
@@ -39,7 +37,7 @@ export class UserListContainerComponent implements OnInit {
     ngOnInit() {
 
         /* View will subscribe to the replay subject using async pipe. */
-        this.obsUserList = this._userStore.obsUserList;
+        this.userList$ = this._userStore.userList$;
 
         /* Retrieve user list from api. */
         this._userStore.getUserList().subscribe();
@@ -47,11 +45,10 @@ export class UserListContainerComponent implements OnInit {
     }
 
     addUser(user: User) {
-        // this.isAdding = true;
-        // this._userStore.addUser(user)
-        //     .finally(() => this.isAdding = false)
-        //     .subscribe();
-        this.userList = [...this.userList, user];
+        this.isAdding = true;
+        this._userStore.addUser(user)
+            .finally(() => this.isAdding = false)
+            .subscribe();
     }
 
     removeUser(user: User) {

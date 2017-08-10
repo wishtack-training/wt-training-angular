@@ -12,7 +12,7 @@ export class UserFormComponent {
 
     @Input() buttonLabel = 'SAVE';
     @Input() isResetButtonDisplayed = true;
-    @Input() age: User;
+    @Input() user = new User();
     @Output() onUserAdd = new EventEmitter<User>();
 
     userForm: FormGroup;
@@ -32,16 +32,15 @@ export class UserFormComponent {
         },
             passwordMatchValidator('password1', 'password2'));
 
-        this.reset();
     }
 
     addUser() {
-        this.onUserAdd.emit(this.age);
+        this.onUserAdd.emit(new User(this.userForm.value));
         this.reset();
     }
 
     reset() {
-        this.age = new User();
+        this.userForm.reset();
     }
 
     getControlList() {
