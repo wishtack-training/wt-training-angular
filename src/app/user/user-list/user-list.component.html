@@ -5,7 +5,8 @@
 
         <span>{{ user.firstName }} {{ user.lastName }}</span>
 
-        <a [routerLink]="['/users', user.id]"><button>EDIT</button></a>
+        <!--<a [routerLink]="['/users', user.id]"><button>EDIT</button></a>-->
+        <button (click)="editUser(user)">EDIT</button>
 
         <button
                 [disabled]="isRemovingUser(user)"

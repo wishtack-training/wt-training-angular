@@ -1,7 +1,7 @@
-<wt-loading [isReady]="obsUser | async">
+<wt-loading [isReady]="user$ | async">
 
     <wt-user-form
-            [user]="obsUser | async"
-            (onUserAdd)="updateUser($event)"></wt-user-form>
+            [user]="user$ | async"
+            (onSubmit)="updateUser($event)"></wt-user-form>
 
 </wt-loading>

@@ -17,16 +17,19 @@ import { UserFormComponent } from '../user-form/user-form.component';
     template: `
         <wt-user-form
                 [class.wt-shake]="isAdding"
-                [buttonLabel]="'ADD'"
-                (onUserAdd)="addUser($event)"></wt-user-form>
+                [buttonLabel]="editedUser ? 'UPDATE' : 'ADD'"
+                [user]="editedUser"
+                (onSubmit)="editedUser ? updateUser($event) : addUser($event)"></wt-user-form>
 
         <wt-user-list
                 [userList]="userList$ | async"
+                (onUserEdit)="editUser($event)"
                 (onUserRemove)="removeUser($event)"></wt-user-list>
 
     `
 })
 export class UserListContainerComponent implements OnInit {
+    editedUser: User;
 
     userList$;
     isAdding = false;
@@ -49,6 +52,16 @@ export class UserListContainerComponent implements OnInit {
         this._userStore.addUser(user)
             .finally(() => this.isAdding = false)
             .subscribe();
+    }
+
+    updateUser(user: User) {
+        this._userStore.updateUser(user)
+            .subscribe();
+        this.editedUser = null;
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
     }
 
     removeUser(user: User) {

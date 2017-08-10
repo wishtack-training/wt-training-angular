@@ -7,7 +7,7 @@
 
 'use strict';
 //
-const { BehaviorSubject, Observable } = require('rxjs');
+const {BehaviorSubject, Observable} = require('rxjs');
 //
 //
 // class StateStore {
@@ -55,8 +55,41 @@ const { BehaviorSubject, Observable } = require('rxjs');
 // stateStore.setCity('luxembourg');
 // stateStore.setCity('luxembourg');
 
-let o1 = Observable.from(['A','B','C']);
-let o2 = Observable.interval(1000).take(3);
+// let o1 = Observable.from(['A','B','C']);
+// let o2 = Observable.interval(1000).take(3);
+//
+//
+// o1.mergeMap(() => o2, (v1, v2) => `${v1}${v2}`).subscribe(console.log);
 
 
-o1.mergeMap(() => o2, (v1, v2) => `${v1}${v2}`).subscribe(console.log);
+// let o1 = Observable.from([1, 2, 3]);
+//
+// let maxPrice$ = Observable.from([10, 5, 3])
+//     .delay(100)
+//     .startWith(10000);
+//
+// let productList$ = o1
+//     .switchMap(userId => Observable.from([[
+//         {
+//             title: `screen ${userId}`,
+//             price: 10,
+//         },
+//         {
+//             title: `phone ${userId}`,
+//             price: 1
+//         }
+//     ]]));
+//
+//
+// productList$.switchMap(productList => {
+//
+//         return maxPrice$
+//             .map((maxPrice) => productList
+//                     .filter(product => product.price < maxPrice))
+//
+//     })
+//     .subscribe(console.log);
+//
+
+
+

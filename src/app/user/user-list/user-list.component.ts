@@ -27,6 +27,7 @@ import { User } from '../user';
 export class UserListComponent implements OnChanges {
 
     @Input() userList: User[];
+    @Output() onUserEdit = new EventEmitter<User>();
     @Output() onUserRemove = new EventEmitter<User>();
 
     private _isRemovingUserIdList: string[] = [];
@@ -69,4 +70,7 @@ export class UserListComponent implements OnChanges {
 
     }
 
+    editUser(user: User) {
+        this.onUserEdit.emit(user);
+    }
 }

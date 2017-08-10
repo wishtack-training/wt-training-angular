@@ -9,6 +9,7 @@ import { PreloadAllModules, RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { HelpViewComponent } from './views/help-view/help-view.component';
 import { PlaygroundComponent } from './playground/playground.component';
+import { SessionModule } from './session/session.module';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { PlaygroundComponent } from './playground/playground.component';
         RouterModule.forRoot(ROUTES, {
             preloadingStrategy: PreloadAllModules
         }),
+        SessionModule.forRoot(),
         SharedModule
     ],
     providers: [],

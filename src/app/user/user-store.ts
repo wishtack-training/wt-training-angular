@@ -8,7 +8,8 @@
 import { User } from './user';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 /**
@@ -18,15 +19,26 @@ export class UserStore {
 
     private static _RESOURCE_URL = 'http://wt-users.getsandbox.com/users';
 
-    private _userList: User[] = [];
-
-    private _subjectUserList: ReplaySubject<User[]> = new ReplaySubject<User[]>(1);
+    private _userList$ = new BehaviorSubject<User[]>([]);
 
     constructor(private _http: Http) {
+
+        window.addEventListener('storage', (event) => {
+
+            if (event.key !== 'wtUserList') {
+                return;
+            }
+
+            const userList = JSON.parse(event.newValue).map((data) => new User(data));
+
+            this._userList$.next(userList);
+
+        });
+
     }
 
     get userList$() {
-        return this._subjectUserList.asObservable();
+        return this._userList$.asObservable();
     }
 
     getUserList(): Observable<User[]> {
@@ -53,7 +65,7 @@ export class UserStore {
         return this._http
             .post(UserStore._RESOURCE_URL, user)
             .map((response) => new User(response.json()))
-            .do((_user) => this._updateUserList([...this._userList, _user]));
+            .do((_user) => this._updateUserList([...this._userList$.value, _user]));
 
     }
 
@@ -63,22 +75,29 @@ export class UserStore {
             .delete(`${UserStore._RESOURCE_URL}/${userId}`)
             .map(() => null)
             .do(() => {
-                const userList = this._userList.filter((_user) => _user.id !== userId);
+                const userList = this._userList$.value
+                    .filter((_user) => _user.id !== userId);
                 this._updateUserList(userList);
             });
 
-    }
-
-    private _updateUserList(userList) {
-        this._userList = userList;
-        this._subjectUserList.next(this._userList);
     }
 
     updateUser(user: User) {
 
         /* PATCH /users/:userId. */
         return this._http.patch(`${UserStore._RESOURCE_URL}/${user.id}`, user)
-            .map((response) => new User(response.json()));
+            .map((response) => new User(response.json()))
+            .do((updatedUser) => {
+                const userList = this._userList$.value
+                    .map((_user) => _user.id === updatedUser.id ? updatedUser : _user);
+                this._updateUserList(userList);
+            });
 
     }
+
+    private _updateUserList(userList) {
+        localStorage.setItem('wtUserList', JSON.stringify(userList));
+        this._userList$.next(userList);
+    }
+
 }

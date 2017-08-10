@@ -1,7 +1,7 @@
 <form
         *ngIf="userForm"
         [formGroup]="userForm"
-        (ngSubmit)="addUser()">
+        (ngSubmit)="submit()">
 
   <input
           *ngFor="let control of getControlList()"

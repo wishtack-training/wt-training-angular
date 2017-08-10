@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { User } from '../user';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
@@ -8,13 +8,12 @@ import { Http } from '@angular/http';
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent {
-
+export class UserFormComponent implements OnChanges {
     @Input() buttonLabel = 'SAVE';
-    @Input() isResetButtonDisplayed = true;
-    @Input() user = new User();
-    @Output() onUserAdd = new EventEmitter<User>();
 
+    @Input() isResetButtonDisplayed = true;
+    @Input() user;
+    @Output() onSubmit = new EventEmitter<User>();
     userForm: FormGroup;
 
     constructor() {
@@ -34,8 +33,25 @@ export class UserFormComponent {
 
     }
 
-    addUser() {
-        this.onUserAdd.emit(new User(this.userForm.value));
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user != null) {
+
+            this.userForm.reset(this.user || undefined);
+
+        }
+
+    }
+
+    submit() {
+
+        const user = Object.assign(
+            new User(),
+            this.user,
+            this.userForm.value
+        );
+
+        this.onSubmit.emit(user);
         this.reset();
     }
 

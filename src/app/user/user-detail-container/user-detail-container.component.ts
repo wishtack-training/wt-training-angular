@@ -13,7 +13,7 @@ export class UserDetailContainerComponent implements OnChanges {
 
     @Input() userId: string;
 
-    obsUser: Observable<User>;
+    user$: Observable<User>;
 
     constructor(
         private _router: Router,
@@ -38,6 +38,6 @@ export class UserDetailContainerComponent implements OnChanges {
     }
 
     private _retrieveUser() {
-        this.obsUser = this._userStore.getUser(this.userId);
+        this.user$ = this._userStore.getUser(this.userId);
     }
 }

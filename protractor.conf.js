@@ -27,6 +27,6 @@ exports.config = {
     });
   },
   onPrepare: function() {
-    jasmine.getEnv().addReporter(new SpecReporter());
+    // jasmine.getEnv().addReporter(new SpecReporter());
   }
 };
