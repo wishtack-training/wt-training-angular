@@ -47,5 +47,5 @@ assert(userList2[0] === user1);
 assert(userList2[1] === user2);
 assert(userList2[2] === user3);
 assert(userList3.length === 2);
-assert(userList2[0] === user2);
-assert(userList2[1] === user3);
+assert(userList3[0] === user2);
+assert(userList3[1] === user3);
