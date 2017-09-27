@@ -8,4 +8,4 @@ https://github.com/wishtack-training/wt-training-angular
 npm install -g typescript
 
 ## Run test
-tsc user-store.spec && node user-store.spec
+tsc user-store.spec.ts && node user-store.spec
