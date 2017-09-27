@@ -16,12 +16,35 @@ const assert = (value, message = 'no message') => {
 
 class UserStore {
 
+    _userList: User[];
+
+    constructor() {
+        this._userList = [];
+    }
+
+    getUserList() {
+        return this._userList;
+    }
+
+    addUser(user: User) {
+        this._userList = [...this._userList, user];
+    }
+
+    removeUser(user: User) {
+        this._userList = this._userList
+            .filter(_user => _user !== user);
+    }
 }
 
 class User {
 
-}
+    constructor(
+        public firstName: string,
+        public lastName: string
+    ) {
+    }
 
+}
 
 const userStore = new UserStore();
 
