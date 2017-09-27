@@ -17,6 +17,7 @@ const assert = (value, message = 'no message') => {
 class UserStore {
 
     _userList: User[];
+    _userListHistory = [];
 
     constructor() {
         this._userList = [];
@@ -27,13 +28,27 @@ class UserStore {
     }
 
     addUser(user: User) {
-        this._userList = [...this._userList, user];
+        this._updateUserList([...this._userList, user]);
     }
 
     removeUser(user: User) {
-        this._userList = this._userList
+
+        const userList = this._userList
             .filter(_user => _user !== user);
+
+        this._updateUserList(userList);
+
     }
+
+    undo() {
+        this._userList = this._userListHistory.pop();
+    }
+
+    private _updateUserList(userList: User[]) {
+        this._userListHistory.push(this._userList);
+        this._userList = userList;
+    }
+
 }
 
 class User {
@@ -64,11 +79,30 @@ userStore.removeUser(user1);
 
 const userList3 = userStore.getUserList();
 
+userStore.undo();
+
+const userList4 = userStore.getUserList();
+
+userStore.undo();
+
+const userList5 = userStore.getUserList();
+
+userStore.undo();
+
+const userList6 = userStore.getUserList();
+
+
 assert(userList1.length === 0);
+
 assert(userList2.length === 3);
 assert(userList2[0] === user1);
 assert(userList2[1] === user2);
 assert(userList2[2] === user3);
+
 assert(userList3.length === 2);
 assert(userList3[0] === user2);
 assert(userList3[1] === user3);
+
+assert(userList4.length === 3);
+assert(userList5.length === 2);
+assert(userList6.length === 1);
