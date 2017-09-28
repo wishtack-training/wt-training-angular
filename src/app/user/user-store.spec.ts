@@ -4,6 +4,8 @@
  *
  * $Id: $
  */
+import { UserStore } from './user-store';
+import { User } from './user';
 
 const assert = (value, message = 'no message') => {
 
@@ -14,58 +16,20 @@ const assert = (value, message = 'no message') => {
 };
 
 
-class UserStore {
-
-    _userList: User[];
-    _userListHistory = [];
-
-    constructor() {
-        this._userList = [];
-    }
-
-    getUserList() {
-        return this._userList;
-    }
-
-    addUser(user: User) {
-        this._updateUserList([...this._userList, user]);
-    }
-
-    removeUser(user: User) {
-
-        const userList = this._userList
-            .filter(_user => _user !== user);
-
-        this._updateUserList(userList);
-
-    }
-
-    undo() {
-        this._userList = this._userListHistory.pop();
-    }
-
-    private _updateUserList(userList: User[]) {
-        this._userListHistory.push(this._userList);
-        this._userList = userList;
-    }
-
-}
-
-class User {
-
-    constructor(
-        public firstName: string,
-        public lastName: string
-    ) {
-    }
-
-}
-
 const userStore = new UserStore();
 
-const user1 = new User('Foo', 'BAR');
-const user2 = new User('John', 'DOE');
-const user3 = new User('Foo', 'BAR');
+const user1 = new User({
+    firstName: 'Foo',
+    lastName: 'BAR'
+});
+const user2 = new User({
+    firstName: 'John',
+    lastName: 'DOE'
+});
+const user3 = new User({
+    firstName: 'Foo',
+    lastName: 'BAR'
+});
 
 const userList1 = userStore.getUserList();
 
