@@ -6,8 +6,10 @@
  */
 
 
+import { Injectable } from '@angular/core';
 import { User } from './user';
 
+@Injectable()
 export class UserStore {
 
     _userList: User[];
@@ -18,6 +20,7 @@ export class UserStore {
     }
 
     getUserList() {
+        console.log('GET USER LIST');
         return this._userList;
     }
 
