@@ -1,6 +1,9 @@
-
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { User } from './user/user';
+import { UserStore } from './user/user-store';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
     selector: 'wt-app',
@@ -11,22 +14,46 @@ import { User } from './user/user';
 })
 export class AppComponent {
 
-    selectedUser: User;
+    form: FormGroup;
 
-    userList = [
-        new User({
+    _userStore: UserStore;
+
+    constructor() {
+
+        this.form = new FormGroup(
+            {
+                firstName: new FormControl(
+                    null,
+                    Validators.required
+                ),
+                lastName: new FormControl(null)
+            }
+        );
+
+        this._userStore = new UserStore();
+
+        this._userStore.addUser(new User({
             firstName: 'Foo',
             lastName: 'BAR'
-        }),
-        new User({
+        }));
+
+        this._userStore.addUser(new User({
             firstName: 'John',
             lastName: 'DOE'
-        })
-    ];
+        }));
 
-    selectUser(user: User) {
-        this.selectedUser = user;
     }
+
+    addUser(form: FormGroup) {
+        const user = new User(form.value);
+        this._userStore.addUser(user);
+        form.reset();
+    }
+
+    getUserList() {
+        return this._userStore.getUserList();
+    }
+
 
     getPictureUrl(user: User) {
 
@@ -36,7 +63,7 @@ export class AppComponent {
 
     }
 
-    isUserSelected(user: User) {
-        return this.selectedUser === user;
+    getControlList() {
+        return Object.values(this.form.controls);
     }
 }

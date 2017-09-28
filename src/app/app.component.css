@@ -2,8 +2,7 @@
 img {
     border-style: solid;
     border-width: 1px;
-    border-radius: 50px;
-    height: 100px;
-    width: 100px;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
 }
-

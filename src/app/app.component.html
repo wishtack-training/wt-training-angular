@@ -1,17 +1,34 @@
+<form
+        [formGroup]="form"
+        (ngSubmit)="addUser(form)">
 
-<button
-    *ngFor="let user of userList"
-    [disabled]="isUserSelected(user)"
-    (click)="selectUser(user)">{{ user.firstName }}</button>
+    <span
+            *ngFor="let control of getControlList()">
+        <input
+                [formControl]="control"
+                type="text">
+        <div *ngIf="control.touched && control.errors">
+            {{ control.errors | json }}
+        </div>
+    </span>
 
-<div *ngIf="selectedUser != null">
+    <button
+            [disabled]="!form.valid"
+            type="submit">ADD</button>
+
+</form>
+
+<div *ngFor="let user of getUserList()">
     <img
-            *ngIf="getPictureUrl(selectedUser) as pictureUrl"
+            *ngIf="getPictureUrl(user) as pictureUrl"
             [src]="pictureUrl"
             alt="">
-    <div>
-        <span>{{ selectedUser.firstName }}</span>
+    <span>
+        <span>{{ user.firstName }}</span>
         <span> </span>
-        <span>{{ selectedUser.lastName }}</span>
-    </div>
+        <span>{{ user.lastName }}</span>
+    </span>
+
+    <button>REMOVE</button>
+
 </div>
