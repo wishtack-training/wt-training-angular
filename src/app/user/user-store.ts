@@ -20,7 +20,6 @@ export class UserStore {
     }
 
     getUserList() {
-        console.log('GET USER LIST');
         return this._userList;
     }
 
