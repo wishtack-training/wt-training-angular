@@ -17,25 +17,11 @@ import { UserStore } from '../user-store';
         './user-list.component.css'
     ]
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
     editedUser: User;
 
     constructor(private _userStore: UserStore) {
-    }
-
-    ngOnInit() {
-
-        this._userStore.addUser(new User({
-            firstName: 'Foo',
-            lastName: 'BAR'
-        }));
-
-        this._userStore.addUser(new User({
-            firstName: 'John',
-            lastName: 'DOE'
-        }));
-
     }
 
     addUser(user: User) {

@@ -12,6 +12,8 @@ import { UserStore } from './user-store';
 import { CommonModule } from '@angular/common';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -28,10 +30,9 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
         UserStore
     ],
     imports: [
-        CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule
     ]
 })
 export class UserModule {
 }
-

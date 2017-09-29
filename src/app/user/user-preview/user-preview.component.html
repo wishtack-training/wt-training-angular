@@ -1,15 +1,16 @@
 <div>
-  <img
-          *ngIf="pictureUrl"
-          class="wt-user__picture"
-          [src]="pictureUrl"
-          alt="">
-  <span>
+    <img
+            *ngIf="pictureUrl"
+            class="wt-user__picture"
+            [src]="pictureUrl"
+            alt="">
+
+    <a [routerLink]="['/users', user.id, {isFull: true}]">
         <span>{{ user.firstName }}</span>
         <span> </span>
         <span>{{ user.lastName }}</span>
-    </span>
+    </a>
 
-  <button (click)="removeUser()">REMOVE</button>
+    <button (click)="removeUser()">REMOVE</button>
 
 </div>
