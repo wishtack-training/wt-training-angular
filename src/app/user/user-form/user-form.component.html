@@ -2,6 +2,8 @@
         [formGroup]="form"
         (ngSubmit)="addUser()">
 
+    <ng-content select=".wt-form__header"></ng-content>
+
     <span
             *ngFor="let control of getControlList()">
         <input
@@ -12,8 +14,11 @@
         </div>
     </span>
 
-  <button
-          [disabled]="!form.valid"
-          type="submit">ADD</button>
+    <button
+            [disabled]="!form.valid"
+            type="submit">{{ buttonLabel }}
+    </button>
+
+    <ng-content select=".wt-form__footer"></ng-content>
 
 </form>

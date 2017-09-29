@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -7,8 +7,10 @@ import { User } from '../user';
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() onUserSubmit = new EventEmitter<User>();
 
     form: FormGroup;
@@ -24,6 +26,14 @@ export class UserFormComponent {
                 lastName: new FormControl(null)
             }
         );
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user != null) {
+            this.form.reset(this.user);
+        }
+
     }
 
     addUser() {

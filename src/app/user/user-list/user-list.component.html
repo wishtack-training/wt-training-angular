@@ -1,7 +1,29 @@
 <wt-user-form
         (onUserSubmit)="addUser($event)"></wt-user-form>
 
-<wt-user-preview
-        *ngFor="let user of getUserList()"
-        [user]="user"
-        (onUserRemove)="removeUser(user)"></wt-user-preview>
+<ng-container
+        *ngFor="let user of getUserList()">
+
+    <wt-user-preview
+            *ngIf="editedUser !== user"
+            [user]="user"
+            (dblclick)="editUser(user)"
+            (onUserRemove)="removeUser(user)"></wt-user-preview>
+
+    <wt-user-form
+            *ngIf="editedUser === user"
+            buttonLabel="UPDATE"
+            [user]="editedUser"
+            (onUserSubmit)="updateUser($event)">
+
+        <div class="wt-form__header">
+            <h1>User update</h1>
+        </div>
+
+        <div class="wt-form__footer">
+            <button (click)="editedUser = null">CANCEL</button>
+        </div>
+
+    </wt-user-form>
+
+</ng-container>

@@ -19,6 +19,8 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent implements OnInit {
 
+    editedUser: User;
+
     constructor(private _userStore: UserStore) {
     }
 
@@ -50,6 +52,16 @@ export class UserListComponent implements OnInit {
 
     undo() {
         this._userStore.undo();
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    updateUser(user: User) {
+        this._userStore.removeUser(this.editedUser);
+        this._userStore.addUser(user);
+        this.editedUser = null;
     }
 
 }
