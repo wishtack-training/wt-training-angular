@@ -29,3 +29,11 @@ yarn install
 # Check package.json dependencies version
 npm-check-updates
 https://greenkeeper.io/
+
+# Links
+https://www.youtube.com/watch?v=8aGhZQkoFbQ
+https://github.com/wishtack/wt-angular-auth-demo
+http://rxmarbles.com/
+
+
+
