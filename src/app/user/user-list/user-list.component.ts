@@ -68,4 +68,9 @@ export class UserListComponent {
     getControlList() {
         return Object.values(this.form.controls);
     }
+
+    undo() {
+        this._userStore.undo();
+    }
+
 }
