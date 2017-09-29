@@ -10,16 +10,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserStore } from './user-store';
 import { CommonModule } from '@angular/common';
-import { UserStatsComponent } from './user-stats/user-stats.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserPreviewComponent } from './user-preview/user-preview.component';
 
 @NgModule({
     declarations: [
+        UserFormComponent,
         UserListComponent,
-        UserStatsComponent
+        UserPreviewComponent
     ],
     exports: [
+        UserFormComponent,
         UserListComponent,
-        UserStatsComponent
+        UserPreviewComponent
     ],
     providers: [
         UserStore

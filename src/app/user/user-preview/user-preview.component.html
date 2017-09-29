@@ -1,0 +1,15 @@
+<div>
+  <img
+          *ngIf="pictureUrl"
+          class="wt-user__picture"
+          [src]="pictureUrl"
+          alt="">
+  <span>
+        <span>{{ user.firstName }}</span>
+        <span> </span>
+        <span>{{ user.lastName }}</span>
+    </span>
+
+  <button (click)="removeUser()">REMOVE</button>
+
+</div>

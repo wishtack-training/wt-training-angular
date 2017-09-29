@@ -1,0 +1,19 @@
+<form
+        [formGroup]="form"
+        (ngSubmit)="addUser()">
+
+    <span
+            *ngFor="let control of getControlList()">
+        <input
+                [formControl]="control"
+                type="text">
+        <div *ngIf="control.touched && control.errors">
+            {{ control.errors | json }}
+        </div>
+    </span>
+
+  <button
+          [disabled]="!form.valid"
+          type="submit">ADD</button>
+
+</form>

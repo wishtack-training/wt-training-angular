@@ -5,8 +5,8 @@
  * $Id: $
  */
 
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -17,22 +17,12 @@ import { UserStore } from '../user-store';
         './user-list.component.css'
     ]
 })
-export class UserListComponent {
-
-
-    form: FormGroup;
+export class UserListComponent implements OnInit {
 
     constructor(private _userStore: UserStore) {
+    }
 
-        this.form = new FormGroup(
-            {
-                firstName: new FormControl(
-                    null,
-                    Validators.required
-                ),
-                lastName: new FormControl(null)
-            }
-        );
+    ngOnInit() {
 
         this._userStore.addUser(new User({
             firstName: 'Foo',
@@ -46,27 +36,16 @@ export class UserListComponent {
 
     }
 
-    addUser(form: FormGroup) {
-        const user = new User(form.value);
+    addUser(user: User) {
         this._userStore.addUser(user);
-        form.reset();
+    }
+
+    removeUser(user: User) {
+        this._userStore.removeUser(user);
     }
 
     getUserList() {
         return this._userStore.getUserList();
-    }
-
-
-    getPictureUrl(user: User) {
-
-        const userName = encodeURIComponent(user.firstName);
-
-        return `https://robohash.org/${userName}`;
-
-    }
-
-    getControlList() {
-        return Object.values(this.form.controls);
     }
 
     undo() {
