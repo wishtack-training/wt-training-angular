@@ -8,52 +8,74 @@
 import { UserStore } from './user-store';
 import { User } from './user';
 
+describe('UserStore', () => {
 
-const assert = (value, expectedValue) => {
-    if (value !== expectedValue) {
-        throw new Error(`Assertion failed.
-        Value:
-        ${value}
-        Expected:
-        ${expectedValue}
-`)
-    }
-};
+    let userStore: UserStore;
+    let user1: User;
+    let user2: User;
+    let user3: User;
 
-const userStore = new UserStore();
+    beforeEach(() => {
 
-const user1 = new User('Foo', 'BAR');
-const user2 = new User('John', 'DOE');
-const user3 = new User('Foo', 'BAR');
+        userStore = new UserStore();
 
-const userList1 = userStore.getUserList();
+        user1 = new User('Foo', 'BAR');
+        user2 = new User('John', 'DOE');
+        user3 = new User('Foo', 'BAR');
 
-userStore.addUser(user1);
-userStore.addUser(user2);
-userStore.addUser(user3);
+    });
 
-const userList2 = userStore.getUserList();
+    it('should add users', () => {
 
-userStore.removeUser(user3);
+        const userListEmpty = userStore.getUserList();
 
-const userList3 = userStore.getUserList();
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        userStore.addUser(user3);
 
-assert(userList1.length, 0);
+        const userList = userStore.getUserList();
 
-assert(userList2.length, 3);
-assert(userList2[0], user1);
-assert(userList2[1], user2);
-assert(userList2[2], user3);
+        expect(userListEmpty).toEqual([]);
+        expect(userList).toEqual([user1, user2, user3]);
 
-assert(userList3.length, 2);
-assert(userList3[0], user1);
-assert(userList3[1], user2);
+    });
 
-userStore.undo();
-assert(userStore.getUserList().length, 3);
+    it('should remove user', () => {
 
-userStore.undo();
-assert(userStore.getUserList().length, 2);
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        userStore.addUser(user3);
 
-userStore.undo();
-assert(userStore.getUserList().length, 1);
+        const userListFull = userStore.getUserList();
+
+        userStore.removeUser(user3);
+
+        const userList = userStore.getUserList();
+
+        expect(userListFull).toEqual([user1, user2, user3]);
+        expect(userList).toEqual([user1, user2]);
+
+    });
+
+    it('should undo change', () => {
+
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        userStore.addUser(user3);
+
+        userStore.removeUser(user3);
+
+        userStore.undo();
+
+        const userList1 = userStore.getUserList();
+
+        userStore.undo();
+
+        const userList2 = userStore.getUserList();
+
+        expect(userList1).toEqual([user1, user2, user3]);
+        expect(userList2).toEqual([user1, user2]);
+
+    });
+
+});
