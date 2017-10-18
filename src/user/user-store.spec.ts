@@ -5,8 +5,8 @@
  * $Id: $
  */
 
-import { UserStore } from './user/user-store';
-import { User } from './user/user';
+import { UserStore } from './user-store';
+import { User } from './user';
 
 
 const assert = (value, expectedValue) => {
