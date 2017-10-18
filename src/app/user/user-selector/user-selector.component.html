@@ -1,0 +1,16 @@
+<button
+        *ngFor="let user of userList"
+        [disabled]="isUserSelected(user)"
+        (click)="selectUser(user)">
+    {{ user.firstName }}
+</button>
+
+<div *ngIf="selectedUser">{{ selectedUser.firstName }}</div>
+
+<div>
+    <img
+            *ngFor="let user of userList"
+            class="wt-user-picture"
+            [src]="'http://robohash.org/' + user.firstName"
+            (click)="selectUser(user)">
+</div>
