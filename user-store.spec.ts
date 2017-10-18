@@ -6,6 +6,7 @@
  */
 
 import { UserStore } from './user/user-store';
+import { User } from './user/user';
 
 
 const assert = (value, expectedValue) => {
@@ -47,3 +48,12 @@ assert(userList2[2], user3);
 assert(userList3.length, 2);
 assert(userList3[0], user1);
 assert(userList3[1], user2);
+
+userStore.undo();
+assert(userStore.getUserList().length, 3);
+
+userStore.undo();
+assert(userStore.getUserList().length, 2);
+
+userStore.undo();
+assert(userStore.getUserList().length, 1);
