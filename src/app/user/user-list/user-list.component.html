@@ -1,0 +1,38 @@
+<form
+        [formGroup]="form"
+        (ngSubmit)="addUser()">
+
+    <input
+            formControlName="firstName"
+            type="text">
+
+    <input
+            formControlName="lastName"
+            type="text">
+
+    <div *ngIf="form.controls.firstName as firstNameControl">
+
+        <div *ngIf="!firstNameControl.pristine && firstNameControl.errors?.invalidContent">
+            Invalid content
+        </div>
+
+    </div>
+
+    <button
+            [disabled]="!form.valid"
+            type="submit">ADD</button>
+
+    <button
+            (click)="undo()"
+            type="button">UNDO</button>
+
+</form>
+
+<ul>
+    <li *ngFor="let user of getUserList()">
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+        <button (click)="removeUser(user)">REMOVE</button>
+    </li>
+</ul>
+

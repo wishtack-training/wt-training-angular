@@ -1,10 +1,12 @@
 
 export class User {
 
-    constructor(
-        public firstName: string = null,
-        public lastName: string = null
-    ) {
+    firstName: string;
+    lastName: string;
+
+    constructor({firstName = null, lastName = null} = {}) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
 }

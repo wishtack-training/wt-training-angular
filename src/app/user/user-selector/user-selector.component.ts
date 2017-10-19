@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../user';
 
 @Component({
@@ -8,9 +8,9 @@ import { User } from '../user';
 })
 export class UserSelectorComponent implements OnInit {
 
-    userList = [
-        new User('Foo', 'BAR'),
-        new User('John', 'DOE')
+    @Input() userList = [
+        new User({firstName: 'Foo', lastName: 'BAR'}),
+        new User({firstName: 'John', lastName: 'DOE'})
     ];
 
     selectedUser: User;
