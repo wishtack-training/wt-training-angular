@@ -1,38 +1,28 @@
-<form
-        [formGroup]="form"
-        (ngSubmit)="addUser()">
 
-    <input
-            formControlName="firstName"
-            type="text">
+<wt-user-form
+        buttonLabel="ADD"
+        (onUserSubmit)="addUser($event)"></wt-user-form>
 
-    <input
-            formControlName="lastName"
-            type="text">
-
-    <div *ngIf="form.controls.firstName as firstNameControl">
-
-        <div *ngIf="!firstNameControl.pristine && firstNameControl.errors?.invalidContent">
-            Invalid content
-        </div>
-
-    </div>
-
-    <button
-            [disabled]="!form.valid"
-            type="submit">ADD</button>
-
-    <button
-            (click)="undo()"
-            type="button">UNDO</button>
-
-</form>
+<button
+        (click)="undo()"
+        type="button">UNDO</button>
 
 <ul>
     <li *ngFor="let user of userList$ | async">
-        <span>{{ user.firstName }}</span>
-        <span>{{ user.lastName }}</span>
-        <button (click)="removeUser(user)">REMOVE</button>
+
+        <span *ngIf="user !== editedUser">
+            <span (dblclick)="editUser(user)">
+                <span>{{ user.firstName }}</span>
+                <span>{{ user.lastName }}</span>
+            </span>
+            <button (click)="removeUser(user)">REMOVE</button>
+        </span>
+
+        <wt-user-form
+                *ngIf="editedUser === user"
+                buttonLabel="UPDATE"
+                [user]="editedUser"
+                (onUserSubmit)="updateUser($event)"></wt-user-form>
+
     </li>
 </ul>
-

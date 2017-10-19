@@ -1,0 +1,17 @@
+<form
+        [formGroup]="form"
+        (ngSubmit)="addUser()">
+
+  <input
+          formControlName="firstName"
+          type="text">
+
+  <input
+          formControlName="lastName"
+          type="text">
+
+  <button
+          [disabled]="!form.valid"
+          type="submit">{{ buttonLabel }}</button>
+
+</form>

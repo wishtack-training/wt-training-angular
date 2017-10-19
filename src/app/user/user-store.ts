@@ -49,4 +49,23 @@ export class UserStore {
         this._userList$.next(userList);
     }
 
+    /* @todo: can do better... */
+    replaceUser({previous, current}: {previous: User; current: User}) {
+
+        let userList = this._getUserList();
+
+        userList = userList.map(user => {
+
+            if (user === previous) {
+                return current;
+            }
+
+            return user;
+
+        });
+
+        this._updateUserList(userList);
+
+    }
+
 }

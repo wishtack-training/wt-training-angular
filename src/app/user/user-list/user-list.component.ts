@@ -10,35 +10,19 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
-    form: FormGroup;
     userList$: Observable<User[]>;
+    editedUser: User;
 
     constructor(private _userStore: UserStore) {
-
-        this.form = new FormGroup(
-            {
-                firstName: new FormControl(),
-                lastName: new FormControl()
-            }
-        );
 
         this.userList$ = this._userStore.userList$;
 
     }
 
-    ngOnInit() {
-
-    }
-
-    addUser() {
-
-        const user = new User(this.form.value);
-
+    addUser(user) {
         this._userStore.addUser(user);
-        this.form.reset();
-
     }
 
     removeUser(user) {
@@ -47,6 +31,18 @@ export class UserListComponent implements OnInit {
 
     undo() {
         this._userStore.undo();
+    }
+
+    editUser(user) {
+        this.editedUser = user;
+    }
+
+    updateUser(user) {
+        this._userStore.replaceUser({
+            previous: this.editedUser,
+            current: user
+        });
+        this.editedUser = null;
     }
 
 }
