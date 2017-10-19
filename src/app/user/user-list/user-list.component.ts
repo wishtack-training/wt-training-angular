@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { UserStore } from '../user-store';
 import { User } from '../user';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'wt-user-list',
@@ -12,7 +13,7 @@ import { User } from '../user';
 export class UserListComponent implements OnInit {
 
     form: FormGroup;
-    userList: User[];
+    userList$: Observable<User[]>;
 
     constructor(private _userStore: UserStore) {
 
@@ -22,9 +23,13 @@ export class UserListComponent implements OnInit {
                 lastName: new FormControl()
             }
         );
+
+        this.userList$ = this._userStore.userList$;
+
     }
 
     ngOnInit() {
+
     }
 
     addUser() {
@@ -34,27 +39,14 @@ export class UserListComponent implements OnInit {
         this._userStore.addUser(user);
         this.form.reset();
 
-        this._retrieveUserList();
-
     }
 
     removeUser(user) {
-
         this._userStore.removeUser(user);
-
-        this._retrieveUserList();
-
     }
 
     undo() {
-
         this._userStore.undo();
-
-        this._retrieveUserList();
-
     }
 
-    private _retrieveUserList() {
-        this.userList = this._userStore.getUserList();
-    }
 }

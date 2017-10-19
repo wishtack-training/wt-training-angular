@@ -29,7 +29,7 @@
 </form>
 
 <ul>
-    <li *ngFor="let user of userList">
+    <li *ngFor="let user of userList$ | async">
         <span>{{ user.firstName }}</span>
         <span>{{ user.lastName }}</span>
         <button (click)="removeUser(user)">REMOVE</button>
