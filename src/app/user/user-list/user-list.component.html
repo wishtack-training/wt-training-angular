@@ -29,7 +29,7 @@
 </form>
 
 <ul>
-    <li *ngFor="let user of getUserList()">
+    <li *ngFor="let user of userList">
         <span>{{ user.firstName }}</span>
         <span>{{ user.lastName }}</span>
         <button (click)="removeUser(user)">REMOVE</button>
