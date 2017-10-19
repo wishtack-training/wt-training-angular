@@ -21,6 +21,14 @@ export class UserListComponent {
 
     }
 
+    async ngOnInit() {
+
+        const userList = await this._userStore.loadUserListOldSchool();
+
+        console.log(userList);
+
+    }
+
     addUser(user) {
         this._userStore.addUser(user);
     }

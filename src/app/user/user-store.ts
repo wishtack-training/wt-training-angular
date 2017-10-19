@@ -8,12 +8,21 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserStore {
 
     private _userList$ = new BehaviorSubject<User[]>([]);
     private _userListHistory: User[][] = [];
+
+    constructor(private _httpClient: HttpClient) {
+
+    }
 
     get userList$() {
         return this._userList$.asObservable();
@@ -40,13 +49,30 @@ export class UserStore {
 
     }
 
-    _getUserList(): User[] {
-        return this._userList$.getValue();
+    loadUserList(): Observable<User[]> {
+
+        return this._httpClient
+            .get<Object[]>('http://wt-users.getsandbox.com/users')
+            .map(body => {
+                return body.map(data => new User(data));
+            })
+            .do(userList => this._updateUserList(userList));
+
+
     }
 
-    _updateUserList(userList) {
-        this._userListHistory.push(this._getUserList());
-        this._userList$.next(userList);
+    async loadUserListOldSchool(): Promise<User[]> {
+
+        const body = await this._httpClient
+            .get<Object[]>('http://wt-users.getsandbox.com/users')
+            .toPromise();
+
+        const userList = body.map(data => new User(data));
+
+        this._updateUserList(userList);
+
+        return userList;
+
     }
 
     /* @todo: can do better... */
@@ -66,6 +92,15 @@ export class UserStore {
 
         this._updateUserList(userList);
 
+    }
+
+    _getUserList(): User[] {
+        return this._userList$.getValue();
+    }
+
+    _updateUserList(userList) {
+        this._userListHistory.push(this._getUserList());
+        this._userList$.next(userList);
     }
 
 }
