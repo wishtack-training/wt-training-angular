@@ -59,7 +59,33 @@ const getCheapProductsTotalPrice = (maxPrice) => {
 
 let user = new User('Foo');
 
+class Shop {
 
+    name: string;
+    email: string = 'shop';
+
+}
+
+interface Emailable {
+    email: string;
+    name?: string;
+    
+}
+
+const sendEmail = (
+    message: string,
+    emailable: Emailable) => {
+    console.log(`${emailable.email}: ${message}`);
+};
+
+sendEmail('Hello', user);
+
+const data = {
+    email: 'foo@wishtack.com',
+    name: 'test'
+};
+
+sendEmail('Welcome', data);
 
 
 
