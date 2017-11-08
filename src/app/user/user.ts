@@ -6,12 +6,21 @@
  */
 
 
-export class User {
+export class UserSchema {
 
-    constructor(
-        public firstName?: string,
-        public lastName?: string
-    ) {
+    firstName?: string;
+    lastName?: string;
+
+    constructor(args: UserSchema = {}) {
+
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
     }
 
 }
+
+export class User extends UserSchema {
+}
+
+
+
