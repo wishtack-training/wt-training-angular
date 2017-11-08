@@ -5,6 +5,9 @@
  * $Id: $
  */
 
+import { UserStore } from './user-store';
+import { User } from './user';
+
 const assert = (value1, value2) => {
 
     if (value1 === value2) {
@@ -33,6 +36,17 @@ userStore.removeUser(user3);
 
 const userList3 = userStore.getUserList();
 
+const user4 = new User('Foo', 'Foo');
+
+userStore.updateUser(user1, user4);
+
+const userList4 = userStore.getUserList();
+
+userStore.undo();
+userStore.undo();
+
+const userList5 = userStore.getUserList();
+
 assert(userList1.length, 0);
 
 assert(userList2.length, 3);
@@ -43,5 +57,15 @@ assert(userList2[2], user3);
 assert(userList3.length, 2);
 assert(userList3[0], user1);
 assert(userList3[1], user2);
+
+assert(userList4.length, 2);
+assert(userList4[0], user4);
+assert(userList4[1], user2);
+
+assert(userList5.length, 3);
+assert(userList5[0], user1);
+assert(userList5[1], user2);
+assert(userList5[2], user3);
+
 
 
