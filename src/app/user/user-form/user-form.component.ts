@@ -34,7 +34,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
     @Input() formConfig = new UserFormConfig();
     @Output() onUserSubmit = new EventEmitter<User>();
 
-    formComponent = FrenchArmyForm;
     userForm: FormGroup;
 
     constructor() {
@@ -45,17 +44,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
             ]),
             lastName: new FormControl()
         });
-
-        // setInterval(() => {
-        //
-        //     if (this.formComponent === USArmyForm) {
-        //         this.formComponent = FrenchArmyForm;
-        //     }
-        //     else {
-        //         this.formComponent = USArmyForm;
-        //     }
-        //
-        // }, 1000);
 
     }
 

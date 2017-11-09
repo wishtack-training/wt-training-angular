@@ -4,6 +4,9 @@ import { UserStore } from '../user-store';
 import { User } from '../user';
 import { UserFormConfig } from '../user-form/user-form.component';
 
+/**
+ * @deprecated should be renamed to user-container... or die...
+ */
 @Component({
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',

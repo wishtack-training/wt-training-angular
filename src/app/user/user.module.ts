@@ -12,13 +12,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserStore } from './user-store';
 import { FrenchArmyForm, USArmyForm, UserFormComponent } from './user-form/user-form.component';
+import { UserMapComponent } from './user-map/user-map.component';
 
 @NgModule({
     declarations: [
         UserFormComponent,
         UserListComponent,
         FrenchArmyForm,
-        USArmyForm
+        USArmyForm,
+        UserMapComponent
     ],
     entryComponents: [
         FrenchArmyForm,
@@ -26,7 +28,8 @@ import { FrenchArmyForm, USArmyForm, UserFormComponent } from './user-form/user-
     ],
     exports: [
         UserFormComponent,
-        UserListComponent
+        UserListComponent,
+        UserMapComponent
     ],
     imports: [
         ReactiveFormsModule,

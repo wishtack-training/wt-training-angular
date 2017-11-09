@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
-import { UserStore } from './user/user-store';
 
 @NgModule({
     bootstrap: [
