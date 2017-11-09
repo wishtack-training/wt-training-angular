@@ -3,13 +3,15 @@
 <br>
 <br>
 
+{{ userCount$ | async }}
+
 <wt-user-form
         (onUserSubmit)="addUser($event)"></wt-user-form>
 
 <button (click)="undo()">UNDO</button>
 
-<ul>
-    <li *ngFor="let user of getUserList()">
+<ul *ngIf="userList$ | async as userList">
+    <li *ngFor="let user of userList">
 
         <div>{{ user.firstName }}</div>
 
@@ -19,4 +21,4 @@
 
 <wt-user-form [formConfig]="formConfig"></wt-user-form>
 
-<wt-user-map [userList]="getUserList()"></wt-user-map>
+<wt-user-map [userList]="userList$ | async"></wt-user-map>

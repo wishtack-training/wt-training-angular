@@ -1,3 +1,5 @@
-input.ng-invalid {
-    background-color: red;
+:host {
+    display: block;
+    border-width: 1px;
+    border-style: solid;
 }
