@@ -5,7 +5,6 @@
  * $Id: $
  */
 
-
 export class UserSchema {
 
     firstName?: string;

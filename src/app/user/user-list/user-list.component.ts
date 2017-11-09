@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserStore } from '../user-store';
 import { User } from '../user';
 import 'rxjs/add/operator/debounceTime';
+import { isValidTgi } from './user-validators';
 
 @Component({
     selector: 'wt-user-list',
@@ -20,7 +21,9 @@ export class UserListComponent {
 
         this.userForm = new FormGroup({
             firstName: new FormControl(null, [
-                Validators.required
+                Validators.required,
+                Validators.maxLength(5),
+                isValidTgi
             ]),
             lastName: new FormControl()
         });

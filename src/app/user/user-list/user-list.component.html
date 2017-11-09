@@ -1,9 +1,22 @@
+<br>
+<br>
+<br>
+<br>
 <form
         [formGroup]="userForm"
         (ngSubmit)="addUser()">
 
     <input formControlName="firstName" type="text">
+
     <input formControlName="lastName" type="text">
+
+    <div *ngIf="userForm.controls.firstName.errors as errors">
+
+        <div *ngIf="errors.required">
+            ACHTUNG!! REQUIRED!
+        </div>
+
+    </div>
 
     <button
             [disabled]="!userForm.valid"
