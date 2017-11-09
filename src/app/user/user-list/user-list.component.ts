@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserStore } from '../user-store';
 import { User } from '../user';
-import 'rxjs/add/operator/debounceTime';
-import { isValidTgi } from './user-validators';
+import { UserFormConfig } from '../user-form/user-form.component';
 
 @Component({
     selector: 'wt-user-list',
@@ -13,31 +11,25 @@ import { isValidTgi } from './user-validators';
 })
 export class UserListComponent {
 
-    userForm: FormGroup;
+    formConfig: UserFormConfig = {
+        buttonLabel: 'SEARCH',
+        checkBlabla: true,
+        validationEnabled: false
+    };
 
-    private _userStore = new UserStore();
-
-    constructor() {
-
-        this.userForm = new FormGroup({
-            firstName: new FormControl(null, [
-                Validators.required,
-                Validators.maxLength(5),
-                isValidTgi
-            ]),
-            lastName: new FormControl()
-        });
-
+    constructor(private _userStore: UserStore) {
     }
 
-    addUser() {
-        const user = new User(this.userForm.value);
+    addUser(user) {
         this._userStore.addUser(user);
-        this.userForm.reset();
     }
 
     getUserList() {
         return this._userStore.getUserList();
+    }
+
+    undo() {
+        this._userStore.undo();
     }
 
 }

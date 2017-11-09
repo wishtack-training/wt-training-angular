@@ -2,33 +2,19 @@
 <br>
 <br>
 <br>
-<form
-        [formGroup]="userForm"
-        (ngSubmit)="addUser()">
 
-    <input formControlName="firstName" type="text">
+<wt-user-form
+        (onUserSubmit)="addUser($event)"></wt-user-form>
 
-    <input formControlName="lastName" type="text">
-
-    <div *ngIf="userForm.controls.firstName.errors as errors">
-
-        <div *ngIf="errors.required">
-            ACHTUNG!! REQUIRED!
-        </div>
-
-    </div>
-
-    <button
-            [disabled]="!userForm.valid"
-            type="submit">ADD</button>
-
-</form>
+<button (click)="undo()">UNDO</button>
 
 <ul>
     <li *ngFor="let user of getUserList()">
 
-        <span>{{ user.firstName }}</span>
+        <div>{{ user.firstName }}</div>
 
     </li>
 
 </ul>
+
+<wt-user-form [formConfig]="formConfig"></wt-user-form>
