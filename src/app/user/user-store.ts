@@ -8,6 +8,7 @@ import { User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UserStore {
@@ -16,8 +17,17 @@ export class UserStore {
 
     private _userList$ = new BehaviorSubject([]);
 
+    constructor(private _httpClient: HttpClient) {
+
+    }
+
     get userList$(): Observable<User[]> {
         return this._userList$.asObservable();
+    }
+
+    getUser(userId): Observable<User> {
+        return this._httpClient.get(`http://wt-users.getsandbox.com/users/${userId}`)
+            .map(data => new User(data));
     }
 
     addUser(user: User) {

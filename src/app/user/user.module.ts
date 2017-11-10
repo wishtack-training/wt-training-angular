@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserStore } from './user-store';
 import { FrenchArmyForm, USArmyForm, UserFormComponent } from './user-form/user-form.component';
 import { UserMapComponent } from './user-map/user-map.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { UserMapComponent } from './user-map/user-map.component';
         UserMapComponent
     ],
     imports: [
+        HttpClientModule,
         ReactiveFormsModule,
         SharedModule
     ],

@@ -39,6 +39,16 @@ export class UserListComponent implements OnInit {
             .subscribe(() => alert('ARRETE!!!'));
     }
 
+    async ngOnInit() {
+
+        const user = await this._userStore.getUser(0)
+            .toPromise();
+
+        console.log(user);
+
+    }
+
+
     addUser(user) {
         this._userStore.addUser(user);
     }
