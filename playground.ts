@@ -1,10 +1,13 @@
 'use strict';
 
+interface Email {
+    provider: string;
+}
+
 class User {
 
-    constructor(firstName, lastName = null) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(public firstName: string = null,
+                public lastName: string = null) {
     }
 
     sayHi() {
@@ -14,6 +17,7 @@ class User {
     sayHiLater() {
         setTimeout(() => this.sayHi(), 1000);
     }
+
 }
 
 const productList = [
@@ -31,19 +35,9 @@ const productList = [
     }
 ];
 
-// Polyfill
-if (Array.prototype.digest == null) {
-    // Shim
-    Array.prototype.digest = function () {
-        return '💩';
-    };
-}
-
-
 const cheapProductNameList = productList
     .filter(product => product.price < 25)
-    .map(product => product.name)
-    .digest();
+    .map(product => product.name);
 
 const totalPrice = productList
     .map(product => product.price)
@@ -51,3 +45,19 @@ const totalPrice = productList
 
 console.log(cheapProductNameList);
 console.log(totalPrice);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
