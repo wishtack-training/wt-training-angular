@@ -1,0 +1,30 @@
+<br>
+<br>
+
+<form (ngSubmit)="addUser()">
+
+    <input
+            name="firstName"
+            type="text"
+            [(ngModel)]="userTmp.firstName">
+    <input
+            name="lastName"
+            type="text"
+            [(ngModel)]="userTmp.lastName">
+
+    <button type="submit">ADD</button>
+
+</form>
+
+<ul>
+
+    <li *ngFor="let user of getUserList()">
+        <img [src]="getUserPictureUrl(user)">
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+        <button (click)="removeUser(user)">REMOVE</button>
+    </li>
+
+</ul>
+
+<button (click)="reset()">RESET</button>

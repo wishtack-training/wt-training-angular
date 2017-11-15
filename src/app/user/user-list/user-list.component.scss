@@ -1,0 +1,10 @@
+
+@import '../../_common.scss';
+
+img {
+    border-radius: $pictureDiameter / 2;
+    border-style: solid;
+    border-width: 1px;
+    height: $pictureDiameter;
+    width: $pictureDiameter;
+}

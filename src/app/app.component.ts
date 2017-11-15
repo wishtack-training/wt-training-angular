@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
-import { UserStore } from './user/user-store';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+    encapsulation: ViewEncapsulation.None,
     selector: 'wt-app',
+    styleUrls: [
+        './app.component.scss'
+    ],
     templateUrl: './app.component.html'
 })
 export class AppComponent {
 
     name = 'Foo';
-
-    private _userStore = new UserStore();
+    private _userStore;
 
     constructor() {
+
         setInterval(() => this.name += '.', 3000);
     }
 
