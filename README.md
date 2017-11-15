@@ -13,3 +13,15 @@ npm install -g typescript
 ```
 tsc user-store.spec.ts && node user-store.spec
 ```
+
+# Install @angular/cli and yarn
+```
+npm install -g @angular/cli yarn 
+```
+
+# Create app
+```
+ng new app --prefix wt --skip-install
+cd app
+yarn install
+```
