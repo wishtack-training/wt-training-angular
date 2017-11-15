@@ -1,0 +1,16 @@
+<br>
+<br>
+<h1>{{ name }}</h1>
+
+<form>
+
+    <input name="name" type="text" [(ngModel)]="name">
+
+</form>
+
+<img [src]="getPictureUrl()">
+
+<button
+        type="button"
+        [disabled]="name.length < 5"
+        (click)="reset()">RESET</button>
