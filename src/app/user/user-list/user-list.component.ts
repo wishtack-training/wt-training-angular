@@ -9,8 +9,6 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
 
-    userTmp = new User();
-
     private _userStore = new UserStore();
 
     constructor() {
@@ -19,17 +17,12 @@ export class UserListComponent implements OnInit {
     ngOnInit() {
     }
 
-    addUser() {
-        this._userStore.addUser(this.userTmp);
-        this.userTmp = new User();
+    addUser(user: User) {
+        this._userStore.addUser(user);
     }
 
     getUserList() {
         return this._userStore.getUserList();
-    }
-
-    getUserPictureUrl(user: User) {
-        return `http://robohash.org/${encodeURIComponent(user.firstName)}`;
     }
 
     removeUser(user) {
