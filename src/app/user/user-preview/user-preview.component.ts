@@ -8,7 +8,7 @@ import { User } from '../user';
 })
 export class UserPreviewComponent implements OnInit {
 
-    @Input() user: User;
+    @Input() user;
 
     constructor() {
     }
