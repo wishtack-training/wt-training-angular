@@ -6,11 +6,16 @@
  */
 
 import { User } from './user';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class UserStore {
 
     private _userListHistory = [];
     private _userList: User[] = [];
+
+    constructor() {
+    }
 
     getUserList() {
         return this._userList;

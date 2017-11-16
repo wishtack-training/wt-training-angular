@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStore } from '../user-store';
 import { User } from '../user';
-import { UserFormReactiveComponent } from '../user-form-reactive/user-form-reactive.component';
+import { UserStore } from '../user-store';
 
 @Component({
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
-    styleUrls: ['./user-list.component.scss']
+    styleUrls: ['./user-list.component.scss'],
+    providers: [
+        UserStore
+    ]
 })
 export class UserListComponent implements OnInit {
 
-    private _userStore = new UserStore();
-
     component;
 
-    constructor() {
+    constructor(private _userStore: UserStore) {
     }
 
     ngOnInit() {

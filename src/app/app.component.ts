@@ -10,20 +10,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
 
-    name = 'Foo';
-    private _userStore;
-
-    constructor() {
-
-        setInterval(() => this.name += '.', 3000);
-    }
-
-    reset() {
-        this.name = '.';
-    }
-
-    getPictureUrl() {
-        return `https://robohash.org/${this.name}`;
-    }
-
 }

@@ -2,6 +2,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { cobolConstraint, startsWithTgi } from './user-form-validators';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
 
 
 @Component({
@@ -18,13 +25,12 @@ export class UserFormReactiveComponent implements OnInit {
     constructor() {
 
         this.userForm = new FormGroup({
-            firstName: new FormControl(null, [
-                Validators.required,
-                Validators.maxLength(5),
-                startsWithTgi
-            ]),
-            lastName: new FormControl(null, [])
-        },
+                firstName: new FormControl(null, [
+                    Validators.required,
+                    Validators.maxLength(5)
+                ]),
+                lastName: new FormControl(null, [])
+            },
             [
                 cobolConstraint
             ]);
