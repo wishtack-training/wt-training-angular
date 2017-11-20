@@ -7,7 +7,7 @@
 
 'use strict';
 
-class User {
+class PlaygroundUser {
 
     firstName;
     lastName;
@@ -31,7 +31,7 @@ class User {
 
 }
 
-const user = new User('Foo', 'BAR');
+const user = new PlaygroundUser('Foo', 'BAR');
 
 const productList = [
     {
