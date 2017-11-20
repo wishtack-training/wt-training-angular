@@ -43,6 +43,6 @@ userStore.removeUser(user3);
 
 const userList3 = userStore.getUserList();
 
-assert(userList3.length, 3);
+assert(userList3.length, 2);
 assert(userList3[0], user1);
 assert(userList3[1], user2);
