@@ -15,4 +15,4 @@ Installer tous les modules sauf "vim".
 `npm install -g typescript`
 
 # Repo
-https://www.github.com/wishtack-training/wt-training-angular#2017-11-20
+https://www.github.com/wishtack-training/wt-training-angular
