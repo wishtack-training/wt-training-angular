@@ -10,4 +10,9 @@ https://git-scm.com/
 https://www.jetbrains.com/idea/nextversion/
 
 Installer tous les modules sauf "vim".
- 
+
+# Install typescript
+`npm install -g typescript`
+
+# Repo
+https://www.github.com/wishtack-training/wt-training-angular#2017-11-20
