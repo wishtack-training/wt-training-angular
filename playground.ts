@@ -9,6 +9,9 @@
 
 class User {
 
+    firstName;
+    lastName;
+
     constructor(firstName = null, lastName = null) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +48,7 @@ const productList = [
     }
 ];
 
+
 const cheapProductNameList = productList
     .filter(product => product.price < 25)
     .map(product => product.name);
@@ -53,8 +57,6 @@ const totalPrice = productList
     .filter(product => product.price < 25)
     .map(product => product.price)
     .reduce((total, price) => total + price, 0);
-
-console.log(totalPrice);
 
 // Immutability.
 const productListV2 = productList.map((product) => {
