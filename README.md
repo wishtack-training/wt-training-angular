@@ -11,8 +11,12 @@ https://www.jetbrains.com/idea/nextversion/
 
 Installer tous les modules sauf "vim".
 
+# Repo
+https://www.github.com/wishtack-training/wt-training-angular
+
 # Install typescript
 `npm install -g typescript`
 
-# Repo
-https://www.github.com/wishtack-training/wt-training-angular
+# Run "unit-test"
+
+`tsc user-store.spec.ts && node user-store.spec.js`
