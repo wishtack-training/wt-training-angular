@@ -1,0 +1,8 @@
+<div (click)="reset()">
+  <span>Hello</span>
+  <span>{{ name }}</span>
+</div>
+<button
+        [disabled]="name.length < 5"
+        (click)="reset()"
+        type="button">RESET</button>
