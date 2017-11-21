@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { UserStore } from '../user-store';
+import { User } from '../user';
+import { startsWithWt } from './user-form-validators';
 
 @Component({
     selector: 'wt-user-list',
@@ -8,12 +12,37 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent {
 
-    name = 'Foo';
+    userForm: FormGroup;
 
     private _userStore = new UserStore();
 
+    constructor() {
+        this.userForm = new FormGroup({
+            firstName: new FormControl(null, [
+                Validators.required,
+                Validators.maxLength(10),
+                // startsWithWt
+            ]),
+            lastName: new FormControl()
+        });
+    }
+
+    addUser() {
+        const user = new User(this.userForm.value);
+        this._userStore.addUser(user);
+        this.userForm.reset();
+    }
+
     getUserList() {
-        this._userStore.getUserList();
+        return this._userStore.getUserList();
+    }
+
+    removeUser(user) {
+        this._userStore.removeUser(user);
+    }
+
+    undo() {
+        this._userStore.undo();
     }
 
 }

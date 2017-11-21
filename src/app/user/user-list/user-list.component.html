@@ -1,12 +1,44 @@
-<form>
+<form
+        [formGroup]="userForm"
+        (ngSubmit)="addUser()">
 
     <input
-            [(ngModel)]="name"
-            name="name"
+            formControlName="firstName"
             type="text">
+
+    <input
+            formControlName="lastName"
+            type="text">
+
+    <button
+            (click)="undo()"
+            type="button">UNDO</button>
+
+    <button
+            [disabled]="!userForm.valid"
+            type="submit">ADD</button>
 
 </form>
 
+<div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.errors as errors">
+
+    <div *ngIf="errors.required">
+        First name is required.
+    </div>
+
+    <div *ngIf="errors.maxlength">
+        First name is too long for our Cobol backend.
+    </div>
+
+</div>
+
 <wt-user-preview
         *ngFor="let user of getUserList()"
-        [user]="user"></wt-user-preview>
+        [user]="user">
+    <span class="wt-actions">
+        <button
+                (click)="removeUser(user)"
+                type="button">REMOVE</button>
+
+    </span>
+</wt-user-preview>

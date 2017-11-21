@@ -7,11 +7,12 @@
 
 export class User {
 
-    constructor(
-        public firstName: string = null,
-        public lastName: string = null
-    ) {
-    }
+    firstName?: string;
+    lastName?: string;
 
+    constructor(args: User = {}) {
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
+    }
 
 }
