@@ -1,0 +1,9 @@
+$borderColor: #9ae2ff;
+
+img {
+  border-color: $borderColor;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  width: 40px;
+}

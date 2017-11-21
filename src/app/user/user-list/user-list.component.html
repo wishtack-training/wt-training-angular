@@ -1,0 +1,12 @@
+<form>
+
+    <input
+            [(ngModel)]="name"
+            name="name"
+            type="text">
+
+</form>
+
+<wt-user-preview
+        *ngFor="let user of getUserList()"
+        [user]="user"></wt-user-preview>

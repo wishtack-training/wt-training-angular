@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../../user/user';
+import { User } from './user/user';
+import { UserStore } from './user/user-store';
 
 @Component({
     selector: 'wt-app',
@@ -9,24 +10,5 @@ import { User } from '../../user/user';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-
-    selectedUser: User;
-    userList = [
-        new User('Foo', 'BAR'),
-        new User('John', 'DOE')
-    ];
-
-    selectUser(user: User) {
-        this.selectedUser = user;
-    }
-
-    getPictureUrl(selectedUser: User) {
-        const path = encodeURIComponent(selectedUser.firstName);
-        return `https://robohash.org/${path}`;
-    }
-
-    isUserSelected(user: User) {
-        return user === this.selectedUser;
-    }
 
 }
