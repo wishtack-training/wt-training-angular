@@ -1,19 +1,32 @@
 import { Component } from '@angular/core';
+import { User } from '../../user/user';
 
 @Component({
     selector: 'wt-app',
+    styleUrls: [
+        './app.component.css'
+    ],
     templateUrl: './app.component.html'
 })
 export class AppComponent {
 
-    name = 'Foo';
+    selectedUser: User;
+    userList = [
+        new User('Foo', 'BAR'),
+        new User('John', 'DOE')
+    ];
 
-    constructor() {
-        setInterval(() => this.name += '.', 100);
+    selectUser(user: User) {
+        this.selectedUser = user;
     }
 
-    reset() {
-        this.name = '.';
+    getPictureUrl(selectedUser: User) {
+        const path = encodeURIComponent(selectedUser.firstName);
+        return `https://robohash.org/${path}`;
+    }
+
+    isUserSelected(user: User) {
+        return user === this.selectedUser;
     }
 
 }
