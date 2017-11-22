@@ -6,20 +6,15 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserStore } from './user/user-store';
 import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        UserFormComponent,
-        UserListComponent,
-        UserPreviewComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
-        ReactiveFormsModule
-    ],
-    providers: [
-        UserStore
+        UserModule
     ],
     bootstrap: [
         AppComponent
