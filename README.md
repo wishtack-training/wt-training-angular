@@ -31,6 +31,9 @@ https://www.github.com/wishtack-training/wt-training-angular
 ## Event loop
 https://www.youtube.com/watch?v=8aGhZQkoFbQ
 
+## NgDoc
+http://ngdoc.io/
+
 ## Changelog & conventional commits
 https://conventionalcommits.org/
 https://github.com/conventional-changelog/conventional-changelog
