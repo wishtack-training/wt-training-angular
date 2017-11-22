@@ -52,3 +52,5 @@ https://github.com/wishtack/wt-angular-auth-demo
 ## RxJS
 http://rxmarbles.com/
 
+## Frontend Bible
+https://frontendmasters.com/books/front-end-handbook/2017/tools/diagram.html
