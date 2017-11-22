@@ -8,6 +8,8 @@
 import { Injectable } from '@angular/core';
 
 import { User } from './user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserStore {
@@ -15,13 +17,22 @@ export class UserStore {
     private _history: User[][] = [];
     private _userList: User[] = [];
 
-    getUserList() {
-        return this._userList;
+    constructor(private _httpClient: HttpClient) {
+    }
+
+    getUserList(): Observable<User[]> {
+
+        return this._httpClient.get<any[]>('https://wt-users.getsandbox.com/users')
+            .map(userDataList => {
+                return userDataList.map(userData => new User(userData));
+            });
+
     }
 
     addUser(user: User) {
-        const userList = this._userList.concat([user]);
-        this._updateUserList(userList);
+
+        return this._httpClient.post('https://wt-users.getsandbox.com/users', user);
+
     }
 
     replaceUser(previousUser: User, newUser: User) {

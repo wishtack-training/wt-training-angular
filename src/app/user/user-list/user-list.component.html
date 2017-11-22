@@ -14,7 +14,7 @@
         [user]="editedUser"
         (onUserSubmit)="replaceUser(editedUser, $event)"></wt-user-form>
 
-<div *ngFor="let user of getUserList()">
+<div *ngFor="let user of userList$ | async">
 
     <wt-user-preview [user]="user"></wt-user-preview>
 

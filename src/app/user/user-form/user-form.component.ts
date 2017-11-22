@@ -2,6 +2,10 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../user';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'wt-user-form',
@@ -16,7 +20,7 @@ export class UserFormComponent implements OnChanges {
 
     userForm: FormGroup;
 
-    constructor() {
+    constructor(private _httpClient: HttpClient) {
 
         this.userForm = new FormGroup({
             firstName: new FormControl(null, [
@@ -27,6 +31,17 @@ export class UserFormComponent implements OnChanges {
             lastName: new FormControl()
         });
 
+    }
+
+    ngOnInit() {
+        // this.userForm.valueChanges
+        //     .debounceTime(300)
+        //     .map(data => new User(data))
+        //     .switchMap(user => {
+        //         return this._httpClient
+        //             .get(`https://wt-users.getsandbox.com/users/0?firstName=${encodeURIComponent(user.firstName)}`);
+        //     })
+        //     .subscribe(value => console.log(value));
     }
 
     ngOnChanges(changes: SimpleChanges) {

@@ -1,31 +1,41 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserStore } from '../user-store';
 import { User } from '../user';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 @Component({
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
 
     editedUser: User;
+    userList$: Observable<User[]>;
+
+    private _subscription: Subscription;
 
     constructor(private _userStore: UserStore) {
     }
 
-    getUserList() {
-        return this._userStore.getUserList();
+    ngOnInit() {
+        this._retrieveUserList();
     }
 
     addUser(user: User) {
-        this._userStore.addUser(user);
+        this._userStore.addUser(user)
+            .do(() => this._retrieveUserList())
+            .subscribe();
+
     }
 
     removeUser(user) {
         this._userStore.removeUser(user);
+        this._retrieveUserList();
     }
 
     cloneUser(user: User) {
@@ -43,5 +53,9 @@ export class UserListComponent {
 
     undo() {
         this._userStore.undo();
+    }
+
+    async _retrieveUserList() {
+        this.userList$ = this._userStore.getUserList();
     }
 }

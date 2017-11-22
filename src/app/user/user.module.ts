@@ -13,6 +13,7 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserStore } from './user-store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { UserStore } from './user-store';
     ],
     imports: [
         CommonModule,
+        HttpClientModule,
         ReactiveFormsModule
     ],
     providers: [
