@@ -5,12 +5,12 @@
  * $Id: $
  */
 
-class User {
+export class User {
     firstName: string;
     cityId: string;
 }
 
-class Weather {
+export class Weather {
     cityId: string;
     temperature: number;
 }
