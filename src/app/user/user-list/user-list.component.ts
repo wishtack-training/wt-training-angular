@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserStore } from '../user-store';
 import { User } from '../user';
-import { startsWithWt } from './user-form-validators';
 
 @Component({
     selector: 'wt-user-list',
@@ -12,37 +11,37 @@ import { startsWithWt } from './user-form-validators';
 })
 export class UserListComponent {
 
-    userForm: FormGroup;
+    editedUser: User;
 
-    private _userStore = new UserStore();
-
-    constructor() {
-        this.userForm = new FormGroup({
-            firstName: new FormControl(null, [
-                Validators.required,
-                Validators.maxLength(10),
-                // startsWithWt
-            ]),
-            lastName: new FormControl()
-        });
-    }
-
-    addUser() {
-        const user = new User(this.userForm.value);
-        this._userStore.addUser(user);
-        this.userForm.reset();
+    constructor(private _userStore: UserStore) {
     }
 
     getUserList() {
         return this._userStore.getUserList();
     }
 
+    addUser(user: User) {
+        this._userStore.addUser(user);
+    }
+
     removeUser(user) {
         this._userStore.removeUser(user);
+    }
+
+    cloneUser(user: User) {
+        this.addUser(new User(user));
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    replaceUser(previousUser: User, newUser: User) {
+        this._userStore.replaceUser(previousUser, newUser);
+        this.editedUser = null;
     }
 
     undo() {
         this._userStore.undo();
     }
-
 }

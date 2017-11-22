@@ -1,44 +1,33 @@
-<form
-        [formGroup]="userForm"
-        (ngSubmit)="addUser()">
-
-    <input
-            formControlName="firstName"
-            type="text">
-
-    <input
-            formControlName="lastName"
-            type="text">
+<wt-user-form
+        *ngIf="!editedUser"
+        (onUserSubmit)="addUser($event)">
 
     <button
             (click)="undo()"
             type="button">UNDO</button>
 
+</wt-user-form>
+
+<wt-user-form
+        *ngIf="editedUser"
+        buttonLabel="UPDATE"
+        [user]="editedUser"
+        (onUserSubmit)="replaceUser(editedUser, $event)"></wt-user-form>
+
+<div *ngFor="let user of getUserList()">
+
+    <wt-user-preview [user]="user"></wt-user-preview>
+
     <button
-            [disabled]="!userForm.valid"
-            type="submit">ADD</button>
+            (click)="editUser(user)"
+            type="button">EDIT</button>
 
-</form>
+    <button
+            (click)="cloneUser(user)"
+            type="button">CLONE</button>
 
-<div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.errors as errors">
-
-    <div *ngIf="errors.required">
-        First name is required.
-    </div>
-
-    <div *ngIf="errors.maxlength">
-        First name is too long for our Cobol backend.
-    </div>
+    <button
+            (click)="removeUser(user)"
+            type="button">REMOVE</button>
 
 </div>
-
-<wt-user-preview
-        *ngFor="let user of getUserList()"
-        [user]="user">
-    <span class="wt-actions">
-        <button
-                (click)="removeUser(user)"
-                type="button">REMOVE</button>
-
-    </span>
-</wt-user-preview>

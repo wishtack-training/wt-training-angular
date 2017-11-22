@@ -5,8 +5,11 @@
  * $Id: $
  */
 
+import { Injectable } from '@angular/core';
+
 import { User } from './user';
 
+@Injectable()
 export class UserStore {
 
     private _history: User[][] = [];
@@ -19,6 +22,23 @@ export class UserStore {
     addUser(user: User) {
         const userList = this._userList.concat([user]);
         this._updateUserList(userList);
+    }
+
+    replaceUser(previousUser: User, newUser: User) {
+
+        const userList = this._userList
+            .map(_user => {
+
+                if (_user === previousUser) {
+                    return newUser;
+                }
+
+                return _user;
+
+            });
+
+        this._updateUserList(userList);
+
     }
 
     removeUser(user: User) {

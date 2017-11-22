@@ -17,17 +17,12 @@ import { User } from '../user';
 export class UserPreviewComponent {
 
     @Input() user: User;
-    @Output() onUserRemove = new EventEmitter();
 
     private _pictureUrlPrefix = 'https://robohash.org/';
 
     getPictureUrl(user: User) {
         const path = encodeURIComponent(user.firstName);
         return `${this._pictureUrlPrefix}${path}`;
-    }
-
-    removeUser() {
-        this.onUserRemove.emit();
     }
 
 }
