@@ -1,10 +1,13 @@
+$image-diameter: 50px;
+
 :host {
     text-align: center;
 }
 
 img {
-    height: 50px;
-    width: 50px;
+    background-color: #e51c23;
+    height: $image-diameter;
+    width: $image-diameter;
     border-radius: 50%;
     border-style: solid;
     border-width: 1px;

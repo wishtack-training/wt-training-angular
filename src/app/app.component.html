@@ -1,39 +1,20 @@
 <div>
-    <button disabled>Foo B.</button>
-    <button>John D.</button>
+    <button
+            *ngFor="let user of userList"
+            [disabled]="selectedUser === user"
+            (click)="selectUser(user)">
+        {{ user.firstName }}
+    </button>
 </div>
 
-<div>
+<div *ngIf="selectedUser">
 
     <div>
-        <img src="http://robohash.org/foo" alt="">
+        <img
+                [src]="getPictureUrl(selectedUser)">
     </div>
 
-    <div>
-        <span>Foo</span>
-        <span>BAR</span>
-    </div>
-
-</div>
-
-<div>#########################</div>
-
-<h1>
-
-    <span>Hello</span>
-    <span>({{ name.length }})</span>
-    <span>{{ name }}</span>
-
-</h1>
-
-<div>
-
-    <button
-            *ngIf="!isStarted()"
-            (click)="start()">START</button>
-
-    <button
-            *ngIf="isStarted()"
-            (click)="stop()">STOP</button>
+    <span>{{ selectedUser.firstName }}</span>
+    <span>{{ selectedUser.lastName }}</span>
 
 </div>

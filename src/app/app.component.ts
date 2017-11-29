@@ -1,51 +1,29 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from './user/user';
 
 
 @Component({
     selector: 'wt-app',
     styleUrls: [
-        './app.component.css'
+        './app.component.scss'
     ],
     templateUrl: './app.component.html'
 })
-export class AppComponent implements OnDestroy {
-    name = 'Foo';
+export class AppComponent {
+
+    selectedUser: User;
 
     userList = [
         new User('Foo', 'BAR'),
         new User('John', 'DOE')
     ];
 
-    private _interval;
-
-    start() {
-
-        if (this._interval != null) {
-            return;
-        }
-
-        this._interval = setInterval(() => {
-            this.name += '.';
-        }, 500);
-
+    getPictureUrl(user: User) {
+        return `http://robohash.org/${user.firstName}`;
     }
 
-    stop() {
-
-        if (this._interval != null) {
-            clearInterval(this._interval);
-            this._interval = null;
-        }
-
-    }
-
-    isStarted() {
-        return this._interval != null;
-    }
-
-    ngOnDestroy() {
-        this.stop();
+    selectUser(user: User) {
+        this.selectedUser = user;
     }
 
 }
