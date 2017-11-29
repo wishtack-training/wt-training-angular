@@ -26,10 +26,14 @@
 
 </h1>
 
-<button
-        *ngIf="!isStarted()"
-        (click)="start()">START</button>
+<div>
 
-<button
-        *ngIf="isStarted()"
-        (click)="stop()">STOP</button>
+    <button
+            *ngIf="!isStarted()"
+            (click)="start()">START</button>
+
+    <button
+            *ngIf="isStarted()"
+            (click)="stop()">STOP</button>
+
+</div>
