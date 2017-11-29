@@ -21,3 +21,7 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 `tsc user-store.spec.ts && node user-store.spec.js`
 
+# Angular
+
+## Install Angular CLI + yarn
+`npm install -g @angular/cli yarn`
