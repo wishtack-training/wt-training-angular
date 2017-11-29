@@ -25,3 +25,9 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 ## Install Angular CLI + yarn
 `npm install -g @angular/cli yarn`
+
+## Create Angular app
+
+`cd ..`
+
+`ng new training --prefix wt --skip-install`
