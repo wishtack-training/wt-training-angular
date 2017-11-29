@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { User } from './user/user';
 
 
@@ -9,8 +9,7 @@ import { User } from './user/user';
     ],
     templateUrl: './app.component.html'
 })
-export class AppComponent {
-
+export class AppComponent implements OnDestroy {
     name = 'Foo';
 
     userList = [
@@ -44,4 +43,9 @@ export class AppComponent {
     isStarted() {
         return this._interval != null;
     }
+
+    ngOnDestroy() {
+        this.stop();
+    }
+
 }
