@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserSelectorComponent } from './user/user-selector/user-selector.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
 
 @NgModule({
     bootstrap: [
@@ -15,7 +16,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
         AppComponent,
         UserListComponent,
         UserPreviewComponent,
-        UserSelectorComponent
+        UserSelectorComponent,
+        UserFormComponent
     ],
     imports: [
         BrowserModule,
