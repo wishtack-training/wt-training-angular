@@ -30,11 +30,6 @@ export class UserStore {
         this._userList = this._userListHistory.pop();
     }
 
-    private _updateUserList(userList: User[]) {
-        this._userListHistory.push(this._userList);
-        this._userList = userList;
-    }
-
     updateUser(user: User, newUser: User) {
         const userList = this._userList
             .map(_user => {
@@ -47,5 +42,10 @@ export class UserStore {
 
             });
         this._updateUserList(userList);
+    }
+
+    private _updateUserList(userList: User[]) {
+        this._userListHistory.push(this._userList);
+        this._userList = userList;
     }
 }
