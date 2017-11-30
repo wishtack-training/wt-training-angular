@@ -1,6 +1,28 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
+
+export const isCobolCompatible: ValidatorFn = (control) => {
+
+    if (control.value == null) {
+        return {
+            iscobolcompatible: {
+                isnull: true
+            }
+        };
+    }
+
+    if (control.value.length > 8) {
+        return {
+            iscobolcompatible: {
+                toolongformyoldsystem: true
+            }
+        };
+    }
+
+    return null;
+
+};
 
 @Component({
     selector: 'wt-user-form-reactive',
@@ -18,8 +40,11 @@ export class UserFormReactiveComponent implements OnChanges {
     constructor() {
 
         this.userForm = new FormGroup({
-            firstName: new FormControl(),
-            lastName: new FormControl()
+            firstName: new FormControl(null, [
+                Validators.required,
+                isCobolCompatible
+            ]),
+            lastName: new FormControl(null)
         });
 
     }

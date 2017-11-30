@@ -10,6 +10,14 @@
             formControlName="lastName"
             type="text">
 
-    <button type="submit">{{ buttonLabel }}</button>
+    <button
+            [disabled]="!userForm.valid"
+            type="submit">{{ buttonLabel }}</button>
 
 </form>
+
+<div *ngIf="userForm.controls.firstName.errors as errors">
+    <ng-container *ngIf="errors.iscobolcompatible?.toolongformyoldsystem">
+        <a href="https://www.python.org/">Welcome to the new world!</a>
+    </ng-container>
+</div>
