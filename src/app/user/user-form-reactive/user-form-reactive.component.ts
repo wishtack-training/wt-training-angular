@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../user';
 
@@ -7,8 +7,10 @@ import { User } from '../user';
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.scss']
 })
-export class UserFormReactiveComponent {
+export class UserFormReactiveComponent implements OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() onUserSubmit = new EventEmitter<User>();
 
     userForm: FormGroup;
@@ -22,6 +24,14 @@ export class UserFormReactiveComponent {
 
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user && this.user != null) {
+            this.userForm.reset(this.user);
+        }
+
+    }
+
     submitUser() {
 
         /* @hack @todo use named parameters instead of this hack. */
@@ -30,6 +40,8 @@ export class UserFormReactiveComponent {
             this.userForm.value
         );
         this.onUserSubmit.emit(user);
+
+        this.userForm.reset();
 
     }
 

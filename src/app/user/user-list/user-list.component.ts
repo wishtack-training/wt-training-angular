@@ -9,6 +9,8 @@ import { User } from '../user';
 })
 export class UserListComponent {
 
+    editedUser: User;
+
     private _userStore = new UserStore();
 
     addUser(user) {
@@ -19,8 +21,17 @@ export class UserListComponent {
         return this._userStore.getUserList();
     }
 
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
     removeUser(user) {
         this._userStore.removeUser(user);
+    }
+
+    updateUser(oldUser, newUser) {
+        this._userStore.updateUser(oldUser, newUser);
+        this.editedUser = null;
     }
 
 }
