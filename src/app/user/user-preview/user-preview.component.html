@@ -1,0 +1,8 @@
+<div>
+    <img [src]="getPictureUrl(user)">
+</div>
+
+<ng-container *ngIf="isNameDisplayed">
+    <span>{{ user.firstName }}</span>
+    <span>{{ user.lastName }}</span>
+</ng-container>

@@ -1,21 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-
+import { UserSelectorComponent } from './user/user-selector/user-selector.component';
+import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 
 @NgModule({
-    declarations: [
+    bootstrap: [
         AppComponent
     ],
-    imports: [
-        BrowserModule,
-        FormsModule
+    declarations: [
+        AppComponent,
+        UserSelectorComponent,
+        UserPreviewComponent
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    imports: [
+        BrowserModule
+    ]
 })
 export class AppModule {
+
 }
