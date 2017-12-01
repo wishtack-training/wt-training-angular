@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { UserCoreModule } from './user-core/user-core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        RouterModule.forRoot(APP_ROUTES),
         UserCoreModule.forRoot(),
         UserModule
     ]

@@ -10,9 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
 import { UserListHttpComponent } from './user-list-http/user-list-http.component';
 import { UserResource } from './user-resource';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
     declarations: [
+        UserDetailComponent,
         UserFormComponent,
         UserFormReactiveComponent,
         UserListComponent,
@@ -22,6 +24,7 @@ import { UserResource } from './user-resource';
         UserSelectorComponent
     ],
     exports: [
+        UserDetailComponent,
         UserFormComponent,
         UserFormReactiveComponent,
         UserListComponent,

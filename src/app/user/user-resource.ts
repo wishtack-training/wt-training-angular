@@ -48,4 +48,11 @@ export class UserResource {
             .map(data => Object.assign(new User(), data));
 
     }
+
+    getUser(userId: string) {
+
+        return this._httpClient.get(`${this._resourceUrl}/${userId}`)
+            .map(data => Object.assign(new User(), data));
+
+    }
 }
