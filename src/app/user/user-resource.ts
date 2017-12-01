@@ -35,4 +35,17 @@ export class UserResource {
             .map(data => Object.assign(new User(), data));
 
     }
+
+    removeUser(userId: string) {
+
+        return this._httpClient.delete(`${this._resourceUrl}/${userId}`);
+
+    }
+
+    updateUser(userId: string, userData: User) {
+
+        return this._httpClient.patch(`${this._resourceUrl}/${userId}`, userData)
+            .map(data => Object.assign(new User(), data));
+
+    }
 }

@@ -19,13 +19,13 @@ export class UserStore {
 
     addUser(user: User) {
         const userList = [...this._userList, user];
-        this._updateUserList(userList);
+        this.updateUserList(userList);
     }
 
     removeUser(user: User) {
         const userList = this._userList
             .filter(_user => _user !== user);
-        this._updateUserList(userList);
+        this.updateUserList(userList);
     }
 
     undo() {
@@ -43,10 +43,10 @@ export class UserStore {
                 return _user;
 
             });
-        this._updateUserList(userList);
+        this.updateUserList(userList);
     }
 
-    private _updateUserList(userList: User[]) {
+    updateUserList(userList: User[]) {
         this._userListHistory.push(this._userList);
         this._userList = userList;
     }
