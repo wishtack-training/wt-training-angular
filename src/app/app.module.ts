@@ -8,6 +8,8 @@ import { UserPreviewComponent } from './user/user-preview/user-preview.component
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-reactive.component';
+import { UserStore } from './user/user-store';
+import { UserPictureUrlPipe } from './user/user-picture-url.pipe';
 
 @NgModule({
     bootstrap: [
@@ -16,6 +18,7 @@ import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-r
     declarations: [
         AppComponent,
         UserListComponent,
+        UserPictureUrlPipe,
         UserPreviewComponent,
         UserSelectorComponent,
         UserFormComponent,
@@ -25,6 +28,9 @@ import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-r
         BrowserModule,
         FormsModule,
         ReactiveFormsModule
+    ],
+    providers: [
+        UserStore
     ]
 })
 export class AppModule {

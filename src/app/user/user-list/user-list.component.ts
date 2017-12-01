@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserStore } from '../user-store';
 import { User } from '../user';
 
+
 @Component({
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
@@ -11,7 +12,9 @@ export class UserListComponent {
 
     editedUser: User;
 
-    private _userStore = new UserStore();
+    constructor(private _userStore: UserStore) {
+
+    }
 
     addUser(user) {
         this._userStore.addUser(user);

@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/bufferTime';
+import 'rxjs/add/operator/bufferCount';
 
 export const isCobolCompatible: ValidatorFn = (control) => {
 
