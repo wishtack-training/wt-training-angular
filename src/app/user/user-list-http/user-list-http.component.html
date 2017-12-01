@@ -1,0 +1,9 @@
+<wt-user-form-reactive (onUserSubmit)="addUser($event)"></wt-user-form-reactive>
+
+<div *ngIf="userList == null">
+  Loading...
+</div>
+
+<div *ngFor="let user of userList">
+  <wt-user-preview [user]="user"></wt-user-preview>
+</div>

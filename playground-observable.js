@@ -5,7 +5,7 @@
  * $Id: $
  */
 
-const {Observable} = require('rxjs');
+const {Observable, BehaviorSubject} = require('rxjs');
 
 const data$ = Observable.interval(500);
 
@@ -15,4 +15,3 @@ const selection$ = data$
 
 selection$
     .subscribe(data => console.log(data));
-

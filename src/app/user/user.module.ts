@@ -8,28 +8,35 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
+import { UserListHttpComponent } from './user-list-http/user-list-http.component';
+import { UserResource } from './user-resource';
 
 @NgModule({
     declarations: [
+        UserFormComponent,
+        UserFormReactiveComponent,
         UserListComponent,
+        UserListHttpComponent,
         UserPictureUrlPipe,
         UserPreviewComponent,
-        UserSelectorComponent,
-        UserFormComponent,
-        UserFormReactiveComponent
+        UserSelectorComponent
     ],
     exports: [
+        UserFormComponent,
+        UserFormReactiveComponent,
         UserListComponent,
+        UserListHttpComponent,
         UserPictureUrlPipe,
         UserPreviewComponent,
-        UserSelectorComponent,
-        UserFormComponent,
-        UserFormReactiveComponent
+        UserSelectorComponent
     ],
     imports: [
         SharedModule,
         FormsModule,
         ReactiveFormsModule
+    ],
+    providers: [
+        UserResource
     ]
 })
 export class UserModule {
