@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserStore } from '../user-store';
+import { UserStore } from '../../user-core/user-store';
 import { User } from '../user';
 
 

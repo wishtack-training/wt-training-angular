@@ -6,7 +6,7 @@
  */
 
 import { UserStore } from './user-store';
-import { User } from './user';
+import { User } from '../user/user';
 
 
 describe('UserStore', () => {
