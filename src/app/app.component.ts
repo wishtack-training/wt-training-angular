@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './user/user';
 
 @Component({
     selector: 'wt-app',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
     userName = 'Foo';
+
+    userList = [
+        new User('Foo', 'BAR'),
+        new User('John', 'DOE')
+    ];
 
     constructor() {
 
