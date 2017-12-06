@@ -1,0 +1,14 @@
+$pictureDiameter: 80px;
+
+:host {
+    text-align: center;
+}
+
+img {
+    background-color: cadetblue;
+    border-radius: $pictureDiameter / 2;
+    border-style: solid;
+    border-width: 1px;
+    height: $pictureDiameter;
+    width: $pictureDiameter;
+}

@@ -1,0 +1,9 @@
+
+<button
+        *ngFor="let user of userList"
+        [disabled]="selectedUser === user"
+        (click)="selectUser(user)">{{ user.firstName }}</button>
+
+<wt-user-preview
+        *ngIf="selectedUser"
+        [user]="selectedUser"></wt-user-preview>

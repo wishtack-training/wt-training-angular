@@ -1,24 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../user';
 
 @Component({
     selector: 'wt-user-preview',
     templateUrl: './user-preview.component.html',
-    styleUrls: ['./user-preview.component.css']
+    styleUrls: ['./user-preview.component.scss']
 })
 export class UserPreviewComponent {
 
-    selectedUser: User;
-    userList = [
-        new User('Foo', 'BAR'),
-        new User('John', 'DOE')
-    ];
+    @Input() user: User;
 
-    selectUser(user: User) {
-        this.selectedUser = user;
+    getPictureUrl(user: User) {
+        return `https://robohash.org/${user.firstName}`;
     }
 
-    getPictureUrl(selectedUser: User) {
-        return `https://robohash.org/${selectedUser.firstName}`;
-    }
 }

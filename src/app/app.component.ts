@@ -6,24 +6,4 @@ import { User } from './user/user';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-
-    userName = 'Foo';
-
-    userList = [
-        new User('Foo', 'BAR'),
-        new User('John', 'DOE')
-    ];
-
-    constructor() {
-
-        setInterval(() => {
-            this.userName += '.';
-        }, 300);
-
-    }
-
-    reset() {
-        this.userName = '';
-    }
-
 }
