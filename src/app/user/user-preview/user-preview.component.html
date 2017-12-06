@@ -1,0 +1,13 @@
+
+<button
+        *ngFor="let user of userList"
+        [disabled]="selectedUser === user"
+        (click)="selectUser(user)">{{ user.firstName }}</button>
+
+<div *ngIf="selectedUser">
+
+    <h1>{{ selectedUser.firstName }}</h1>
+
+    <img [src]="getPictureUrl(selectedUser)">
+
+</div>
