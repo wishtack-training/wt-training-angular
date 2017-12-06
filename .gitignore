@@ -16,6 +16,8 @@
 *.launch
 .settings/
 *.sublime-workspace
+/.floo
+/.flooignore
 
 # IDE - VSCode
 .vscode/*
