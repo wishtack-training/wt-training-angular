@@ -5,6 +5,7 @@ import { UserSelectorComponent } from './user/user-selector/user-selector.compon
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { FormsModule } from '@angular/forms';
+import { SignatureComponent } from './signature/signature.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
         AppComponent,
         UserPreviewComponent,
         UserSelectorComponent,
-        UserListComponent
+        UserListComponent,
+        SignatureComponent
     ],
     imports: [
         BrowserModule,
