@@ -32,14 +32,20 @@ const test = () => {
     const userListEmpty = userStore.getUserList();
 
     userStore.addUser(user1);
-
     userStore.addUser(user2);
     userStore.addUser(user3);
+
     const userListFull = userStore.getUserList();
 
     userStore.removeUser(user3);
 
     const userListCleanUp = userStore.getUserList();
+
+    userStore.undo();
+    userStore.undo();
+    userStore.undo();
+
+    const userListUndone = userStore.getUserList();
 
     assert(0, userListEmpty.length);
 
@@ -51,6 +57,9 @@ const test = () => {
     assert(2, userListCleanUp.length);
     assert(user1, userListFull[0]);
     assert(user2, userListFull[1]);
+
+    assert(1, userListUndone.length);
+    assert(user1, userListFull[0]);
 
 };
 

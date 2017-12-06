@@ -1,5 +1,3 @@
-import { User } from './user';
-
 /**
  *
  * (c) 2013-2017 Wishtack
@@ -7,8 +5,11 @@ import { User } from './user';
  * $Id: $
  */
 
+import { User } from './user';
+
 export class UserStore {
 
+    private _history = [];
     private _userList: User[] = [];
 
     getUserList() {
@@ -16,12 +17,31 @@ export class UserStore {
     }
 
     addUser(user: User) {
-        this._userList = [...this._userList, user];
+        const userList = [...this._userList, user];
+        this._updateUserList(userList);
     }
 
     removeUser(user: User) {
-        this._userList = this._userList
+        const userList = this._userList
             .filter(_user => _user !== user);
+        this._updateUserList(userList);
+    }
+
+    undo() {
+
+        const userList = this._history.pop();
+
+        if (userList == null) {
+            throw new Error('Undo history is empty!');
+        }
+
+        this._userList = userList;
+
+    }
+
+    private _updateUserList(userList) {
+        this._history.push(this._userList);
+        this._userList = userList;
     }
 
 }
