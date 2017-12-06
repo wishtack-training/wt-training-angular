@@ -29,3 +29,13 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 `tsc user-store.spec.ts && node user-store.spec.js`
 
+# Angular
+
+## Install Angular CLI + yarn
+`npm install -g @angular/cli yarn`
+
+## Create new app
+`ng new training --prefix wt --skip-install`
+
+## We don't need @angular/cli anymore.
+`npm uninstall -g @angular/cli`
