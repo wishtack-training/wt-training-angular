@@ -1,0 +1,19 @@
+<form (ngSubmit)="addUser($event)">
+
+    <input
+            [(ngModel)]="userName"
+            name="firstName"
+            type="text">
+
+    <input
+            [(ngModel)]="userName"
+            name="firstName"
+            type="text">
+
+    <button type="submit">ADD</button>
+
+</form>
+
+<wt-user-preview [user]="{firstName: 'Foo'}"></wt-user-preview>
+<wt-user-preview [user]="{firstName: 'John'}"></wt-user-preview>
+<wt-user-preview [user]="{firstName: 'XXX'}"></wt-user-preview>
