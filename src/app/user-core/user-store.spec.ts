@@ -6,7 +6,7 @@
  */
 
 import { UserStore } from './user-store';
-import { User } from './user';
+import { User } from '../user/user';
 
 describe('UserStore', () => {
 
@@ -17,9 +17,18 @@ describe('UserStore', () => {
 
     beforeEach(() => {
 
-        user1 = new User('Foo', 'BAR');
-        user2 = new User('John', 'DOE');
-        user3 = new User('Foo', 'BAR');
+        user1 = new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        });
+        user2 = new User({
+            firstName: 'John',
+            lastName: 'DOE'
+        });
+        user3 = new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        });
 
         userStore = new UserStore();
 

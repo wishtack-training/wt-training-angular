@@ -1,5 +1,5 @@
-<wt-user-form
-        (onUserSubmit)="addUser($event)"></wt-user-form>
+<wt-user-form-reactive
+        (onUserSubmit)="addUser($event)"></wt-user-form-reactive>
 
 <wt-user-preview
         *ngFor="let user of getUserList()"

@@ -5,19 +5,19 @@
  * $Id: $
  */
 
-import { async, TestBed } from '@angular/core/testing';
+import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { UserListComponent } from './user-list.component';
 import { UserModule } from '../user.module';
+import { CoreModule } from '../../core/core.module';
 
 /* @todo helpers that should be moved somewhere else. */
-const fillInput = (debugElement: DebugElement, text) => {
+const fillInput = (nativeElement, text) => {
 
-    debugElement.nativeElement.value = text;
-    debugElement.nativeElement.dispatchEvent(new Event('input'));
-    debugElement.triggerEventHandler('input', new Event('input'));
+    nativeElement.value = text;
+    nativeElement.dispatchEvent(new Event('input'));
 
 };
 
@@ -27,6 +27,7 @@ describe('UserListComponent', () => {
 
         TestBed.configureTestingModule({
             imports: [
+                CoreModule,
                 UserModule
             ]
         })
@@ -34,7 +35,7 @@ describe('UserListComponent', () => {
 
     }));
 
-    xit('should add users to user store', () => {
+    it('should add users to user store', fakeAsync(() => {
 
         const fixture = TestBed.createComponent(UserListComponent);
         const component = fixture.componentInstance;
@@ -42,7 +43,7 @@ describe('UserListComponent', () => {
 
         fixture.detectChanges();
 
-        const input = debugElement.query(By.css('input[name="firstName"]'));
+        const input = debugElement.query(By.css('input')).nativeElement;
 
         fillInput(input, 'John');
 
@@ -53,6 +54,7 @@ describe('UserListComponent', () => {
 
         fixture.detectChanges();
 
+
         const userPreviewList = debugElement.queryAll(By.css('wt-user-preview'));
 
         expect(userPreviewList.length).toBe(1);
@@ -60,32 +62,15 @@ describe('UserListComponent', () => {
         expect(userPreviewList[0].nativeElement.textContent.trim())
             .toEqual('John');
 
-    });
+    }));
 
-    it('should add users to user store (bad way but works)', () => {
+    it('should show error message if user store breaks', () => {
 
         const fixture = TestBed.createComponent(UserListComponent);
         const component = fixture.componentInstance;
         const debugElement = fixture.debugElement;
 
-        fixture.detectChanges();
-
-        component.user.firstName = 'John';
-        component.user.lastName = 'DOE';
-
-        fixture.detectChanges();
-
-        /* Submit. */
-        debugElement.query(By.css('button')).nativeElement.click();
-
-        fixture.detectChanges();
-
-        const userPreviewList = debugElement.queryAll(By.css('wt-user-preview'));
-
-        expect(userPreviewList.length).toBe(1);
-
-        expect(userPreviewList[0].nativeElement.textContent.trim())
-            .toEqual('John');
+        // component['_userStore']
 
     });
 

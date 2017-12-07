@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { UserStore } from '../user-store';
+import { Component, ViewChild, ViewChildren } from '@angular/core';
+import { UserStore } from '../../user-core/user-store';
 import { User } from '../user';
+import { UserFormReactiveComponent } from '../user-form-reactive/user-form-reactive.component';
 
 @Component({
     selector: 'wt-user-list',
@@ -9,7 +10,8 @@ import { User } from '../user';
 })
 export class UserListComponent {
 
-    private _userStore = new UserStore();
+    constructor(private _userStore: UserStore) {
+    }
 
     addUser(user: User) {
         this._userStore.addUser(user);
