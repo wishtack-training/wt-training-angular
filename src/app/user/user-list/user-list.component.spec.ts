@@ -5,13 +5,14 @@
  * $Id: $
  */
 
-import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, fakeAsync, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { UserListComponent } from './user-list.component';
 import { UserModule } from '../user.module';
 import { CoreModule } from '../../core/core.module';
+import { UserStore } from '../../user-core/user-store';
+import { User } from '../user';
 
 /* @todo helpers that should be moved somewhere else. */
 const fillInput = (nativeElement, text) => {
@@ -22,6 +23,8 @@ const fillInput = (nativeElement, text) => {
 };
 
 describe('UserListComponent', () => {
+
+    let userStore: UserStore;
 
     beforeEach(async(() => {
 
@@ -34,6 +37,36 @@ describe('UserListComponent', () => {
             .compileComponents();
 
     }));
+
+    beforeEach(inject(
+        [UserStore],
+        _userStore => userStore = _userStore)
+    );
+
+    it('should show users', () => {
+
+        const fixture = TestBed.createComponent(UserListComponent);
+        const component = fixture.componentInstance;
+        const debugElement = fixture.debugElement;
+
+        spyOn(userStore, 'getUserList').and.returnValue([
+            new User({
+                firstName: 'Foo'
+            })
+        ]);
+
+        fixture.detectChanges();
+
+        expect(userStore.getUserList).toHaveBeenCalled();
+
+        const userPreviewList = debugElement.queryAll(By.css('wt-user-preview'));
+
+        expect(userPreviewList.length).toBe(1);
+
+        expect(userPreviewList[0].nativeElement.textContent.trim())
+            .toEqual('Foo');
+
+    });
 
     it('should add users to user store', fakeAsync(() => {
 
@@ -54,7 +87,6 @@ describe('UserListComponent', () => {
 
         fixture.detectChanges();
 
-
         const userPreviewList = debugElement.queryAll(By.css('wt-user-preview'));
 
         expect(userPreviewList.length).toBe(1);
@@ -63,15 +95,5 @@ describe('UserListComponent', () => {
             .toEqual('John');
 
     }));
-
-    it('should show error message if user store breaks', () => {
-
-        const fixture = TestBed.createComponent(UserListComponent);
-        const component = fixture.componentInstance;
-        const debugElement = fixture.debugElement;
-
-        // component['_userStore']
-
-    });
 
 });
