@@ -15,3 +15,12 @@
             type="submit">ADD</button>
 
 </form>
+
+<div *ngIf="userForm.errors as errors">
+
+    <div *ngIf="errors.isCobolCompatible as error">
+        Too long for my system: {{ error.totalLength }} > {{ error.maxLength }}.
+        <a href="//python.org">Please use this.</a>
+    </div>
+
+</div>

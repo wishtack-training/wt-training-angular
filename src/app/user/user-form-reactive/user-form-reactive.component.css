@@ -1,0 +1,7 @@
+input.ng-invalid.ng-touched {
+    background-color: red;
+}
+
+form.ng-invalid button {
+    background-color: red;
+}

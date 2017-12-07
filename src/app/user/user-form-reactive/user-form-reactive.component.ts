@@ -1,6 +1,29 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
+
+const isCobolCompatible: ValidatorFn = (control) => {
+
+    const maxLength = 8;
+    let { firstName, lastName } = control.value;
+
+    /* @todo hire a new developer. */
+    firstName = firstName || '';
+    lastName = lastName || '';
+
+    const totalLength = firstName.length + lastName.length;
+
+    if (totalLength > maxLength) {
+        return {
+            isCobolCompatible: {
+                maxLength,
+                totalLength
+            }
+        };
+    }
+
+    return null;
+};
 
 @Component({
     selector: 'wt-user-form-reactive',
@@ -23,7 +46,10 @@ export class UserFormReactiveComponent {
                 ]
             ),
             lastName: new FormControl()
-        });
+        },
+            [
+                isCobolCompatible
+            ]);
 
     }
 
