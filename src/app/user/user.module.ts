@@ -12,14 +12,17 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { UserSelectorComponent } from './user-selector/user-selector.component';
 import { SharedModule } from '../shared/shared.module';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
     declarations: [
+        UserFormComponent,
         UserListComponent,
         UserPreviewComponent,
         UserSelectorComponent
     ],
     exports: [
+        UserFormComponent,
         UserListComponent,
         UserPreviewComponent,
         UserSelectorComponent

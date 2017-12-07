@@ -9,13 +9,10 @@ import { User } from '../user';
 })
 export class UserListComponent {
 
-    user = new User();
-
     private _userStore = new UserStore();
 
-    addUser() {
-        this._userStore.addUser(this.user);
-        this.user = new User();
+    addUser(user: User) {
+        this._userStore.addUser(user);
     }
 
     getUserList() {
