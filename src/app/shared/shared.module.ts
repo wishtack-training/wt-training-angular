@@ -8,6 +8,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AppConfig } from './app-config';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     exports: SharedModule.MODULE_LIST,
@@ -19,7 +20,8 @@ import { AppConfig } from './app-config';
 export class SharedModule {
 
     static MODULE_LIST = [
-        CommonModule
+        CommonModule,
+        HttpClientModule
     ];
 
 }

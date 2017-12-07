@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
+import 'rxjs/add/operator/switchMap';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/retry';
 
 const isCobolCompatible: ValidatorFn = (control) => {
 
@@ -38,6 +42,10 @@ export class UserFormReactiveComponent implements OnChanges, OnInit {
 
     userForm: FormGroup;
 
+    constructor(private _httpClient: HttpClient) {
+
+    }
+
     ngOnInit() {
 
         this.userForm = new FormGroup({
@@ -52,6 +60,16 @@ export class UserFormReactiveComponent implements OnChanges, OnInit {
             [
                 isCobolCompatible
             ]);
+
+        this.userForm.valueChanges
+            .debounceTime(300)
+            .switchMap((value) => {
+                return this._httpClient.get(`https://wt-users.getsandbox.com/users?firstName=${value.firstName}`)
+                    .retry(3);
+            })
+            .subscribe((value) => {
+                console.log(value);
+            });
 
         this._resetForm();
 
