@@ -1,1 +1,14 @@
-<wt-user-list></wt-user-list>
+<header>HEADER</header>
+
+<router-outlet></router-outlet>
+
+<footer>
+    <div>FOOTER</div>
+    <ul>
+        <li><a [routerLink]="['/welcome']">Welcome</a></li>
+        <li><a [routerLink]="['/users']">Users list</a></li>
+        <li><a [routerLink]="['/users', '0']">User 0</a></li>
+        <li><a [routerLink]="['/users', '1']">User 1</a></li>
+        <li><a [routerLink]="['/admin', 'phpmyadmin']">/admin/phpmyadmin</a></li>
+    </ul>
+</footer>

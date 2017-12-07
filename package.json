@@ -6,6 +6,7 @@
     "generate-component": "ng generate component --export",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "yarn build --prod",
     "test": "ng test",
     "test:nosourcemap": "yarn test -sm false",
     "lint": "ng lint",
