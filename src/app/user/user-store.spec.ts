@@ -8,6 +8,51 @@
 import { UserStore } from './user-store';
 import { User } from './user';
 
+describe('UserStore', () => {
+
+    xit('should add users', () => {
+
+    });
+
+    xit('should remove users', () => {
+
+    });
+
+    xit('should undo', () => {
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const assert = (expected, value) => {
 
     if (value !== expected) {
