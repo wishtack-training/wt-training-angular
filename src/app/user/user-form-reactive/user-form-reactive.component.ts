@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -30,13 +30,15 @@ const isCobolCompatible: ValidatorFn = (control) => {
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.css']
 })
-export class UserFormReactiveComponent {
+export class UserFormReactiveComponent implements OnChanges, OnInit {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() onUserSubmit = new EventEmitter<User>();
 
     userForm: FormGroup;
 
-    constructor() {
+    ngOnInit() {
 
         this.userForm = new FormGroup({
             firstName: new FormControl(
@@ -51,6 +53,16 @@ export class UserFormReactiveComponent {
                 isCobolCompatible
             ]);
 
+        this._resetForm();
+
+    }
+
+    ngOnChanges(changes) {
+
+        if (this.userForm && changes.user) {
+            this._resetForm();
+        }
+
     }
 
     addUser() {
@@ -61,6 +73,10 @@ export class UserFormReactiveComponent {
 
         this.userForm.reset();
 
+    }
+
+    private _resetForm() {
+        this.userForm.reset(this.user);
     }
 
 }

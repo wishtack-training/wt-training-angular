@@ -1,7 +1,12 @@
+
 <div>
 
-    <img [src]="getPictureUrl(user)">
+    <img
+            *ngIf="pictureUrl"
+            [src]="pictureUrl">
 
 </div>
 
 <div>{{ user.firstName }}</div>
+
+<div>{{ lifeTime }}</div>

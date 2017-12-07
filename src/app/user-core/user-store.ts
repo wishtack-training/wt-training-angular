@@ -41,9 +41,25 @@ export class UserStore {
 
     }
 
+    updateUser(previousUser: User, newUser: User) {
+
+        const userList = this._userList
+            .map(user => {
+
+                if (user === previousUser) {
+                    return newUser;
+                }
+
+                return user;
+
+            });
+
+        this._updateUserList(userList);
+
+    }
+
     private _updateUserList(userList) {
         this._history.push(this._userList);
         this._userList = userList;
     }
-
 }

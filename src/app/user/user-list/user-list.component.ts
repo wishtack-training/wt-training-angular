@@ -1,7 +1,6 @@
 import { Component, ViewChild, ViewChildren } from '@angular/core';
 import { UserStore } from '../../user-core/user-store';
 import { User } from '../user';
-import { UserFormReactiveComponent } from '../user-form-reactive/user-form-reactive.component';
 
 @Component({
     selector: 'wt-user-list',
@@ -9,6 +8,8 @@ import { UserFormReactiveComponent } from '../user-form-reactive/user-form-react
     styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent {
+
+    editedUser: User;
 
     constructor(private _userStore: UserStore) {
     }
@@ -19,6 +20,11 @@ export class UserListComponent {
 
     getUserList() {
         return this._userStore.getUserList();
+    }
+
+    updateUser(previousUser: User, newUser: User) {
+        this._userStore.updateUser(previousUser, newUser);
+        this.editedUser = null;
     }
 
 }

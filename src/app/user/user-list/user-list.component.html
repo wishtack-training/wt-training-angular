@@ -1,6 +1,23 @@
 <wt-user-form-reactive
         (onUserSubmit)="addUser($event)"></wt-user-form-reactive>
 
-<wt-user-preview
-        *ngFor="let user of getUserList()"
-        [user]="user"></wt-user-preview>
+<div *ngFor="let user of getUserList()">
+
+    <wt-user-preview [user]="user"></wt-user-preview>
+
+    <wt-user-form-reactive
+            *ngIf="editedUser === user"
+            [buttonLabel]="'UPDATE'"
+            [user]="editedUser"
+            (onUserSubmit)="updateUser(editedUser, $event)"></wt-user-form-reactive>
+
+    <button
+            *ngIf="editedUser !== user"
+            (click)="editedUser = user">EDIT</button>
+
+    <button
+            *ngIf="editedUser === user"
+            (click)="editedUser = null">CANCEL</button>
+
+</div>
+
