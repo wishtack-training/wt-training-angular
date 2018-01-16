@@ -5,6 +5,9 @@
  * $Id: $
  */
 
+import { User } from './user/user';
+import { UserStore } from './user/user-store';
+
 const assertEqual = (expectedValue, value) => {
 
     if (value !== expectedValue) {
@@ -16,13 +19,14 @@ const assertEqual = (expectedValue, value) => {
 
 };
 
+
 const user1 = new User('Foo', 'BAR');
 const user2 = new User('John', 'DOE');
 const user3 = new User('Foo', 'BAR');
 
-const userList1 = userStore.getUserList();
+const userStore = new UserStore();
 
-assertEqual(0, userList1.length);
+const userList1 = userStore.getUserList();
 
 userStore.addUser(user1);
 userStore.addUser(user2);
@@ -30,14 +34,20 @@ userStore.addUser(user3);
 
 const userList2 = userStore.getUserList();
 
+userStore.removeUser(user3);
+
+const userList3 = userStore.getUserList();
+
+assertEqual(0, userList1.length);
+
 assertEqual(3, userList2.length);
 assertEqual(user1, userList2[0]);
 assertEqual(user2, userList2[1]);
 assertEqual(user3, userList2[2]);
 
-userStore.removeUser(user3);
-
-const userList3 = userStore.getUserList();
 assertEqual(2, userList3.length);
 assertEqual(user1, userList2[0]);
 assertEqual(user2, userList2[1]);
+
+assertEqual(userStore.getUserList(), userStore.getUserList());
+
