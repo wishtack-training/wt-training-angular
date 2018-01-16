@@ -24,3 +24,21 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
 
+## Install typescript and nodemon for cheap tests.
+```
+npm install -g nodemon typescript
+```
+
+## Auto compile && auto run
+
+Open two terminals:
+
+* Compile terminal
+```
+tsc --watch user-store.spec.ts
+```
+
+* Run terminal
+```
+nodemon user-store.spec.js
+```
