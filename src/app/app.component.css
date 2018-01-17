@@ -1,0 +1,10 @@
+:host {
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+}

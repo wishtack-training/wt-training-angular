@@ -5,8 +5,8 @@
  * $Id: $
  */
 
-import { User } from './user/user';
-import { UserStore } from './user/user-store';
+import { User } from './src/app/user/user';
+import { UserStore } from './src/app/user/user-store';
 
 const assertEqual = (expectedValue, value) => {
 
