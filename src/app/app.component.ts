@@ -10,25 +10,20 @@ import { User } from './user/user';
 })
 export class AppComponent {
 
+    selectedUser: User;
+
     userList = [
         new User('Foo', 'BAR'),
         new User('John', 'DOE'),
     ];
 
-    message: string;
-
-    constructor() {
-
-        this.message = 'Hello';
-
-        setInterval(() => {
-            this.message += '.';
-        }, 1000);
-
+    selectUser(user: User) {
+        this.selectedUser = user;
     }
 
-    reset() {
-        this.message = '';
+    getPictureUrl(user: User) {
+        return `https://robohash.org/${user.firstName}`;
     }
 
 }
+

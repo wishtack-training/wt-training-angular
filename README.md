@@ -60,3 +60,19 @@ ng new training --skip-install --prefix=wt
 ```
 yarn install
 ```
+
+## Debug tools
+
+### Augury chrome extension.
+
+https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd?hl=en
+
+### ng.probe
+
+* Select an element using chrome inspector.
+* `ng.probe($0).componentInstance`
+
+### IntelliJ
+
+* https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji
+

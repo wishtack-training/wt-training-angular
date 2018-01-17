@@ -1,21 +1,18 @@
 
-<h1>{{ message }}</h1>
-<div>({{ message.length }})</div>
-
-<button
-        [disabled]="message.length < 10"
-        (click)="reset()"
-        type="button">RESET</button>
-
-<div>----------------</div>
-
 <div>
-    <button disabled>Foo</button>
 
-    <button>John</button>
+    <button
+            *ngFor="let user of userList"
+            [disabled]="user === selectedUser"
+            (click)="selectUser(user)"
+            type="button">{{ user.firstName }}</button>
+
 </div>
 
-<div>
-    <div>Foo BAR</div>
-    <img src="https://robohash.org/foo" alt="">
+<div *ngIf="selectedUser != null">
+    <div>
+        <span>{{ selectedUser.firstName }}</span>
+        <span>{{ selectedUser.lastName }}</span>
+    </div>
+    <img [src]="getPictureUrl(selectedUser)">
 </div>
