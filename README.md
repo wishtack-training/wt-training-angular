@@ -42,3 +42,9 @@ tsc --watch user-store.spec.ts
 ```
 nodemon user-store.spec.js
 ```
+
+## New Angular app
+
+```
+ng new training --skip-install --prefix=wt
+```
