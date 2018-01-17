@@ -9,10 +9,12 @@
 
 class Customer {
 
+    firstName;
+    lastName;
+
     constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = undefined;
     }
 
     sayHi() {
@@ -29,7 +31,7 @@ class Customer {
 
 }
 
-const customer = new Customer('Foo');
+const customer = new Customer('Foo', 'BAR');
 
 customer.sayHiLater();
 
