@@ -28,9 +28,5 @@ export class UserSelectorComponent {
         this.selectedUser = user;
     }
 
-    getPictureUrl(user: User) {
-        return `https://robohash.org/${user.firstName}`;
-    }
-
 }
 

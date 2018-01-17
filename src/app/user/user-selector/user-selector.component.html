@@ -9,10 +9,4 @@
 
 </div>
 
-<div *ngIf="selectedUser != null">
-    <div>
-        <span>{{ selectedUser.firstName }}</span>
-        <span>{{ selectedUser.lastName }}</span>
-    </div>
-    <img [src]="getPictureUrl(selectedUser)">
-</div>
+<wt-user-preview [user]="selectedUser"></wt-user-preview>

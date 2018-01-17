@@ -1,0 +1,8 @@
+
+img {
+    width: 100px;
+    background-color: crimson;
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+}
