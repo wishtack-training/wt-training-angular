@@ -1,0 +1,21 @@
+<form (ngSubmit)="addUser()">
+
+    <input
+            [(ngModel)]="name"
+            name="someRandomUselessName"
+            type="text">
+
+    <button type="submit">ADD</button>
+
+</form>
+
+{{ name }}
+
+<wt-user-preview [user]="{firstName: 'Foo'}"></wt-user-preview>
+<button>REMOVE</button>
+
+<wt-user-preview [user]="{firstName: 'John'}"></wt-user-preview>
+<button>REMOVE</button>
+
+<wt-user-preview [user]="{firstName: '...'}"></wt-user-preview>
+<button>REMOVE</button>
