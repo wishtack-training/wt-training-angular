@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserStore } from '../user-store';
 import { User } from '../user';
 
@@ -11,9 +11,7 @@ export class UserListComponent implements OnInit {
 
     editedUser: User;
 
-    private _userStore = new UserStore();
-
-    constructor() {
+    constructor(private _userStore: UserStore) {
     }
 
     ngOnInit() {

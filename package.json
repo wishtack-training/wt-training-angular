@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "generate-component": "ng generate component",
+    "generate-component": "ng generate component --export",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",

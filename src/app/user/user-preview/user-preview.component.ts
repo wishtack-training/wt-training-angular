@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { User } from '../user';
 
 @Component({
@@ -6,20 +6,21 @@ import { User } from '../user';
     templateUrl: './user-preview.component.html',
     styleUrls: ['./user-preview.component.css']
 })
-export class UserPreviewComponent implements OnInit {
+export class UserPreviewComponent implements OnChanges {
 
     @Input() user: User;
 
     isPictureLoaded: boolean;
+    pictureUrl: string;
 
-    constructor() {
-    }
 
-    ngOnInit() {
-    }
+    ngOnChanges() {
 
-    getPictureUrl() {
-        return `https://robohash.org/${this.user.firstName}`;
+        this.pictureUrl = null;
+        if (this.user != null) {
+            this.pictureUrl = `https://robohash.org/${this.user.firstName}`;
+        }
+
     }
 
 }

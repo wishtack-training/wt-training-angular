@@ -1,32 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { UserSelectorComponent } from './user/user-selector/user-selector.component';
-import { UserPreviewComponent } from './user/user-preview/user-preview.component';
+import { UserModule } from './user/user.module';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserFormComponent } from './user/user-form/user-form.component';
-import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-reactive.component';
 
+export const routes: Route[] = [
+    {
+        path: 'users',
+        component: UserListComponent
+    },
+    {
+        path: '**',
+        redirectTo: 'users'
+    }
+];
 
 @NgModule({
     declarations: [
-        AppComponent,
-        UserPreviewComponent,
-        UserSelectorComponent,
-        UserListComponent,
-        UserFormComponent,
-        UserFormReactiveComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
+        RouterModule.forRoot(routes),
+        UserModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
