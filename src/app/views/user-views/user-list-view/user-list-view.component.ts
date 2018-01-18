@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../../user/user';
+import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'wt-user-list-view',
@@ -20,7 +21,7 @@ export class UserListViewComponent implements OnInit {
     ngOnInit() {
 
         /* @TODO move this to a service. */
-        this.userList$ = this._httpClient.get('http://wt-users.getsandbox.com/users')
+        this.userList$ = this._httpClient.get<any[]>('http://wt-users.getsandbox.com/users')
             .retry(3)
             .map(userDataList => {
                 return userDataList
@@ -30,3 +31,4 @@ export class UserListViewComponent implements OnInit {
     }
 
 }
+
