@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStore } from '../user-store';
+import { User } from '../user';
 
 @Component({
     selector: 'wt-user-list',
@@ -8,7 +9,7 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent implements OnInit {
 
-    name = 'test';
+    user = new User();
 
     private _userStore = new UserStore();
 
@@ -16,6 +17,19 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    addUser() {
+        this._userStore.addUser(this.user);
+        this.user = new User();
+    }
+
+    getUserList() {
+        return this._userStore.getUserList();
+    }
+
+    removeUser(user) {
+        this._userStore.removeUser(user);
     }
 
 }

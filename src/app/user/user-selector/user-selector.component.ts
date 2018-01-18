@@ -20,8 +20,14 @@ export class UserSelectorComponent {
     selectedUser: User;
 
     userList = [
-        new User('Foo', 'BAR'),
-        new User('John', 'DOE'),
+        new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        }),
+        new User({
+            firstName: 'John',
+            lastName: 'DOE'
+        })
     ];
 
     selectUser(user: User) {

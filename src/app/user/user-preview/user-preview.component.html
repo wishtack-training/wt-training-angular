@@ -1,7 +1,15 @@
 <div *ngIf="user != null">
-    <img [src]="getPictureUrl()">
+
+    <div *ngIf="!isPictureLoaded">Downloading...</div>
+
+    <img
+            [hidden]="!isPictureLoaded"
+            [src]="getPictureUrl()"
+            (load)="isPictureLoaded = true">
+
     <div>
         <span>{{ user.firstName }}</span>
         <span>{{ user.lastName }}</span>
     </div>
+
 </div>

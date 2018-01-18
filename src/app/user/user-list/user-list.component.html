@@ -1,21 +1,24 @@
 <form (ngSubmit)="addUser()">
 
     <input
-            [(ngModel)]="name"
-            name="someRandomUselessName"
+            [(ngModel)]="user.firstName"
+            name="firstName"
+            type="text">
+
+    <input
+            [(ngModel)]="user.lastName"
+            name="lastName"
             type="text">
 
     <button type="submit">ADD</button>
 
 </form>
 
-{{ name }}
 
-<wt-user-preview [user]="{firstName: 'Foo'}"></wt-user-preview>
-<button>REMOVE</button>
+<div *ngFor="let user of getUserList()">
 
-<wt-user-preview [user]="{firstName: 'John'}"></wt-user-preview>
-<button>REMOVE</button>
+    <wt-user-preview [user]="user"></wt-user-preview>
 
-<wt-user-preview [user]="{firstName: '...'}"></wt-user-preview>
-<button>REMOVE</button>
+    <button (click)="removeUser(user)">REMOVE</button>
+
+</div>

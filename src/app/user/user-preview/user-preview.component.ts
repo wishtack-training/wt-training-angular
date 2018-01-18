@@ -10,6 +10,8 @@ export class UserPreviewComponent implements OnInit {
 
     @Input() user: User;
 
+    isPictureLoaded: boolean;
+
     constructor() {
     }
 
