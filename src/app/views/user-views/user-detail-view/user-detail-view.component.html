@@ -1,0 +1,10 @@
+<div *ngIf="user$ | async as user">
+
+    <wt-user-preview [user]="user"></wt-user-preview>
+
+    <wt-user-form-reactive
+            [buttonLabel]="'UPDATE'"
+            [user]="user"
+            (onUserSubmit)="updateUser(user.id, $event)"></wt-user-form-reactive>
+
+</div>

@@ -4,13 +4,17 @@ import { Route, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { UserModule } from './user/user.module';
-import { UserListComponent } from './user/user-list/user-list.component';
+import { LandingComponent } from './views/landing.component';
 
 export const routes: Route[] = [
     {
+        path: '',
+        pathMatch: 'full',
+        component: LandingComponent
+    },
+    {
         path: 'users',
-        component: UserListComponent
+        loadChildren: './views/user-views/user-views.module#UserViewsModule'
     },
     {
         path: '**',
@@ -20,12 +24,12 @@ export const routes: Route[] = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        LandingComponent
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(routes),
-        UserModule
+        RouterModule.forRoot(routes)
     ],
     bootstrap: [AppComponent]
 })
