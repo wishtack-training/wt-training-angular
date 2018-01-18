@@ -9,7 +9,7 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
 
-    user = new User();
+    editedUser: User;
 
     private _userStore = new UserStore();
 
@@ -29,6 +29,15 @@ export class UserListComponent implements OnInit {
 
     removeUser(user) {
         this._userStore.removeUser(user);
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    updateUser(user: User) {
+        this._userStore.updateUser(this.editedUser, user);
+        this.editedUser = null;
     }
 
 }

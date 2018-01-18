@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -7,8 +7,10 @@ import { User } from '../user';
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.css']
 })
-export class UserFormReactiveComponent implements OnInit {
+export class UserFormReactiveComponent implements OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() onUserSubmit = new EventEmitter<User>();
 
     userFormGroup = new FormGroup({
@@ -18,12 +20,11 @@ export class UserFormReactiveComponent implements OnInit {
         lastName: new FormControl(null)
     });
 
-    ngOnInit() {
-        this.userFormGroup.valueChanges
-            .debounceTime(300)
-            .subscribe((value) => {
-                console.log(value);
-            });
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user) {
+            this.userFormGroup.reset(this.user);
+        }
     }
 
     submitUser() {
