@@ -18,10 +18,12 @@ export class UserFormReactiveComponent implements OnInit {
         lastName: new FormControl(null)
     });
 
-    constructor() {
-    }
-
     ngOnInit() {
+        this.userFormGroup.valueChanges
+            .debounceTime(300)
+            .subscribe((value) => {
+                console.log(value);
+            });
     }
 
     submitUser() {
