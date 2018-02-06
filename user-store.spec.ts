@@ -5,6 +5,9 @@
  * $Id: $
  */
 
+import { UserStore } from './user/user-store';
+import { User } from './user/user';
+
 const assert = function (expectedValue, value) {
 
     if (expectedValue !== value) {
@@ -39,10 +42,10 @@ assert(user1, userListFull[0]);
 assert(user2, userListFull[1]);
 assert(user3, userListFull[2]);
 
-userStore.removeUser(user3);
+userStore.removeUser(user1);
 
 const userListAfterRemove = userStore.getUserList();
 
 assert(2, userListAfterRemove.length);
-assert(user1, userListAfterRemove[0]);
-assert(user2, userListAfterRemove[1]);
+assert(user2, userListAfterRemove[0]);
+assert(user3, userListAfterRemove[1]);
