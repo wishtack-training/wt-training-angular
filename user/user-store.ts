@@ -15,12 +15,12 @@ export class UserStore {
     }
 
     addUser(user: User) {
-        this._userList.push(user);
+        this._userList = [...this._userList, user];
     }
 
     removeUser(user: User) {
-        const userIndex = this._userList.indexOf(user);
-        this._userList.splice(userIndex, 1);
+        this._userList = this._userList
+            .filter(_user => _user !== user);
     }
 
 }

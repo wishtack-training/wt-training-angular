@@ -1,4 +1,3 @@
-
 'use strict';
 
 class Person {
@@ -9,12 +8,42 @@ class Person {
         this.firstName = 'Foo';
     }
 
-    hello() {
+    sayHi() {
         console.log(this.firstName);
+    }
+
+    sayHiLater() {
+
+        setTimeout(() => this.sayHi(), 1000);
+
     }
 
 }
 
 const person = new Person();
 
-person.hello();
+person.sayHi();
+
+person.sayHiLater();
+
+const productList = [
+    {
+        name: 'IntelliJ',
+        price: 100
+    },
+    {
+        name: 'VSCode',
+        price: 5
+    },
+    {
+        name: 'Keyboard',
+        price: 20
+    }
+];
+
+const cheapProductNameList = productList
+    .filter(product => product.price < 30)
+    .map(product => product.name);
+
+console.log(productList);
+console.log(cheapProductNameList);

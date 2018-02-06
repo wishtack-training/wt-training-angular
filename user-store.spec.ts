@@ -8,7 +8,7 @@
 import { UserStore } from './user/user-store';
 import { User } from './user/user';
 
-const assert = function (expectedValue, value) {
+const assert = (expectedValue, value) => {
 
     if (expectedValue !== value) {
         throw new Error(`
@@ -29,22 +29,22 @@ const user3 = new User('Foo', 'BAR');
 
 const userListEmpty = userStore.getUserList();
 
-assert(0, userListEmpty.length);
-
 userStore.addUser(user1);
+
 userStore.addUser(user2);
 userStore.addUser(user3);
-
 const userListFull = userStore.getUserList();
+
+userStore.removeUser(user1);
+
+const userListAfterRemove = userStore.getUserList();
+
+assert(0, userListEmpty.length);
 
 assert(3, userListFull.length);
 assert(user1, userListFull[0]);
 assert(user2, userListFull[1]);
 assert(user3, userListFull[2]);
-
-userStore.removeUser(user1);
-
-const userListAfterRemove = userStore.getUserList();
 
 assert(2, userListAfterRemove.length);
 assert(user2, userListAfterRemove[0]);
