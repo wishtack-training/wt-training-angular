@@ -1,10 +1,26 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'wt-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'wt-app',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'wt';
+
+    name = 'Foo';
+
+    constructor() {
+
+        setInterval(() => {
+            this.name += '.';
+        }, 200);
+
+    }
+
+    reset() {
+        this.name = '';
+    }
+
+    shouldShowResetButton() {
+        return this.name.length > 10;
+    }
 }
