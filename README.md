@@ -60,3 +60,8 @@ ng new training --skip-install --prefix=wt
 ```
 yarn install
 ```
+
+* Create component.
+```
+yarn ng generate component playground
+```

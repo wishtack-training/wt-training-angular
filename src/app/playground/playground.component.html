@@ -1,0 +1,11 @@
+<div>
+  <span>{{ name }}</span>
+  <span>{{ name.length }}</span>
+
+</div>
+
+<div>
+  <button
+          [hidden]="!shouldShowResetButton()"
+          (click)="reset()">RESET</button>
+</div>
