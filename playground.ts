@@ -26,6 +26,39 @@ person.sayHi();
 
 person.sayHiLater();
 
+class User {
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+}
+
+
+class Administrator {
+    firstName: string;
+    lastName: string;
+    email: string;
+    company: string;
+}
+
+interface Emailable {
+    firstName: string;
+    email: string;
+}
+
+const sendEmail = (emailable: Emailable) => {
+
+};
+
+sendEmail({
+    firstName: 'foo',
+    email: 'test'
+});
+
+sendEmail(new User());
+
+sendEmail(new Administrator());
+
 const productList = [
     {
         name: 'IntelliJ',
