@@ -1,0 +1,13 @@
+
+@mixin wt-circle($size) {
+    border-radius: $size / 2;
+    border-style: solid;
+    border-width: 1px;
+    height: $size;
+    width: $size;
+}
+
+img {
+@include wt-circle(50px);
+    background-color: aqua;
+}

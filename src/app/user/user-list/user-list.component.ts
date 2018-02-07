@@ -25,10 +25,6 @@ export class UserListComponent implements OnInit {
         return this._userStore.getUserList();
     }
 
-    getPictureUrl(user: User) {
-        return `https://robohash.org/${user.firstName}`;
-    }
-
     removeUser(user: User) {
         this._userStore.removeUser(user);
     }
