@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStore } from '../user-store';
+import { User } from '../user';
 
 @Component({
     selector: 'wt-user-list',
@@ -14,6 +15,22 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    addRandomUser() {
+        this._userStore.addUser(new User('Foo', 'BAR'));
+    }
+
+    getUserList() {
+        return this._userStore.getUserList();
+    }
+
+    getPictureUrl(user: User) {
+        return `https://robohash.org/${user.firstName}`;
+    }
+
+    removeUser(user: User) {
+        this._userStore.removeUser(user);
     }
 
 }

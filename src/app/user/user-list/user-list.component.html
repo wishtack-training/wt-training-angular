@@ -1,27 +1,18 @@
 <div>
-    <button>ADD A USER</button>
+    <button (click)="addRandomUser()">ADD A USER</button>
 </div>
 
-<div>
+<div *ngFor="let user of getUserList()">
 
-    <span>Foo BAR</span>
+    <div>
+        <img [src]="getPictureUrl(user)" alt="">
+    </div>
 
-    <img src="https://robohash.org/foo" alt="">
+    <div>
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+    </div>
 
-    <button>REMOVE</button>
+    <button (click)="removeUser(user)">REMOVE</button>
 
-</div>
-
-<div>
-
-    <span>John DOE</span>
-
-    <img src="https://robohash.org/john" alt="">
-
-    <button>REMOVE</button>
-
-</div>
-
-<div *ngFor="let value of [1,2,3]">
-    {{ value }}
 </div>
