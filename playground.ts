@@ -26,7 +26,7 @@ person.sayHi();
 
 person.sayHiLater();
 
-class User {
+class Person {
     firstName: string;
     lastName: string;
     email: string;

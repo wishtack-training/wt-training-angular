@@ -1,3 +1,9 @@
-<p>
-  user-form works!
-</p>
+<form (ngSubmit)="submitUser()">
+
+    <input [(ngModel)]="user.firstName" name="firstName" type="text">
+
+    <input [(ngModel)]="user.lastName" name="lastName" type="text">
+
+    <button type="submit">ADD</button>
+
+</form>
