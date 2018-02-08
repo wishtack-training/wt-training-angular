@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStore } from '../user-store';
 import { User } from '../user';
+import { UserConfig } from '../user-config';
 
 @Component({
     selector: 'wt-user-list',
@@ -11,9 +12,8 @@ export class UserListComponent implements OnInit {
 
     editedUser: User;
 
-    private _userStore = new UserStore();
-
-    constructor() {
+    constructor(public userConfig: UserConfig,
+                private _userStore: UserStore) {
     }
 
     ngOnInit() {
@@ -38,6 +38,20 @@ export class UserListComponent implements OnInit {
     updateUser(user: User) {
         this._userStore.updateUser(this.editedUser, user);
         this.editedUser = null;
+    }
+
+    shouldShowActions(user: User) {
+
+        if (!this.userConfig.isInlineEdit) {
+            return true;
+        }
+
+        if (user !== this.editedUser) {
+            return true;
+        }
+
+        return false;
+
     }
 
 }
