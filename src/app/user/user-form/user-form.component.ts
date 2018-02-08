@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../user';
 
 @Component({
@@ -8,6 +8,7 @@ import { User } from '../user';
 })
 export class UserFormComponent implements OnInit {
 
+    @Input() buttonLabel = 'SUBMIT';
     @Output() onUserSubmit = new EventEmitter<User>();
 
     user = new User();
