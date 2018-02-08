@@ -13,7 +13,7 @@ import { UserStore } from './user/user-store';
 import { UserConfig } from './user/user-config';
 import { UserListHeaderAComponent } from './user/user-list-header-a/user-list-header-a.component';
 import { UserListHeaderBComponent } from './user/user-list-header-b/user-list-header-b.component';
-import { MyFavoriteClientUserConfig, UserConfigMyFavoriteClient } from './user/user-config-my-favorite-client';
+import { UserConfigMyFavoriteClient } from './user/user-config-my-favorite-client';
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { MyFavoriteClientUserConfig, UserConfigMyFavoriteClient } from './user/u
     providers: [
         {
             provide: UserConfig,
-            useFactory() {
+            useFactory: () => {
 
                 // @TODO: Run your conditions here...
                 return new UserConfigMyFavoriteClient();
