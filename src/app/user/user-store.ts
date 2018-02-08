@@ -23,4 +23,18 @@ export class UserStore {
             .filter(_user => _user !== user);
     }
 
+    updateUser(user: User, newUser: User) {
+
+        this._userList = this._userList
+            .map(_user => {
+
+                if (user === _user) {
+                    return newUser;
+                }
+
+                return _user;
+
+            });
+
+    }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { User } from '../user';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
@@ -23,9 +23,10 @@ const userBusinessIdValidator: ValidatorFn = (control: AbstractControl) => {
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.css']
 })
-export class UserFormReactiveComponent implements OnInit {
+export class UserFormReactiveComponent implements OnInit, OnChanges {
 
     @Input() buttonLabel = 'SUBMIT';
+    @Input() user: User;
     @Output() onUserSubmit = new EventEmitter<User>();
 
     formGroup = new FormGroup({
@@ -48,6 +49,21 @@ export class UserFormReactiveComponent implements OnInit {
 
     ngOnInit() {
 
+        // this.formGroup.valueChanges
+        //     .debounceTime(200)
+        //     .map(value => value.firstName)
+        //     .subscribe(value => {
+        //         console.log(value);
+        //     });
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user != null) {
+            this.formGroup.reset(this.user);
+        }
+
     }
 
     getControlList() {
@@ -59,4 +75,5 @@ export class UserFormReactiveComponent implements OnInit {
         this.onUserSubmit.emit(user);
         this.formGroup.reset();
     }
+
 }

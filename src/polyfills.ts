@@ -64,3 +64,8 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+import 'rxjs/add/operator/bufferCount';
+import 'rxjs/add/operator/bufferTime';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
