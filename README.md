@@ -65,3 +65,12 @@ yarn install
 ```
 yarn ng generate component playground
 ```
+
+* Start app.
+```
+yarn start
+```
+
+# Links
+
+https://caniuse.com/

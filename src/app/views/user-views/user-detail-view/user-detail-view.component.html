@@ -1,0 +1,6 @@
+
+<h1 *ngIf="!user">Loading...</h1>
+
+<wt-user-preview
+        *ngIf="user"
+        [user]="user"></wt-user-preview>

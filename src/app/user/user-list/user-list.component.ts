@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserStore } from '../user-store';
 import { User } from '../user';
 import { UserConfig } from '../user-config';
