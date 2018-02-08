@@ -5,7 +5,7 @@
     <!--<input formControlName="lastName" type="text">-->
 
     <input
-            *ngFor="let control of getControls()"
+            *ngFor="let control of getControlList()"
             [formControl]="control"
             type="text">
 
