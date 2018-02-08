@@ -11,12 +11,9 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-reactive.component';
 import { UserStore } from './user/user-store';
 import { UserConfig } from './user/user-config';
-
-class MyFavoriteClientUserConfig extends UserConfig {
-
-    isInlineEdit = false;
-
-}
+import { UserListHeaderAComponent } from './user/user-list-header-a/user-list-header-a.component';
+import { UserListHeaderBComponent } from './user/user-list-header-b/user-list-header-b.component';
+import { MyFavoriteClientUserConfig, UserConfigMyFavoriteClient } from './user/user-config-my-favorite-client';
 
 
 @NgModule({
@@ -26,7 +23,13 @@ class MyFavoriteClientUserConfig extends UserConfig {
         UserListComponent,
         UserPreviewComponent,
         UserFormComponent,
-        UserFormReactiveComponent
+        UserFormReactiveComponent,
+        UserListHeaderAComponent,
+        UserListHeaderBComponent
+    ],
+    entryComponents: [
+        UserListHeaderAComponent,
+        UserListHeaderBComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +41,8 @@ class MyFavoriteClientUserConfig extends UserConfig {
             provide: UserConfig,
             useFactory() {
 
-                return new MyFavoriteClientUserConfig();
+                // @TODO: Run your conditions here...
+                return new UserConfigMyFavoriteClient();
 
             }
         },
