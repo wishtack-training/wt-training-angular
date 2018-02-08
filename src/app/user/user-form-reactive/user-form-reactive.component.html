@@ -1,0 +1,14 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitUser()">
+
+    <!--<input formControlName="firstName" type="text">-->
+
+    <!--<input formControlName="lastName" type="text">-->
+
+    <input
+            *ngFor="let control of getControls()"
+            [formControl]="control"
+            type="text">
+
+    <button [disabled]="!formGroup.valid">{{ buttonLabel }}</button>
+
+</form>
