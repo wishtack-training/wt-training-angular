@@ -8,15 +8,15 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 enum UserCurrentStatus {
-    present = 'present',
+    present = '🎉',
     pause = 'pause',
     sleep = '💤'
 }
 
 class UserCurrentState {
-    firstName?: string;
-    lastName?: string;
-    status = UserCurrentStatus.sleep;
+    readonly firstName?: string = null;
+    readonly lastName?: string = null;
+    readonly status?: UserCurrentStatus = UserCurrentStatus.sleep;
 }
 
 class UserCurrentStore {
@@ -42,7 +42,7 @@ class UserCurrentStore {
 const userCurrentStore = new UserCurrentStore();
 
 userCurrentStore.state$.subscribe(state => {
-    console.log(state.status);
+    console.log(state);
 });
 
 
@@ -50,3 +50,8 @@ userCurrentStore.updateState({
     status: UserCurrentStatus.present
 });
 
+userCurrentStore.updateState({
+    firstName: 'Foo'
+});
+
+// userCurrentStore.getStateSnapshot().lastName = 'test';
