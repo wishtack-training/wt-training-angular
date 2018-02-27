@@ -85,7 +85,7 @@ interface Messagable {
 }
 
 const sendMessage = (messagable: Messagable) => {
-    console.log('Hello ' + messagable.email);
+    console.log(`Hello ${messagable.email}`);
 };
 
 sendMessage(new Customer());
