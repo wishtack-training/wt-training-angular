@@ -22,25 +22,25 @@ const user1 = new User('Foo', 'BAR');
 const user2 = new User('John', 'DOE');
 const user3 = new User('Foo', 'BAR');
 
-let userList = userStore.getUserList();
-
-assertEqual(0, userList.length);
+const userList1 = userStore.getUserList();
 
 userStore.addUser(user1);
 userStore.addUser(user2);
 userStore.addUser(user3);
 
-userList = userStore.getUserList();
-
-assertEqual(3, userList.length);
-assertEqual(user1, userList[0]);
-assertEqual(user2, userList[1]);
-assertEqual(user3, userList[2]);
+const userList2 = userStore.getUserList();
 
 userStore.removeUser(user1);
 
-userList = userStore.getUserList();
+const userList3 = userStore.getUserList();
 
-assertEqual(2, userList.length);
-assertEqual(user2, userList[0]);
-assertEqual(user3, userList[1]);
+assertEqual(3, userList2.length);
+
+assertEqual(0, userList1.length);
+assertEqual(user1, userList2[0]);
+assertEqual(user2, userList2[1]);
+assertEqual(user3, userList2[2]);
+
+assertEqual(2, userList3.length);
+assertEqual(user2, userList3[0]);
+assertEqual(user3, userList3[1]);
