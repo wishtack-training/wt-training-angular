@@ -16,6 +16,8 @@ const assertEqual = (expected, value) => {
 
 };
 
+const userStore = new UserStore();
+
 const user1 = new User('Foo', 'BAR');
 const user2 = new User('John', 'DOE');
 const user3 = new User('Foo', 'BAR');
