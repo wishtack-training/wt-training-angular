@@ -16,8 +16,6 @@ const assertEqual = (expected, value) => {
 
 };
 
-const userStore = new UserStore();
-
 const user1 = new User('Foo', 'BAR');
 const user2 = new User('John', 'DOE');
 const user3 = new User('Foo', 'BAR');
@@ -33,9 +31,14 @@ userStore.addUser(user3);
 userList = userStore.getUserList();
 
 assertEqual(3, userList.length);
+assertEqual(user1, userList[0]);
+assertEqual(user2, userList[1]);
+assertEqual(user3, userList[2]);
 
 userStore.removeUser(user1);
 
 userList = userStore.getUserList();
 
 assertEqual(2, userList.length);
+assertEqual(user2, userList[0]);
+assertEqual(user3, userList[1]);
