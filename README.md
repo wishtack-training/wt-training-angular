@@ -40,3 +40,21 @@ tsc --watch user-store.spec.ts
 ```
 nodemon user-store.spec.js
 ```
+
+# New Angular app
+
+* Install @angular/cli and yarn (because npm #@!@#)...
+
+```
+npm install -g @angular/cli yarn
+```
+
+* Create new app.
+```
+ng new training --skip-install --prefix=wt
+```
+
+* Install dependencies.
+```
+yarn install
+```
