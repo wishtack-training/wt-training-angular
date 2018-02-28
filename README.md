@@ -54,6 +54,11 @@ npm install -g @angular/cli yarn
 ng new training --skip-install --prefix=wt
 ```
 
+* Go to project or open project in IntelliJ.
+```
+cd training
+```
+
 * Install dependencies.
 ```
 yarn install
