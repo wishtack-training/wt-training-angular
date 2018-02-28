@@ -10,15 +10,18 @@ import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { FormsModule } from '@angular/forms';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
     declarations: [
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserFormComponent
     ],
     exports: [
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserFormComponent
     ],
     imports: [
         CommonModule,
