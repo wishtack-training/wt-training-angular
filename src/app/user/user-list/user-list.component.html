@@ -16,12 +16,7 @@
 
 <div *ngFor="let user of getUserList()">
 
-    <img [src]="getPictureUrl(user)">
-
-    <div>
-        <span>{{ user.firstName }}</span>
-        <span>{{ user.lastName }}</span>
-    </div>
+    <wt-user-preview [user]="user"></wt-user-preview>
 
     <button (click)="removeUser(user)">REMOVE</button>
 

@@ -4,19 +4,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        DemoComponent,
-        UserListComponent
+        DemoComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        UserModule
     ],
     bootstrap: [AppComponent]
 })
