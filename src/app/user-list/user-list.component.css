@@ -1,0 +1,11 @@
+:host {
+    text-align: center;
+}
+
+img {
+    background-color: azure;
+    border-radius: 50%;
+    border-style: solid;
+    height: 50px;
+    width: 50px;
+}
