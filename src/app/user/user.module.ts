@@ -9,25 +9,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserFormReactiveComponent } from './user-form-reactive/user-form-reactive.component';
 
 @NgModule({
     declarations: [
         UserListComponent,
         UserPreviewComponent,
-        UserFormComponent
+        UserFormComponent,
+        UserFormReactiveComponent
     ],
     exports: [
         UserListComponent,
         UserPreviewComponent,
-        UserFormComponent
+        UserFormComponent,
+        UserFormReactiveComponent
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class UserModule {
-
 }
