@@ -1,0 +1,9 @@
+<div *ngIf="!shouldShowGreetings()">
+    <span>Hello</span>
+    <span>{{ userName }}</span>
+</div>
+
+<button
+        [disabled]="!shouldShowReset()"
+        (click)="reset()">RESET
+</button>
