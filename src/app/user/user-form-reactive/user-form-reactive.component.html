@@ -2,11 +2,28 @@
         [formGroup]="userForm"
         (ngSubmit)="addUser()">
 
-    <input formControlName="firstName" type="text">
+    <input
+            *ngFor="let control of getControlList()"
+            [formControl]="control"
+            type="text">
 
-    <input formControlName="lastName" type="text">
+    <!--<div *ngFor="let input of inputList">-->
+        <!---->
+        <!--<ng-container-->
+                <!--*ngComponentOutlet="getComponentClass(input)"-->
+                <!--[control]="input.control"-->
+        <!--&gt;</ng-container>-->
+        <!---->
+    <!--</div>-->
 
-    <button type="submit">ADD</button>
+    <button
+            [disabled]="!userForm.valid"
+            type="submit">ADD</button>
 
 </form>
 
+<div *ngIf="false">{{ firstName$ | async }}</div>
+
+<div *ngFor="let user of userList$ | async">
+    {{ user.firstName }}
+</div>

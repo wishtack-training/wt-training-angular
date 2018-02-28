@@ -12,6 +12,7 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserFormReactiveComponent } from './user-form-reactive/user-form-reactive.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { UserFormReactiveComponent } from './user-form-reactive/user-form-reacti
     imports: [
         CommonModule,
         FormsModule,
+        HttpClientModule,
         ReactiveFormsModule
     ]
 })
