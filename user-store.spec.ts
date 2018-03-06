@@ -1,3 +1,6 @@
+import { UserStore } from './user-store';
+import { User } from './user';
+
 /**
  *
  * (c) 2013-2018 Wishtack
@@ -28,13 +31,13 @@ const testAddUser = () => {
 
     const userListEmpty = userStore.getUserList();
 
-    assertEqual(0, userListEmpty.length);
-
     userStore.addUser(user1);
     userStore.addUser(user2);
     userStore.addUser(user3);
 
     const userList = userStore.getUserList();
+
+    assertEqual(0, userListEmpty.length);
 
     assertEqual(3, userList.length);
     assertEqual(user1, userList[0]);
