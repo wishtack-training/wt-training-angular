@@ -2,6 +2,9 @@
 
 class Customer {
 
+    firstName;
+    lastName;
+
     constructor(firstName = null, lastName = null) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,10 +21,6 @@ class Customer {
     }
 
 }
-
-const double = (value) => {
-    return value * 2;
-};
 
 const customer = new Customer('Foo');
 
@@ -43,6 +42,7 @@ const productList = [
         price: 10
     }
 ];
+
 
 const cheapProductNameList = productList
     .filter(product => product.price < 25)
