@@ -21,4 +21,12 @@ export class UserListComponent implements OnInit {
 
     }
 
+    getUserList() {
+        return this._userStore.getUserList();
+    }
+
+    removeUser(user: User) {
+        this._userStore.removeUser(user);
+    }
+
 }

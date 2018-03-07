@@ -2,14 +2,12 @@
     <button>ADD USER</button>
 </div>
 
-<div>
-    <img src="https://robohash.org/foo">
-    <div>Foo BAR</div>
-    <button>REMOVE</button>
-</div>
+<div *ngFor="let user of getUserList()">
 
-<div>
-    <img src="https://robohash.org/john">
-    <div>John DOE</div>
-    <button>REMOVE</button>
+    <wt-user-preview [user]="user"></wt-user-preview>
+
+    <button
+            type="button"
+            (click)="removeUser(user)">REMOVE</button>
+
 </div>

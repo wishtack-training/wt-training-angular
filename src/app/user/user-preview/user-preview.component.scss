@@ -1,0 +1,10 @@
+
+$picture-diameter: 100px;
+
+img {
+    background-color: aqua;
+    border-style: solid;
+    border-radius: $picture-diameter / 2;
+    border-width: 1px;
+    height: $picture-diameter;
+}
