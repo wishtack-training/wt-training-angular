@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'wt-demo',
@@ -8,6 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class DemoComponent implements OnInit {
 
     userName = 'Foo';
+    addressFormGroup: FormGroup;
+
+    constructor() {
+        this.addressFormGroup = new FormGroup({
+            street: new FormControl(
+                null, [
+                    Validators.required,
+                    Validators.minLength(3)
+                ]),
+            city: new FormControl()
+        });
+    }
 
     ngOnInit() {
 
@@ -23,4 +36,8 @@ export class DemoComponent implements OnInit {
         this.userName = '';
     }
 
+    submitAddress() {
+        console.log(this.addressFormGroup.value);
+        this.addressFormGroup.reset();
+    }
 }
