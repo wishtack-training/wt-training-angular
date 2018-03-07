@@ -9,6 +9,8 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
 
+    editedUser = null;
+
     private _userStore = new UserStore();
 
     constructor() {
@@ -27,6 +29,15 @@ export class UserListComponent implements OnInit {
 
     removeUser(user: User) {
         this._userStore.removeUser(user);
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    replaceUser(previousUser: User, newUser: User) {
+        this._userStore.replaceUser(previousUser, newUser);
+        this.editedUser = null;
     }
 
 }
