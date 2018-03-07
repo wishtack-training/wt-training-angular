@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'wt-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css']
+    selector: 'wt-demo',
+    templateUrl: './demo.component.html',
+    styleUrls: ['./demo.component.css']
 })
 export class DemoComponent implements OnInit {
 
-  constructor() { }
+    userName = 'Foo';
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+
+        setInterval(() => this.userName += '.', 500);
+
+    }
+
+    canReset() {
+        return this.userName.length > 5;
+    }
+
+    reset() {
+        this.userName = '';
+    }
 
 }

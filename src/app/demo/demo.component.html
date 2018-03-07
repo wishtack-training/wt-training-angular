@@ -1,3 +1,17 @@
-<p>
-  demo works!
-</p>
+<h2>
+    <span>Hello</span>
+    <span>{{ userName }}</span>
+    <span>({{ userName.length }})</span>
+</h2>
+
+<button
+        [disabled]="!canReset()"
+        (click)="reset()">RESET</button>
+
+<div *ngIf="!canReset()">You can't reset.</div>
+
+<ul>
+    <li *ngFor="let value of [1, 2, 3]">
+        {{ value }}
+    </li>
+</ul>
