@@ -1,6 +1,4 @@
-<div>
-    <button>ADD USER</button>
-</div>
+<wt-user-form (onUserSubmit)="addUser($event)"></wt-user-form>
 
 <div *ngFor="let user of getUserList()">
 

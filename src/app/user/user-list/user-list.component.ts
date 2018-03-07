@@ -15,10 +15,10 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
 
-        this._userStore.addUser(new User('Foo', 'BAR'));
-        this._userStore.addUser(new User('John', 'DOE'));
-
+    addUser(user: User) {
+        this._userStore.addUser(user);
     }
 
     getUserList() {

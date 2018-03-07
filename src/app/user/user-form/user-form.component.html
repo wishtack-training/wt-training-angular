@@ -1,0 +1,13 @@
+<form
+        [formGroup]="userForm"
+        (ngSubmit)="submitUser()">
+
+    <!-- @HACK: This is overkill but fun. -->
+    <input
+            *ngFor="let control of getControlList()"
+            [formControl]="control"
+            type="text">
+
+    <button type="submit">ADD</button>
+
+</form>

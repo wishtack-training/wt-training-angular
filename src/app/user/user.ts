@@ -1,7 +1,11 @@
 export class User {
 
-    constructor(public firstName: string,
-                public lastName: string) {
+    firstName?: string;
+    lastName?: string;
+
+    constructor(args: User = {}) {
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
     }
 
 }
