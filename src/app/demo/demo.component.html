@@ -14,6 +14,12 @@
 
 </form>
 
+<div *ngIf="address">
+    <span>Address: </span>
+    <span>{{ address.street }}</span>
+    <span>{{ address.city }}</span>
+</div>
+
 <div>
     {{ addressFormGroup.controls['street'].errors | json }}
 </div>

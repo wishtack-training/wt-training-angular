@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
     selector: 'wt-demo',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class DemoComponent implements OnInit {
 
     userName = 'Foo';
+    address;
     addressFormGroup: FormGroup;
 
     constructor() {
@@ -26,6 +29,12 @@ export class DemoComponent implements OnInit {
 
         setInterval(() => this.userName += '.', 500);
 
+        this.addressFormGroup.valueChanges
+            .debounceTime(500)
+            .subscribe(value => {
+                this.address = value;
+            });
+
     }
 
     canReset() {
@@ -37,7 +46,6 @@ export class DemoComponent implements OnInit {
     }
 
     submitAddress() {
-        console.log(this.addressFormGroup.value);
-        this.addressFormGroup.reset();
+        this.address = this.addressFormGroup.value;
     }
 }
