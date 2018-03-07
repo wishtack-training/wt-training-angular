@@ -1,12 +1,12 @@
-import { UserStore } from './user-store';
-import { User } from './user';
-
 /**
  *
  * (c) 2013-2018 Wishtack
  *
  * $Id: $
  */
+
+import { UserStore } from './user-store';
+import { User } from './user';
 
 const assertEqual = (expectedValue, value) => {
 
@@ -36,6 +36,8 @@ const testAddUser = () => {
     userStore.addUser(user3);
 
     const userList = userStore.getUserList();
+
+    assertEqual(userStore.getUserList(), userStore.getUserList());
 
     assertEqual(0, userListEmpty.length);
 
