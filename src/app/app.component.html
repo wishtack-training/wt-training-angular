@@ -1,1 +1,3 @@
-<wt-user-list></wt-user-list>
+<button (click)="isDisplayed = !isDisplayed">TOGGLE</button>
+
+<wt-user-list *ngIf="isDisplayed"></wt-user-list>

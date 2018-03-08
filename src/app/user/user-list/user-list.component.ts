@@ -11,9 +11,7 @@ export class UserListComponent implements OnInit {
 
     editedUser = null;
 
-    private _userStore = new UserStore();
-
-    constructor() {
+    constructor(private _userStore: UserStore) {
     }
 
     ngOnInit() {
