@@ -202,7 +202,6 @@ const usingReactiveStore = () => {
     cart.addProduct({name: 'Car'});
     cart.addProduct({name: 'Computer'});
 
-
 };
 
 usingReactiveStore();

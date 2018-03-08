@@ -12,6 +12,8 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserStore } from './user-store';
+import { UserResource } from './user-resource';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -25,11 +27,13 @@ import { UserStore } from './user-store';
         UserPreviewComponent
     ],
     imports: [
+        HttpClientModule,
         ReactiveFormsModule,
         SharedModule
     ],
     /* @TODO: Move this to `UserCoreModule.forRoot` and import it in `AppModule` to avoid lazy loading duplicate instance issues... */
     providers: [
+        UserResource,
         UserStore
     ]
 })
