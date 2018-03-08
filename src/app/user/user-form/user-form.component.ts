@@ -7,16 +7,23 @@ import { User } from '../user';
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnChanges {
+export class UserFormComponent implements OnInit, OnChanges {
 
     @Input() buttonLabel = 'ADD';
     @Input() user: User;
+    @Output() onUserChange = new EventEmitter<User>();
     @Output() onUserSubmit = new EventEmitter<User>();
 
     userForm = new FormGroup({
         firstName: new FormControl(),
         lastName: new FormControl()
     });
+
+    ngOnInit() {
+        this.userForm.valueChanges
+            .map(value => new User(value))
+            .subscribe(user => this.onUserChange.emit(user));
+    }
 
     ngOnChanges(changes: SimpleChanges) {
 

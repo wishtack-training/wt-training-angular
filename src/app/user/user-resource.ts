@@ -13,16 +13,24 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UserResource {
 
+    private _resourceUrl = 'https://wt-users.getsandbox.com/users';
+
     constructor(private _httpClient: HttpClient) {
     }
 
     addUser(user: User) {
 
+        return this._httpClient
+            .post(this._resourceUrl, user)
+            .map(data => new User(data));
+
     }
 
-    getUserList(): Observable<User[]> {
+    getUserList(params = {}): Observable<User[]> {
         return this._httpClient
-            .get<any[]>('https://wt-users.getsandbox.com/users')
+            .get<any[]>(this._resourceUrl, {
+                params
+            })
             .map(userDataList => {
                 return userDataList
                     .map(userData => new User(userData));

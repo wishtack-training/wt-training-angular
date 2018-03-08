@@ -1,4 +1,8 @@
 <wt-user-form
+        [buttonLabel]="'SEARCH'"
+        (onUserChange)="updateUserListFilterParams($event)"></wt-user-form>
+
+<wt-user-form
         (onUserSubmit)="addUser($event)"></wt-user-form>
 
 <div *ngFor="let user of userList">
