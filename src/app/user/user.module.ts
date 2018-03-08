@@ -14,12 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserStore } from './user-store';
 import { UserResource } from './user-resource';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
     declarations: [
         UserFormComponent,
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserDetailComponent
     ],
     exports: [
         UserFormComponent,

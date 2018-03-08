@@ -37,4 +37,9 @@ export class UserResource {
             });
     }
 
+    getUser(userId: string) {
+        return this._httpClient
+            .get(`${this._resourceUrl}/${userId}`)
+            .map(userData => new User(userData));
+    }
 }

@@ -1,5 +1,7 @@
 <img [src]="getPictureUrl(user)">
 <div>
-  <span>{{ user.firstName }}</span>
-  <span>{{ user.lastName }}</span>
+  <a [routerLink]="['/users', user.id]">
+    <span>{{ user.firstName }}</span>
+    <span>{{ user.lastName }}</span>
+  </a>
 </div>
