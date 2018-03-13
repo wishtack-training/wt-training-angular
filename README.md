@@ -24,3 +24,30 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
 
+# New Angular app
+
+* Install @angular/cli and yarn (because npm #@!@#)...
+
+```
+npm install -g @angular/cli yarn
+```
+
+* Create new app.
+```
+ng new training --skip-install --prefix=wt
+```
+
+* Go to project or open project in IntelliJ.
+```
+cd training
+```
+
+* Install dependencies.
+```
+yarn install
+```
+
+* Start app.
+```
+yarn start
+```
