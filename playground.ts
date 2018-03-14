@@ -1,77 +1,140 @@
-class Customer {
 
-    constructor(public firstName: string = null,
-                public lastName: string = null) {
+const demoCustomer = () => {
+
+    class Customer {
+
+        constructor(public firstName: string = null,
+                    public lastName: string = null) {
+        }
+
+        sayHi() {
+            console.log(`Hi ${this.firstName}`);
+        }
+
+        sayHiLater() {
+
+            setTimeout(() => {
+                this.sayHi();
+            }, 1000);
+
+        }
     }
 
-    sayHi() {
-        console.log(`Hi ${this.firstName}`);
-    }
+    const hello = (customer) => {
+        console.log(`Hello ${customer.firstName}`);
+    };
 
-    sayHiLater() {
+    const customer = new Customer();
 
-        setTimeout(() => {
-            this.sayHi();
-        }, 1000);
+    customer.sayHi();
 
-    }
-}
+    customer.sayHiLater();
 
-const hello = (customer) => {
-    console.log(`Hello ${customer.firstName}`);
+    hello(customer);
+
 };
 
-const customer = new Customer();
 
-customer.sayHi();
+const demoFilterMap = () => {
 
-customer.sayHiLater();
-
-hello(customer);
-
-class Product {
-    name: string;
-    price: number;
-}
-
-const productList: Product[] = [
-    {
-        name: 'Slack',
-        price: 5
-    },
-    {
-        name: 'IntelliJ',
-        price: 10
-    },
-    {
-        name: 'BrowserStack',
-        price: 30
+    class Product {
+        name: string;
+        price: number;
     }
-];
 
-const cheapProductNameList = productList
-    .filter(product => product.price < 15)
-    .map(product => product.name);
+    const productList: Product[] = [
+        {
+            name: 'Slack',
+            price: 5
+        },
+        {
+            name: 'IntelliJ',
+            price: 10
+        },
+        {
+            name: 'BrowserStack',
+            price: 30
+        }
+    ];
 
-const cheapProductsTotalPrice = productList
-    .filter(product => product.price < 15)
-    .map(product => product.price)
-    .reduce((result, price) => result + price, 0);
+    const cheapProductNameList = productList
+        .filter(product => product.price < 15)
+        .map(product => product.name);
 
-const stats = productList
-    .reduce((result, product) => {
+    const cheapProductsTotalPrice = productList
+        .filter(product => product.price < 15)
+        .map(product => product.price)
+        .reduce((result, price) => result + price, 0);
+
+    const stats = productList
+        .reduce((result, product) => {
+
+            return {
+                count: result.count + 1,
+                totalPrice: result.totalPrice + product.price
+            };
+
+        }, {
+            count: 0,
+            totalPrice: 0
+        });
+
+    console.log(cheapProductNameList);
+    console.log(cheapProductsTotalPrice);
+    console.log(stats);
+    console.log(stats.totalPrice / stats.count);
+
+};
+
+const demoImmutability = () => {
+
+
+    let userInfo = {
+        name: 'Foo',
+        address: 'Lyon'
+    };
+
+    const getUserName = () => 'John';
+
+    const getAddress = (): string => {
+        // throw new Error('Geolocation error!');
+        return 'Grenoble';
+    };
+
+    const updateUserInfo = (userInfo) => {
 
         return {
-            count: result.count + 1,
-            totalPrice: result.totalPrice + product.price
+            name: getUserName(),
+            address: getAddress()
         };
 
-    }, {
-        count: 0,
-        totalPrice: 0
-    });
+    };
 
-console.log(cheapProductNameList);
-console.log(cheapProductsTotalPrice);
-console.log(stats);
-console.log(stats.totalPrice / stats.count);
+    try {
+        userInfo = updateUserInfo(userInfo);
+    }
+    catch {
+        console.log('ERROR');
+    }
+
+    console.log(userInfo);
+
+    // -----
+
+    let itemList = [
+        1,
+        2
+    ];
+
+    const itemListOriginal = itemList;
+
+    itemList = [...itemList, 3, 4];
+
+    console.log(itemListOriginal);
+    console.log(itemList);
+    console.log(itemList === itemListOriginal);
+
+
+};
+
+demoImmutability();
