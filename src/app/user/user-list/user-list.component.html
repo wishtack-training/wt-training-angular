@@ -1,19 +1,5 @@
-<form (ngSubmit)="addUser()">
 
-    <input
-            name="firstName"
-            type="text"
-            [(ngModel)]="userTmp.firstName">
-
-    <input
-            name="lastName"
-            type="text"
-            [(ngModel)]="userTmp.lastName">
-
-    <button
-            type="submit">ADD USER</button>
-
-</form>
+<wt-user-form (userSubmit)="addUser($event)"></wt-user-form>
 
 <div *ngFor="let user of getUserList()">
 

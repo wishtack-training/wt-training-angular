@@ -7,6 +7,7 @@ import { DemoComponent } from './demo/demo.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { FormsModule } from '@angular/forms';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { UserPreviewComponent } from './user/user-preview/user-preview.component
         AppComponent,
         DemoComponent,
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserFormComponent
     ],
     imports: [
         BrowserModule,

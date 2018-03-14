@@ -9,8 +9,6 @@ import { User } from '../user';
 })
 export class UserListComponent {
 
-    userTmp = new User();
-
     private _userStore = new UserStore();
 
     constructor() {
@@ -18,9 +16,8 @@ export class UserListComponent {
         this._userStore.addUser(new User('John', 'DOE'));
     }
 
-    addUser() {
-        this._userStore.addUser(this.userTmp);
-        this.userTmp = new User();
+    addUser(user: User) {
+        this._userStore.addUser(user);
     }
 
     getUserList() {
