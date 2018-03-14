@@ -1,12 +1,11 @@
-:host {
-    text-align: center;
-}
+
+$img-size: 100px;
 
 img {
     background-color: thistle;
     border-radius: 50%;
     border-style: solid;
     border-width: 1px;
-    height: 100px;
-    width: 100px;
+    height: $img-size;
+    width: $img-size;
 }
