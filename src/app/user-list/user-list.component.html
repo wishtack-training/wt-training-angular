@@ -1,19 +1,31 @@
-<div>
-    <button>ADD USER</button>
-</div>
+<form (ngSubmit)="addUser()">
 
-<div>
-    <div>
-        <img src="https://robohash.org/foo" alt="">
-    </div>
-    <div>Foo BAR</div>
-    <button>REMOVE</button>
-</div>
+    <input
+            name="firstName"
+            type="text"
+            [(ngModel)]="userTmp.firstName">
 
-<div>
+    <input
+            name="lastName"
+            type="text"
+            [(ngModel)]="userTmp.lastName">
+
+    <button
+            type="submit">ADD USER</button>
+
+</form>
+
+<div *ngFor="let user of getUserList()">
+
     <div>
-        <img src="https://robohash.org/john" alt="">
+        <img [src]="getPictureUrl(user)" alt="">
     </div>
-    <div>John DOE</div>
-    <button>REMOVE</button>
+
+    <div>
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+    </div>
+
+    <button (click)="removeUser(user)">REMOVE</button>
+
 </div>
