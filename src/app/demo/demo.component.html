@@ -1,0 +1,14 @@
+
+<button
+        [disabled]="!canReset()"
+        (click)="reset()">RESET</button>
+
+<div>
+  {{ name }}
+</div>
+
+<img
+        alt=""
+        [src]="getPictureUrl()"
+        (dblclick)="reset()">
+

@@ -56,3 +56,5 @@ yarn start
 ```
 yarn test
 ```
+
+https://hangouts.google.com/call/6gSdk3RxtuYX77TZ8s8GAAEI
