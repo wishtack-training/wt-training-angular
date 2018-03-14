@@ -3,7 +3,7 @@
         [disabled]="!canReset()"
         (click)="reset()">RESET</button>
 
-<div>
+<div *ngIf="name.length > 5">
   {{ name }}
 </div>
 
@@ -12,3 +12,8 @@
         [src]="getPictureUrl()"
         (dblclick)="reset()">
 
+<ul>
+  <li *ngFor="let value of [0, 1, 2]">
+    {{ value }}
+  </li>
+</ul>
