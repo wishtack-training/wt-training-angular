@@ -18,4 +18,8 @@
             [disabled]="!userForm.valid"
             type="submit">ADD</button>
 
+
+
+    {{ userForm.controls.firstName.errors | json }}
+
 </form>

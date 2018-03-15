@@ -1,6 +1,31 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
+
+
+export const isNot = (forbiddenValue: string) => (control: AbstractControl) => {
+
+    const value: string = control.value;
+
+    if (value == null) {
+        return null;
+    }
+
+    if (value.length === 0) {
+        return null;
+    }
+
+    if (value.toLowerCase() === forbiddenValue.toLowerCase()) {
+        return {
+            'isnotyounes': {
+                reason: 'I hate this name!'
+            }
+        };
+    }
+
+    return null;
+
+};
 
 @Component({
     selector: 'wt-user-form-reactive',
@@ -14,7 +39,9 @@ export class UserFormReactiveComponent {
     userForm = new FormGroup({
         firstName: new FormControl(null, [
             Validators.required,
-            Validators.minLength(3)
+            Validators.minLength(3),
+            Validators.maxLength(5),
+            isNot('Younes')
         ]),
         lastName: new FormControl(null, [
 
