@@ -137,4 +137,42 @@ const demoImmutability = () => {
 
 };
 
-demoImmutability();
+const demoDestructuring = () => {
+
+    // Ordered parameters
+    const orderedFunk = (a, b) => {
+        console.log(a + b);
+    };
+
+    // const namedVerboseFunk = (args) => {
+    //
+    //     if (args.c === undefined) {
+    //         args.c = 4;
+    //     }
+    //
+    //     console.log(args.a + args.b + args.c);
+    // };
+
+    // const namedVerboseFunk = (args) => {
+    //
+    //     const { a, b, c = 4 } = args;
+    //
+    //     console.log(a + b + c);
+    // };
+
+    const namedFunk = ({c = 4, a, b}) => {
+        console.log(a + b + c);
+    };
+
+    const a = 1;
+    const b = 2;
+
+    orderedFunk(a, b);
+
+    namedFunk({a, b});
+
+    namedFunk({a, b, c: 5});
+
+};
+
+demoDestructuring();

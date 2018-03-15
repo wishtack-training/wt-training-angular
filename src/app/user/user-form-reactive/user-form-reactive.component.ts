@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -32,8 +32,10 @@ export const isNot = (forbiddenValue: string) => (control: AbstractControl) => {
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.scss']
 })
-export class UserFormReactiveComponent {
+export class UserFormReactiveComponent implements OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() userSubmit = new EventEmitter<User>();
 
     userForm = new FormGroup({
@@ -43,10 +45,23 @@ export class UserFormReactiveComponent {
             Validators.maxLength(5),
             isNot('Younes')
         ]),
-        lastName: new FormControl(null, [
-
-        ])
+        lastName: new FormControl()
     });
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user != null) {
+
+            let user = this.user;
+
+            if (user == null) {
+                user = undefined;
+            }
+
+            this.userForm.reset(user);
+        }
+
+    }
 
     submitUser() {
 

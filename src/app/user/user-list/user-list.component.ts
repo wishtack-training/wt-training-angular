@@ -9,6 +9,8 @@ import { User } from '../user';
 })
 export class UserListComponent {
 
+    editedUser;
+
     private _userStore = new UserStore();
 
     constructor() {
@@ -33,4 +35,12 @@ export class UserListComponent {
         this._userStore.removeUser(user);
     }
 
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    replaceUser({previousUser, currentUser}: {previousUser: User, currentUser: User}) {
+        this._userStore.replaceUser({previousUser, currentUser});
+        this.editedUser = null;
+    }
 }
