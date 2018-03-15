@@ -5,10 +5,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
-import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-reactive.component';
+import { UserStore } from './user/user-store';
 
 
 @NgModule({
@@ -17,16 +17,18 @@ import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-r
         DemoComponent,
         UserListComponent,
         UserPreviewComponent,
-        UserFormComponent,
         UserFormReactiveComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule,
         ReactiveFormsModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+        UserStore
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
