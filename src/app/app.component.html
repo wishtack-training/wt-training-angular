@@ -1,4 +1,8 @@
-<h1>HELLO</h1>
-
-<wt-user-list></wt-user-list>
-<wt-user-list></wt-user-list>
+<header>
+    <h1>WELCOME!!!</h1>
+</header>
+<router-outlet></router-outlet>
+<footer>
+    <a [routerLink]="['/landing']">Landing</a>
+    <a [routerLink]="['/users']">Users</a>
+</footer>
