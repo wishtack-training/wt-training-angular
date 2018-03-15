@@ -6,6 +6,8 @@ import { DemoComponent } from './demo/demo.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './landing/landing/landing.component';
 import { SharedModule } from './shared/shared.module';
+import { UserListViewComponent } from './views/user-routing/user-list-view/user-list-view.component';
+import { UserDetailViewComponent } from './views/user-routing/user-detail-view/user-detail-view.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { SharedModule } from './shared/shared.module';
     bootstrap: [
         AppComponent
     ],
-    exports: [LandingComponent]
+    exports: [
+        LandingComponent
+    ]
 })
 export class AppModule {
 }

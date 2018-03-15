@@ -1,0 +1,10 @@
+<div *ngIf="user == null">Loading...</div>
+
+<wt-user-preview
+        *ngIf="user"
+        [user]="user"></wt-user-preview>
+
+<wt-user-form-reactive
+        *ngIf="user"
+        [user]="user"
+        (userSubmit)="updateUser($event)"></wt-user-form-reactive>

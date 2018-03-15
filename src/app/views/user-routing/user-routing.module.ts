@@ -9,18 +9,27 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from '../../user/user-list/user-list.component';
 import { UserModule } from '../../user/user.module';
+import { UserListViewComponent } from './user-list-view/user-list-view.component';
+import { UserDetailViewComponent } from './user-detail-view/user-detail-view.component';
 
 export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: UserListComponent
+        component: UserListViewComponent
+    },
+    {
+        path: ':userId',
+        component: UserDetailViewComponent
     }
 ];
 
 @NgModule({
+    declarations: [
+        UserDetailViewComponent,
+        UserListViewComponent
+    ],
     imports: [
         RouterModule.forChild(routes),
         SharedModule,
