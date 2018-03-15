@@ -12,8 +12,13 @@ export class UserListComponent {
     private _userStore = new UserStore();
 
     constructor() {
-        this._userStore.addUser(new User('Foo', 'BAR'));
-        this._userStore.addUser(new User('John', 'DOE'));
+        this._userStore.addUser(new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        }));
+        this._userStore.addUser(new User({
+            lastName: 'DOE'
+        }));
     }
 
     addUser(user: User) {

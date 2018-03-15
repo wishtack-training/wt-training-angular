@@ -1,0 +1,21 @@
+<form
+        [formGroup]="userForm"
+        (ngSubmit)="submitUser()">
+
+    <input
+            formControlName="firstName"
+            type="text">
+
+    <input
+            formControlName="lastName"
+            type="text">
+
+    <div *ngIf="shouldShowFirstNameRequiredError()">
+        Hey! First name is required.
+    </div>
+
+    <button
+            [disabled]="!userForm.valid"
+            type="submit">ADD</button>
+
+</form>
