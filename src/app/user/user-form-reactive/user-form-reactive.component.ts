@@ -54,6 +54,8 @@ export class UserFormReactiveComponent {
 
         this.userSubmit.emit(user);
 
+        this.userForm.reset();
+
     }
 
     shouldShowFirstNameRequiredError() {
