@@ -13,16 +13,6 @@ export class UserListComponent {
 
     private _userStore = new UserStore();
 
-    constructor() {
-        this._userStore.addUser(new User({
-            firstName: 'Foo',
-            lastName: 'BAR'
-        }));
-        this._userStore.addUser(new User({
-            lastName: 'DOE'
-        }));
-    }
-
     addUser(user: User) {
         this._userStore.addUser(user);
     }
@@ -42,5 +32,9 @@ export class UserListComponent {
     replaceUser({previousUser, currentUser}: {previousUser: User, currentUser: User}) {
         this._userStore.replaceUser({previousUser, currentUser});
         this.editedUser = null;
+    }
+
+    undo() {
+        this._userStore.undo();
     }
 }

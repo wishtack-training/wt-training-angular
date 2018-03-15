@@ -1,4 +1,6 @@
 
+<button (click)="undo()">UNDO</button>
+
 <wt-user-form-reactive (userSubmit)="addUser($event)"></wt-user-form-reactive>
 
 <div *ngFor="let user of getUserList()">
@@ -22,6 +24,5 @@
         <button (click)="removeUser(user)">REMOVE</button>
 
     </div>
-
 
 </div>
