@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserModule } from '../../user/user.module';
 import { UserListViewComponent } from './user-list-view/user-list-view.component';
 import { UserDetailViewComponent } from './user-detail-view/user-detail-view.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,7 @@ export const routes: Routes = [
         UserListViewComponent
     ],
     imports: [
+        ReactiveFormsModule,
         RouterModule.forChild(routes),
         SharedModule,
         UserModule

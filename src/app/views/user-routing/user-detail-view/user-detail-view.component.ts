@@ -36,6 +36,6 @@ export class UserDetailViewComponent implements OnInit {
                 this._router.navigate(['/users']);
             });
 
-
     }
+
 }
