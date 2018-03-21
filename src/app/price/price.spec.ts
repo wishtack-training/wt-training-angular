@@ -1,18 +1,22 @@
-/**
- *
- * (c) 2013-2018 Wishtack
- *
- * $Id: $
- */
+import { PriceFactory } from './price-factory';
 
 describe('Price', () => {
 
     xit('should create price from coefficient and exponent', () => {
-        // @TODO: new Price(coefficient=1050, exponent=-2, currency='USD');
-        // @TODO: check price.amount 10.5
-        // @TODO: check price.currency
-        // @TODO: check price.coefficient
-        // @TODO: check price.exponent
+
+        const factory = new PriceFactory();
+
+        const price = factory.createPriceFromCoefficientExponent({
+            coefficient: 1050,
+            exponent: -2,
+            currency: 'USD'
+        });
+
+        expect(price.amount).toEqual(10.5);
+        expect(price.coefficient).toEqual(1050);
+        expect(price.exponent).toEqual(-2);
+        expect(price.currency).toEqual('USD');
+
     });
 
     xit('should create price from amount', () => {
