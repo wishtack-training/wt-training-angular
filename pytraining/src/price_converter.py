@@ -4,6 +4,7 @@
 #
 # $Id: $
 #
+
 from pytraining.src.bce import Bce
 from pytraining.src.price_factory import PriceFactory
 

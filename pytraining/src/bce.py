@@ -8,9 +8,9 @@
 
 class CurrencyInfo(object):
 
-    def __init__(self):
-        self.rate = None
-        self.symbol = None
+    def __init__(self, rate, symbol):
+        self.rate = rate
+        self.symbol = symbol
 
 
 class Bce(object):
