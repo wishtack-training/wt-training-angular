@@ -1,25 +1,22 @@
 import { browser, by, element } from 'protractor';
+import { UserListPage } from './user-list.page';
 
 describe('training App', () => {
 
-
     it('should add users', async () => {
 
-        await browser.get('/');
+        const userListPage = new UserListPage();
 
-        await element(by.css('input')).sendKeys('Foo');
+        await userListPage.go();
 
-        await element(by.buttonText('ADD')).click();
+        await userListPage.addUser({firstName: 'Foo'});
+        await userListPage.addUser({firstName: 'John'});
 
-        await element(by.css('input')).sendKeys('John');
+        const userNameList = await userListPage.getUserNameList();
 
-        await element(by.buttonText('ADD')).click();
-
-        const userElementList = await element.all(by.css('li'));
-
-        expect(userElementList.length).toEqual(2);
-        expect(await userElementList[0].getText()).toEqual('Foo');
-        expect(await userElementList[1].getText()).toEqual('John');
+        expect(userNameList.length).toEqual(2);
+        expect(userNameList[0]).toEqual('Foo');
+        expect(userNameList[1]).toEqual('John');
 
     });
 
