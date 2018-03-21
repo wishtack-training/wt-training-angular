@@ -1,12 +1,16 @@
 import { PriceFactory } from './price-factory';
 
-describe('Price', () => {
+describe('PriceFactory', () => {
 
-    const factory = new PriceFactory();
+    let priceFactory: PriceFactory;
+    
+    beforeEach(() => {
+        priceFactory = new PriceFactory();
+    });
 
     it('should create price from coefficient and exponent', () => {
 
-        const price = factory.createPriceFromCoefficientExponent({
+        const price = priceFactory.createPriceFromCoefficientExponent({
             coefficient: 1050,
             exponent: -2,
             currency: 'USD'
@@ -21,7 +25,7 @@ describe('Price', () => {
 
     it('should create price from amount', () => {
 
-        const price = factory.createPriceFromAmount({
+        const price = priceFactory.createPriceFromAmount({
             amount: 10.504,
             currency: 'USD'
         });
