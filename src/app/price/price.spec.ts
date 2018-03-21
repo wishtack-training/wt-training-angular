@@ -19,12 +19,17 @@ describe('Price', () => {
 
     });
 
-    xit('should create price from amount', () => {
-        // @TODO: new Price(amount=10.505, currency='USD');
-        // @TODO: check price.amount 10.5
-        // @TODO: check price.currency
-        // @TODO: check price.coefficient 1050
-        // @TODO: check price.exponent -2
+    it('should create price from amount', () => {
+
+        const price = factory.createPriceFromAmount({
+            amount: 10.504,
+            currency: 'USD'
+        });
+
+        expect(price.amount).toEqual(10.5);
+        expect(price.coefficient).toEqual(1050);
+        expect(price.exponent).toEqual(-2);
+        expect(price.currency).toEqual('USD');
 
     });
 
