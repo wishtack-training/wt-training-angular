@@ -2,9 +2,9 @@ import { PriceFactory } from './price-factory';
 
 describe('Price', () => {
 
-    xit('should create price from coefficient and exponent', () => {
+    const factory = new PriceFactory();
 
-        const factory = new PriceFactory();
+    it('should create price from coefficient and exponent', () => {
 
         const price = factory.createPriceFromCoefficientExponent({
             coefficient: 1050,
