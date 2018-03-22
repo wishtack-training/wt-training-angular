@@ -10,6 +10,8 @@
 
 </form>
 
+<div>{{ userCount$ | async }}</div>
+
 <ul>
-    <li *ngFor="let user of userList">{{ user.firstName }}</li>
+    <li *ngFor="let user of userList$ | async">{{ user.firstName }}</li>
 </ul>
