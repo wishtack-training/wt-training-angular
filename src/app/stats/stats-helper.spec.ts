@@ -5,24 +5,47 @@
  * $Id: $
  */
 
-import { StatsHelper } from './stats-helper';
+import { EmptyDataListError, StatsHelper } from './stats-helper';
+import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { StatsModule } from './stats.module';
 
 describe('StatsHelper', () => {
 
-    it('should calculate average', () => {
+    let statsHelper: StatsHelper;
 
-        const statsHelper = new StatsHelper();
+    beforeEach(async(() => {
+
+        TestBed
+            .configureTestingModule({
+                imports: [
+                    StatsModule
+                ]
+            })
+            .compileComponents();
+
+    }));
+
+    beforeEach(() => statsHelper = TestBed.get(StatsHelper));
+
+    it('should calculate average', () => {
 
         const dataList = [15, 10, 21];
 
-        const result = statsHelper.calcuteAverage(dataList);
+        const result = statsHelper.calculateAverage(dataList);
 
         expect(result).toEqual(15);
 
     });
 
-    xit('should raise exception if data array is empty', () => {
+    it('should raise exception if data array is empty', async(() => {
 
-    });
+        expect(() => {
+            statsHelper.calculateAverage([]);
+        }).toThrow(new EmptyDataListError());
+
+    }));
+
+
 
 });
+

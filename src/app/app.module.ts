@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StatsHelper } from './stats/stats-helper';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StatsModule } from './stats/stats.module';
 
 
 @NgModule({
@@ -12,9 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     imports: [
         BrowserModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StatsModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

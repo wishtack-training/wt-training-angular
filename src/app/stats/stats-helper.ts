@@ -1,13 +1,33 @@
-import { NotImplementedError } from '../../lib/not-implemented-error';
+import { Exception } from '../../lib/exception';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+export class EmptyDataListError extends Exception {
+    constructor() {
+        super('Empty data list!');
+    }
+}
+
+
+@Injectable()
 export class StatsHelper {
 
+    constructor(private _httpClient: HttpClient) {
+    }
+
     /**
-     * @deprecated WIP.
      * @param {number[]} dataList
      */
-    calcuteAverage(dataList: number[]): number {
-        throw new NotImplementedError();
+    calculateAverage(dataList: number[]): number {
+
+        if (dataList.length === 0) {
+            throw new EmptyDataListError();
+        }
+
+        const sum = dataList.reduce((result, data) => result + data, 0);
+
+        return Math.round(sum / dataList.length);
+
     }
 
 }
