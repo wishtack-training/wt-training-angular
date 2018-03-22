@@ -9,7 +9,7 @@ import { StatsHelper } from './stats-helper';
 
 describe('StatsHelper', () => {
 
-    xit('should calculate average', () => {
+    it('should calculate average', () => {
 
         const statsHelper = new StatsHelper();
 

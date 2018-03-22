@@ -4,6 +4,12 @@
  *
  * $Id: $
  */
+import { Exception } from './exception';
 
-export class NotImplementedError {
+export class NotImplementedError extends Exception {
+
+    constructor() {
+        super('Not implemented yet!');
+    }
+
 }
