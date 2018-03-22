@@ -1,6 +1,7 @@
 import { Exception } from '../../lib/exception';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NotImplementedError } from '../../lib/not-implemented-error';
 
 export class EmptyDataListError extends Exception {
     constructor() {
@@ -28,6 +29,10 @@ export class StatsHelper {
 
         return Math.round(sum / dataList.length);
 
+    }
+
+    getSolution(): number {
+        return 100;
     }
 
 }
