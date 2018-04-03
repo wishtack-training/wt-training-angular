@@ -11,48 +11,64 @@ import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
-    xit('should add users', () => {
+    let userStore: UserStore;
 
-        const userStore = new UserStore();
+    let user1: User;
+    let user2: User;
+    let user3: User;
 
-        const user1 = new User('Foo', 'BAR');
-        const user2 = new User('John', 'DOE');
-        const user3 = new User('Foo', 'BAR');
+    beforeEach(() => {
 
-        // @TODO
-        // expect(userStore.getUserList()).toEqual([]);
-        //
-        // userStore.addUser(user1);
-        // userStore.addUser(user2);
-        // userStore.addUser(user3);
-        //
-        // expect(userStore.getUserList()).toEqual([
-        //     user1,
-        //     user2,
-        //     user3
-        // ]);
+        userStore = new UserStore();
+
+        user1 = new User('Foo', 'BAR');
+        user2 = new User('John', 'DOE');
+        user3 = new User('Foo', 'BAR');
 
     });
 
-    xit('should remove users', () => {
+    it('should add users', () => {
 
-        const userStore = new UserStore();
+        const userListEmpty = userStore.getUserList();
 
-        const user1 = new User('Foo', 'BAR');
-        const user2 = new User('John', 'DOE');
-        const user3 = new User('Foo', 'BAR');
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        userStore.addUser(user3);
 
-        // @TODO
-        // userStore.addUser(user1);
-        // userStore.addUser(user2);
-        // userStore.addUser(user3);
-        //
-        // userStore.removeUser(user1);
-        //
-        // expect(userStore.getUserList()).toEqual([
-        //     user2,
-        //     user3
-        // ]);
+        const userList = userStore.getUserList();
+
+        expect(userListEmpty).toEqual([]);
+
+        expect(userList).toEqual([
+            user1,
+            user2,
+            user3
+        ]);
+
+    });
+
+    it('should remove users', () => {
+
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        userStore.addUser(user3);
+
+        const userListFull = userStore.getUserList();
+
+        userStore.removeUser(user1);
+
+        expect(userListFull).toEqual([
+            user1,
+            user2,
+            user3
+        ]);
+
+        const userList = userStore.getUserList();
+
+        expect(userList).toEqual([
+            user2,
+            user3
+        ]);
 
     });
 
