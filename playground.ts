@@ -1,9 +1,13 @@
 class Customer {
 
-    constructor(firstName, lastName) {
+    private _firstName: string;
+    private _lastName: string;
+    private _email: string;
+
+    constructor(firstName, lastName, email = null) {
         this._firstName = firstName;
         this._lastName = lastName;
-        this._email = null;
+        this._email = email;
     }
 
     sayHi() {
@@ -45,20 +49,34 @@ const productList = [
     }
 ];
 
-const cheapProductList = productList.filter((product) => {
-    return product.price < 25;
-});
 
-console.log(cheapProductList);
-
-let cheapProductNameList = cheapProductList.map((product) => {
-    return product.name;
-});
-
-console.log(cheapProductNameList);
-
-cheapProductNameList = productList
+const cheapProductNameList = productList
     .filter(product => product.price < 25)
     .map(product => product.name);
 
 console.log(cheapProductNameList);
+
+class Company {
+    address: string;
+    email: string;
+    name: string;
+}
+
+class Employee {
+    gender: string;
+    email: string;
+    name: string;
+}
+
+interface Emailable {
+    email: string;
+    name: string;
+}
+
+const sendEmail = (emailable: Emailable, message) => {
+    console.log(`${emailable.email}: ${message}`);
+};
+
+sendEmail(new Employee(), 'hello');
+sendEmail(new Company(), 'hello');
+sendEmail({name: 'Foo', email: 'test'}, 'hello');
