@@ -1,0 +1,19 @@
+
+/* @TODO: Move this to _mixins.scss. */
+@mixin wt-circle($diameter) {
+
+    height: $diameter;
+    width: $diameter;
+    border-radius: $diameter / 2;
+    border-style: solid;
+    border-width: 1px;
+
+}
+
+img {
+
+    @include wt-circle(100px);
+
+    background-color: thistle;
+
+}

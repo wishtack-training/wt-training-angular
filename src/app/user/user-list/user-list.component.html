@@ -1,31 +1,9 @@
-<form
-        [formGroup]="userForm"
-        (ngSubmit)="addUser()">
-
-    <input
-            formControlName="firstName"
-            type="text">
-
-    <input
-            formControlName="lastName"
-            type="text">
-
-    <button
-            type="submit"
-            [disabled]="!userForm.valid">ADD</button>
-
-</form>
+<wt-user-form
+        (userSubmit)="addUser($event)"></wt-user-form>
 
 <div *ngFor="let user of getUserList()">
 
-    <div>
-        <img [src]="getPictureUrl(user)">
-    </div>
-
-    <div>
-        <span>{{ user.firstName }}</span>
-        <span>{{ user.lastName }}</span>
-    </div>
+    <wt-user-preview [user]="user"></wt-user-preview>
 
     <button
             type="button"
