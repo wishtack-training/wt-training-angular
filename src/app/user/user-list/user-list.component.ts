@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -8,26 +8,21 @@ import { UserStore } from '../user-store';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
     userForm = new FormGroup({
-        firstName: new FormControl(),
+        firstName: new FormControl(null, [
+            Validators.required,
+            Validators.maxLength(10)
+        ]),
         lastName: new FormControl()
     });
 
     private _userStore = new UserStore();
 
-    ngOnInit() {
-        this._userStore.addUser(new User('Foo', 'BAR'));
-        this._userStore.addUser(new User('John', 'DOE'));
-    }
-
     addUser() {
 
-        const user = new User(
-            this.userForm.value.firstName,
-            this.userForm.value.lastName
-        );
+        const user = new User(this.userForm.value);
 
         this._userStore.addUser(user);
 

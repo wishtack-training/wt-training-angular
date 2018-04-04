@@ -10,7 +10,9 @@
             formControlName="lastName"
             type="text">
 
-    <button type="submit">ADD</button>
+    <button
+            type="submit"
+            [disabled]="!userForm.valid">ADD</button>
 
 </form>
 

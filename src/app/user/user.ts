@@ -1,11 +1,14 @@
-export class User {
+export class UserSchema {
 
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
 
-    constructor(firstName: string, lastName: string) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(args: UserSchema = {}) {
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
     }
 
+}
+
+export class User extends UserSchema {
 }
