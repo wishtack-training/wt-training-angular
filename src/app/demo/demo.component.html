@@ -1,3 +1,23 @@
+
+<form (submit)="addCity()">
+
+    <input
+            name="city"
+            type="text"
+            [(ngModel)]="city">
+
+    <button type="submit">ADD CITY</button>
+
+</form>
+
+<ul *ngIf="cityList != null">
+    <li *ngFor="let city of cityList">
+        {{ city }}
+    </li>
+</ul>
+
+<div>--------------------</div>
+
 <div>
     <span>{{ userName }}</span>
     <span>({{ userName.length }})</span>
@@ -7,9 +27,3 @@
         type="button"
         [disabled]="canReset()"
         (click)="reset()">RESET</button>
-
-<ul *ngIf="cityList != null">
-    <li *ngFor="let city of cityList">
-        {{ city }}
-    </li>
-</ul>

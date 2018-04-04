@@ -9,6 +9,7 @@ export class DemoComponent {
 
     userName = 'Foo';
 
+    city: string;
     cityList = [
         'Dijon',
         'Grenoble',
@@ -31,4 +32,8 @@ export class DemoComponent {
         this.userName = '';
     }
 
+    addCity() {
+        this.cityList = [...this.cityList, this.city];
+        this.city = null;
+    }
 }
