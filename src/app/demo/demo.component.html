@@ -1,3 +1,15 @@
-<p>
-  demo works!
-</p>
+<div>
+    <span>{{ userName }}</span>
+    <span>({{ userName.length }})</span>
+</div>
+
+<button
+        type="button"
+        [disabled]="canReset()"
+        (click)="reset()">RESET</button>
+
+<ul *ngIf="cityList != null">
+    <li *ngFor="let city of cityList">
+        {{ city }}
+    </li>
+</ul>
