@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -9,6 +8,8 @@ import { UserStore } from '../user-store';
     styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent {
+
+    editedUser: User;
 
     private _userStore = new UserStore();
 
@@ -24,4 +25,15 @@ export class UserListComponent {
         this._userStore.removeUser(user);
     }
 
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    updateUser(user: User) {
+        this._userStore.replaceUser({
+            previousUser: this.editedUser,
+            currentUser: user
+        });
+        this.editedUser = null;
+    }
 }

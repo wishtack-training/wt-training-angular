@@ -17,4 +17,23 @@ export class UserStore {
             .filter(_user => _user !== user);
     }
 
+    replaceUser({previousUser, currentUser}:
+                    {
+                        previousUser: User;
+                        currentUser: User
+                    }) {
+
+        this._userList = this._userList
+            .map(user => {
+
+                if (user === previousUser) {
+                    return currentUser;
+                }
+
+                return user;
+
+            });
+
+    }
+
 }
