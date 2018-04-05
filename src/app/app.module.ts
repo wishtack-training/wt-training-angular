@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppComponent } from './app.component';
+import { BookRepository } from './book/book-repository';
 import { BookSearchComponent } from './book/book-search/book-search.component';
 import { DemoComponent } from './demo/demo.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
@@ -29,6 +30,7 @@ import { UserStore } from './user/user-store';
         ReactiveFormsModule
     ],
     providers: [
+        BookRepository,
         UserStore
     ],
     bootstrap: [AppComponent]

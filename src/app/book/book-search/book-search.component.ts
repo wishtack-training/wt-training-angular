@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { tap } from 'rxjs/operators';
 import { Book } from '../book';
+import { BookRepository } from '../book-repository';
 import { GoogleBookListResponse } from '../google-book-list-response';
 
 
@@ -17,45 +19,18 @@ export class BookSearchComponent implements OnInit {
     });
     bookList: Book[];
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(private _bookRepository: BookRepository) {
     }
 
     ngOnInit() {
     }
 
     searchBook() {
-        const bookTitle = this.bookFormGroup.value.title;
 
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(bookTitle)}`;
+        const title = this.bookFormGroup.value.title;
 
-        const bookListResponse$ = this._httpClient.get<GoogleBookListResponse>(url);
-
-        bookListResponse$
-            .subscribe(bookListResponse => {
-
-                this.bookList = bookListResponse.items.map(item => {
-
-                    /* `imageLinks` is sometimes missing so we replace it with this default object. */
-                    const defaultImageLinks = {
-                        thumbnail: null
-                    };
-                    const { id, volumeInfo } = item;
-                    const { title, imageLinks = defaultImageLinks } = volumeInfo;
-
-                    const pictureUrl = imageLinks.thumbnail;
-
-                    console.log(title);
-
-                    return new Book({
-                        id,
-                        title,
-                        pictureUrl
-                    });
-
-                });
-
-            });
-
+        this._bookRepository.searchBookList(title)
+            .subscribe(bookList => this.bookList = bookList);
 
     }
 
