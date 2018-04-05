@@ -12,6 +12,7 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserStore } from './user/user-store';
+import { BookPreviewComponent } from './book/book-preview/book-preview.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserStore } from './user/user-store';
         UserListComponent,
         UserFormComponent,
         UserPreviewComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        BookPreviewComponent
     ],
     imports: [
         BrowserModule,

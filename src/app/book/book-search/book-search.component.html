@@ -1,18 +1,17 @@
 <form
-        [formGroup]="bookFormGroup"
-        (ngSubmit)="searchBook()">
+        [formGroup]="bookFormGroup">
 
     <input
             formControlName="title"
             placeholder="Book title..."
             type="text">
 
-    <button type="submit">SEARCH</button>
-
 </form>
 
 <ul>
 
-    <li *ngFor="let book of bookList">{{ book.title }}</li>
+    <wt-book-preview
+            *ngFor="let book of bookList$ | async"
+            [book]="book"></wt-book-preview>
 
 </ul>
