@@ -11,7 +11,11 @@ export class UserListComponent {
 
     editedUser: User;
 
-    private _userStore = new UserStore();
+    private _userStore: UserStore;
+    
+    constructor(userStore: UserStore) {
+        this._userStore = userStore;
+    }
 
     addUser(user: User) {
         this._userStore.addUser(user);

@@ -8,6 +8,7 @@ import { DemoComponent } from './demo/demo.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
+import { UserStore } from './user/user-store';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { UserPreviewComponent } from './user/user-preview/user-preview.component
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [
+        UserStore
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
