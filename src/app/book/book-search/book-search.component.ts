@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository';
@@ -11,14 +11,12 @@ import { BookRepository } from '../book-repository';
     templateUrl: './book-search.component.html',
     styleUrls: ['./book-search.component.css']
 })
-export class BookSearchComponent implements OnDestroy, OnInit {
+export class BookSearchComponent implements OnInit {
 
     bookFormGroup = new FormGroup({
         title: new FormControl()
     });
     bookList: Book[];
-
-    private _searchSubscription: Subscription;
 
     constructor(private _bookRepository: BookRepository) {
     }
@@ -27,34 +25,17 @@ export class BookSearchComponent implements OnDestroy, OnInit {
 
         this.bookFormGroup.valueChanges
             .pipe(
-                debounceTime(200)
+                debounceTime(200),
+                switchMap(value => {
+                    const title = value.title;
+                    return this._bookRepository.searchBookList(title);
+                })
             )
-            .subscribe(value => {
+            .subscribe(bookList => {
 
-                this.searchBook();
+                this.bookList = bookList;
 
             });
-
-    }
-
-    ngOnDestroy() {
-
-        if (this._searchSubscription != null) {
-            this._searchSubscription.unsubscribe();
-        }
-
-    }
-
-    searchBook() {
-
-        const title = this.bookFormGroup.value.title;
-
-        if (this._searchSubscription != null) {
-            this._searchSubscription.unsubscribe();
-        }
-
-        this._searchSubscription = this._bookRepository.searchBookList(title)
-            .subscribe(bookList => this.bookList = bookList);
 
     }
 

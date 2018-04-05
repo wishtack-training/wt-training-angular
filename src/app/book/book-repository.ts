@@ -8,6 +8,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 
 import { Book } from './book';
@@ -22,6 +23,10 @@ export class BookRepository {
     searchBookList(title: string): Observable<Book[]> {
 
         const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(title)}`;
+
+        if (title == null || title.length === 0) {
+            return of(null);
+        }
 
         return this._httpClient.get<GoogleBookListResponse>(url)
             .pipe(
