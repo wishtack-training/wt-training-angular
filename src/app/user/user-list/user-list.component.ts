@@ -30,10 +30,23 @@ export class UserListComponent {
     }
 
     updateUser(user: User) {
-        this._userStore.replaceUser({
-            previousUser: this.editedUser,
-            currentUser: user
-        });
+
+        this.replaceUser(this.editedUser, user);
         this.editedUser = null;
+
     }
+
+    replaceUser(previousUser, currentUser) {
+
+        this._userStore.replaceUser({
+            previousUser,
+            currentUser
+        });
+
+    }
+
+    trackByIndex(index) {
+        return index;
+    }
+
 }

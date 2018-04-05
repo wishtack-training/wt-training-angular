@@ -9,4 +9,11 @@
     <span>{{ user.lastName }}</span>
   </div>
 
+  <button
+          *ngIf="previousUser"
+          (click)="resetToPreviousValue()">
+    <span>RESET</span>
+    <span>(to: {{ previousUser.firstName }})</span>
+  </button>
+
 </div>

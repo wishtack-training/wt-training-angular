@@ -1,9 +1,11 @@
 <wt-user-form
         (userSubmit)="addUser($event)"></wt-user-form>
 
-<div *ngFor="let user of getUserList()">
+<div *ngFor="let user of getUserList(); trackBy: trackByIndex">
 
-    <wt-user-preview [user]="user"></wt-user-preview>
+    <wt-user-preview
+            [user]="user"
+            (userChange)="replaceUser(user, $event)"></wt-user-preview>
 
     <div *ngIf="editedUser !== user">
 
