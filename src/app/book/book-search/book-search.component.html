@@ -1,0 +1,17 @@
+<form
+        [formGroup]="bookFormGroup"
+        (ngSubmit)="searchBook()">
+
+    <input
+            formControlName="title"
+            type="text">
+
+    <button type="submit">SEARCH</button>
+
+</form>
+
+<ul>
+
+    <li *ngFor="let book of bookList">{{ book.title }}</li>
+
+</ul>
