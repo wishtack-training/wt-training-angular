@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -41,6 +41,7 @@ import { environment } from '../environments/environment';
         MatButtonModule,
         MatCardModule,
         MatInputModule,
+        MatToolbarModule,
         ReactiveFormsModule,
         StoreModule.forRoot(reducers),
         !environment.production ? StoreDevtoolsModule.instrument() : []

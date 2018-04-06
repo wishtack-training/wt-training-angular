@@ -1,10 +1,10 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { usersReducer, UsersState } from '../user/users.reducer';
+import { userListReducer, UserListState } from '../user/user-list.reducer';
 
 export interface AppState {
-    users: UsersState;
+    userList: UserListState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-    users: usersReducer
+    userList: userListReducer
 };

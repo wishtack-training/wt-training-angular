@@ -60,6 +60,11 @@ yarn ng generate store AppState --root --module app.module.ts
 yarn ng generate reducer user/UserList
 ```
 
+## Ngrx actions
+```
+yarn ng generate action user/user-list
+```
+
 # Links
 
 https://caniuse.com/

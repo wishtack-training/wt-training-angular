@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { User } from '../user';
+import { UserAdd, UserRemove } from '../user-list.actions';
 import { UserStore } from '../user-store';
 
 @Component({
@@ -10,38 +11,23 @@ import { UserStore } from '../user-store';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
     editedUser: User;
-    userList: User[];
+    userList$: Store<User[]>;
 
     constructor(private _userStore: UserStore,
                 private _store: Store<AppState>) {
-    }
-
-    ngOnInit() {
-
-        this._store
-            .subscribe(state => {
-                this.userList = state.users.userList;
-            });
-
+        this.userList$ = this._store.select('userList');
     }
 
     addUser(user: User) {
-        this._store
-            .dispatch({
-                type: 'wt/user/add',
-                user: user
-            });
-    }
-
-    getUserList() {
-        return this._userStore.getUserList();
+        this._store.dispatch(new UserAdd(user));
+        this._store.dispatch({type: 'bidule'});
     }
 
     removeUser(user: User) {
-        this._userStore.removeUser(user);
+        this._store.dispatch(new UserRemove(user));
     }
 
     editUser(user: User) {
