@@ -16,6 +16,10 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserStore } from './user/user-store';
 import { BookPreviewComponent } from './book/book-preview/book-preview.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -37,7 +41,9 @@ import { BookPreviewComponent } from './book/book-preview/book-preview.component
         MatButtonModule,
         MatCardModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StoreModule.forRoot(reducers),
+        !environment.production ? StoreDevtoolsModule.instrument() : []
     ],
     providers: [
         BookRepository,

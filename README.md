@@ -44,6 +44,22 @@ ng new training --skip-install --prefix=wt
 yarn install
 ```
 
+# Ngrx
+
+## Ngrx setup
+
+```
+yarn add @ngrx/store
+yarn add @ngrx/store-devtools @ngrx/schematics --dev
+yarn ng set defaults.schematics.collection=@ngrx/schematics
+yarn ng generate store AppState --root --module app.module.ts
+```
+
+## Ngrx reducer
+```
+yarn ng generate reducer user/UserList
+```
+
 # Links
 
 https://caniuse.com/
