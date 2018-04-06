@@ -14,10 +14,14 @@
 
 </form>
 
-<ul>
+<div
+        fxLayout="row"
+        fxLayoutAlign="space-evenly stretch"
+        fxLayoutWrap>
 
     <wt-book-preview
             *ngFor="let book of bookList$ | async"
+            class="wt-book-preview"
             [book]="book"></wt-book-preview>
 
-</ul>
+</div>

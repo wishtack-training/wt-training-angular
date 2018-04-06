@@ -57,6 +57,10 @@ http://ngdoc.io/
 ## Angular material
 https://material.angular.io
 
+## Angular flex layout
+https://github.com/angular/flex-layout
+https://tburleson-layouts-demos.firebaseapp.com/#/docs
+
 ## Stackblitz
 http://stackblitz.io/
 
