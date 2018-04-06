@@ -22,11 +22,16 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserStore } from './user/user-store';
+import { UserDetailViewComponent } from './views/user-detail-view/user-detail-view.component';
 
 export const routes: Routes = [
     {
         path: 'users',
         component: UserListComponent
+    },
+    {
+        path: 'users/:userId',
+        component: UserDetailViewComponent
     },
     {
         path: 'books',
@@ -43,8 +48,9 @@ export const routes: Routes = [
     declarations: [
         AppComponent,
         DemoComponent,
-        UserListComponent,
+        UserDetailViewComponent,
         UserFormComponent,
+        UserListComponent,
         UserPreviewComponent,
         ToolbarComponent
     ],

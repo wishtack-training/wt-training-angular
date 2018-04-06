@@ -1,0 +1,13 @@
+
+<div *ngIf="user == null">
+  User not found 😿 !!
+</div>
+
+<div *ngIf="user">
+
+  <wt-user-preview [user]="user"></wt-user-preview>
+
+  <wt-book-search
+          (selectBook)="onSelectBook($event)"></wt-book-search>
+
+</div>

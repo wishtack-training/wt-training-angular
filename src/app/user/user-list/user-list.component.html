@@ -1,11 +1,15 @@
 <wt-user-form
         (userSubmit)="addUser($event)"></wt-user-form>
 
-<div *ngFor="let user of userList$ | async">
+<div *ngFor="let user of userList$ | async; let userIndex = index">
 
     <wt-user-preview [user]="user"></wt-user-preview>
 
     <div *ngIf="editedUser !== user">
+
+        <a [routerLink]="['/users', userIndex]">
+            <button type="button">DETAIL</button>
+        </a>
 
         <button
                 type="button"

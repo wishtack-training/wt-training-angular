@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime, startWith, switchMap } from 'rxjs/operators';
@@ -12,6 +12,8 @@ import { BookRepository } from '../book-repository';
     styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
+
+    @Output() selectBook = new EventEmitter<Book>();
 
     bookFormGroup = new FormGroup({
         title: new FormControl()

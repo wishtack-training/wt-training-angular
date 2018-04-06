@@ -22,6 +22,7 @@
             *ngFor="let book of bookList$ | async"
             class="wt-book-preview"
             fxLayout="column"
-            [book]="book"></wt-book-preview>
+            [book]="book"
+            (click)="selectBook.emit(book)"></wt-book-preview>
 
 </div>
