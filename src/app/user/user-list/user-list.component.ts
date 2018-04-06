@@ -48,9 +48,5 @@ export class UserListComponent {
         });
 
     }
-
-    trackByIndex(index) {
-        return index;
-    }
-
+    
 }

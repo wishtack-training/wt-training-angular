@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookRepository } from './book/book-repository';
 import { BookSearchComponent } from './book/book-search/book-search.component';
+import { BookModule } from './book/book.module';
 import { DemoComponent } from './demo/demo.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
@@ -30,19 +31,15 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         UserListComponent,
         UserFormComponent,
         UserPreviewComponent,
-        BookSearchComponent,
-        BookPreviewComponent,
         ToolbarComponent
     ],
     imports: [
+        BookModule,
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         FormsModule,
         HttpClientModule,
-        MatButtonModule,
-        MatCardModule,
-        MatInputModule,
         MatToolbarModule,
         ReactiveFormsModule,
         StoreModule.forRoot(reducers),
