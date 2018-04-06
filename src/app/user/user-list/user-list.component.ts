@@ -23,7 +23,6 @@ export class UserListComponent {
 
     addUser(user: User) {
         this._store.dispatch(new UserAdd(user));
-        this._store.dispatch({type: 'bidule'});
     }
 
     removeUser(user: User) {
