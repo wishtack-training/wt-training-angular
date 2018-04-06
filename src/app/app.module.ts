@@ -20,6 +20,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
         UserFormComponent,
         UserPreviewComponent,
         BookSearchComponent,
-        BookPreviewComponent
+        BookPreviewComponent,
+        ToolbarComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+
+    <span *ngIf="userCount$ | async as userCount">
+        Users count: {{ userCount }}
+    </span>
+
+</mat-toolbar>
