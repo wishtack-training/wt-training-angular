@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository';
@@ -24,9 +24,14 @@ export class BookSearchComponent implements OnInit {
 
     ngOnInit() {
 
+        this.bookFormGroup.setValue({
+            title: 'eXtreme Programming'
+        });
+
         this.bookList$ = this.bookFormGroup.valueChanges
             .pipe(
                 debounceTime(200),
+                startWith(this.bookFormGroup.value),
                 switchMap(value => {
                     const title = value.title;
                     return this._bookRepository.searchBookList(title);

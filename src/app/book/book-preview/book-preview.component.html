@@ -1,3 +1,25 @@
-<p>
-  {{ book.title }}
-</p>
+<mat-card>
+
+    <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>TODO</mat-card-subtitle>
+    </mat-card-header>
+
+    <img
+            *ngIf="book.pictureUrl"
+            mat-card-image
+            [src]="book.pictureUrl">
+
+    <mat-card-content>
+        <p>
+            TODO
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button
+                color="primary"
+                mat-button>RENT</button>
+    </mat-card-actions>
+
+</mat-card>
