@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../reducers';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -10,19 +13,27 @@ import { UserStore } from '../user-store';
 export class UserListComponent implements OnInit {
 
     editedUser: User;
+    userList: User[];
 
-    private _userStore: UserStore;
-
-    constructor(userStore: UserStore) {
-        this._userStore = userStore;
+    constructor(private _userStore: UserStore,
+                private _store: Store<AppState>) {
     }
 
     ngOnInit() {
 
+        this._store
+            .subscribe(state => {
+                this.userList = state.users.userList;
+            });
+
     }
 
     addUser(user: User) {
-        this._userStore.addUser(user);
+        this._store
+            .dispatch({
+                type: 'wt/user/add',
+                user: user
+            });
     }
 
     getUserList() {

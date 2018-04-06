@@ -1,7 +1,7 @@
 <wt-user-form
         (userSubmit)="addUser($event)"></wt-user-form>
 
-<div *ngFor="let user of getUserList(); trackBy: trackByIndex">
+<div *ngFor="let user of userList; trackBy: trackByIndex">
 
     <wt-user-preview [user]="user"></wt-user-preview>
 
