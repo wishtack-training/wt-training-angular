@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -12,7 +12,7 @@ export class UserListComponent {
     editedUser: User;
 
     private _userStore: UserStore;
-    
+
     constructor(userStore: UserStore) {
         this._userStore = userStore;
     }
