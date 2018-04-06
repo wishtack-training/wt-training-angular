@@ -15,13 +15,13 @@
 </form>
 
 <div
-        fxLayout="row"
-        fxLayoutAlign="space-evenly stretch"
-        fxLayoutWrap>
+        fxLayout="row wrap"
+        fxLayoutAlign="space-evenly stretch">
 
     <wt-book-preview
             *ngFor="let book of bookList$ | async"
             class="wt-book-preview"
+            fxLayout="column"
             [book]="book"></wt-book-preview>
 
 </div>

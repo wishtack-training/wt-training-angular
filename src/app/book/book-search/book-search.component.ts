@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
+import { User } from '../../user/user';
+import { UserStore } from '../../user/user-store';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository';
 
@@ -19,7 +21,10 @@ export class BookSearchComponent implements OnInit {
     });
     bookList$: Observable<Book[]>;
 
-    constructor(private _bookRepository: BookRepository) {
+    constructor(private _bookRepository: BookRepository, private _userStore: UserStore) {
+        setInterval(() => {
+            this._userStore.addUser(new User({firstName: 'Foo'}));
+        }, 1000);
     }
 
     ngOnInit() {
