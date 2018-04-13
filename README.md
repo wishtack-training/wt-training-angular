@@ -24,3 +24,21 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
 
+## Create an angular app
+
+* @HACK: Fixing version because something went wrong with the angular cli team...
+```
+npm install -g @angular/cli@1.7.4
+```
+
+* Generate app.
+
+```
+ng new training --prefix wt --skip-install --service-worker
+```
+
+* Open project
+
+yarn install
+
+yarn start
