@@ -1,10 +1,29 @@
-<form>
+<form
+        [formGroup]="searchFormGroup"
+        (ngSubmit)="searchBook()">
+
+    <!--<div *ngFor="let controlInfo of controlInfoList">-->
+        <!---->
+        <!--<ng-container-->
+                <!--*ngComponentOutlet="controlInfo.componentClass"-->
+                <!--[ngClass]="controlInfo.class"-->
+                <!--[control]="controlInfo.control">-->
+        <!---->
+    <!--</div>-->
 
     <input
+            formControlName="keywords"
             placeholder="Book name"
             type="text">
 
-    <button>SEARCH</button>
+    <input
+            formControlName="author"
+            placeholder="Author"
+            type="text">
+
+    <button
+            type="submit"
+            [disabled]="!searchFormGroup.valid">SEARCH</button>
 
 </form>
 

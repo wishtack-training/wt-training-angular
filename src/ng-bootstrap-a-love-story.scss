@@ -1,0 +1,9 @@
+
+// @TODO @import '_bootstrap.scss'
+.error {
+    background-color: red;
+}
+
+input.ng-invalid {
+    @extend .error;
+}
