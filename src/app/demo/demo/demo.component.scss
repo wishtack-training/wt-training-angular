@@ -1,0 +1,12 @@
+
+@mixin circle($size) {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $size / 2;
+    height: $size;
+    width: $size;
+}
+
+img {
+    @include circle(100px);
+}

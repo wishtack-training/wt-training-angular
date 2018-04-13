@@ -1,0 +1,9 @@
+<div
+[style.fontSize]="name.length + 'px'">{{ name }}</div>
+<span>Length: {{ name.length }}</span>
+
+<button
+[disabled]="name.length < 5"
+(click)="resetName()">RESET</button>
+
+<img [src]="getPictureUrl()">
