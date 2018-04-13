@@ -1,0 +1,13 @@
+<form>
+
+    <input
+            placeholder="Book name"
+            type="text">
+
+    <button>SEARCH</button>
+
+</form>
+
+<div *ngFor="let book of bookList">
+    <wt-book-preview [book]="book"></wt-book-preview>
+</div>
