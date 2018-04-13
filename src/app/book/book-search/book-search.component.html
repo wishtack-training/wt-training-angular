@@ -27,6 +27,8 @@
 
 </form>
 
-<div *ngFor="let book of bookList">
+<div>{{ bookCount$ | async }}</div>
+
+<div *ngFor="let book of bookList$ | async">
     <wt-book-preview [book]="book"></wt-book-preview>
 </div>

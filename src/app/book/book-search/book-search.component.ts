@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { debounceTime, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { Book } from '../book';
+import { BookRepository } from '../book-repository';
 
 const keywordsValidator = (keywordList) => (formControl: AbstractControl) => {
 
@@ -23,7 +26,9 @@ const keywordsValidator = (keywordList) => (formControl: AbstractControl) => {
 })
 export class BookSearchComponent implements OnInit {
 
-    bookList: Book[];
+    bookList$: Observable<Book[]>;
+    bookCount$: Observable<number>;
+
     searchFormGroup = new FormGroup({
         keywords: new FormControl(null, [
             Validators.required,
@@ -33,24 +38,29 @@ export class BookSearchComponent implements OnInit {
         author: new FormControl()
     });
 
-    constructor() {
+    constructor(private _bookRepository: BookRepository) {
     }
 
     ngOnInit() {
-        this.bookList = [
-            new Book({
-                title: 'eXtreme Programming explained'
-            }),
-            new Book({
-                title: 'Rework'
-            })
-        ];
+
+        this.bookList$ = this.searchFormGroup.valueChanges
+            .pipe(
+                debounceTime(200),
+                filter(value => value.keywords.length > 3),
+                switchMap(value => {
+                    return this._bookRepository.searchBooks({
+                        keywords: value.keywords
+                    });
+                }),
+                shareReplay(1)
+            );
+
+        this.bookCount$ = this.bookList$
+            .pipe(
+                map(bookList => bookList.length)
+            );
+
     }
 
-    searchBook() {
-        console.log(this.searchFormGroup.valid);
-        console.log(this.searchFormGroup.value);
-        this.searchFormGroup.reset();
-    }
 
 }
