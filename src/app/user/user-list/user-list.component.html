@@ -1,8 +1,18 @@
-<div>
-    <button
-            type="button"
-            (click)="addUser()">ADD</button>
-</div>
+<form (ngSubmit)="addUser()">
+
+    <input
+            name="firstName"
+            type="text"
+            [(ngModel)]="formUser.firstName">
+
+    <input
+            name="lastName"
+            type="text"
+            [(ngModel)]="formUser.lastName">
+
+    <button type="submit">ADD</button>
+
+</form>
 
 <wt-user-preview
         *ngFor="let user of getUserList()"
