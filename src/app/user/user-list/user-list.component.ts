@@ -5,7 +5,9 @@ import { UserStore } from '../user-store';
 @Component({
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
-    styleUrls: ['./user-list.component.css']
+    styleUrls: [
+        './user-list.component.scss'
+    ]
 })
 export class UserListComponent implements OnInit {
 
@@ -23,10 +25,6 @@ export class UserListComponent implements OnInit {
 
     getUserList() {
         return this._userStore.getUserList();
-    }
-
-    getPictureUrl(user: User) {
-        return `https://robohash.org/${user.firstName}`;
     }
 
     removeUser(user) {

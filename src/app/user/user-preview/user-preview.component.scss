@@ -1,0 +1,17 @@
+$diameter: 100px;
+
+:host {
+    display: block;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+img {
+    background-color: lightcoral;
+    border-radius: $diameter / 2;
+    border-style: solid;
+    border-width: 1px;
+    height: $diameter;
+    width: $diameter;
+}

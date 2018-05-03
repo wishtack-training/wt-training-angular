@@ -4,19 +4,12 @@
             (click)="addUser()">ADD</button>
 </div>
 
-<div *ngFor="let user of getUserList()">
-
-    <div>
-        <span>{{ user.firstName }}</span>
-        <span>{{ user.lastName }}</span>
-    </div>
-
-    <div>
-        <img [src]="getPictureUrl(user)">
-    </div>
+<wt-user-preview
+        *ngFor="let user of getUserList()"
+        [user]="user">
 
     <button
             type="button"
-            (click)="removeUser(user)">REMOVE</button>
+            (click)="removeUser(user )">REMOVE</button>
 
-</div>
+</wt-user-preview>
