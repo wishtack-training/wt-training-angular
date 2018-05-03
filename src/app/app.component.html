@@ -1,14 +1,1 @@
-<div [style.fontSize]="userName.length + 'px'">{{ userName }}</div>
-<div>({{ userName.length }})</div>
-
-<button
-        *ngIf="userName.length > 10"
-        (click)="resetUserName()">RESET</button>
-
-<ul>
-  <li *ngFor="let userName of userNameList">
-    <span>{{ userName }}</span>
-  </li>
-</ul>
-
-<img [src]="getPictureUrl()" alt="">
+<wt-user-list></wt-user-list>

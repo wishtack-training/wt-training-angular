@@ -1,0 +1,22 @@
+<div>
+    <button
+            type="button"
+            (click)="addUser()">ADD</button>
+</div>
+
+<div *ngFor="let user of getUserList()">
+
+    <div>
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+    </div>
+
+    <div>
+        <img [src]="getPictureUrl(user)">
+    </div>
+
+    <button
+            type="button"
+            (click)="removeUser(user)">REMOVE</button>
+
+</div>
