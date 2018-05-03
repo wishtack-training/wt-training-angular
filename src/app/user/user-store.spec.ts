@@ -1,13 +1,9 @@
-/**
- *
- * (c) 2013-2018 Wishtack
- *
- * $Id: $
- */
+import { User } from './user';
+import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
-    it('should add users', () => {
+    xit('should add users', () => {
 
         const userStore = new UserStore();
 
@@ -33,7 +29,7 @@ describe('UserStore', () => {
 
     });
 
-    it('should remove users', () => {
+    xit('should remove users', () => {
 
         const userStore = new UserStore();
 
