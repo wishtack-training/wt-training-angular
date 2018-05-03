@@ -4,20 +4,24 @@
  *
  * $Id: $
  */
+
 import { User } from './user';
 
 export class UserStore {
 
-    getUserList(): User[] {
-        throw new Error('Not implemented yet!');
+    private _userList: User[] = [];
+
+    getUserList() {
+        return this._userList;
     }
 
     addUser(user: User) {
-        throw new Error('Not implemented yet!');
+        this._userList.push(user);
     }
 
     removeUser(user: User) {
-        throw new Error('Not implemented yet!');
+        const userIndex = this._userList.indexOf(user);
+        this._userList.splice(userIndex, 1);
     }
 
 }

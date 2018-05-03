@@ -3,7 +3,7 @@ import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
-    xit('should add users', () => {
+    it('should add users', () => {
 
         const userStore = new UserStore();
 
@@ -29,7 +29,7 @@ describe('UserStore', () => {
 
     });
 
-    xit('should remove users', () => {
+    it('should remove users', () => {
 
         const userStore = new UserStore();
 
