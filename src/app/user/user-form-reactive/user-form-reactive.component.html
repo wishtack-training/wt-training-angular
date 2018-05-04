@@ -10,6 +10,14 @@
             formControlName="lastName"
             type="text">
 
-    <button type="submit">ADD</button>
+    <button
+            [disabled]="!userForm.valid"
+            type="submit">ADD</button>
+
+    <div *ngIf="userForm.controls.firstName as firstNameControl">
+        <div *ngIf="firstNameControl.touched && firstNameControl.errors">
+            {{ firstNameControl.errors | json }}
+        </div>
+    </div>
 
 </form>
