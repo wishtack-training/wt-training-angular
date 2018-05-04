@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -36,8 +36,10 @@ const isNotInList = (forbiddenList) => (control) => {
     templateUrl: './user-form-reactive.component.html',
     styleUrls: ['./user-form-reactive.component.css']
 })
-export class UserFormReactiveComponent implements OnInit {
+export class UserFormReactiveComponent implements OnInit, OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() userSubmit = new EventEmitter<User>();
 
     userForm = new FormGroup({
@@ -53,19 +55,13 @@ export class UserFormReactiveComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
 
-        const key = 'form-data';
+    ngOnChanges(changes: SimpleChanges) {
 
-        const data = localStorage.getItem(key);
-
-        if (data != null) {
-            this.userForm.setValue(JSON.parse(data));
+        if (changes.user != null) {
+            this.userForm.reset(this.user);
         }
-
-        this.userForm.valueChanges
-            .subscribe(value => {
-                localStorage.setItem(key, JSON.stringify(value));
-            });
 
     }
 
