@@ -1,0 +1,11 @@
+<form [formGroup]="searchForm">
+    <input
+            formControlName="firstName"
+            type="text">
+</form>
+
+<ng-container *ngFor="let user of userList$ | async">
+    <a [routerLink]="['/users', user.id]">
+        <wt-user-preview [user]="user"></wt-user-preview>
+    </a>
+</ng-container>

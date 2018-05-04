@@ -1,0 +1,4 @@
+<wt-user-form-reactive
+        [buttonLabel]="'SAVE'"
+        [user]="user$ | async"
+        (userSubmit)="updateUser($event)"></wt-user-form-reactive>

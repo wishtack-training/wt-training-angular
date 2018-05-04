@@ -60,7 +60,7 @@ export class UserFormReactiveComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
 
         if (changes.user != null) {
-            this.userForm.reset(this.user);
+            this.userForm.reset(this.user || undefined);
         }
 
     }
