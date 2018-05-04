@@ -5,11 +5,19 @@
  * $Id: $
  */
 
+import { Injectable } from '@angular/core';
 import { User } from './user';
 
+export class AppConfig {
+}
+
+@Injectable()
 export class UserStore {
 
     private _userList: User[] = [];
+
+    constructor() {
+    }
 
     getUserList() {
         return this._userList;
