@@ -11,8 +11,6 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent implements OnInit {
 
-    formUser = new User();
-
     private _userStore = new UserStore();
 
     constructor() {
@@ -21,9 +19,8 @@ export class UserListComponent implements OnInit {
     ngOnInit() {
     }
 
-    addUser() {
-        this._userStore.addUser(this.formUser);
-        this.formUser = new User();
+    addUser(user: User) {
+        this._userStore.addUser(user);
     }
 
     getUserList() {
