@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, debounceTime, map, startWith, switchMap } from 'rxjs/operators';
-import { User } from '../user';
+import { User } from '../../../user/user';
 
 @Component({
     selector: 'wt-user-search',

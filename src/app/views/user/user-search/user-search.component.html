@@ -5,7 +5,7 @@
 </form>
 
 <ng-container *ngFor="let user of userList$ | async">
-    <a [routerLink]="['/users', user.id]">
+    <a [routerLink]="['/users', 'detail', user.id]">
         <wt-user-preview [user]="user"></wt-user-preview>
     </a>
 </ng-container>

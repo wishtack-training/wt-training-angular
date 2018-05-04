@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { User } from '../user';
+import { User } from '../../../user/user';
 
 @Component({
     selector: 'wt-user-detail',
