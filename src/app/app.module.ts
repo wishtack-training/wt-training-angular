@@ -8,6 +8,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserPreviewComponent } from './user/user-preview/user-preview.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-reactive.component';
+import { DemoComponent } from './demo/demo.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { UserFormReactiveComponent } from './user/user-form-reactive/user-form-r
         UserListComponent,
         UserPreviewComponent,
         UserFormComponent,
-        UserFormReactiveComponent
+        UserFormReactiveComponent,
+        DemoComponent
     ],
     imports: [
         BrowserModule,

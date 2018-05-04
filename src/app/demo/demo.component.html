@@ -1,0 +1,9 @@
+<p>
+  There are {{ count }} users
+</p>
+
+<div>{{ value }}</div>
+
+<button (click)="isValueDisplayed = !isValueDisplayed">TOGGLE</button>
+
+<div *ngIf="isValueDisplayed">{{ value$ | async }}</div>
