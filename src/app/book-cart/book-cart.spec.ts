@@ -3,15 +3,19 @@ import { BookCart } from './book-cart';
 
 describe('BookCart', () => {
 
-    xit('should add books to cart', () => {
+    it('should add books to cart', () => {
 
         const bookCart = new BookCart();
 
         const book1 = new Book('eXtreme Programming');
         const book2 = new Book('ReWork');
 
+        const emptyBookList = bookCart.getBookList();
+
         bookCart.addBook(book1);
         bookCart.addBook(book2);
+
+        expect(emptyBookList).toEqual([]);
 
         expect(bookCart.getBookList()).toEqual([
             book1,
@@ -20,7 +24,7 @@ describe('BookCart', () => {
 
     });
 
-    xit('should remove books from cart', () => {
+    it('should remove books from cart', () => {
 
         const bookCart = new BookCart();
 

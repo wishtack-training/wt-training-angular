@@ -9,15 +9,18 @@ import { Book } from './book';
 
 export class BookCart {
 
+    private _bookList: Book[] = [];
+
     addBook(book: Book) {
-        throw new Error('Not implemented yet!');
+        this._bookList = [...this._bookList, book];
     }
 
     getBookList(): Book[] {
-        throw new Error('Not implemented yet!');
+        return this._bookList;
     }
 
     removeBook(book: Book) {
-        throw new Error('Not implemented yet!');
+        this._bookList = this._bookList
+            .filter(_book => _book !== book);
     }
 }

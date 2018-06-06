@@ -1,5 +1,6 @@
 export class Book {
-    constructor(title: string) {
 
+    constructor(public title: string) {
     }
+
 }
