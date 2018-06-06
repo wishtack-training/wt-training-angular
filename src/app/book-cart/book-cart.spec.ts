@@ -1,4 +1,4 @@
-import { Book } from './book';
+import { Book } from '../book/book';
 import { BookCart } from './book-cart';
 
 describe('BookCart', () => {

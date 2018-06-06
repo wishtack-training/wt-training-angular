@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../../book-cart/book';
+import { Book } from '../book';
 
 
 @Component({
     selector: 'wt-book-list',
     templateUrl: './book-list.component.html',
-    styleUrls: ['./book-list.component.css']
+    styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
 
