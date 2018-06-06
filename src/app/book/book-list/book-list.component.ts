@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
-
+import { BookRepository } from '../book-repository';
 
 @Component({
     selector: 'wt-book-list',
@@ -9,21 +9,13 @@ import { Book } from '../book';
 })
 export class BookListComponent implements OnInit {
 
-    bookList = [
-        new Book({
-            title: 'eXtreme Programming Explained',
-            pictureUrl: 'https://robohash.org/a'
-        }),
-        new Book({
-            title: 'ReWork',
-            pictureUrl: 'https://robohash.org/b'
-        })
-    ];
+    bookList: Book[];
 
-    constructor() {
+    constructor(private _bookRepository: BookRepository) {
     }
 
     ngOnInit() {
+        this.bookList = this._bookRepository.getBookList();
     }
 
 }

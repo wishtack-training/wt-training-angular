@@ -5,8 +5,12 @@
  * $Id: $
  */
 
+import { Injectable } from '@angular/core';
 import { Book } from '../book/book';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class BookCart {
 
     private _bookList: Book[] = [];
