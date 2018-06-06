@@ -17,13 +17,28 @@ const io = socketIo(server);
 
 const roomName = 'wishtack';
 
+let lastMessageList = [];
+
 io.on('connection', socket => {
 
     socket.join(roomName);
 
-    socket.on('message', data => {
-        console.log(data);
-        io.in(roomName).emit('message', data);
+    for (const message of lastMessageList) {
+        socket.emit('message', message);
+    }
+
+    socket.on('message', message => {
+
+        console.log(message);
+
+        lastMessageList = [...lastMessageList, message];
+
+        if (lastMessageList.length > 10) {
+            [, ...lastMessageList] = lastMessageList;
+        }
+
+        io.in(roomName).emit('message', message);
+
     });
 
 });

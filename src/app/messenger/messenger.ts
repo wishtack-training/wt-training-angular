@@ -11,8 +11,8 @@ import { map, shareReplay, switchMap } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 import Socket = SocketIOClient.Socket;
 
-export interface MessageInfo {
-    message: string;
+export interface Message {
+    content: string;
     userName: string;
 }
 
@@ -40,7 +40,7 @@ export class Messenger {
 
     }
 
-    onMessage(): Observable<MessageInfo> {
+    onMessage(): Observable<Message> {
 
         return this._socket$
             .pipe(
@@ -53,7 +53,7 @@ export class Messenger {
 
     }
 
-    sendMessage(args: MessageInfo) {
+    sendMessage(args: Message) {
 
         return this._socket$
             .pipe(

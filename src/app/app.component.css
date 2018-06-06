@@ -1,0 +1,9 @@
+.wt-message-list {
+    margin: auto;
+    max-width: 300px;
+    text-align: left;
+}
+
+img[matListAvatar] {
+    background-color: white;
+}

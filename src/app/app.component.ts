@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, OperatorFunction } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MessageInfo, Messenger } from './messenger/messenger';
+import { Message, Messenger } from './messenger/messenger';
 
 export const slidingWindow = <T>(maxSize: number): OperatorFunction<T, T[]> => {
     return source => new Observable<T[]>(observer => {
@@ -36,10 +36,10 @@ export const slidingWindow = <T>(maxSize: number): OperatorFunction<T, T[]> => {
 export class AppComponent {
 
     messageForm = new FormGroup({
-        message: new FormControl(),
+        content: new FormControl(),
         userName: new FormControl(null, Validators.required)
     });
-    lastMessageList$: Observable<MessageInfo[]>;
+    lastMessageList$: Observable<Message[]>;
 
     constructor(private _messenger: Messenger) {
         this.lastMessageList$ = this._messenger.onMessage()
@@ -52,7 +52,11 @@ export class AppComponent {
     sendMessage() {
         this._messenger.sendMessage(this.messageForm.value)
             .subscribe();
-        this.messageForm.controls.message.reset();
+        this.messageForm.controls.content.reset();
+    }
+
+    getPictureUrl(userName: string) {
+        return `https://robohash.org/${encodeURIComponent(userName)}?set=set4`;
     }
 
 }

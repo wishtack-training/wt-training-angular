@@ -2,23 +2,49 @@
         [formGroup]="messageForm"
         (ngSubmit)="sendMessage()">
 
-    <input
-            formControlName="userName"
-            placeholder="Name"
-            type="text">
-    <input
-            formControlName="message"
-            placeholder="Message"
-            type="text">
+    <div>
+        <mat-form-field>
+            <input
+                    formControlName="userName"
+                    matInput
+                    placeholder="Name"
+                    type="text">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input
+                    formControlName="content"
+                    matInput
+                    placeholder="Message"
+                    type="text">
+        </mat-form-field>
+    </div>
 
     <button
+            color="primary"
+            mat-raised-button
             type="submit"
             [disabled]="!messageForm.valid">SEND</button>
 
 </form>
 
-<div *ngFor="let messageInfo of lastMessageList$ | async">
-    <span>{{ messageInfo.userName }}</span>
-    <span>:</span>
-    <span>{{ messageInfo.message }}</span>
-</div>
+<mat-list class="wt-message-list">
+
+    <h1 mat-subheader>Messages:</h1>
+
+    <mat-list-item *ngFor="let message of lastMessageList$ | async">
+
+        <img
+                matListAvatar
+                [alt]="message.userName"
+                [src]="getPictureUrl(message.userName)">
+
+        <h2 matLine>{{ message.userName }}</h2>
+
+        <p matLine>{{ message.content }}</p>
+
+    </mat-list-item>
+
+</mat-list>
