@@ -1,3 +1,27 @@
+<form
+        [formGroup]="bookForm"
+        (ngSubmit)="addBook()">
+
+    <input
+            formControlName="title"
+            placeholder="title"
+            type="text">
+
+    <input
+            formControlName="pictureUrl"
+            placeholder="picture url"
+            type="text">
+
+    <button
+            type="submit"
+            [disabled]="!bookForm.valid">ADD BOOK</button>
+
+    <div *ngFor="let errorMessage of getErrorMessageList()">
+        <div>{{ errorMessage }}</div>
+    </div>
+
+</form>
+
 <wt-book-preview
         *ngFor="let book of bookList"
         [book]="book"></wt-book-preview>
