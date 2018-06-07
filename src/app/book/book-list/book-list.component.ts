@@ -1,7 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository';
+
+export const validUrl: ValidatorFn = (control) => {
+
+    if (control.value == null || control.value === '') {
+        return null;
+    }
+
+    if (!control.value.startsWith('https://')) {
+        return {
+            validUrl: {
+                url: control.value
+            }
+        };
+    }
+
+    return null;
+};
 
 @Component({
     selector: 'wt-book-list',
@@ -15,7 +32,9 @@ export class BookListComponent implements OnInit {
             Validators.required,
             Validators.minLength(3)
         ]),
-        pictureUrl: new FormControl()
+        pictureUrl: new FormControl(null, [
+            validUrl
+        ])
     });
     bookList: Book[];
 
@@ -39,10 +58,18 @@ export class BookListComponent implements OnInit {
                 return control.touched && control.errors != null;
             })
             .map(([name, control]) => {
+
+                if (control.hasError('validUrl')) {
+                    const url = control.getError('validUrl').url;
+                    return `${name} is invalid because '${url}' doesn't match our needs.`;
+                }
+
                 if (control.hasError('required')) {
                     return `${name} is required.`;
                 }
+
                 return `${name} is invalid.`;
+
             });
 
     }
