@@ -1,0 +1,31 @@
+<form
+        [formGroup]="bookForm"
+        (ngSubmit)="submitBook()">
+
+  <input
+          formControlName="title"
+          placeholder="title"
+          type="text">
+
+  <input
+          formControlName="pictureUrl"
+          placeholder="picture url"
+          type="text">
+
+  <button
+          type="button"
+          (click)="addAuthorControl()">ADD AUTHOR</button>
+
+  <button
+          type="submit"
+          [disabled]="!bookForm.valid">ADD BOOK</button>
+
+  <div *ngFor="let errorMessage of getErrorMessageList()">
+    <div>{{ errorMessage }}</div>
+  </div>
+
+  <wt-author-form
+          *ngFor="let authorFormControl of bookForm.get('authorList').controls"
+          [authorFormGroup]="authorFormControl"></wt-author-form>
+
+</form>

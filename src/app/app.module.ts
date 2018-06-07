@@ -5,12 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookPreviewComponent } from './book/book-preview/book-preview.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
+import { AuthorFormComponent } from './author/author-form/author-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         BookListComponent,
-        BookPreviewComponent
+        BookPreviewComponent,
+        BookFormComponent,
+        AuthorFormComponent
     ],
     imports: [
         BrowserModule,
