@@ -1,8 +1,22 @@
-<div>
-  <img
-          *ngIf="book.pictureUrl != null"
-          [alt]="book.title"
-          [src]="book.pictureUrl">
+<mat-card>
 
-</div>
-<div>{{ book.title }}</div>
+    <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>...</mat-card-subtitle>
+    </mat-card-header>
+
+    <img
+            *ngIf="book.pictureUrl"
+            mat-card-image
+            [src]="book.pictureUrl"
+            [alt]="book.title">
+
+    <mat-card-content>
+        <p>...</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button>BUY</button>
+    </mat-card-actions>
+
+</mat-card>
