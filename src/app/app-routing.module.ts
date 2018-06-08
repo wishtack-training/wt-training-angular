@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BookSearchComponent } from './book/book-list/book-search.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing/landing.component';
 
 export const appRoutes: Routes = [
     {
-        path: 'books',
-        component: BookSearchComponent
+        path: 'book',
+        loadChildren: './views/book-routing/book-routing.module#BookRoutingModule'
     },
     {
         path: 'landing',
@@ -20,7 +19,9 @@ export const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule
