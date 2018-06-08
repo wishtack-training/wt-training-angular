@@ -6,6 +6,7 @@
  */
 
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Book } from '../book/book';
 
 @Injectable({
@@ -13,18 +14,31 @@ import { Book } from '../book/book';
 })
 export class BookCart {
 
-    private _bookList: Book[] = [];
+    private _bookListSubject$ = new BehaviorSubject([]);
+
+    constructor() {
+
+        const data = localStorage.getItem('cart');
+
+        if (data != null) {
+            this._bookListSubject$.next(JSON.parse(data));
+        }
+
+    }
+
+    get bookList$() {
+        return this._bookListSubject$.asObservable();
+    }
 
     addBook(book: Book) {
-        this._bookList = [...this._bookList, book];
+
+        const bookList = this._bookListSubject$.value;
+        this._updateBookList([...bookList, book]);
+
     }
 
-    getBookList(): Book[] {
-        return this._bookList;
-    }
-
-    removeBook(book: Book) {
-        this._bookList = this._bookList
-            .filter(_book => _book !== book);
+    private _updateBookList(bookList: Book[]) {
+        this._bookListSubject$.next(bookList);
+        localStorage.setItem('cart', JSON.stringify(bookList));
     }
 }
