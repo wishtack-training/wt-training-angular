@@ -1,35 +1,24 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BookSearchComponent } from './book/book-list/book-search.component';
-import { BookPreviewComponent } from './book/book-preview/book-preview.component';
-import { BookFormComponent } from './book/book-form/book-form.component';
 import { AuthorFormComponent } from './author/author-form/author-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthorModule } from './author/author.module';
+import { BookModule } from './book/book.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        BookSearchComponent,
-        BookPreviewComponent,
-        BookFormComponent,
-        AuthorFormComponent
+        AppComponent
     ],
     imports: [
+        BookModule,
         BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule
+        BrowserAnimationsModule
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
