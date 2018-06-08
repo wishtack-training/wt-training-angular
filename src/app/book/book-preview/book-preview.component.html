@@ -1,7 +1,9 @@
 <mat-card>
 
     <mat-card-header>
-        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-title>
+            <a [routerLink]="['/book', 'detail', book.id]">{{ book.title }}</a>
+        </mat-card-title>
         <mat-card-subtitle>...</mat-card-subtitle>
     </mat-card-header>
 
@@ -16,7 +18,9 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button>BUY</button>
+        <button
+                mat-button
+                (click)="buy()">BUY</button>
     </mat-card-actions>
 
 </mat-card>

@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BookModule } from './book/book.module';
 import { LandingModule } from './landing/landing.module';
+import { BookCartViewComponent } from './views/book-routing/book-cart-view/book-cart-view.component';
 
 
 @NgModule({

@@ -7,8 +7,8 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Book } from './book';
 import { GoogleBookSearchResponse } from './book-list/book-search.component';
 
@@ -28,13 +28,19 @@ export class BookRepository {
 
         return this._httpClient.get<GoogleBookSearchResponse>(url)
             .pipe(
-                catchError(error => {
-                    console.error(error);
-                    return EMPTY;
-                }),
                 map(data => {
                     return data.items.map(item => this._googleItemToBook(item));
                 })
+            );
+
+    }
+
+    getBook(bookId: string): Observable<Book> {
+
+        const url = `https://www.googleapis.com/books/v1/volumes/${encodeURIComponent(bookId)}`;
+        return this._httpClient.get<GoogleBookSearchResponse>(url)
+            .pipe(
+                map(item => this._googleItemToBook(item))
             );
 
     }
@@ -46,9 +52,9 @@ export class BookRepository {
         const pictureUrl = imageLinks != null ? imageLinks.thumbnail : null;
 
         return new Book({
+            id: item.id,
             title: item.volumeInfo.title,
             pictureUrl
         });
     }
-
 }
