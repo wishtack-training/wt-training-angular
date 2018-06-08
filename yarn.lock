@@ -344,6 +344,10 @@
     "@webassemblyjs/wast-parser" "1.4.3"
     long "^3.2.0"
 
+"@wishtack/rx-scavenger@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@wishtack/rx-scavenger/-/rx-scavenger-1.0.1.tgz#82c498bf5aa34cc951df1b71b9d8516383199dfc"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

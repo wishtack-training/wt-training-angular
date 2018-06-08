@@ -25,7 +25,7 @@
   </div>
 
   <wt-author-form
-          *ngFor="let authorFormControl of bookForm.get('authorList').controls"
+          *ngFor="let authorFormControl of bookForm.get('authorList')['controls']"
           [authorFormGroup]="authorFormControl"></wt-author-form>
 
 </form>

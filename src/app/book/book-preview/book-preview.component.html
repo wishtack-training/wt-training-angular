@@ -1,6 +1,8 @@
 <div>
   <img
+          *ngIf="book.pictureUrl != null"
           [alt]="book.title"
           [src]="book.pictureUrl">
+
 </div>
 <div>{{ book.title }}</div>

@@ -28,7 +28,6 @@ export class BookFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.bookForm.valueChanges.subscribe(data => console.log(data));
     }
 
     getErrorMessageList() {
