@@ -1,5 +1,8 @@
 <mat-form-field>
-    <input matInput placeholder="Keywords">
+    <input
+            matInput
+            placeholder="Keywords"
+            [formControl]="keywordsControl">
 </mat-form-field>
 
 <wt-book-preview

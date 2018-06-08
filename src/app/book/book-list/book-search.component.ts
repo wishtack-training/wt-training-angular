@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
+import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 import { Book } from '../book';
+import { BookRepository } from '../book-repository';
 
 export interface GoogleBookSearchResponse {
     items: Array<{
@@ -22,38 +24,28 @@ export interface GoogleBookSearchResponse {
 export class BookSearchComponent implements OnDestroy, OnInit {
 
     bookList: Book[];
+    keywordsControl = new FormControl();
 
-    private _bookSearchUrl = 'https://www.googleapis.com/books/v1/volumes?q=extreme%20programming';
     private _scavenger = new Scavenger(this);
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(private _bookRepository: BookRepository) {
     }
 
     ngOnInit() {
 
-        this._httpClient.get<GoogleBookSearchResponse>(this._bookSearchUrl)
+        const bookList$ = this.keywordsControl.valueChanges
             .pipe(
+                startWith('eXtreme Programming'),
+                debounceTime(200),
+                switchMap(keywords => this._bookRepository.searchBooks(keywords)),
                 this._scavenger.collect()
-            )
-            .subscribe(data => {
-                this.bookList = data.items.map(item => this._googleItemToBook(item));
-            });
+            );
+
+        bookList$.subscribe(bookList => this.bookList = bookList);
 
     }
 
     ngOnDestroy() {
-    }
-
-    private _googleItemToBook(item) {
-
-        const imageLinks = item.volumeInfo.imageLinks;
-
-        const pictureUrl = imageLinks != null ? imageLinks.thumbnail : null;
-
-        return new Book({
-            title: item.volumeInfo.title,
-            pictureUrl
-        });
     }
 
 }
