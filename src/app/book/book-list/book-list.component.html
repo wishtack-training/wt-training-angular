@@ -1,11 +1,11 @@
-<button>ADD</button>
+<button (click)="addBook()">ADD</button>
 
-<div>
+<div *ngFor="let book of getBookList()">
   
-  <h1>Book A</h1>
+  <h1>{{ book.title }}</h1>
 
-  <img src="https://robohash.org/a?set=set4">
+  <img [src]="getPictureUrl(book)">
 
-  <button>REMOVE</button>
+  <button (click)="removeBook(book)">REMOVE</button>
 
 </div>
