@@ -1,11 +1,9 @@
 <button (click)="addBook()">ADD</button>
 
 <div *ngFor="let book of getBookList()">
-  
-  <h1>{{ book.title }}</h1>
 
-  <img [src]="getPictureUrl(book)">
+    <wt-book-preview [book]="book"></wt-book-preview>
 
-  <button (click)="removeBook(book)">REMOVE</button>
+    <button (click)="removeBook(book)">REMOVE</button>
 
 </div>

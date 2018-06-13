@@ -1,0 +1,12 @@
+$color: aquamarine;
+
+@mixin circle($diameter) {
+    height: $diameter;
+    width: $diameter;
+    border-radius: 50%;
+}
+
+img {
+    @include circle(100px);
+    background-color: $color;
+}

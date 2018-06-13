@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -23,10 +23,6 @@ export class BookListComponent implements OnInit {
 
     getBookList() {
         return this._bookStore.getBookList();
-    }
-
-    getPictureUrl(book: Book) {
-        return `https://robohash.org/${encodeURIComponent(book.title)}?set=set4`;
     }
 
     removeBook(book: Book) {
