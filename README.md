@@ -1,15 +1,18 @@
 # Tools
 
-## Node 9
+## Node 10
 https://nodejs.org/en/
+
+## Yarn
+https://yarnpkg.com/en/docs/install
 
 ## Git
 https://git-scm.com/
 
-## IntelliJ EAP
-https://www.jetbrains.com/idea/nextversion/
-
-WARNING: Do not enable "vim" mode.
+## JetBrains Toolbox
+https://www.jetbrains.com/toolbox/download
+1. Install Toolbox
+2. Install WebStorm EAP
 
 # Course material
 
