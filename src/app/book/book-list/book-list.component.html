@@ -1,4 +1,17 @@
-<button (click)="addBook()">ADD</button>
+<input
+        [formControl]="titleControl"
+        placeholder="Title"
+        type="text">
+
+<button
+        [disabled]="!titleControl.valid"
+        (click)="addBook()">ADD</button>
+
+<div *ngIf="titleControl.touched && titleControl.hasError('required')">
+    Title required.
+</div>
+
+<div>{{ getBookList().length }}</div>
 
 <div *ngFor="let book of getBookList()">
 
