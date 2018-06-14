@@ -55,4 +55,5 @@ export class BookListComponent implements OnInit {
         this._bookStore.replaceBook(selectedBook, newBook);
         this.selectedBook = null;
     }
+    
 }

@@ -1,5 +1,5 @@
 <h1>{{ book.title }}</h1>
 
 <div>
-    <img [src]="pictureUrl">
+    <img [src]="book.pictureUrl || pictureUrl">
 </div>

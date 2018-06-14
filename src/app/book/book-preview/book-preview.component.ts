@@ -9,6 +9,9 @@ import { Book } from '../book';
 })
 export class BookPreviewComponent implements OnChanges, OnInit {
 
+    /**
+     * The book to display.
+     */
     @Input() book: Book;
 
     pictureUrl: string;
