@@ -6,8 +6,6 @@ declare var require;
 
 
 
-
-
 @Component({
     selector: 'wt-book-list',
     templateUrl: './book-list.component.html',
@@ -17,7 +15,11 @@ export class BookListComponent implements OnInit {
 
     selectedBook: Book;
 
-    private _bookStore = new BookStore();
+    private _bookStore;
+
+    constructor(bookStore: BookStore) {
+        this._bookStore = bookStore;
+    }
 
     ngOnInit() {
 
