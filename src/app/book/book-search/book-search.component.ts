@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { EMPTY } from 'rxjs';
-import { catchError, debounceTime, filter, map, mergeMap, retry, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, filter, map, mergeMap, retry, startWith, switchMap } from 'rxjs/operators';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository';
 
@@ -15,13 +16,19 @@ export class BookSearchComponent implements OnInit {
     bookList: Book[];
     bookKeywordsControl = new FormControl();
 
-    constructor(private _bookRepository: BookRepository) {
+    constructor(
+        private _route: ActivatedRoute,
+        private _bookRepository: BookRepository
+    ) {
     }
 
-    async ngOnInit() {
+    ngOnInit() {
+
+        const keywords = this._route.snapshot.queryParamMap.get('keywords');
 
         this.bookKeywordsControl.valueChanges
             .pipe(
+                startWith(keywords),
                 debounceTime(200),
                 filter(keywords => keywords !== ''),
                 switchMap(keywords => {
@@ -34,7 +41,6 @@ export class BookSearchComponent implements OnInit {
             .subscribe(bookList => {
                 this.bookList = bookList;
             });
-
 
     }
 

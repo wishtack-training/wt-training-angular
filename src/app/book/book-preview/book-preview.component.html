@@ -1,4 +1,6 @@
-<h1>{{ book.title }}</h1>
+<a [routerLink]="['/book-detail', book.id]">
+    <h1>{{ book.title }}</h1>
+</a>
 
 <div>
     <img [src]="book.pictureUrl || pictureUrl">

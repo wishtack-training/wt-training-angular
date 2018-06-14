@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookFormComponent } from './book-form/book-form.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
-import { BookFormComponent } from './book-form/book-form.component';
-import { BookStore } from './book-store';
 import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
@@ -13,19 +14,21 @@ import { BookSearchComponent } from './book-search/book-search.component';
         BookListComponent,
         BookPreviewComponent,
         BookFormComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        BookDetailComponent
     ],
     exports: [
         BookListComponent,
         BookPreviewComponent,
         BookFormComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        BookDetailComponent
     ],
     imports: [
         CommonModule,
         HttpClientModule,
-
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ]
 })
 export class BookModule {
