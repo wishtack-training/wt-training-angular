@@ -1,15 +1,24 @@
-<input
-        [formControl]="titleControl"
-        placeholder="Title"
-        type="text">
+<form
+        [formGroup]="bookForm"
+        (ngSubmit)="addBook()">
 
-<button
-        [disabled]="!titleControl.valid"
-        (click)="addBook()">ADD</button>
+    <input
+            formControlName="title"
+            placeholder="title"
+            type="text">
 
-<div *ngIf="titleControl.touched && titleControl.hasError('required')">
-    Title required.
-</div>
+    <textarea formControlName="description"></textarea>
+
+    <div formGroupName="author">
+        <input formControlName="firstName" type="text">
+        <input formControlName="lastName" type="text">
+    </div>
+
+    <button
+            type="submit"
+            [disabled]="!bookForm.valid">ADD</button>
+
+</form>
 
 <div>{{ getBookList().length }}</div>
 

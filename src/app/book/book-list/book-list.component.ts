@@ -1,9 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
 declare var require;
+
+export const hasFirstNameOrLastName: ValidatorFn = (control) => {
+
+    if (!control.value.firstName && !control.value.lastName) {
+        return {
+            hasFirstNameOrLastName: true
+        };
+    }
+
+    return null;
+
+};
+
+export const createBookForm = () => {
+    return new FormGroup({
+        title: new FormControl(),
+        description: new FormControl(),
+        author: new FormGroup({
+            firstName: new FormControl(),
+            lastName: new FormControl()
+        }, [
+            hasFirstNameOrLastName
+        ])
+    });
+};
 
 @Component({
     selector: 'wt-book-list',
@@ -12,14 +37,12 @@ declare var require;
 })
 export class BookListComponent implements OnInit {
 
+    bookForm = createBookForm();
+
     private _bookStore = new BookStore();
 
-    titleControl = new FormControl(null, [
-        Validators.required,
-        Validators.minLength(3)
-    ]);
-
     ngOnInit() {
+
         /* @TODO: maybe move this logic to a properties-loader or something like that. */
         const translation = require('raw-loader!./book-list.properties')
             .split('\n')
@@ -33,11 +56,11 @@ export class BookListComponent implements OnInit {
     }
 
     addBook() {
-
-        const title = this.titleControl.value;
-        this._bookStore.addBook(new Book(title));
-        this.titleControl.reset();
+        const book = new Book(this.bookForm.value);
+        this._bookStore.addBook(book);
+        this.bookForm.reset();
     }
+
 
     getBookList() {
         return this._bookStore.getBookList();

@@ -30,7 +30,6 @@ export class BookPreviewComponent implements OnChanges, OnInit {
     }
 
     private _getPictureUrl(book: Book) {
-        console.count('getPictureUrl');
         return `https://robohash.org/${encodeURIComponent(book.title)}?set=set4`;
     }
 
