@@ -15,6 +15,8 @@ declare var require;
 })
 export class BookListComponent implements OnInit {
 
+    selectedBook: Book;
+
     private _bookStore = new BookStore();
 
     ngOnInit() {
@@ -43,4 +45,12 @@ export class BookListComponent implements OnInit {
         this._bookStore.removeBook(book);
     }
 
+    selectBook(book: Book) {
+        this.selectedBook = book;
+    }
+
+    replaceBook(selectedBook: Book, newBook: Book) {
+        this._bookStore.replaceBook(selectedBook, newBook);
+        this.selectedBook = null;
+    }
 }

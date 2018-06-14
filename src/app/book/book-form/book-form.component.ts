@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Book } from '../book';
 
@@ -32,8 +32,10 @@ export const createBookForm = () => {
     templateUrl: './book-form.component.html',
     styleUrls: ['./book-form.component.css']
 })
-export class BookFormComponent implements OnInit {
+export class BookFormComponent implements OnChanges, OnInit {
 
+    @Input() book: Book;
+    @Input() buttonLabel = 'ADD';
     @Output() bookSubmit = new EventEmitter<Book>();
 
     bookForm = createBookForm();
@@ -42,6 +44,14 @@ export class BookFormComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.book != null) {
+            this.bookForm.reset(this.book);
+        }
+
     }
 
     submitBook() {

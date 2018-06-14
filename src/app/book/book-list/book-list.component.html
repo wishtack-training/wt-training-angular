@@ -1,10 +1,21 @@
-<wt-book-form (bookSubmit)="addBook($event)"></wt-book-form>
+<wt-book-form
+        *ngIf="selectedBook == null"
+        (bookSubmit)="addBook($event)"></wt-book-form>
+
+<wt-book-form
+        *ngIf="selectedBook != null"
+        [book]="selectedBook"
+        [buttonLabel]="'SAVE'"
+        (bookSubmit)="replaceBook(selectedBook, $event)"></wt-book-form>
+
 
 <div>{{ getBookList().length }}</div>
 
 <div *ngFor="let book of getBookList()">
 
     <wt-book-preview [book]="book"></wt-book-preview>
+
+    <button (click)="selectBook(book)">EDIT</button>
 
     <button (click)="removeBook(book)">REMOVE</button>
 

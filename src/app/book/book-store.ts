@@ -17,4 +17,18 @@ export class BookStore {
             .filter(_book => _book !== book);
     }
 
+    replaceBook(selectedBook: Book, newBook: Book) {
+
+        this._bookList = this._bookList
+            .map(book => {
+
+                if (book === selectedBook) {
+                    return newBook;
+                }
+
+                return book;
+            });
+
+    }
+
 }
