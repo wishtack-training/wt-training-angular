@@ -1,34 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
 declare var require;
 
-export const hasFirstNameOrLastName: ValidatorFn = (control) => {
 
-    if (!control.value.firstName && !control.value.lastName) {
-        return {
-            hasFirstNameOrLastName: true
-        };
-    }
 
-    return null;
 
-};
-
-export const createBookForm = () => {
-    return new FormGroup({
-        title: new FormControl(),
-        description: new FormControl(),
-        author: new FormGroup({
-            firstName: new FormControl(),
-            lastName: new FormControl()
-        }, [
-            hasFirstNameOrLastName
-        ])
-    });
-};
 
 @Component({
     selector: 'wt-book-list',
@@ -36,8 +14,6 @@ export const createBookForm = () => {
     styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-
-    bookForm = createBookForm();
 
     private _bookStore = new BookStore();
 
@@ -55,12 +31,9 @@ export class BookListComponent implements OnInit {
 
     }
 
-    addBook() {
-        const book = new Book(this.bookForm.value);
+    addBook(book: Book) {
         this._bookStore.addBook(book);
-        this.bookForm.reset();
     }
-
 
     getBookList() {
         return this._bookStore.getBookList();
