@@ -1,3 +1,5 @@
+import { User } from './user';
+import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
@@ -21,13 +23,13 @@ describe('UserStore', () => {
 
         const userListEmpty = userStore.getUserList();
 
-        expect(userListEmpty).toEqual([]);
-
         userStore.addUser(user1);
         userStore.addUser(user2);
         userStore.addUser(user3);
 
         const userList = userStore.getUserList();
+
+        expect(userListEmpty).toEqual([]);
 
         expect(userList).toEqual([
             user1,
@@ -42,14 +44,6 @@ describe('UserStore', () => {
         userStore.addUser(user1);
         userStore.addUser(user2);
         userStore.addUser(user3);
-
-        const userList = userStore.getUserList();
-
-        expect(userList).toEqual([
-            user1,
-            user2,
-            user3
-        ]);
 
         userStore.removeUser(user1);
 
