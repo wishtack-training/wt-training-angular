@@ -18,9 +18,9 @@ export class UserStore {
         return this._userList;
     }
 
-    removeUser(user: User) {
+    removeUser(userToRemove: User) {
         this._userList = this._userList
-            .filter(_user => _user !== user);
+            .filter(user => user !== userToRemove);
     }
 
 }

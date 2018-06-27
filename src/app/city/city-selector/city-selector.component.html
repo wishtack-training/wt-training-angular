@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let city of cityList">
+    <button
+        [disabled]="city === selectedCity"
+        (click)="selectCity(city)">SELECT</button>
+    <span>{{ city }}</span>
+    <span>:</span>
+    <span>{{ getCityTemperature(city) }}</span>
+  </li>
+</ul>
+
+<img
+    *ngIf="selectedCity"
+    [src]="getCityPictureUrl(selectedCity)">
+
+<button (click)="selectedCity = null">RESET</button>
