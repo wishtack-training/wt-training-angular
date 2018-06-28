@@ -13,6 +13,9 @@ import { UserNameComponent } from './user-name/user-name.component';
         UserListItemComponent,
         UserNameComponent
     ],
+    entryComponents: [
+        UserFormComponent
+    ],
     exports: [
         UserFormComponent,
         UserListContainerComponent,

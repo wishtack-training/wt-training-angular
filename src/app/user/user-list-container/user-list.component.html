@@ -1,0 +1,8 @@
+<button (click)="component = componentA">A</button>
+<button (click)="component = componentB">B</button>
+
+<ng-container *ngComponentOutlet="component"></ng-container>
+
+<wt-user-list-item
+    *ngFor="let user of getUserList()"
+    [user]="user"></wt-user-list-item>

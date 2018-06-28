@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "0.0.0",
   "scripts": {
-    "generate:component": "ng generate component",
+    "generate:component": "ng generate component --export",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

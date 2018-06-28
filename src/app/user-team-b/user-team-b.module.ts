@@ -9,6 +9,9 @@ import { UserFormComponent } from './user-form/user-form.component';
         UserContainerComponent,
         UserFormComponent
     ],
+    entryComponents: [
+        UserFormComponent
+    ],
     exports: [
         UserContainerComponent,
         UserFormComponent

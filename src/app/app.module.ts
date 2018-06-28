@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CitySelectorComponent } from './city/city-selector/city-selector.component';
-import { UserTeamAModule } from './user-team-a/user-team-a.module';
-import { UserTeamBModule } from './user-team-b/user-team-b.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
     declarations: [
@@ -13,8 +12,7 @@ import { UserTeamBModule } from './user-team-b/user-team-b.module';
     ],
     imports: [
         BrowserModule,
-        UserTeamAModule,
-        UserTeamBModule
+        UserModule
     ],
     bootstrap: [AppComponent]
 })
