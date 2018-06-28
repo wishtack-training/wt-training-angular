@@ -1,20 +1,23 @@
 <wt-user-form
-    *ngIf="selectedUser == null"
     (userSubmit)="addUser($event)"></wt-user-form>
 
-<wt-user-form
-    *ngIf="selectedUser != null"
-    [buttonLabel]="'UPDATE'"
-    [user]="selectedUser"
-    (userSubmit)="updateUser($event)"></wt-user-form>
 
 <wt-user-preview
     *ngFor="let user of getUserList()"
     [user]="user">
 
-    <button (click)="selectUser(user)">EDIT</button>
+    <ng-container *ngIf="selectedUser !== user">
 
-    <button (click)="removeUser(user)">REMOVE</button>
+        <button (click)="selectUser(user)">EDIT</button>
+
+        <button (click)="removeUser(user)">REMOVE</button>
+
+    </ng-container>
+
+    <wt-user-form
+        *ngIf="selectedUser === user"
+        [buttonLabel]="'UPDATE'"
+        [user]="selectedUser"
+        (userSubmit)="updateUser($event)"></wt-user-form>
 
 </wt-user-preview>
-
