@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { UserFormComponent as UserFormComponentA } from '../../user-team-a/user-form/user-form.component';
-import { UserFormComponent as UserFormComponentB } from '../../user-team-b/user-form/user-form.component';
-import { UserStore } from '../user-store';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { UserStore } from '../user-store';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
 
-    componentA = UserFormComponentA;
-    componentB = UserFormComponentB;
-    component = this.componentA;
+    selectedUser: User;
 
     private _userStore = new UserStore();
 
@@ -29,11 +26,27 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
 
+    addUser(user: User) {
+        this._userStore.addUser(user);
+    }
+
+    removeUser(user: User) {
+        this._userStore.removeUser(user);
+    }
+
+    updateUser(user: User) {
+        this._userStore.replaceUser(this.selectedUser, user);
+        this.selectedUser = null;
     }
 
     getUserList() {
         return this._userStore.getUserList();
+    }
+
+    selectUser(user: User) {
+        this.selectedUser = user;
     }
 
 }

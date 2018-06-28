@@ -1,20 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../user';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { User } from '../user';
 
 @Component({
-  selector: 'wt-user-name',
-  templateUrl: './user-name.component.html',
-  styleUrls: ['./user-name.component.scss']
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'wt-user-name',
+    templateUrl: './user-name.component.html',
+    styleUrls: ['./user-name.component.scss']
 })
 export class UserNameComponent implements OnInit {
-  @Input() user: User;
 
-  constructor() { }
+    @Input() user: User;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
 
-  getAvatar(user: User) {
-    return `https://robohash.org/${user.firstName}${user.lastName}?size=50x50&set=set4`;
-  }
+    ngOnInit() {
+    }
+
+    getAvatar(user: User) {
+        return `https://robohash.org/${user.firstName}${user.lastName}?size=50x50&set=set4`;
+    }
 }

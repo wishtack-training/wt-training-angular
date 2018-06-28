@@ -18,11 +18,25 @@ export class UserStore {
         return this._userList;
     }
 
-    removeUser(userToRemove: User) {
+    removeUser(user: User) {
         this._userList = this._userList
-            .filter(user => user !== userToRemove);
+            .filter(_user => _user !== user);
     }
 
+    replaceUser(previousUser: User, updatedUser: User) {
+
+        this._userList = this._userList
+            .map(user => {
+
+                if (user === previousUser) {
+                    return updatedUser;
+                }
+
+                return user;
+
+            });
+
+    }
 }
 
 

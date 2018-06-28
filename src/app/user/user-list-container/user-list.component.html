@@ -1,8 +1,20 @@
-<button (click)="component = componentA">A</button>
-<button (click)="component = componentB">B</button>
+<wt-user-form
+    *ngIf="selectedUser == null"
+    (userSubmit)="addUser($event)"></wt-user-form>
 
-<ng-container *ngComponentOutlet="component"></ng-container>
+<wt-user-form
+    *ngIf="selectedUser != null"
+    [buttonLabel]="'UPDATE'"
+    [user]="selectedUser"
+    (userSubmit)="updateUser($event)"></wt-user-form>
 
-<wt-user-list-item
+<wt-user-preview
     *ngFor="let user of getUserList()"
-    [user]="user"></wt-user-list-item>
+    [user]="user">
+
+    <button (click)="selectUser(user)">EDIT</button>
+
+    <button (click)="removeUser(user)">REMOVE</button>
+
+</wt-user-preview>
+

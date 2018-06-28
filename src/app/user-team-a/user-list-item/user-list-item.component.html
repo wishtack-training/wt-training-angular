@@ -8,7 +8,7 @@
 </button>
 #{{user.id}}
 <wt-user-name [user]="user"></wt-user-name>
-<wt-user-form *ngIf="editing"
-              [user]="user"
-              (userSubmit)="updateUser($event)"
-              (cancel)="cancelEdit()"></wt-user-form>
+<wt-user-form-a *ngIf="editing"
+                [user]="user"
+                (userSubmit)="updateUser($event)"
+                (cancel)="cancelEdit()"></wt-user-form-a>

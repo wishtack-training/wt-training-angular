@@ -1,7 +1,7 @@
-<wt-user-form [inputDisabled]="false" [userStore]="getUserStore()"></wt-user-form>
+<wt-user-form-b [inputDisabled]="false" [userStore]="getUserStore()"></wt-user-form-b>
 <!-- add a loop that call the user form with the correct parameter -->
 <ul>
   <li *ngFor="let user of getUserList()">
-    <wt-user-form [inputDisabled]="true" [currentUser]="user" [userStore]="getUserStore()"></wt-user-form>
+    <wt-user-form-b [inputDisabled]="true" [user]="user" [userStore]="getUserStore()"></wt-user-form-b>
   </li>
 </ul>
