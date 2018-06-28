@@ -1,21 +1,23 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { interval } from 'rxjs';
+import { bufferCount, filter, map, retry, take } from 'rxjs/operators';
 import { User } from '../user';
+import { UserRepository } from '../user-repository';
 import { UserStore } from '../user-store';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-user-list',
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
     selectedUser: User;
+    userList: User[];
 
-    constructor(private _userStore: UserStore) {
-    }
-
-    ngOnInit() {
+    constructor(
+        private _userStore: UserStore) {
     }
 
     addUser(user: User) {

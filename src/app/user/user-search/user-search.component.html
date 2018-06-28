@@ -1,0 +1,12 @@
+<input
+    placeholder="whatever..."
+    type="text"
+    [formControl]="keywordsControl">
+
+<button (click)="displayed = !displayed">TOGGLE</button>
+
+<ng-container *ngIf="displayed">
+    <wt-user-preview
+        *ngFor="let user of userList$ | async"
+        [user]="user"></wt-user-preview>
+</ng-container>
