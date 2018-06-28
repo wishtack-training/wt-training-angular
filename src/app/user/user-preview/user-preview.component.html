@@ -1,2 +1,5 @@
-<wt-user-name [user]="user"></wt-user-name>
+<a [routerLink]="['/users', user.firstName]">
+    <wt-user-name [user]="user"></wt-user-name>
+</a>
+
 <ng-content></ng-content>
