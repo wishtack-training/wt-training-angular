@@ -1,0 +1,8 @@
+<!-- add text field for firsName and lastName -->
+<input name="firstMame" [disabled]="inputDisabled" [(ngModel)]="currentUser.firstName" placeholder="first name"> &nbsp;
+<input name="lastName" [disabled]="inputDisabled" [(ngModel)]="currentUser.lastName" placeholder="last name"> &nbsp;
+<button *ngIf="!inputDisabled" (click)="addUser()">Add</button> &nbsp;
+<button *ngIf="inputDisabled" (click)="removeUser()">Remove</button>  &nbsp;
+<button *ngIf="inputDisabled" (click)="editUser()">Edit</button>
+
+

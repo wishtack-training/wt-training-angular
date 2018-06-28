@@ -1,0 +1,11 @@
+<wt-user-form (userSubmit)="onUserSubmit($event)"></wt-user-form>
+<ul class="list-group mt-2">
+  <li *ngFor="let user of userList" class="list-group-item">
+
+    <wt-user-list-item
+      [user]="user"
+      (userRemove)="onUserRemove($event)"
+      (userUpdate)="onUserUpdate($event)"></wt-user-list-item>
+
+  </li>
+</ul>

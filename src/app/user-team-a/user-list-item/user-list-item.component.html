@@ -1,0 +1,14 @@
+<button type="button"
+        class="btn btn-light"
+        (click)="editUser()">Edit
+</button>
+<button type="button"
+        class="btn btn-danger"
+        (click)="removeUser()">Remove
+</button>
+#{{user.id}}
+<wt-user-name [user]="user"></wt-user-name>
+<wt-user-form *ngIf="editing"
+              [user]="user"
+              (userSubmit)="updateUser($event)"
+              (cancel)="cancelEdit()"></wt-user-form>
