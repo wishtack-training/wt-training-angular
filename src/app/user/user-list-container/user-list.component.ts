@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserStore } from '../user-store';
 
@@ -12,17 +12,7 @@ export class UserListComponent implements OnInit {
 
     selectedUser: User;
 
-    private _userStore = new UserStore();
-
-    constructor() {
-        this._userStore.addUser(new User({
-            firstName: 'Nathalie',
-            lastName: 'ARDUINI'
-        }));
-        this._userStore.addUser(new User({
-            firstName: 'Lorena',
-            lastName: 'GALVEZ'
-        }));
+    constructor(private _userStore: UserStore) {
     }
 
     ngOnInit() {

@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+
 /**
  *
  * (c) 2013-2018 Wishtack
@@ -6,6 +8,9 @@
  */
 import { User } from './user';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class UserStore {
 
     private _userList: User[] = [];
