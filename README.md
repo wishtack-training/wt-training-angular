@@ -1,20 +1,20 @@
 # Tools
 
-## Node 9
+## Node Latest
 https://nodejs.org/en/
 
 ## Git
 https://git-scm.com/
 
-## IntelliJ EAP
-https://www.jetbrains.com/idea/nextversion/
+## Jetbrains Toolbox + Webstorm EAP
+https://www.jetbrains.com/toolbox/download/
 
 WARNING: Do not enable "vim" mode.
 
 # Course material
 
 ## Wishtack courses
-https://courses.wishtack.com
+https://guide-angular.wishtack.io
 
 ## Floobits
 https://floobits.com/younes
@@ -23,4 +23,3 @@ https://floobits.com/younes
 https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
-

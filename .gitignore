@@ -10,6 +10,7 @@
 
 # IDEs and editors
 /.floo
+/.flooignore
 /.idea
 .project
 .classpath
