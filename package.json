@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "yarn build --prod",
+    "generate-component": "yarn ng generate component --export",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

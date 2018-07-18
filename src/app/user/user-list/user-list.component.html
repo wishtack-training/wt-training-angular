@@ -1,0 +1,5 @@
+<wt-user-form (userSubmit)="addUser($event)"></wt-user-form>
+
+<wt-user-preview
+    *ngFor="let user of getUserList()"
+    [user]="user"></wt-user-preview>
