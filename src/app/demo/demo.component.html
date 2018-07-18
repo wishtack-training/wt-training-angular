@@ -1,0 +1,16 @@
+<h1>{{ appName }}</h1>
+
+<button
+    type="button"
+    [disabled]="!canResetAppName()"
+    (click)="resetAppName()">RESET</button>
+
+<div *ngIf="cityList.length > 0">
+
+    <h2>Cities:</h2>
+
+    <ul>
+        <li *ngFor="let city of cityList">{{ city }}</li>
+    </ul>
+
+</div>
