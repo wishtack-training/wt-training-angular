@@ -1,5 +1,4 @@
-<button (click)="load()">LOAD</button>
-
-<!--<ng-container [ngComponentOutlet]="componentType$ | async"></ng-container>-->
-
-<div #testOutlet></div>
+<button (click)="isDisplayed = !isDisplayed">TOGGLE</button>
+<ng-container
+    *ngIf="isDisplayed"
+    [ngComponentOutlet]="componentType$ | async"></ng-container>

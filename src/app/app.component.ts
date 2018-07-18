@@ -11,27 +11,18 @@ import { DynamicComponentLoader } from '../lib/dynamic-component-loader';
 })
 export class AppComponent implements OnInit {
 
-    @ViewChild('testOutlet', {read: ViewContainerRef}) testOutlet: ViewContainerRef;
-
     componentType$: Observable<Type<any>>;
+    isDisplayed = false;
 
     constructor(private _dynamicComponentLoader: DynamicComponentLoader) {
     }
 
     ngOnInit() {
 
-    }
-
-    load() {
-
         const componentFactory$ = this._dynamicComponentLoader.getComponentFactory('transactions');
 
         this.componentType$ = componentFactory$
             .pipe(map(componentFactory => componentFactory.componentType));
-
-        componentFactory$.subscribe(componentFactory => {
-            this.testOutlet.createComponent(componentFactory);
-        });
 
     }
 
