@@ -1,4 +1,5 @@
 <button (click)="isDisplayed = !isDisplayed">TOGGLE</button>
 <ng-container
     *ngIf="isDisplayed"
-    [ngComponentOutlet]="componentType$ | async"></ng-container>
+    [ngComponentOutlet]="componentType$ | async"
+    [ngComponentOutletNgModuleFactory]="ngModuleFactory$ | async"></ng-container>

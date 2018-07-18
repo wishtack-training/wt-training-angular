@@ -10,14 +10,20 @@ import {
     ComponentFactoryResolver,
     Inject,
     Injectable,
-    Injector,
+    Injector, NgModuleFactory,
     NgModuleFactoryLoader
 } from '@angular/core';
+import { ComponentType } from '@angular/core/src/render3';
 import { defer, Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { DynamicComponentManifest } from './dynamic-component-manifest';
 import { DYNAMIC_COMPONENT_MANIFESTS } from './dynamic-component-manifests';
 import { DYNAMIC_COMPONENT_MAPPING } from './dynamic-component-mapping';
+
+export interface ComponentRecipe {
+    componentType: ComponentType<any>;
+    ngModuleFactory: NgModuleFactory<any>;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -32,7 +38,7 @@ export class DynamicComponentLoader {
     ) {
     }
 
-    getComponentFactory<T>(componentId: string, injector?: Injector): Observable<ComponentFactory<T>> {
+    getComponentFactory<T>(componentId: string, injector?: Injector): Observable<ComponentRecipe> {
 
         return defer(() => {
 
@@ -41,25 +47,22 @@ export class DynamicComponentLoader {
 
             const p = this._ngModuleFactoryloader.load(manifest.loadChildren)
                 .then(ngModuleFactory => {
+
                     const moduleRef = ngModuleFactory.create(injector || this._injector);
 
                     // Read from the moduleRef injector and locate the dynamic component type
                     const componentType = moduleRef.injector.get(DYNAMIC_COMPONENT_MAPPING)[componentId];
 
-                    // Resolve this component factory
-                    const componentFactory = moduleRef.componentFactoryResolver.resolveComponentFactory<T>(componentType);
-
-                    /* @HACK: Add component factory to component factory resolver. */
-                    this._componentFactoryResolver['_factories'].set(componentType, componentFactory);
-
-                    return componentFactory;
+                    return {
+                        ngModuleFactory,
+                        componentType
+                    };
 
                 });
 
-            return fromPromise(p as Promise<ComponentFactory<T>>);
+            return fromPromise(p as Promise<ComponentRecipe>);
 
         });
-
 
     }
 }

@@ -1,7 +1,7 @@
-import { Component, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, NgModuleFactory, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { ComponentType } from '@angular/core/src/render3';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import { DynamicComponentLoader } from '../lib/dynamic-component-loader';
 
 @Component({
@@ -11,7 +11,8 @@ import { DynamicComponentLoader } from '../lib/dynamic-component-loader';
 })
 export class AppComponent implements OnInit {
 
-    componentType$: Observable<Type<any>>;
+    componentType$: Observable<ComponentType<any>>;
+    ngModuleFactory$: Observable<NgModuleFactory<any>>;
     isDisplayed = false;
 
     constructor(private _dynamicComponentLoader: DynamicComponentLoader) {
@@ -19,10 +20,10 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
 
-        const componentFactory$ = this._dynamicComponentLoader.getComponentFactory('transactions');
+        const componentInfo$ = this._dynamicComponentLoader.getComponentFactory('transactions');
 
-        this.componentType$ = componentFactory$
-            .pipe(map(componentFactory => componentFactory.componentType));
+        this.componentType$ = componentInfo$.pipe(pluck('componentType'));
+        this.ngModuleFactory$ = componentInfo$.pipe(pluck('ngModuleFactory'));
 
     }
 
