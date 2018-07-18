@@ -24,7 +24,7 @@ export const notForbiddenWord: ValidatorFn = (control) => {
 })
 export class UserFormComponent implements OnInit {
 
-    @Output() userSubmit = new EventEmitter<User>();
+    @Output() userSubmit = new EventEmitter<any>();
 
     userForm = new FormGroup({
         firstName: new FormControl(null, [
@@ -42,10 +42,7 @@ export class UserFormComponent implements OnInit {
 
     submitUser() {
 
-        const user = new User(
-            this.userForm.value.firstName,
-            this.userForm.value.lastName
-        );
+        const user = new User(this.userForm.value);
 
         this.userSubmit.emit(user);
 

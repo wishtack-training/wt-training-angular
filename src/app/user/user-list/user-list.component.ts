@@ -15,8 +15,6 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._userStore.addUser(new User('Foo', 'BAR'));
-        this._userStore.addUser(new User('Foo', 'BAR'));
     }
 
     addUser(user: User) {
