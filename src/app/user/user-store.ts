@@ -16,4 +16,19 @@ export class UserStore {
         this._userList = this._userList.filter(_user => _user !== user);
     }
 
+    replaceUser(oldUser: User, newUser: User) {
+
+        this._userList = this._userList
+            .map(user => {
+
+                if (user === oldUser) {
+                    return newUser;
+                }
+
+                return user;
+
+            });
+
+    }
+
 }

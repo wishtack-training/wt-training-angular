@@ -1,5 +1,17 @@
-<wt-user-form (userSubmit)="addUser($event)"></wt-user-form>
+<wt-user-form
+    *ngIf="editedUser == null"
+    (userSubmit)="addUser($event)"></wt-user-form>
 
-<wt-user-preview
-    *ngFor="let user of getUserList()"
-    [user]="user"></wt-user-preview>
+<wt-user-form
+    *ngIf="editedUser != null"
+    [buttonLabel]="'UPDATE'"
+    [user]="editedUser"
+    (userSubmit)="updateEditedUser($event)"></wt-user-form>
+
+<div *ngFor="let user of getUserList()">
+
+    <wt-user-preview [user]="user"></wt-user-preview>
+
+    <button (click)="editUser(user)">EDIT</button>
+
+</div>

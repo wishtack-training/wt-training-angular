@@ -9,6 +9,8 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent implements OnInit {
 
+    editedUser: User;
+
     private _userStore = new UserStore();
 
     constructor() {
@@ -23,6 +25,15 @@ export class UserListComponent implements OnInit {
 
     getUserList() {
         return this._userStore.getUserList();
+    }
+
+    editUser(user: User) {
+        this.editedUser = user;
+    }
+
+    updateEditedUser(user: User) {
+        this._userStore.replaceUser(this.editedUser, user);
+        this.editedUser = null;
     }
 
 }

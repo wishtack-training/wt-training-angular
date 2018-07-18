@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../user';
 
@@ -22,8 +22,10 @@ export const notForbiddenWord: ValidatorFn = (control) => {
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnChanges {
 
+    @Input() buttonLabel = 'ADD';
+    @Input() user: User;
     @Output() userSubmit = new EventEmitter<any>();
 
     userForm = new FormGroup({
@@ -37,7 +39,12 @@ export class UserFormComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.user != null) {
+            this.userForm.reset(this.user);
+        }
+
     }
 
     submitUser() {
