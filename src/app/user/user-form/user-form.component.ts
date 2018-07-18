@@ -26,6 +26,7 @@ export class UserFormComponent implements OnChanges {
 
     @Input() buttonLabel = 'ADD';
     @Input() user: User;
+    @Output() cancel = new EventEmitter<void>();
     @Output() userSubmit = new EventEmitter<any>();
 
     userForm = new FormGroup({
@@ -57,4 +58,8 @@ export class UserFormComponent implements OnChanges {
 
     }
 
+    onCancel() {
+        this.userForm.reset();
+        this.cancel.emit();
+    }
 }
