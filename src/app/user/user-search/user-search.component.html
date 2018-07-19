@@ -1,3 +1,7 @@
-<p>
-  user-search works!
-</p>
+<input
+    type="text"
+    [formControl]="userNameControl">
+
+<wt-user-preview
+    *ngFor="let user of userList"
+    [user]="user"></wt-user-preview>
