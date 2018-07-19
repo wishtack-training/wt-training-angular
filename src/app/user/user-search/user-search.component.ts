@@ -15,12 +15,14 @@ export class UserSearchComponent implements OnInit {
 
     userNameControl = new FormControl();
     userList$: Observable<User[]>;
-    isDisplayed = false;
+    isDisplayed = true;
 
     constructor(private _userRepository: UserRepository) {
     }
 
     ngOnInit() {
+
+        this.userNameControl.setValue('Foo');
 
         this.userList$ = this.userNameControl.valueChanges
             .pipe(
