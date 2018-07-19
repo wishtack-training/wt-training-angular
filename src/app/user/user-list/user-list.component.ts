@@ -31,6 +31,10 @@ export class UserListComponent implements OnInit {
         this.editedUser = user;
     }
 
+    removeUser(user: User) {
+        this._userStore.removeUser(user);
+    }
+
     updateEditedUser(user: User) {
         this._userStore.replaceUser(this.editedUser, user);
         this.editedUser = null;

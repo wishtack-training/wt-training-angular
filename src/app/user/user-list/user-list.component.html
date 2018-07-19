@@ -11,8 +11,10 @@
         (cancel)="editedUser = null"
         (userSubmit)="updateEditedUser($event)"></wt-user-form>
 
-    <button
-        *ngIf="editedUser !== user"
-        (click)="editUser(user)">EDIT</button>
+
+    <div *ngIf="editedUser !== user">
+        <button (click)="editUser(user)">EDIT</button>
+        <button (click)="removeUser(user)">REMOVE</button>
+    </div>
 
 </div>
