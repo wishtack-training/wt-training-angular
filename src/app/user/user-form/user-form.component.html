@@ -10,11 +10,20 @@
         formControlName="lastName"
         type="text">
 
-    <button
-        type="button"
-        (click)="onCancel()">CANCEL</button>
+    <div>
 
-    <button type="submit">{{ buttonLabel }}</button>
+        <button
+            color="warn"
+            mat-button
+            type="button"
+            (click)="onCancel()">CANCEL</button>
+
+        <button
+            color="primary"
+            mat-raised-button
+            type="submit">{{ buttonLabel }}</button>
+
+    </div>
 
 
 </form>
