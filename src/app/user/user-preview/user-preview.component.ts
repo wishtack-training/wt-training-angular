@@ -10,9 +10,6 @@ export class UserPreviewComponent implements OnInit {
 
     @Input() user: User;
 
-    constructor() {
-    }
-
     ngOnInit() {
     }
 
