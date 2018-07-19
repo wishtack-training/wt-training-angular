@@ -1,0 +1,12 @@
+
+@mixin circle($diameter) {
+    border-radius: $diameter / 2;
+    border-style: solid;
+    border-width: 1px;
+    width: $diameter;
+}
+
+img {
+    @include circle(100px);
+    background-color: burlywood;
+}
