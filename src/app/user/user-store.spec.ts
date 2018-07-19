@@ -3,13 +3,22 @@ import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
+    let userStore: UserStore;
+    let user1: User;
+    let user2: User;
+    let user3: User;
+
+    beforeEach(() => {
+
+        userStore = new UserStore();
+
+        user1 = new User({firstName: 'Foo', lastName: 'BAR'});
+        user2 = new User({firstName: 'John', lastName: 'DOE'});
+        user3 = new User({firstName: 'Foo', lastName: 'BAR'});
+
+    });
+
     it('should add users', () => {
-
-        const userStore = new UserStore();
-
-        const user1 = new User('Foo', 'BAR');
-        const user2 = new User('John', 'DOE');
-        const user3 = new User('Foo', 'BAR');
 
         const userListEmpty = userStore.getUserList();
 
@@ -30,12 +39,6 @@ describe('UserStore', () => {
     });
 
     it('should remove users', () => {
-
-        const userStore = new UserStore();
-
-        const user1 = new User('Foo', 'BAR');
-        const user2 = new User('John', 'DOE');
-        const user3 = new User('Foo', 'BAR');
 
         userStore.addUser(user1);
         userStore.addUser(user2);
