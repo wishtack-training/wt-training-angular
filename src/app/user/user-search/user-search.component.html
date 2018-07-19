@@ -2,6 +2,13 @@
     type="text"
     [formControl]="userNameControl">
 
-<wt-user-preview
-    *ngFor="let user of userList"
-    [user]="user"></wt-user-preview>
+<button
+    color="primary"
+    mat-raised-button
+    (click)="isDisplayed = !isDisplayed">TOGGLE</button>
+
+<div *ngIf="isDisplayed">
+    <wt-user-preview
+        *ngFor="let user of userList$ | async"
+        [user]="user"></wt-user-preview>
+</div>

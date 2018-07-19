@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
-import { User } from '../user';
+import { Observable } from 'rxjs';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
+import { User, UserSchema } from '../user';
+import { UserRepository } from '../user-repository';
 
 @Component({
     selector: 'wt-user-search',
@@ -12,32 +14,22 @@ import { User } from '../user';
 export class UserSearchComponent implements OnInit {
 
     userNameControl = new FormControl();
-    userList: User[];
+    userList$: Observable<User[]>;
+    isDisplayed = false;
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(private _userRepository: UserRepository) {
     }
 
     ngOnInit() {
 
-        this.userNameControl.valueChanges
+        this.userList$ = this.userNameControl.valueChanges
             .pipe(
-                debounceTime(100)
-            )
-            .subscribe(value => {
-                console.log(value);
-            });
-
-        this._httpClient.get('http://wt-users.getsandbox.com/users?firstName=foo')
-            .subscribe(data => {
-                // @TODO: do the magic stuff... to set userList
-                console.log(data);
-
-                this.userList = [
-                    new User({
-                        firstName: 'Foo'
-                    })
-                ];
-            });
+                debounceTime(100),
+                startWith(this.userNameControl.value),
+                switchMap(keywords => {
+                    return this._userRepository.searchUsers(keywords);
+                })
+            );
 
     }
 
