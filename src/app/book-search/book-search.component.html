@@ -1,0 +1,11 @@
+<div>
+  <input
+  type="text"
+  [formControl]="keywordsControl">
+</div>
+
+<mat-card *ngFor="let book of bookList$ | async">
+  <mat-card-title>
+    {{ book.title }}
+  </mat-card-title>
+</mat-card>
