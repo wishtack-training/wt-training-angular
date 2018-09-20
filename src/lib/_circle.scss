@@ -1,0 +1,8 @@
+
+@mixin wt-circle($diameter) {
+
+    border-radius: $diameter / 2;
+    height: $diameter;
+    width: $diameter;
+
+}

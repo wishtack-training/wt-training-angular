@@ -1,0 +1,15 @@
+@import '../../../lib/circle';
+
+img {
+
+    @include wt-circle(100px);
+
+    background-color: #440044;
+    border-style: solid;
+    border-width: 1px;
+
+}
+
+input.ng-invalid {
+    background-color: red;
+}

@@ -8,7 +8,13 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "wt",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "spec": false,
+          "prefix": "wt",
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

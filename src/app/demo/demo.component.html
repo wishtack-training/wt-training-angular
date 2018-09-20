@@ -1,0 +1,17 @@
+<h1>Hello {{ name }}</h1>
+<h2>Length {{ name.length }}</h2>
+
+<img
+    *ngIf="name.length > 10"
+    [alt]="name"
+    [src]="getPictureUrl()">
+
+<ul>
+  <li *ngFor="let item of [1,2,3]">
+    {{item}}
+  </li>
+</ul>
+
+<button
+    [disabled]="name.length < 15"
+    (click)="resetName()">RESET</button>

@@ -1,0 +1,27 @@
+<form
+    [formGroup]="userForm"
+    (ngSubmit)="addUser()">
+
+    <input formControlName="firstName" type="text">
+
+    <input formControlName="lastName" type="text">
+
+    <button
+        type="submit"
+        [disabled]="!userForm.valid">ADD</button>
+
+</form>
+
+<div *ngFor="let user of getUserList()">
+
+    <img
+        [src]="getPictureUrl(user)">
+
+    <div>
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+    </div>
+
+    <button (click)="removeUser(user)">REMOVE</button>
+
+</div>
