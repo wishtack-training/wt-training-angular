@@ -10,12 +10,20 @@
         type="submit"
         [disabled]="!userForm.valid">ADD</button>
 
+    <button type="button" (click)="addAddress()">ADD ADDRESS</button>
+
+    <div
+        *ngFor="let addressGroup of addressControlList.controls"
+        [formGroup]="addressGroup">
+        <input formControlName="street" type="text">
+        <input formControlName="city" type="text">
+    </div>
+
 </form>
 
 <div *ngFor="let user of getUserList()">
 
-    <img
-        [src]="getPictureUrl(user)">
+    <img [src]="getPictureUrl(user)">
 
     <div>
         <span>{{ user.firstName }}</span>

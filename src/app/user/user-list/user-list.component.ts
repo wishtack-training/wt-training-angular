@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UserStore } from '../user-store';
+
 
 @Component({
     selector: 'wt-user-list',
@@ -14,7 +15,8 @@ export class UserListComponent implements OnInit {
         firstName: new FormControl(),
         lastName: new FormControl(null, [
             Validators.maxLength(20)
-        ])
+        ]),
+        addressList: new FormArray([])
     });
 
     private _userStore = new UserStore();
@@ -25,9 +27,23 @@ export class UserListComponent implements OnInit {
     ngOnInit() {
     }
 
+    get addressControlList() {
+        return this.userForm.get('addressList') as FormArray;
+    }
+
+    addAddress() {
+        this.addressControlList.push(new FormGroup({
+            street: new FormControl(null, [
+                Validators.minLength(3)
+            ]),
+            city: new FormControl()
+        }));
+    }
+
     addUser() {
         const user = new User(this.userForm.value);
         this._userStore.addUser(user);
+        this.userForm
         this.userForm.reset();
     }
 
@@ -42,5 +58,4 @@ export class UserListComponent implements OnInit {
     getPictureUrl(user: User) {
         return `https://robohash.org/${user.firstName}`;
     }
-
 }
