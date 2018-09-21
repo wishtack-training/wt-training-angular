@@ -7,6 +7,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: SharedModule.MODULE_LIST,
@@ -14,6 +15,7 @@ import { NgModule } from '@angular/core';
 })
 export class SharedModule {
     static readonly MODULE_LIST = [
-        CommonModule
+        CommonModule,
+        RouterModule
     ];
 }

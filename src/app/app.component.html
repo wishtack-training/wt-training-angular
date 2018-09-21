@@ -1,1 +1,6 @@
-<wt-user-search></wt-user-search>
+<router-outlet></router-outlet>
+
+<footer>
+    <div><a [routerLink]="['/user', 'search']">Search</a></div>
+    <div><a routerLink="/user/list">List</a></div>
+</footer>

@@ -13,7 +13,7 @@ export class DemoComponent implements OnDestroy, OnInit {
     tmp: string;
 
     ngOnInit() {
-        this._interval = setInterval(() => this.name += '.', 200);
+        this._interval = setInterval(() => this.name += '.', 2000);
     }
 
     ngOnDestroy() {
