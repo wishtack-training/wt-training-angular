@@ -1,5 +1,5 @@
 import { User } from './user';
-import { UserStore } from './user-store';
+import { UserStore } from './user-store.service';
 
 describe('UserStore', () => {
 

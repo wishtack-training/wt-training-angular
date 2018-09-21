@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
-import { UserStore } from '../user-store';
-
+import { UserStore } from '../user-store.service';
 
 @Component({
     selector: 'wt-user-list',
@@ -10,7 +9,11 @@ import { UserStore } from '../user-store';
 })
 export class UserListComponent {
 
-    private _userStore = new UserStore();
+    private _userStore: UserStore;
+
+    constructor(userStore: UserStore) {
+        this._userStore = userStore;
+    }
 
     addUser(user: User) {
         this._userStore.addUser(user);
