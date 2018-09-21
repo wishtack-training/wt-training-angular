@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
     imports: [
@@ -14,12 +15,14 @@ import { UserPreviewComponent } from './user-preview/user-preview.component';
     declarations: [
         UserFormComponent,
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserSearchComponent
     ],
     exports: [
         UserFormComponent,
         UserListComponent,
-        UserPreviewComponent
+        UserPreviewComponent,
+        UserSearchComponent
     ]
 })
 export class UserModule {

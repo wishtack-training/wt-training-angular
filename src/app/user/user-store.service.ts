@@ -19,4 +19,5 @@ export class UserStore {
     removeUser(user: User) {
         this._userList = this._userList.filter(_user => _user !== user);
     }
+
 }

@@ -9,10 +9,9 @@ import { UserStore } from '../user-store.service';
 })
 export class UserListComponent {
 
-    private _userStore: UserStore;
-
-    constructor(userStore: UserStore) {
-        this._userStore = userStore;
+    constructor(
+        private _userStore: UserStore
+    ) {
     }
 
     addUser(user: User) {

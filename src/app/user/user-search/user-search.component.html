@@ -1,0 +1,12 @@
+<input
+    placeholder="keywords"
+    type="text"
+    [formControl]="keywordsControl">
+
+<div>({{ userCount }})</div>
+
+<div>
+    <wt-user-preview
+        *ngFor="let user of userList"
+        [user]="user"></wt-user-preview>
+</div>
