@@ -5,7 +5,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
-import { UserModule } from './user/user.module';
 
 export const routes: Routes = [
     {
