@@ -1,5 +1,8 @@
 {
   "name": "demo",
   "version": "0.0.0",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lib-a": "file:dist/lib-a"
+  }
 }
