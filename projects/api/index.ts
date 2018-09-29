@@ -1,25 +1,37 @@
+import { ApolloServer, gql, makeExecutableSchema } from 'apollo-server-express';
 import * as express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { buildSchemaFromTypeDefinitions, mergeSchemas } from 'graphql-tools';
+import { userSchema } from './user/user-schema';
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
+const nowTypeDefs = gql`
+    type Query {
+        now: String
+    }
 `;
 
-// Provide resolver functions for your schema fields
-const resolvers = {
+const nowResolvers = {
     Query: {
-        hello: () => 'Hello world!',
-    },
+        now() {
+            return new Date().toISOString();
+        }
+    }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const schema = mergeSchemas({
+    schemas: [
+        makeExecutableSchema({typeDefs: nowTypeDefs, resolvers: nowResolvers}),
+        userSchema
+    ]
+});
+
+
+const server = new ApolloServer({
+    schema
+});
 
 const app = express();
-server.applyMiddleware({ app });
+server.applyMiddleware({app});
 
-app.listen({ port: 4000 }, () =>
+app.listen({port: 4000}, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`),
 );
