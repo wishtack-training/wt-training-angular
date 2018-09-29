@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/api",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es2015",
+      "esnext.asynciterable"
+    ],
+    "types": [
+      "node"
+    ]
+  }
+}
