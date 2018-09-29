@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <p>
       lib-a works!
     </p>
+    <wt-lib-b></wt-lib-b>
   `,
   styles: []
 })

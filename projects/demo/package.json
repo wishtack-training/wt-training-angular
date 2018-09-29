@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "lib-a": "file:dist/lib-a"
+    "lib-a": "*"
   }
 }

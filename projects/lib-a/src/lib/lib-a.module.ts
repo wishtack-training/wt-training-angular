@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
+import { LibBModule } from 'lib-b';
 import { LibAComponent } from './lib-a.component';
 
 @NgModule({
-  imports: [
-  ],
-  declarations: [LibAComponent],
-  exports: [LibAComponent]
+    imports: [
+        LibBModule
+    ],
+    declarations: [LibAComponent],
+    exports: [LibAComponent]
 })
-export class LibAModule { }
+export class LibAModule {
+}
