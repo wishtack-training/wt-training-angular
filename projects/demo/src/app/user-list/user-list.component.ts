@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ApolloQueryResult } from 'apollo-client';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../user';
+import { UserListQuery } from './user-list.query';
 
 @Component({
     selector: 'wt-user-list',
@@ -15,6 +19,11 @@ export class UserListComponent implements OnInit {
     });
 
     userList: User[] = [];
+    userList$: Observable<User[]>;
+
+    constructor(private _userListQuery: UserListQuery) {
+        this.userList$ = this._userListQuery.watchUserList().pipe(map(({data}) => data));
+    }
 
     ngOnInit() {
     }

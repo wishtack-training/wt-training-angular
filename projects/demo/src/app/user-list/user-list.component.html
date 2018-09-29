@@ -14,7 +14,7 @@
 
 </form>
 
-<div *ngFor="let user of userList">
+<div *ngFor="let user of userList$ | async">
     <div>{{ user.firstName }} {{ user.lastName}}</div>
     <button
         mat-button
