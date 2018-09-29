@@ -1,0 +1,22 @@
+<form
+    [formGroup]="userForm"
+    (ngSubmit)="addUser()">
+
+    <mat-form-field>
+        <input formControlName="firstName" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input formControlName="lastName" matInput type="text">
+    </mat-form-field>
+
+    <button color="primary" mat-raised-button type="submit">ADD</button>
+
+</form>
+
+<div *ngFor="let user of userList">
+    <div>{{ user.firstName }} {{ user.lastName}}</div>
+    <button
+        mat-button
+        (click)="removeUser(user)">REMOVE</button>
+</div>

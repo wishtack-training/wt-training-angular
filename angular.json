@@ -7,7 +7,7 @@
       "root": "projects/demo/",
       "sourceRoot": "projects/demo/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "wt",
       "schematics": {},
       "architect": {
         "build": {
