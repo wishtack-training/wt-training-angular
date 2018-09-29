@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LibAModule } from 'lib-a';
+import { LibAModule } from '@wishtack/lib-a';
 
 import { AppComponent } from './app.component';
 

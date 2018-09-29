@@ -18,17 +18,13 @@
       "dom"
     ],
     "paths": {
-      "lib-a": [
-        "dist/lib-a"
+      "@wishtack/lib-a": [
+        "dist/lib-a",
+        "projects/lib-a/src/index.ts"
       ],
-      "lib-a/*": [
-        "dist/lib-a/*"
-      ],
-      "lib-b": [
-        "dist/lib-b"
-      ],
-      "lib-b/*": [
-        "dist/lib-b/*"
+      "@wishtack/lib-b": [
+        "dist/lib-b",
+        "projects/lib-b/src/index.ts"
       ]
     }
   }
