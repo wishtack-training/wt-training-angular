@@ -3,15 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "run-p _serve watch:*",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "watch:lib-a": "yarn _watch lib-a",
-    "watch:lib-b": "yarn _watch lib-b",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "_serve": "ng serve",
-    "_watch": "ng build --watch"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
