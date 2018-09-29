@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { LibBModule } from 'lib-b';
 import { LibAComponent } from './lib-a.component';
+import { LibBModule } from 'lib-b';
 
 @NgModule({
     imports: [
