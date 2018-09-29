@@ -1,6 +1,6 @@
 import { ApolloServer, gql, makeExecutableSchema } from 'apollo-server-express';
 import * as express from 'express';
-import { buildSchemaFromTypeDefinitions, mergeSchemas } from 'graphql-tools';
+import { mergeSchemas } from 'graphql-tools';
 import { userSchema } from './user/user-schema';
 
 const nowTypeDefs = gql`

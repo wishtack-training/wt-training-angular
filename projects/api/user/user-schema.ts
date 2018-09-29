@@ -9,17 +9,29 @@ import { gql, makeExecutableSchema } from 'apollo-server-express';
 import { userResolvers } from './user-resolvers';
 
 export const userTypeDefs = gql`
-
+    
     type Query {
+        user(userId: String): User
         users: [User]
     }
-
+    
+    type Mutation {
+        addUser(user: UserInput): User
+        removeUser(userId: String): ID
+    }
+    
     type User {
-        firstName: String,
-        lastName: String,
+        id: ID
+        firstName: String
+        lastName: String
         email: String
     }
-
+    
+    input UserInput {
+        firstName: String
+        lastName: String
+        email: String
+    }
 `;
 
 export const userSchema = makeExecutableSchema({
