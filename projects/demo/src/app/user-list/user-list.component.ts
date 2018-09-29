@@ -4,6 +4,7 @@ import { ApolloQueryResult } from 'apollo-client';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../user';
+import { AddUserMutation } from './add-user.mutation';
 import { UserListQuery } from './user-list.query';
 
 @Component({
@@ -21,7 +22,10 @@ export class UserListComponent implements OnInit {
     userList: User[] = [];
     userList$: Observable<User[]>;
 
-    constructor(private _userListQuery: UserListQuery) {
+    constructor(
+        private _addUserMutation: AddUserMutation,
+        private _userListQuery: UserListQuery
+    ) {
         this.userList$ = this._userListQuery.watchUserList().pipe(map(({data}) => data));
     }
 
@@ -29,8 +33,8 @@ export class UserListComponent implements OnInit {
     }
 
     addUser() {
-        this.userList = [...this.userList, new User(this.userForm.value)];
-        this.userForm.reset();
+        const user = new User(this.userForm.value);
+        this._addUserMutation.mutate({user}).subscribe();
     }
 
     removeUser(user: User) {
