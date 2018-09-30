@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloQueryResult } from 'apollo-client';
-import ApolloClient from 'apollo-client/ApolloClient';
+import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { User } from '../user';
 import { AddUserMutation } from './add-user.mutation';
 import { RemoveUserMutation } from './remove-user.mutation';
@@ -15,7 +13,7 @@ import { UserListQuery } from './user-list.query';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent implements OnDestroy {
 
     userForm = new FormGroup({
         firstName: new FormControl(),
@@ -24,6 +22,8 @@ export class UserListComponent {
 
     userList$: Observable<User[]>;
 
+    private _scavenger = new Scavenger(this);
+
     constructor(
         private _addUserMutation: AddUserMutation,
         private _removeUserMutation: RemoveUserMutation,
@@ -31,7 +31,14 @@ export class UserListComponent {
     ) {
         this.userList$ = this._userListQuery.watch()
             .valueChanges
-            .pipe(map(({data}) => data.users));
+            .pipe(
+                map(({data}) => data.users),
+                shareReplay(1),
+                this._scavenger.collect()
+            );
+    }
+
+    ngOnDestroy() {
     }
 
     addUser() {

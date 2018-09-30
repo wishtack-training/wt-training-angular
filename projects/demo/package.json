@@ -8,12 +8,13 @@
     "dependencies": {
         "@angular/cdk": "^6.2.0",
         "@angular/material": "^6.2.0",
+        "@wishtack/rx-scavenger": "^1.0.2",
         "apollo-angular": "^1.4.0",
         "apollo-angular-link-http": "^1.2.0",
-        "apollo-link": "^1.2.0",
-        "apollo-client": "^2.4.0",
         "apollo-cache-inmemory": "^1.2.0",
-        "graphql-tag": "^2.9.2",
-        "graphql": "^0.13.2"
+        "apollo-client": "^2.4.0",
+        "apollo-link": "^1.2.0",
+        "graphql": "^0.13.2",
+        "graphql-tag": "^2.9.2"
     }
 }
