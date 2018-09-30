@@ -11,13 +11,13 @@ import { userResolvers } from './user-resolvers';
 export const userTypeDefs = gql`
     
     type Query {
-        user(userId: String): User
+        user(userId: ID): User
         users: [User]
     }
     
     type Mutation {
         addUser(user: UserInput): User
-        removeUser(userId: String): ID
+        removeUser(userId: ID): ID
     }
     
     type User {

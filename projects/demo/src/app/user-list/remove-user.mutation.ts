@@ -20,15 +20,11 @@ import { DataProxy } from 'apollo-cache';
 @Injectable({
     providedIn: 'root'
 })
-export class AddUserMutation extends Mutation<{ addUser: User }, { user: User }> {
+export class RemoveUserMutation extends Mutation<{ removeUser: User }, { userId: string }> {
 
     document = gql`
-        mutation AddUser($user: UserInput) {
-            addUser(user: $user) {
-                id
-                firstName
-                lastName
-            }
+        mutation RemoveUser($userId: ID) {
+            removeUser(userId: $userId)
         }
     `;
 
@@ -36,15 +32,13 @@ export class AddUserMutation extends Mutation<{ addUser: User }, { user: User }>
         super(apollo);
     }
 
-    addUser(user: User): Observable<FetchResult<{ addUser: User }>> {
-
-        return this.mutate({user}, {
-            update: (dataProxy: DataProxy, {data: {addUser}}) => {
+    removeUser(userId: string): Observable<FetchResult<{ removeUser: User }>> {
+        return this.mutate({userId}, {
+            update: (dataProxy: DataProxy) => {
                 /* Update locale cache. */
-                const createdUser = addUser;
                 const query = this._userListQuery.document;
                 const data = dataProxy.readQuery<{ users: Partial<User>[] }>({query});
-                const users = [...data.users, createdUser];
+                const users = data.users.filter(user => user.id !== userId);
                 dataProxy.writeQuery({
                     query,
                     data: {
@@ -54,7 +48,6 @@ export class AddUserMutation extends Mutation<{ addUser: User }, { user: User }>
                 });
             }
         });
-
     }
 
 }
