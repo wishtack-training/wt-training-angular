@@ -2,11 +2,12 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 import { User } from '../user';
 import { AddUserMutation } from './add-user.mutation';
 import { RemoveUserMutation } from './remove-user.mutation';
 import { UserListQuery } from './user-list.query';
+
 
 @Component({
     selector: 'wt-user-list',
@@ -33,7 +34,8 @@ export class UserListComponent implements OnDestroy {
             .valueChanges
             .pipe(
                 map(({data}) => data.users),
-                shareReplay(1),
+                publishReplay(1),
+                refCount(),
                 this._scavenger.collect()
             );
     }
