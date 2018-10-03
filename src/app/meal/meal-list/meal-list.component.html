@@ -18,7 +18,17 @@
         <option value="desert">Desert</option>
     </select>
 
-    <button type="submit">ADD</button>
+    <div *ngIf="mealForm.get('name') as control">
+        {{ control.errors | json }}
+    </div>
+
+    <div *ngIf="mealForm.getError('rangeInvalid', 'price') as error">
+        {{ error | json }}
+    </div>
+
+    <button
+        type="submit"
+        [disabled]="!mealForm.valid">ADD</button>
 
 </form>
 
