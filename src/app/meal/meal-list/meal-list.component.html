@@ -1,0 +1,30 @@
+<form
+    [formGroup]="mealForm"
+    (ngSubmit)="addMeal()">
+
+    <input
+        formControlName="name"
+        placeholder="name"
+        type="text">
+
+    <input
+        formControlName="price"
+        placeholder="price"
+        type="number">
+
+    <select formControlName="type">
+        <option value="starter">Starter</option>
+        <option value="main">Main</option>
+        <option value="desert">Desert</option>
+    </select>
+
+    <button type="submit">ADD</button>
+
+</form>
+
+<ul>
+    <li *ngFor="let meal of getMealList()">
+        <span>{{ meal.name }}</span>
+        <button (click)="removeMeal(meal)">REMOVE</button>
+    </li>
+</ul>
