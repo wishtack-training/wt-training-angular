@@ -1,0 +1,16 @@
+<h1>{{ title }}</h1>
+
+<img [src]="getPictureUri()">
+
+<ng-container *ngFor="let city of cityList; let isLast=last">
+    <div>{{ city }}</div>
+    <hr *ngIf="!isLast">
+</ng-container>
+
+<button *ngIf="cityList.length <= 2">
+    ADD CITY
+</button>
+
+<button
+    [disabled]="title.length < 10"
+    (click)="title = 'x'">RESET</button>
