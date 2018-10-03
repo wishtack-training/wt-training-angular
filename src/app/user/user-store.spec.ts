@@ -1,31 +1,12 @@
-class UserStore {
-
-    addUser(user: User) {
-        throw new Error('😱 Not implemented yet!');
-    }
-
-    getUserList() {
-        throw new Error('😱 Not implemented yet!');
-    }
-
-    removeUser(user1: User) {
-        throw new Error('😱 Not implemented yet!');
-    }
-
-}
-
-class User {
-    constructor(firstName: string, lastName: string) {
-        throw new Error('😱 Not implemented yet!');
-    }
-}
-
 /**
  *
  * (c) 2013-2018 Wishtack
  *
  * $Id: $
  */
+
+import { User } from './user';
+import { UserStore } from './user-store';
 
 describe('UserStore', () => {
 
@@ -38,21 +19,30 @@ describe('UserStore', () => {
 
         userStore = new UserStore();
 
-        user1 = new User('Foo', 'BAR');
-        user2 = new User('John', 'DOE');
-        user3 = new User('Foo', 'BAR');
+        user1 = new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        });
+        user2 = new User({
+            firstName: 'John',
+            lastName: 'DOE'
+        });
+        user3 = new User({
+            firstName: 'Foo',
+            lastName: 'BAR'
+        });
 
     });
 
-    xit('should add users', () => {
+    it('should add users', () => {
 
-        const userList = userStore.getUserList();
-
-        expect(userList).toEqual([]);
+        const userListEmpty = userStore.getUserList();
 
         userStore.addUser(user1);
         userStore.addUser(user2);
         userStore.addUser(user3);
+
+        expect(userListEmpty).toEqual([]);
 
         expect(userStore.getUserList()).toEqual([
             user1,
@@ -62,7 +52,7 @@ describe('UserStore', () => {
 
     });
 
-    xit('should remove users', () => {
+    it('should remove users', () => {
 
         userStore.addUser(user1);
         userStore.addUser(user2);
