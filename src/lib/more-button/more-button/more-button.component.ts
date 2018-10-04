@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges
+} from '@angular/core';
 
 export enum ButtonShape {
     default = 'default',
@@ -11,9 +20,9 @@ export enum ButtonShape {
     templateUrl: './more-button.component.html',
     styleUrls: ['./more-button.component.css']
 })
-export class MoreButtonComponent implements OnInit {
+export class MoreButtonComponent implements OnChanges, OnInit {
 
-    @Input() label;
+    @Input() label = 'MORE';
     @Input() shape: ButtonShape;
     @Input() shouldTriggerOnHover = false;
     @Output() displayActionsChange = new EventEmitter<boolean>();
@@ -22,6 +31,15 @@ export class MoreButtonComponent implements OnInit {
     shouldDisplayActions = false;
 
     ngOnInit() {
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.label != null && this.label == null) {
+            console.warn(`<wt-more-button>: 'label' input should not be null or undefined.`);
+            this.label = 'MORE';
+        }
+
     }
 
     onMoreButtonMouseEnter() {
