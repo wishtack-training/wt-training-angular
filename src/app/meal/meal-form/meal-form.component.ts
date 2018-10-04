@@ -36,7 +36,7 @@ export class MealFormComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.meal != null) {
-            this.mealForm.reset(this.meal);
+            this.mealForm.reset(this.meal || undefined);
         }
     }
 
