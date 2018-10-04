@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export enum ButtonShape {
     default = 'default',
@@ -6,18 +6,19 @@ export enum ButtonShape {
 }
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-more-button',
     templateUrl: './more-button.component.html',
     styleUrls: ['./more-button.component.css']
 })
 export class MoreButtonComponent implements OnInit {
 
-    @Input() label = 'More';
+    @Input() label;
     @Input() shape: ButtonShape;
     @Input() shouldTriggerOnHover = false;
     @Output() displayActionsChange = new EventEmitter<boolean>();
 
-    circle = ButtonShape.circle;
+    buttonShapeEnum = ButtonShape;
     shouldDisplayActions = false;
 
     ngOnInit() {
@@ -47,5 +48,4 @@ export class MoreButtonComponent implements OnInit {
         this.shouldDisplayActions = shouldDisplayActions;
         this.displayActionsChange.emit(shouldDisplayActions);
     }
-
 }

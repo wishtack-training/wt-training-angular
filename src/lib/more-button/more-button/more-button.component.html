@@ -3,7 +3,7 @@
 
     <button
         *ngIf="!shouldDisplayActions"
-        [class.wt-circle]="shape === circle"
+        [class.wt-circle]="shape === buttonShapeEnum.circle"
         (click)="onMoreButtonClick()"
         (mouseenter)="onMoreButtonMouseEnter()">{{ label | uppercase }}</button>
 
