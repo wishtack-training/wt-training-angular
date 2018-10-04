@@ -51,7 +51,10 @@ export class MealListComponent implements OnInit {
     buttonShapeEnum = ButtonShape;
     selectedMeal: Meal;
 
-    private _mealStore = new MealStore();
+    constructor(
+        private _mealStore: MealStore
+    ) {
+    }
 
     ngOnInit() {
     }
