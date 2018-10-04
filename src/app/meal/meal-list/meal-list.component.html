@@ -40,7 +40,8 @@
     <wt-more-button
         [label]="'EDIT'"
         [shape]="buttonShapeEnum.circle"
-        [shouldTriggerOnHover]="false">
+        [shouldTriggerOnHover]="false"
+        (displayActionsChange)="onDisplayActionsChange(meal, $event)">
 
         <button>EDIT</button>
         <button (click)="removeMeal(meal)">REMOVE</button>

@@ -89,4 +89,8 @@ export class MealListComponent implements OnInit {
         this._mealStore.removeMeal(meal);
     }
 
+    onDisplayActionsChange(meal: Meal, shouldDisplayActions: boolean) {
+        console.log(`${meal.name} : ${shouldDisplayActions}`);
+    }
+
 }

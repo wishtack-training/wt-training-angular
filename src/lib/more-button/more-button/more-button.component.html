@@ -4,7 +4,7 @@
     <button
         *ngIf="!shouldDisplayActions"
         [class.wt-circle]="shape === circle"
-        (click)="shouldDisplayActions = true"
+        (click)="onMoreButtonClick()"
         (mouseenter)="onMoreButtonMouseEnter()">{{ label | uppercase }}</button>
 
     <div *ngIf="shouldDisplayActions">
@@ -13,7 +13,7 @@
 
         <button
             *ngIf="!shouldTriggerOnHover"
-            (click)="shouldDisplayActions = false">CANCEL</button>
+            (click)="onCancelButtonClick()">CANCEL</button>
 
     </div>
 
