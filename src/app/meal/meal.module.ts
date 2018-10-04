@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MoreButtonModule } from '../../lib/more-button/more-button.module';
 import { MealListComponent } from './meal-list/meal-list.component';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { MealListComponent } from './meal-list/meal-list.component';
     ],
     imports: [
         CommonModule,
+        MoreButtonModule,
         ReactiveFormsModule
     ]
 })

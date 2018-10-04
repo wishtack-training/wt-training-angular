@@ -9,8 +9,8 @@ import { Meal } from './meal';
 export class MealStore {
 
     private _mealList = [
-        new Meal(),
-        new Meal()
+        new Meal({name: 'Salad'}),
+        new Meal({name: 'Ribs'})
     ];
 
     addMeal(meal: Meal) {

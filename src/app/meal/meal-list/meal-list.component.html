@@ -18,23 +18,35 @@
         <option value="desert">Desert</option>
     </select>
 
-    <div *ngIf="mealForm.get('name') as control">
-        {{ control.errors | json }}
-    </div>
+    <!--<div *ngIf="mealForm.get('name') as control">-->
+    <!--{{ control.errors | json }}-->
+    <!--</div>-->
 
-    <div *ngIf="mealForm.getError('rangeInvalid', 'price') as error">
-        {{ error | json }}
-    </div>
+    <!--<div *ngIf="mealForm.getError('rangeInvalid', 'price') as error">-->
+    <!--{{ error | json }}-->
+    <!--</div>-->
 
     <button
         type="submit"
-        [disabled]="!mealForm.valid">ADD</button>
+        [disabled]="!mealForm.valid">ADD
+    </button>
 
 </form>
 
-<ul>
-    <li *ngFor="let meal of getMealList()">
-        <span>{{ meal.name }}</span>
+<div *ngFor="let meal of getMealList(); let last=last">
+
+    <div>{{ meal.name }}</div>
+
+    <wt-more-button
+        [label]="'EDIT'"
+        [shape]="buttonShapeEnum.circle"
+        [shouldTriggerOnHover]="false">
+
+        <button>EDIT</button>
         <button (click)="removeMeal(meal)">REMOVE</button>
-    </li>
-</ul>
+
+    </wt-more-button>
+
+    <hr *ngIf="!last">
+
+</div>

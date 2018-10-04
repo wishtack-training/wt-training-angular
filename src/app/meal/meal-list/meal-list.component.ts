@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ButtonShape } from '../../../lib/more-button/more-button/more-button.component';
 import { Meal, MealType } from '../meal';
 import { MealStore } from '../meal-store';
 
@@ -66,6 +67,8 @@ export class MealListComponent implements OnInit {
 
         }
     ]);
+
+    buttonShapeEnum = ButtonShape;
 
     private _mealStore = new MealStore();
 

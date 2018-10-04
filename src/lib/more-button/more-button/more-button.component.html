@@ -1,0 +1,20 @@
+<div
+    (mouseleave)="onMoreButtonMouseLeave()">
+
+    <button
+        *ngIf="!shouldDisplayActions"
+        [class.wt-circle]="shape === circle"
+        (click)="shouldDisplayActions = true"
+        (mouseenter)="onMoreButtonMouseEnter()">{{ label | uppercase }}</button>
+
+    <div *ngIf="shouldDisplayActions">
+
+        <ng-content></ng-content>
+
+        <button
+            *ngIf="!shouldTriggerOnHover"
+            (click)="shouldDisplayActions = false">CANCEL</button>
+
+    </div>
+
+</div>
