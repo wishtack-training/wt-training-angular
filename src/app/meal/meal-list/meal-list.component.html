@@ -1,37 +1,4 @@
-<form
-    [formGroup]="mealForm"
-    (ngSubmit)="addMeal()">
-
-    <input
-        formControlName="name"
-        placeholder="name"
-        type="text">
-
-    <input
-        formControlName="price"
-        placeholder="price"
-        type="number">
-
-    <select formControlName="type">
-        <option value="starter">Starter</option>
-        <option value="main">Main</option>
-        <option value="desert">Desert</option>
-    </select>
-
-    <!--<div *ngIf="mealForm.get('name') as control">-->
-    <!--{{ control.errors | json }}-->
-    <!--</div>-->
-
-    <!--<div *ngIf="mealForm.getError('rangeInvalid', 'price') as error">-->
-    <!--{{ error | json }}-->
-    <!--</div>-->
-
-    <button
-        type="submit"
-        [disabled]="!mealForm.valid">ADD
-    </button>
-
-</form>
+<wt-meal-form (mealSubmit)="addMeal($event)"></wt-meal-form>
 
 <div *ngFor="let meal of getMealList(); let last=last">
 
@@ -39,8 +6,7 @@
 
     <wt-more-button
         [shape]="buttonShapeEnum.circle"
-        [shouldTriggerOnHover]="false"
-        (displayActionsChange)="onDisplayActionsChange(meal, $event)">
+        [shouldTriggerOnHover]="false">
 
         <button>EDIT</button>
         <button (click)="removeMeal(meal)">REMOVE</button>

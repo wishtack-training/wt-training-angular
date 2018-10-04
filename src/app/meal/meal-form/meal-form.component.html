@@ -1,0 +1,34 @@
+<form
+    [formGroup]="mealForm"
+    (ngSubmit)="submitMeal()">
+
+    <input
+        formControlName="name"
+        placeholder="name"
+        type="text">
+
+    <input
+        formControlName="price"
+        placeholder="price"
+        type="number">
+
+    <select formControlName="type">
+        <option value="starter">Starter</option>
+        <option value="main">Main</option>
+        <option value="desert">Desert</option>
+    </select>
+
+    <!--<div *ngIf="mealForm.get('name') as control">-->
+    <!--{{ control.errors | json }}-->
+    <!--</div>-->
+
+    <!--<div *ngIf="mealForm.getError('rangeInvalid', 'price') as error">-->
+    <!--{{ error | json }}-->
+    <!--</div>-->
+
+    <button
+        type="submit"
+        [disabled]="!mealForm.valid">ADD
+    </button>
+
+</form>

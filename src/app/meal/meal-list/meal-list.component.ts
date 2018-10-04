@@ -48,26 +48,6 @@ export const rangeValidator = (minValue: number, maxValue: number) => (control: 
 })
 export class MealListComponent implements OnInit {
 
-    mealForm = new FormGroup({
-        name: createNameControl(),
-        price: new FormControl(null, [
-            rangeValidator(5, 10)
-        ]),
-        type: new FormControl(null)
-    }, [
-        (control) => {
-
-            if (control.value.type === MealType.desert && control.value.price > 6) {
-                return {
-                    wtf: true
-                };
-            }
-
-            return null;
-
-        }
-    ]);
-
     buttonShapeEnum = ButtonShape;
 
     private _mealStore = new MealStore();
@@ -75,10 +55,8 @@ export class MealListComponent implements OnInit {
     ngOnInit() {
     }
 
-    addMeal() {
-        const meal = new Meal(this.mealForm.value);
+    addMeal(meal: Meal) {
         this._mealStore.addMeal(meal);
-        this.mealForm.reset();
     }
 
     getMealList() {
@@ -87,10 +65,6 @@ export class MealListComponent implements OnInit {
 
     removeMeal(meal: Meal) {
         this._mealStore.removeMeal(meal);
-    }
-
-    onDisplayActionsChange(meal: Meal, shouldDisplayActions: boolean) {
-        console.log(`${meal.name} : ${shouldDisplayActions}`);
     }
 
 }
