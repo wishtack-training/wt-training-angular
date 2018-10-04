@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, Validators } from '@angular/forms';
 import { ButtonShape } from '../../../lib/more-button/more-button/more-button.component';
-import { Meal, MealType } from '../meal';
+import { Meal } from '../meal';
 import { MealStore } from '../meal-store';
 
 export function createNameControl() {
@@ -49,6 +49,7 @@ export const rangeValidator = (minValue: number, maxValue: number) => (control: 
 export class MealListComponent implements OnInit {
 
     buttonShapeEnum = ButtonShape;
+    selectedMeal: Meal;
 
     private _mealStore = new MealStore();
 
@@ -65,6 +66,15 @@ export class MealListComponent implements OnInit {
 
     removeMeal(meal: Meal) {
         this._mealStore.removeMeal(meal);
+    }
+
+    selectMeal(meal: Meal) {
+        this.selectedMeal = meal;
+    }
+
+    updateMeal(meal: Meal) {
+        this._mealStore.replaceMeal(this.selectedMeal, meal);
+        this.selectedMeal = null;
     }
 
 }

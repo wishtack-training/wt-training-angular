@@ -1,4 +1,12 @@
-<wt-meal-form (mealSubmit)="addMeal($event)"></wt-meal-form>
+<wt-meal-form
+    *ngIf="selectedMeal == null"
+    (mealSubmit)="addMeal($event)"></wt-meal-form>
+
+<wt-meal-form
+    *ngIf="selectedMeal != null"
+    [label]="'SAVE'"
+    [meal]="selectedMeal"
+    (mealSubmit)="updateMeal($event)"></wt-meal-form>
 
 <div *ngFor="let meal of getMealList(); let last=last">
 
@@ -8,7 +16,7 @@
         [shape]="buttonShapeEnum.circle"
         [shouldTriggerOnHover]="false">
 
-        <button>EDIT</button>
+        <button (click)="selectMeal(meal)">EDIT</button>
         <button (click)="removeMeal(meal)">REMOVE</button>
 
     </wt-more-button>
@@ -16,3 +24,7 @@
     <hr *ngIf="!last">
 
 </div>
+
+<wt-meal-form
+    *ngIf="getMealList().length > 3"
+    (mealSubmit)="addMeal($event)"></wt-meal-form>

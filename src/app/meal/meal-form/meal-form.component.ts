@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Meal, MealType } from '../meal';
 import { createNameControl, rangeValidator } from '../meal-list/meal-list.component';
@@ -8,8 +8,10 @@ import { createNameControl, rangeValidator } from '../meal-list/meal-list.compon
     templateUrl: './meal-form.component.html',
     styleUrls: ['./meal-form.component.css']
 })
-export class MealFormComponent {
+export class MealFormComponent implements OnChanges {
 
+    @Input() label: string;
+    @Input() meal: Meal;
     @Output() mealSubmit = new EventEmitter<Meal>();
 
     mealForm = new FormGroup({
@@ -31,6 +33,12 @@ export class MealFormComponent {
 
         }
     ]);
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.meal != null) {
+            this.mealForm.reset(this.meal);
+        }
+    }
 
     submitMeal() {
         const meal = new Meal(this.mealForm.value);

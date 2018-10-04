@@ -24,4 +24,15 @@ export class MealStore {
     removeMeal(meal: Meal) {
         this._mealList = this._mealList.filter(_meal => _meal !== meal);
     }
+
+    replaceMeal(previousMeal: Meal, currentMeal: Meal) {
+        this._mealList = this._mealList.map(_meal => {
+
+            if (_meal === previousMeal) {
+                return currentMeal;
+            }
+
+            return _meal;
+        });
+    }
 }
