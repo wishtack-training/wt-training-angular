@@ -1,0 +1,11 @@
+<input
+    [formControl]="keywordsControl"
+    type="text">
+
+<div>{{ bookCount }}</div>
+
+<ul>
+    <li *ngFor="let book of bookList">
+        {{ book.title }}
+    </li>
+</ul>
