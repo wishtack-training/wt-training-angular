@@ -49,6 +49,7 @@ export const rangeValidator = (minValue: number, maxValue: number) => (control: 
 export class MealListComponent implements OnInit {
 
     buttonShapeEnum = ButtonShape;
+    logoUri = require('./logo.png');
     selectedMeal: Meal;
 
     constructor(
