@@ -1,4 +1,10 @@
+<router-outlet></router-outlet>
 
-<wt-meal-list></wt-meal-list>
-<hr>
-<wt-book-search></wt-book-search>
+<footer>
+    <div>
+        <a [routerLink]="mealRouteResolver.getMealListRoute()">Meals</a>
+    </div>
+    <div>
+        <a routerLink="/book/search">Book Search</a>
+    </div>
+</footer>

@@ -1,11 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BookModule } from './book/book.module';
 import { DemoComponent } from './demo/demo.component';
-import { MealModule } from './meal/meal.module';
 
 @NgModule({
     declarations: [
@@ -13,9 +11,8 @@ import { MealModule } from './meal/meal.module';
         DemoComponent
     ],
     imports: [
-        BookModule,
-        BrowserModule,
-        MealModule
+        AppRoutingModule,
+        BrowserModule
     ],
     bootstrap: [
         AppComponent

@@ -22,6 +22,10 @@ export class MealStore {
         this._mealList = [...this._mealList, meal];
     }
 
+    getMeal(mealId: string) {
+        return this._mealList.find(meal => meal.id === mealId);
+    }
+
     getMealList() {
         return this._mealList;
     }

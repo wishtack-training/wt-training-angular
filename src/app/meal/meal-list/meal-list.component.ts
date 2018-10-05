@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
 import { ButtonShape } from '../../../lib/more-button/more-button/more-button.component';
+import { mealRouteResolver } from '../../views/meal/meal-route-resolver';
 import { Meal } from '../meal';
 import { MealStore } from '../meal-store';
 
@@ -50,6 +51,7 @@ export class MealListComponent implements OnInit {
 
     buttonShapeEnum = ButtonShape;
     logoUri = require('./logo.png');
+    mealRouteResolver = mealRouteResolver;
     selectedMeal: Meal;
 
     constructor(

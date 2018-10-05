@@ -4,7 +4,9 @@
 
 <div *ngFor="let meal of getMealList(); let last=last">
 
-    <div>{{ meal.name }}</div>
+    <div>
+        <a [routerLink]="mealRouteResolver.getMealDetailRoute(meal.id)">{{ meal.name }}</a>
+    </div>
 
     <wt-more-button
         *ngIf="selectedMeal !== meal"
