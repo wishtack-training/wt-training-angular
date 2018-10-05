@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -10,6 +11,7 @@ export class SharedModule {
 
     static readonly MODULE_LIST = [
         CommonModule,
+        FlexLayoutModule,
         RouterModule
     ];
 
