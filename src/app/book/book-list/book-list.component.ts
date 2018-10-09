@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -13,7 +13,10 @@ export class BookListComponent implements OnInit {
     private _bookStore = new BookStore();
 
     bookForm = new FormGroup({
-        title: new FormControl(),
+        title: new FormControl(null, [
+            Validators.required,
+            Validators.minLength(3)
+        ]),
         price: new FormControl(),
         authorName: new FormControl()
     });
@@ -22,6 +25,7 @@ export class BookListComponent implements OnInit {
     }
 
     addBook() {
+
         const book = new Book(this.bookForm.value);
         this._bookStore.addBook(book);
         this.bookForm.reset();
