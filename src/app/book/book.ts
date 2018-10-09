@@ -1,11 +1,13 @@
+import { Author } from '../author/author';
+
 export class Book {
 
-    authorName: string;
+    author: Author;
     title: string;
     price: number;
 
     constructor(args: Partial<Book> = {}) {
-        this.authorName = args.authorName;
+        this.author = args.author != null ? new Author(args.author) : null;
         this.title = args.title;
         this.price = args.price;
     }

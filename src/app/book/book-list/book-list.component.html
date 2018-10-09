@@ -2,28 +2,37 @@
     [formGroup]="bookForm"
     (ngSubmit)="addBook()">
 
-    <input
-        formControlName="title"
-        placeholder="title"
-        type="text">
+    <!-- Book group. -->
+    <div formGroupName="book">
 
-    <input
-        formControlName="price"
-        placeholder="price"
-        type="number">
+        <input
+            formControlName="title"
+            placeholder="title"
+            type="text">
 
-    <input
-        formControlName="authorName"
-        placeholder="author"
-        type="text">
+        <input
+            formControlName="price"
+            placeholder="price"
+            type="number">
+
+    </div>
+
+    <!-- Author group. -->
+    <div formGroupName="author">
+
+        <input
+            formControlName="name"
+            placeholder="author"
+            type="text">
+
+    </div>
+
 
     <button
-        type="submit">ADD</button>
+        type="submit"
+        [disabled]="!bookForm.valid">ADD</button>
 
-    {{ bookForm.get('price').errors | json }}
-
-    <div *ngIf="bookForm.get('title') as titleControl">
-
+    <div *ngIf="bookForm.get('book.title') as titleControl">
 
         <div *ngIf="titleControl.touched && titleControl.hasError('required')">
             Title is required
