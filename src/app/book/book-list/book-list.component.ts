@@ -33,11 +33,13 @@ export class BookListComponent implements OnInit {
     }
 
     addBook() {
-        const author = new Author(this.bookForm.value.author);
-        const book = new Book(this.bookForm.value.book);
 
-        console.log(author);
-        console.log(book);
+        const author = new Author(this.bookForm.value.author);
+
+        const book = new Book({
+            ...this.bookForm.value.book,
+            author
+        });
 
         this._bookStore.addBook(book);
         this.bookForm.reset();
