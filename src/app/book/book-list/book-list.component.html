@@ -45,9 +45,9 @@
 
     <div>{{ book.title }}</div>
 
-    <div *ngIf="book.authorName">
-        <div>{{ book.authorName }}</div>
-        <img [src]="getAuthorPictureUrl(book.authorName)">
+    <div *ngIf="book.author">
+        <div>{{ book.author.name }}</div>
+        <img [src]="getAuthorPictureUrl(book.author.name)">
     </div>
 
     <button
