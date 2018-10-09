@@ -20,7 +20,11 @@
     <button
         type="submit">ADD</button>
 
+    {{ bookForm.get('price').errors | json }}
+
     <div *ngIf="bookForm.get('title') as titleControl">
+
+
         <div *ngIf="titleControl.touched && titleControl.hasError('required')">
             Title is required
         </div>
