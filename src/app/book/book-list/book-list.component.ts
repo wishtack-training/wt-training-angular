@@ -1,55 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { rangeValidator } from '../../../lib/range.validator';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
-
-export interface RangeError {
-    range: {
-        reason: 'tooLow',
-        currentValue: number,
-        minValue: number
-    } | {
-        reason: 'tooHigh',
-        currentValue: number,
-        maxValue: number
-    };
-}
-
-/**
- * @returns an error object like {range: {...}}
- */
-export const rangeValidator: ValidatorFn = (control): RangeError => {
-
-    const minValue = 5;
-    const maxValue = 50;
-
-    if (control.value == null) {
-        return null;
-    }
-
-    if (control.value < minValue) {
-        return {
-            range: {
-                reason: 'tooLow',
-                currentValue: control.value,
-                minValue
-            }
-        };
-    }
-
-    if (control.value > maxValue) {
-        return {
-            range: {
-                reason: 'tooHigh',
-                currentValue: control.value,
-                maxValue
-            }
-        };
-    }
-
-    return null;
-
-};
 
 @Component({
     selector: 'wt-book-list',
@@ -66,7 +19,7 @@ export class BookListComponent implements OnInit {
             Validators.minLength(3)
         ]),
         price: new FormControl(null, [
-            rangeValidator
+            rangeValidator(5, 50)
         ]),
         authorName: new FormControl()
     });
@@ -75,7 +28,6 @@ export class BookListComponent implements OnInit {
     }
 
     addBook() {
-
         const book = new Book(this.bookForm.value);
         this._bookStore.addBook(book);
         this.bookForm.reset();
