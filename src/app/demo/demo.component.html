@@ -1,0 +1,11 @@
+<h2 [style.fontSize]="userName.length.toString() + 'px'">Hello {{ userName }}</h2>
+
+<button
+    [hidden]="userName.length < 5"
+    (click)="reset()">RESET</button>
+
+<ul *ngIf="cityList != null">
+    <li *ngFor="let city of cityList">
+        {{ city }}
+    </li>
+</ul>
