@@ -1,3 +1,8 @@
-input.ng-touched.ng-invalid {
-    background-color: red;
+.wt-author__picture {
+    background-color: darksalmon;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    height: 100px;
+    width: 100px;
 }

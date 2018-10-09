@@ -5,30 +5,41 @@
     <!-- Book group. -->
     <div formGroupName="book">
 
-        <input
-            formControlName="title"
-            placeholder="title"
-            type="text">
+        <mat-form-field>
+            <input
+                formControlName="title"
+                matInput
+                placeholder="Book title"
+                type="text">
+        </mat-form-field>
 
-        <input
-            formControlName="price"
-            placeholder="price"
-            type="number">
+        <mat-form-field>
+            <input
+                formControlName="price"
+                matInput
+                placeholder="Book price"
+                type="number">
+        </mat-form-field>
 
     </div>
 
     <!-- Author group. -->
     <div formGroupName="author">
 
-        <input
-            formControlName="name"
-            placeholder="author"
-            type="text">
+        <mat-form-field>
+            <input
+                formControlName="name"
+                matInput
+                placeholder="Author name"
+                type="text">
+        </mat-form-field>
 
     </div>
 
 
     <button
+        color="primary"
+        mat-raised-button
         type="submit"
         [disabled]="!bookForm.valid">ADD</button>
 
@@ -43,14 +54,19 @@
 
 <div *ngFor="let book of getBookList()">
 
-    <div>{{ book.title }}</div>
+    <h2>{{ book.title }}</h2>
 
     <div *ngIf="book.author">
-        <div>{{ book.author.name }}</div>
-        <img [src]="getAuthorPictureUrl(book.author.name)">
+        <div>Author: {{ book.author.name }}</div>
+        <img
+            *ngIf="book.author.name"
+            class="wt-author__picture"
+            [src]="getAuthorPictureUrl(book.author.name)">
     </div>
 
     <button
+        color="warn"
+        mat-button
         type="button"
         (click)="removeBook(book)">REMOVE</button>
 
