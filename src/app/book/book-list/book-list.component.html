@@ -1,6 +1,26 @@
-<button
-    type="button"
-    (click)="addRandomBook()">ADD</button>
+<form
+    [formGroup]="bookForm"
+    (ngSubmit)="addBook()">
+
+    <input
+        formControlName="title"
+        placeholder="title"
+        type="text">
+
+    <input
+        formControlName="price"
+        placeholder="price"
+        type="number">
+
+    <input
+        formControlName="authorName"
+        placeholder="author"
+        type="text">
+
+    <button
+        type="submit">ADD</button>
+
+</form>
 
 <div *ngFor="let book of getBookList()">
 

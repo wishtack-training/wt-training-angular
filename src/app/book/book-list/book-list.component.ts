@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -11,25 +12,19 @@ export class BookListComponent implements OnInit {
 
     private _bookStore = new BookStore();
 
+    bookForm = new FormGroup({
+        title: new FormControl(),
+        price: new FormControl(),
+        authorName: new FormControl()
+    });
+
     ngOnInit() {
-
-        this._bookStore.addBook(new Book({
-            title: 'eXtreme Programming Explained',
-            price: 10
-        }));
-
-        this._bookStore.addBook(new Book({
-            title: 'The Lean Startup',
-            price: 31,
-            authorName: 'Eric Ries'
-        }));
-
     }
 
-    addRandomBook() {
-        this._bookStore.addBook(new Book({
-            title: `Book number: ${Math.round(Math.random() * 100)}`
-        }));
+    addBook() {
+        const book = new Book(this.bookForm.value);
+        this._bookStore.addBook(book);
+        this.bookForm.reset();
     }
 
     getBookList() {
@@ -49,5 +44,4 @@ export class BookListComponent implements OnInit {
     removeBook(book: Book) {
         this._bookStore.removeBook(book);
     }
-
 }

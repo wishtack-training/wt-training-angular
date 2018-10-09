@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,15 +7,16 @@ import { DemoComponent } from './demo/demo.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DemoComponent,
-    BookListComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DemoComponent,
+        BookListComponent
+    ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
