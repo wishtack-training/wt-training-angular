@@ -1,9 +1,13 @@
 export class Book {
 
-    constructor(
-        public title: string,
-        public price: number
-    ) {
+    authorName: string;
+    title: string;
+    price: number;
+
+    constructor(args: Partial<Book> = {}) {
+        this.authorName = args.authorName;
+        this.title = args.title;
+        this.price = args.price;
     }
 
 }

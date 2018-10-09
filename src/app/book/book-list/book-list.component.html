@@ -1,3 +1,18 @@
-<p>
-  book-list works!
-</p>
+<button
+    type="button"
+    (click)="addRandomBook()">ADD</button>
+
+<div *ngFor="let book of getBookList()">
+
+    <div>{{ book.title }}</div>
+
+    <div *ngIf="book.authorName">
+        <div>{{ book.authorName }}</div>
+        <img [src]="getAuthorPictureUrl(book.authorName)">
+    </div>
+
+    <button
+        type="button"
+        (click)="removeBook(book)">REMOVE</button>
+
+</div>

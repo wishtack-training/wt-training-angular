@@ -1,4 +1,4 @@
-<h2 [style.fontSize]="userName.length.toString() + 'px'">Hello {{ userName }}</h2>
+<h2 [style.fontSize.px]="userName.length">Hello {{ userName }}</h2>
 
 <button
     [hidden]="userName.length < 5"
