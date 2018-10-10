@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { rangeValidator } from '../../../lib/range.validator';
-import { Author } from '../../author/author';
 import { Book } from '../book';
 
 @Component({

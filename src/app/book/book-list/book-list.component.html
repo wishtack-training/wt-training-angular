@@ -1,13 +1,6 @@
 <wt-book-form
-    *ngIf="selectedBook == null"
     buttonLabel="ADD"
     (bookSubmit)="addBook($event)"></wt-book-form>
-
-<wt-book-form
-    *ngIf="selectedBook != null"
-    buttonLabel="UPDATE"
-    [book]="selectedBook"
-    (bookSubmit)="replaceBook($event)"></wt-book-form>
 
 <hr>
 
@@ -17,18 +10,28 @@
 
         <div data-role="actions">
 
-            <button
-                mat-button
-                type="button"
-                (click)="selectBook(book)">EDIT
-            </button>
+            <div *ngIf="selectedBook !== book">
 
-            <button
-                color="warn"
-                mat-button
-                type="button"
-                (click)="removeBook(book)">REMOVE
-            </button>
+                <button
+                    mat-button
+                    type="button"
+                    (click)="selectBook(book)">EDIT
+                </button>
+
+                <button
+                    color="warn"
+                    mat-button
+                    type="button"
+                    (click)="removeBook(book)">REMOVE
+                </button>
+
+            </div>
+
+            <wt-book-form
+                *ngIf="selectedBook === book"
+                buttonLabel="UPDATE"
+                [book]="selectedBook"
+                (bookSubmit)="replaceBook($event)"></wt-book-form>
 
         </div>
 
