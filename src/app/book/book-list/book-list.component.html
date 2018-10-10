@@ -1,69 +1,9 @@
-<form
-    [formGroup]="bookForm"
-    (ngSubmit)="addBook()">
-
-    <!-- Book group. -->
-    <div formGroupName="book">
-
-        <mat-form-field>
-            <input
-                formControlName="title"
-                matInput
-                placeholder="Book title"
-                type="text">
-        </mat-form-field>
-
-        <mat-form-field>
-            <input
-                formControlName="price"
-                matInput
-                placeholder="Book price"
-                type="number">
-        </mat-form-field>
-
-    </div>
-
-    <!-- Author group. -->
-    <div formGroupName="author">
-
-        <mat-form-field>
-            <input
-                formControlName="name"
-                matInput
-                placeholder="Author name"
-                type="text">
-        </mat-form-field>
-
-    </div>
-
-
-    <button
-        color="primary"
-        mat-raised-button
-        type="submit"
-        [disabled]="!bookForm.valid">ADD
-    </button>
-
-    <div *ngIf="bookForm.get('book.title') as titleControl">
-
-        <div *ngIf="titleControl.touched && titleControl.hasError('required')">
-            Title is required
-        </div>
-    </div>
-
-</form>
+<wt-book-form
+    (bookSubmit)="addBook($event)"></wt-book-form>
 
 <div *ngFor="let book of getBookList()">
 
-    <h2>{{ book.title }}</h2>
-
-    <div *ngIf="book.author">
-        <div>Author: {{ book.author.name }}</div>
-        <img
-            *ngIf="book.author.name"
-            class="wt-author__picture"
-            [src]="getAuthorPictureUrl(book.author.name)">
-    </div>
+    <wt-book-preview [book]="book"></wt-book-preview>
 
     <button
         color="warn"

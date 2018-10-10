@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { DemoComponent } from './demo/demo.component';
 import { LikeButtonComponent } from './like/like-button/like-button.component';
+import { BookPreviewComponent } from './book/book-preview/book-preview.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         BookListComponent,
         DemoComponent,
-        LikeButtonComponent
+        LikeButtonComponent,
+        BookPreviewComponent,
+        BookFormComponent
     ],
     imports: [
         BrowserAnimationsModule,
