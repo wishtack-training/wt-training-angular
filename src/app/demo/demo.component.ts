@@ -14,6 +14,8 @@ export class DemoComponent {
         'Nice'
     ];
 
+    score = 3;
+
     constructor() {
         /* @HACK: Do not put this in constructor. */
 
@@ -25,6 +27,10 @@ export class DemoComponent {
 
     reset() {
         this.userName = 'Foo';
+    }
+
+    updateScore(score: number) {
+        this.score = score;
     }
 
 }

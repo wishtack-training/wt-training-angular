@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { DemoComponent } from './demo/demo.component';
+import { LikeButtonComponent } from './like/like-button/like-button.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        BookListComponent,
         DemoComponent,
-        BookListComponent
+        LikeButtonComponent
     ],
     imports: [
         BrowserAnimationsModule,
