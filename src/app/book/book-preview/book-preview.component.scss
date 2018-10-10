@@ -1,0 +1,11 @@
+@import "./circle";
+
+.wt-author__picture {
+
+    background-color: darksalmon;
+    border-style: solid;
+    border-width: 1px;
+
+    @include wt-circle(100px);
+
+}
