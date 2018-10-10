@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -7,14 +7,11 @@ import { BookStore } from '../book-store';
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent {
 
     selectedBook: Book = null;
 
     private _bookStore = new BookStore();
-
-    ngOnInit() {
-    }
 
     getBookList() {
         return this._bookStore.getBookList();
