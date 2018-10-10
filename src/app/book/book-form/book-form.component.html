@@ -3,7 +3,7 @@
     (ngSubmit)="submitBook()">
 
   <!-- Book group. -->
-  <div formGroupName="book">
+  <div>
 
     <mat-form-field>
       <input
@@ -41,7 +41,7 @@
       color="primary"
       mat-raised-button
       type="submit"
-      [disabled]="!bookForm.valid">ADD
+      [disabled]="!bookForm.valid">{{ buttonLabel || 'SUBMIT' }}
   </button>
 
   <div *ngIf="bookForm.get('book.title') as titleControl">
@@ -54,6 +54,10 @@
 
 </form>
 
+<button
+    mat-button
+    (click)="shouldShowPreview = !shouldShowPreview">TOGGLE PREVIEW</button>
+
 <wt-book-preview
-    *ngIf="previewBook"
+    *ngIf="shouldShowPreview && previewBook"
     [book]="previewBook"></wt-book-preview>

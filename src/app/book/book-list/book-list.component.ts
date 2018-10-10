@@ -9,22 +9,31 @@ import { BookStore } from '../book-store';
 })
 export class BookListComponent implements OnInit {
 
+    selectedBook: Book = null;
+
     private _bookStore = new BookStore();
 
-
     ngOnInit() {
-    }
-
-    addBook(book: Book) {
-        this._bookStore.addBook(book);
     }
 
     getBookList() {
         return this._bookStore.getBookList();
     }
 
+    addBook(book: Book) {
+        this._bookStore.addBook(book);
+    }
+
+    replaceBook(book: Book) {
+        this._bookStore.replaceBook(this.selectedBook, book);
+        this.selectedBook = null;
+    }
+
     removeBook(book: Book) {
         this._bookStore.removeBook(book);
     }
 
+    selectBook(book: Book) {
+        this.selectedBook = book;
+    }
 }
