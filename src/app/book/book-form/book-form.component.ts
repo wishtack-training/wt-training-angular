@@ -33,7 +33,7 @@ export class BookFormComponent implements OnInit {
     ngOnInit() {
 
         this.bookForm.valueChanges.subscribe(value => {
-            this.previewBook = new Book({...value.previewBook, author: value.author});
+            this.previewBook = new Book({...value.book, author: value.author});
         });
 
     }
@@ -43,7 +43,7 @@ export class BookFormComponent implements OnInit {
         const author = new Author(this.bookForm.value.author);
 
         const book = new Book({
-            ...this.bookForm.value.previewBook,
+            ...this.bookForm.value.book,
             author
         });
 
