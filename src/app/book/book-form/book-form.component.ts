@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { rangeValidator } from '../../../lib/range.validator';
@@ -10,7 +10,7 @@ import { Book } from '../book';
     templateUrl: './book-form.component.html',
     styleUrls: ['./book-form.component.css']
 })
-export class BookFormComponent {
+export class BookFormComponent implements OnInit {
 
     @Output() bookSubmit = new EventEmitter<Book>();
 
@@ -28,19 +28,29 @@ export class BookFormComponent {
             name: new FormControl()
         })
     });
+    previewBook: Book;
+
+    ngOnInit() {
+
+        this.bookForm.valueChanges.subscribe(value => {
+            this.previewBook = new Book({...value.previewBook, author: value.author});
+        });
+
+    }
 
     submitBook() {
 
         const author = new Author(this.bookForm.value.author);
 
         const book = new Book({
-            ...this.bookForm.value.book,
+            ...this.bookForm.value.previewBook,
             author
         });
 
         this.bookSubmit.emit(book);
 
         this.bookForm.reset();
+        this.previewBook = null;
 
     }
 

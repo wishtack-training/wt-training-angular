@@ -49,6 +49,11 @@
     <div *ngIf="titleControl.touched && titleControl.hasError('required')">
       Title is required
     </div>
+
   </div>
 
 </form>
+
+<wt-book-preview
+    *ngIf="previewBook"
+    [book]="previewBook"></wt-book-preview>
