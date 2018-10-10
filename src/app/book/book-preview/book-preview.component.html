@@ -1,9 +1,17 @@
+
+<ng-content select="[data-role='title']"></ng-content>
+
 <h2>{{ book.title }}</h2>
 
 <div *ngIf="book.author">
-  <div>Author: {{ book.author.name }}</div>
-  <img
-      *ngIf="book.author.name"
-      class="wt-author__picture"
-      [src]="getAuthorPictureUrl(book.author.name)">
+
+    <div>Author: {{ book.author.name }}</div>
+
+    <img
+        *ngIf="book.author.name"
+        class="wt-author__picture"
+        [src]="getAuthorPictureUrl(book.author.name)">
+
 </div>
+
+<ng-content select="[data-role='actions']"></ng-content>

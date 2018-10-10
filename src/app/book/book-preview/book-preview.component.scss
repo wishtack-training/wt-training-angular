@@ -1,5 +1,10 @@
 @import "./circle";
 
+:host {
+    border-style: solid;
+    display: block;
+}
+
 .wt-author__picture {
 
     background-color: darksalmon;

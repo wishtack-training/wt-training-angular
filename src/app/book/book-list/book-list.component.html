@@ -3,13 +3,17 @@
 
 <div *ngFor="let book of getBookList()">
 
-    <wt-book-preview [book]="book"></wt-book-preview>
+    <wt-book-preview [book]="book">
 
-    <button
-        color="warn"
-        mat-button
-        type="button"
-        (click)="removeBook(book)">REMOVE
-    </button>
+        <div data-role="actions">
+            <button
+                color="warn"
+                mat-button
+                type="button"
+                (click)="removeBook(book)">REMOVE
+            </button>
+        </div>
+
+    </wt-book-preview>
 
 </div>
