@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
-import { debounceTime, filter, map, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { SpeechRecognizer } from '../../author/speech-recognition/speech-recognizer';
 import { Book } from '../book';
 import { GoogleBookRepository } from '../google-book-repository.service';
@@ -24,8 +24,12 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             action: () => this.isAlive = true
         },
         {
-            matcher: transcript => transcript.match(/bye|goodbye/),
+            matcher: transcript => ['bye', 'goodbye'].includes(transcript),
             action: () => this.isAlive = false
+        },
+        {
+            matcher: transcript => transcript.startsWith('search '),
+            action: transcript => this._applyKeywords(transcript.replace('search ', ''))
         }
     ];
 
@@ -72,8 +76,12 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             return;
         }
 
-        resolver.action();
+        resolver.action(transcript);
 
+    }
+
+    private _applyKeywords(keywords: string) {
+        this.keywordsControl.setValue(keywords);
     }
 
 }
