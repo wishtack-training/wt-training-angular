@@ -1,46 +1,40 @@
-<h1>Say "Jour" or "Nuit"</h1>
+<wt-book-form
+    buttonLabel="ADD"
+    (bookSubmit)="addBook($event)"></wt-book-form>
 
-<ng-container *ngIf="shouldShowList">
+<hr>
 
-    <wt-book-form
-        buttonLabel="ADD"
-        (bookSubmit)="addBook($event)"></wt-book-form>
+<div *ngFor="let book of getBookList()">
 
-    <hr>
+    <wt-book-preview [book]="book">
 
-    <div *ngFor="let book of getBookList()">
+        <div data-role="actions">
 
-        <wt-book-preview [book]="book">
+            <div *ngIf="selectedBook !== book">
 
-            <div data-role="actions">
+                <button
+                    mat-button
+                    type="button"
+                    (click)="selectBook(book)">EDIT
+                </button>
 
-                <div *ngIf="selectedBook !== book">
-
-                    <button
-                        mat-button
-                        type="button"
-                        (click)="selectBook(book)">EDIT
-                    </button>
-
-                    <button
-                        color="warn"
-                        mat-button
-                        type="button"
-                        (click)="removeBook(book)">REMOVE
-                    </button>
-
-                </div>
-
-                <wt-book-form
-                    *ngIf="selectedBook === book"
-                    buttonLabel="UPDATE"
-                    [book]="selectedBook"
-                    (bookSubmit)="replaceBook($event)"></wt-book-form>
+                <button
+                    color="warn"
+                    mat-button
+                    type="button"
+                    (click)="removeBook(book)">REMOVE
+                </button>
 
             </div>
 
-        </wt-book-preview>
+            <wt-book-form
+                *ngIf="selectedBook === book"
+                buttonLabel="UPDATE"
+                [book]="selectedBook"
+                (bookSubmit)="replaceBook($event)"></wt-book-form>
 
-    </div>
+        </div>
 
-</ng-container>
+    </wt-book-preview>
+
+</div>

@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.wt-book-search--container {
+
+    height: 100%;
+
+    &.wt-closed {
+        background-color: darkslategrey;
+    }
+
+}

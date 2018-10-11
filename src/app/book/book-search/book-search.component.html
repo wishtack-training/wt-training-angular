@@ -1,0 +1,21 @@
+<div
+    class="wt-book-search--container"
+    [class.wt-closed]="!isAlive">
+
+    <ng-container *ngIf="isAlive">
+
+        <mat-form-field>
+            <input
+                [formControl]="keywordsControl"
+                matInput
+                placeholder="keywords"
+                type="text">
+        </mat-form-field>
+
+        <wt-book-preview
+            *ngFor="let book of bookList"
+            [book]="book"></wt-book-preview>
+
+    </ng-container>
+
+</div>

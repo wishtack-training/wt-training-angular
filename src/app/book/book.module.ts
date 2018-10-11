@@ -4,17 +4,20 @@ import { SharedFormModule } from '../shared-form/shared-form.module';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
     declarations: [
         BookFormComponent,
         BookListComponent,
-        BookPreviewComponent
+        BookPreviewComponent,
+        BookSearchComponent
     ],
     exports: [
         BookFormComponent,
         BookListComponent,
-        BookPreviewComponent
+        BookPreviewComponent,
+        BookSearchComponent
     ],
     imports: [
         CommonModule,
