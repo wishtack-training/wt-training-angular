@@ -12,15 +12,13 @@ export class BookPreviewComponent {
 
     @Input() book: Book;
 
-    getAuthorPictureUrl(authorName: string) {
+    getBookPictureUrl() {
 
-        console.count('getAuthorPictureUrl');
-
-        if (authorName == null) {
-            return null;
+        if (this.book.pictureUrl != null) {
+            return this.book.pictureUrl;
         }
 
-        return `https://robohash.org/${authorName}`;
+        return `https://robohash.org/${this.book.title}`;
 
     }
 
