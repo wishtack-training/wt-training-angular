@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -11,7 +11,10 @@ export class BookListComponent {
 
     selectedBook: Book = null;
 
-    private _bookStore = new BookStore();
+    constructor(
+        private _bookStore: BookStore
+    ) {
+    }
 
     getBookList() {
         return this._bookStore.getBookList();
