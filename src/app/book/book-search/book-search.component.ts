@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { SpeechRecognizer } from '../../author/speech-recognition/speech-recognizer';
+import { SpeechRecognizer } from '../../speech-recognition/speech-recognizer';
 import { Book } from '../book';
 import { GoogleBookRepository } from '../google-book-repository.service';
 
