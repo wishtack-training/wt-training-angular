@@ -1,40 +1,46 @@
-<wt-book-form
-    buttonLabel="ADD"
-    (bookSubmit)="addBook($event)"></wt-book-form>
+<h1>Say "Jour" or "Nuit"</h1>
 
-<hr>
+<ng-container *ngIf="shouldShowList">
 
-<div *ngFor="let book of getBookList()">
+    <wt-book-form
+        buttonLabel="ADD"
+        (bookSubmit)="addBook($event)"></wt-book-form>
 
-    <wt-book-preview [book]="book">
+    <hr>
 
-        <div data-role="actions">
+    <div *ngFor="let book of getBookList()">
 
-            <div *ngIf="selectedBook !== book">
+        <wt-book-preview [book]="book">
 
-                <button
-                    mat-button
-                    type="button"
-                    (click)="selectBook(book)">EDIT
-                </button>
+            <div data-role="actions">
 
-                <button
-                    color="warn"
-                    mat-button
-                    type="button"
-                    (click)="removeBook(book)">REMOVE
-                </button>
+                <div *ngIf="selectedBook !== book">
+
+                    <button
+                        mat-button
+                        type="button"
+                        (click)="selectBook(book)">EDIT
+                    </button>
+
+                    <button
+                        color="warn"
+                        mat-button
+                        type="button"
+                        (click)="removeBook(book)">REMOVE
+                    </button>
+
+                </div>
+
+                <wt-book-form
+                    *ngIf="selectedBook === book"
+                    buttonLabel="UPDATE"
+                    [book]="selectedBook"
+                    (bookSubmit)="replaceBook($event)"></wt-book-form>
 
             </div>
 
-            <wt-book-form
-                *ngIf="selectedBook === book"
-                buttonLabel="UPDATE"
-                [book]="selectedBook"
-                (bookSubmit)="replaceBook($event)"></wt-book-form>
+        </wt-book-preview>
 
-        </div>
+    </div>
 
-    </wt-book-preview>
-
-</div>
+</ng-container>
