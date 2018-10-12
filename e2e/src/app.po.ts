@@ -1,11 +1,17 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class BookSearchPage {
+
   navigateTo() {
-    return browser.get('/');
+      return browser.get('/book/search');
   }
 
-  getParagraphText() {
-    return element(by.css('wt-root h1')).getText();
-  }
+    searchBook(title: string) {
+        return element(by.css('input')).sendKeys(title);
+    }
+
+    getFirstBookTitle() {
+        return element(by.css('a')).getText();
+    }
+
 }

@@ -1,14 +1,23 @@
-import { AppPage } from './app.po';
+import { BookSearchPage } from './app.po';
 
 describe('workspace-project App', () => {
-  let page: AppPage;
+
+    let bookSearchPage: BookSearchPage;
 
   beforeEach(() => {
-    page = new AppPage();
+      bookSearchPage = new BookSearchPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to training!');
+    it('should find extreme programming book', async () => {
+
+        await bookSearchPage.navigateTo();
+
+        await bookSearchPage.searchBook('eXtreme Programming');
+
+        const title = bookSearchPage.getFirstBookTitle();
+
+        expect(title).toEqual('Extreme Programming Explained');
+
   });
+
 });
