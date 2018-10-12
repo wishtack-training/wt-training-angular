@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CartService } from '../cart.service';
 
 @Component({
     selector: 'wt-layout',
@@ -14,8 +15,12 @@ export class LayoutComponent {
         .pipe(
             map(result => result.matches)
         );
+    totalPrice$ = this._cartService.totalPrice$;
 
-    constructor(private breakpointObserver: BreakpointObserver) {
+    constructor(
+        private breakpointObserver: BreakpointObserver,
+        private _cartService: CartService
+    ) {
     }
 
 }

@@ -12,7 +12,9 @@
             <a mat-list-item routerLink="/book/search">Find Books</a>
         </mat-nav-list>
     </mat-sidenav>
+
     <mat-sidenav-content>
+
         <mat-toolbar color="primary">
             <button
                 (click)="drawer.toggle()"
@@ -22,7 +24,11 @@
                 type="button">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
+
             <span>training</span>
+
+            <span>{{ totalPrice$ | async }}</span>
+
         </mat-toolbar>
 
         <router-outlet></router-outlet>

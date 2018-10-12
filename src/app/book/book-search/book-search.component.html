@@ -8,4 +8,13 @@
 
 <wt-book-preview
     *ngFor="let book of bookList"
-    [book]="book"></wt-book-preview>
+    [book]="book">
+
+    <div data-role="actions">
+        <button
+            mat-button
+            (click)="addToCart(book)">BUY
+        </button>
+    </div>
+
+</wt-book-preview>

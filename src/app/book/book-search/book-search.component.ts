@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { CartService } from '../../cart.service';
 import { Book } from '../book';
 import { GoogleBookRepository } from '../google-book-repository.service';
 
@@ -21,6 +22,7 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     private _scavenger = new Scavenger(this);
 
     constructor(
+        private _cartService: CartService,
         private _googleBookRepository: GoogleBookRepository
     ) {
 
@@ -51,6 +53,10 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
+    }
+
+    addToCart(book: Book) {
+        this._cartService.addBook(book);
     }
 
 }
