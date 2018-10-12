@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { bookRouteResolver } from '../../views/book/book-route-resolver';
 import { Book } from '../book';
-
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,6 +11,8 @@ import { Book } from '../book';
 export class BookPreviewComponent {
 
     @Input() book: Book;
+
+    bookRouteResolver = bookRouteResolver;
 
     getBookPictureUrl() {
 

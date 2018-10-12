@@ -1,7 +1,7 @@
 
 <ng-content select="[data-role='title']"></ng-content>
 
-<h2>{{ book.title }}</h2>
+<a [routerLink]="bookRouteResolver.getBookDetailRoute(book.id)"><h2>{{ book.title }}</h2></a>
 
 <img
     class="wt-author__picture"
