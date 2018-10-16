@@ -6,7 +6,8 @@ export class HelloComponent {
             'Lyon',
             'Nice',
             'Paris'
-        ]
+        ];
+        this.rating = 3;
     }
 
     getPictureUrl() {
@@ -16,6 +17,14 @@ export class HelloComponent {
     toggle() {
         this.name = this.name === '🌏' ? '🌎' : '🌏';
     }
+
+    updateRating(rating) {
+        if (rating > 10) {
+            return;
+        }
+        this.rating = rating;
+    }
+
 
 }
 

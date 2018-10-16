@@ -1,4 +1,11 @@
+
 <h1>Hello {{ $ctrl.name }}</h1>
+
+{{ $ctrl.rating }}
+<wt-rating
+    rating="$ctrl.rating"
+    on-rating-change="$ctrl.updateRating(rating)"></wt-rating>
+
 <form>
     <input ng-model="$ctrl.name" type="text">
 </form>
@@ -13,4 +20,3 @@
     {{city}}
 </div>
 
-<wt-separator></wt-separator>
