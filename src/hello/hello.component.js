@@ -2,6 +2,11 @@ export class HelloComponent {
 
     constructor() {
         this.name = '🌏';
+        this.cityList = [
+            'Lyon',
+            'Nice',
+            'Paris'
+        ]
     }
 
     getPictureUrl() {
@@ -16,14 +21,5 @@ export class HelloComponent {
 
 HelloComponent.config = {
     controller: HelloComponent,
-    template: `
-<h1>Hello {{ $ctrl.name }}</h1>
-<form>
-    <input ng-model="$ctrl.name" type="text">
-</form>
-<img ng-src="{{$ctrl.getPictureUrl()}}" alt="">
-<button ng-click="$ctrl.toggle()">TOGGLE</button>
-<wt-separator></wt-separator>
-
-`
+    template: require('./hello.component.html')
 };

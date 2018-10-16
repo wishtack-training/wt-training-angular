@@ -1,0 +1,16 @@
+<h1>Hello {{ $ctrl.name }}</h1>
+<form>
+    <input ng-model="$ctrl.name" type="text">
+</form>
+<img ng-src="{{$ctrl.getPictureUrl()}}" alt="">
+<button ng-click="$ctrl.toggle()">TOGGLE</button>
+
+<div ng-if="true">
+    Hello
+</div>
+
+<div ng-repeat="city in $ctrl.cityList">
+    {{city}}
+</div>
+
+<wt-separator></wt-separator>

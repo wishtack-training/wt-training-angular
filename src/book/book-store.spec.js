@@ -1,35 +1,8 @@
 'use strict';
 
 
-class Book {
-
-    constructor(title, price, authorName) {
-        this.title = title;
-        this.price = price;
-        this.authorName = authorName;
-    }
-
-}
-
-class BookStore {
-
-    constructor() {
-        this._bookList = [];
-    }
-
-    addBook(book) {
-        this._bookList = [...this._bookList, book];
-    }
-
-    getBookList() {
-        return this._bookList;
-    }
-
-    removeBook(book) {
-        this._bookList = this._bookList.filter(_book => _book !== book);
-    }
-
-}
+import {BookStore} from './book-store';
+import {Book} from './book';
 
 describe('BookStore', () => {
 
