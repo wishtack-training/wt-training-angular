@@ -1,38 +1,22 @@
-<form
-    name="$ctrl.bookForm"
-    ng-submit="$ctrl.addBook()">
-
-    <input
-        ng-model="$ctrl.tmpBook.title"
-        placeholder="title"
-        required
-        type="text">
-
-    <input
-        ng-model="$ctrl.tmpBook.price"
-        placeholder="price"
-        type="number">
-
-    <input
-        ng-model="$ctrl.tmpBook.authorName"
-        placeholder="authorName"
-        type="text">
-
-    <div ng-if="!$ctrl.bookForm.$pristine && $ctrl.bookForm.$error.required">
-        Please fill all required inputs
-    </div>
-
-    <button type="submit">ADD</button>
-
-</form>
+<wt-book-form on-book-submit="$ctrl.addBook(book)"></wt-book-form>
 
 <hr>
 
 <div ng-repeat="book in $ctrl.getBookList()">
-    <h2>{{ book.title }} ({{ book.price }})</h2>
-    <img ng-src="https://robohash.org/{{book.title}}">
-    <div>{{ book.authorName }}</div>
-    <div>
-        <button ng-click="$ctrl.removeBook(book)">REMOVE</button>
-    </div>
+
+    <wt-book-preview
+        book="book"
+        ng-style="{
+            backgroundColor: backgroundColor,
+            borderStyle: 'solid',
+            display: 'block'
+        }">
+
+        <div>
+            <button ng-click="$ctrl.removeBook(book)">REMOVE</button>
+        </div>
+
+    </wt-book-preview>
+
+
 </div>
