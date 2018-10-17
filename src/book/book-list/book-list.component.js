@@ -7,12 +7,10 @@
 
 'use strict';
 
-import {BookStore} from '../book-store';
-
 export class BookListComponent {
 
-    constructor() {
-        this._bookStore = new BookStore();
+    constructor(bookStore) {
+        this._bookStore = bookStore;
     }
 
     addBook(book) {
@@ -28,6 +26,10 @@ export class BookListComponent {
     }
 
 }
+
+BookListComponent.$inject = [
+    'bookStore'
+];
 
 BookListComponent.config = {
     controller: BookListComponent,

@@ -15,9 +15,21 @@ describe('BookStore', () => {
 
         bookStore = new BookStore();
 
-        book1 = new Book('eXtreme Programming Explained', 10, 'Kent Beck');
-        book2 = new Book('Lean Startup', 20, 'Eric Ries');
-        book3 = new Book('Rework', 10, 'Jason Fried');
+        book1 = new Book({
+            title: 'eXtreme Programming Explained',
+            price: 10,
+            authorName: 'Kent Beck'
+        });
+        book2 = new Book({
+            title: 'Lean Startup',
+            price: 20,
+            authorName: 'Eric Ries'
+        });
+        book3 = new Book({
+            title: 'Rework',
+            price: 10,
+            authorName: 'Jason Fried'
+        });
 
     });
 

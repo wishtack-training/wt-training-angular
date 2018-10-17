@@ -1,4 +1,7 @@
-<h2>{{ $ctrl.book.title }} ({{ $ctrl.book.price }})</h2>
+<h2>
+    <span>{{ $ctrl.book.title }}</span>
+    <span ng-if="$ctrl.book.price">({{ $ctrl.book.price }})</span>
+</h2>
 
 <img
     class="wt-book-picture"

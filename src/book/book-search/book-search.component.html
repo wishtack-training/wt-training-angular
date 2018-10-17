@@ -1,0 +1,23 @@
+<form ng-submit="$ctrl.submitKeywords()">
+
+    <input
+        ng-model="$ctrl.keywords"
+        placeholder="keywords"
+        type="text">
+
+    <button type="submit">SEARCH</button>
+
+</form>
+
+<wt-book-preview
+    book="book"
+    ng-repeat="book in $ctrl.bookList">
+
+    <div>
+        <button
+            ng-click="$ctrl.buy(book)"
+            ng-disabled="$ctrl.isBought(book)">BUY
+        </button>
+    </div>
+
+</wt-book-preview>
