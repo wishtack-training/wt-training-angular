@@ -1,0 +1,13 @@
+$picture-diameter: 100px;
+
+wt-book-preview {
+
+    .wt-book-picture {
+        background-color: azure;
+        border-style: solid;
+        border-radius: 50%;
+        height: $picture-diameter;
+        width: $picture-diameter;
+    }
+
+}

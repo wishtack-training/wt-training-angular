@@ -9,6 +9,8 @@
 
 import {Book} from '../book';
 
+require('./book-form.component.scss');
+
 export class BookFormComponent {
 
     constructor() {
@@ -17,8 +19,6 @@ export class BookFormComponent {
     }
 
     submitBook() {
-
-        console.log(this.tmpBook);
 
         this.onBookSubmit({
             book: this.tmpBook

@@ -4,13 +4,7 @@
 
 <div ng-repeat="book in $ctrl.getBookList()">
 
-    <wt-book-preview
-        book="book"
-        ng-style="{
-            backgroundColor: backgroundColor,
-            borderStyle: 'solid',
-            display: 'block'
-        }">
+    <wt-book-preview book="book">
 
         <div>
             <button ng-click="$ctrl.removeBook(book)">REMOVE</button>

@@ -7,6 +7,8 @@
 
 'use strict';
 
+require('./book-preview.component.scss');
+
 export class BookPreviewComponent {
 
 }

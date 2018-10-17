@@ -1,0 +1,11 @@
+wt-book-form {
+
+    button[type="submit"] {
+
+        @media (max-width: 600px) {
+            display: none;
+        }
+
+    }
+
+}
