@@ -18,8 +18,11 @@ appModule.component('wtSeparator', {
 appModule.config(($routeProvider) => {
 
     $routeProvider
-        .when('/hello', {
-            template: '<wt-hello></wt-hello>'
+        .when('/book-list', {
+            template: '<wt-book-list></wt-book-list>'
+        })
+        .when('/book-search', {
+            template: '<wt-book-search></wt-book-search>'
         })
         .when('/not-found', {
             template: '<h1>😞</h1>'
