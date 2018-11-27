@@ -1,9 +1,5 @@
-/**
- *
- * (c) 2013-2018 Wishtack
- *
- * $Id: $
- */
+import { Record } from './record';
+import { RecordRepository } from './record-repository';
 
 describe('RecordRepository', () => {
 
@@ -22,17 +18,17 @@ describe('RecordRepository', () => {
 
     });
 
-    xit('should add records', () => {
+    it('should add records', () => {
 
         const recordListEmpty = recordRepository.getRecordList();
-
-        expect(recordListEmpty).toEqual([]);
 
         recordRepository.addRecord(record1);
         recordRepository.addRecord(record2);
         recordRepository.addRecord(record3);
 
         const recordList = recordRepository.getRecordList();
+
+        expect(recordListEmpty).toEqual([]);
 
         expect(recordList).toEqual([
             record1,
@@ -42,7 +38,7 @@ describe('RecordRepository', () => {
 
     });
 
-    xit('should remove records', () => {
+    it('should remove records', () => {
 
         recordRepository.addRecord(record1);
         recordRepository.addRecord(record2);
