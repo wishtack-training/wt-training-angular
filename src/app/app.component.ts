@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecordRepository } from './record/record-repository';
 
 @Component({
     selector: 'wt-root',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+    recordRepository = new RecordRepository();
 
 }
