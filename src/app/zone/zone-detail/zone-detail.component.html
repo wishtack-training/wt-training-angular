@@ -5,3 +5,8 @@
 <wt-record-table
     [recordList]="getRecordList()"
     (recordRemove)="removeRecord($event)"></wt-record-table>
+
+<wt-record-form
+    *ngIf="getRecordList().length > 5"
+    (recordSubmit)="addRecord($event)"></wt-record-form>
+
