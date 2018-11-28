@@ -4,3 +4,9 @@
     [disabled]="selectedCity === city">{{ city }}</button>
 
 <h1 *ngIf="selectedCity != null">Welcome to {{ selectedCity }} ({{ selectedCity.length }})</h1>
+
+<ng-container *ngFor="let city of cityList">
+    <wt-city-preview
+        [city]="city"
+        (citySelect)="selectCity($event)"></wt-city-preview>
+</ng-container>
