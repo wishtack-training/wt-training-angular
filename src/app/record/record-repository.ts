@@ -1,18 +1,18 @@
-import { Record } from './record';
+import { DnsRecord } from './dns-record';
 
 export class RecordRepository {
 
-    private _recordList: Record[] = [];
+    private _recordList: DnsRecord[] = [];
 
     getRecordList() {
         return this._recordList;
     }
 
-    addRecord(record: Record) {
+    addRecord(record: DnsRecord) {
         this._recordList = [...this._recordList, record];
     }
 
-    removeRecord(record: Record) {
+    removeRecord(record: DnsRecord) {
         this._recordList = this._recordList.filter(_record => _record !== record);
     }
 

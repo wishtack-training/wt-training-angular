@@ -1,0 +1,11 @@
+<form
+    (ngSubmit)="submitRecord()"
+    [formGroup]="recordForm">
+
+    <input formControlName="type" type="text">
+    <input formControlName="host" type="text">
+    <input formControlName="value" type="text">
+
+    <button type="submit">ADD</button>
+
+</form>

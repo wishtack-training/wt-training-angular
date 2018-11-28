@@ -1,0 +1,7 @@
+<h1>Zone</h1>
+
+<wt-record-form (recordSubmit)="addRecord($event)"></wt-record-form>
+
+<wt-record-table
+    [recordList]="getRecordList()"
+    (recordRemove)="removeRecord($event)"></wt-record-table>

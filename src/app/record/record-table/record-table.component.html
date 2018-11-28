@@ -1,0 +1,35 @@
+<div class="mat-elevation-z8">
+    <table [dataSource]="dataSource" aria-label="Elements" class="full-width-table" mat-table matSort>
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Type</th>
+            <td *matCellDef="let row" mat-cell>{{row.type}}</td>
+        </ng-container>
+
+        <!-- Host Column -->
+        <ng-container matColumnDef="host">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Host</th>
+            <td *matCellDef="let row" mat-cell>{{row.host}}</td>
+        </ng-container>
+
+        <!-- Value Column -->
+        <ng-container matColumnDef="value">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Value</th>
+            <td *matCellDef="let row" mat-cell>
+                <div>{{row.value}}</div>
+                <button (click)="removeRecord(row)">🗑</button>
+            </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+
+    <mat-paginator #paginator
+                   [length]="dataSource.recordList.length"
+                   [pageIndex]="0"
+                   [pageSizeOptions]="[25, 50, 100, 250]"
+                   [pageSize]="50">
+    </mat-paginator>
+
+</div>
