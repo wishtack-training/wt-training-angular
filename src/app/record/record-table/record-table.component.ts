@@ -16,7 +16,7 @@ export class RecordTableComponent implements OnChanges {
     dataSource: RecordTableDataSource;
 
     /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-    displayedColumns = ['type', 'host', 'value'];
+    displayedColumns = ['type', 'host', 'value', 'actions'];
     @ViewChild(MatPaginator) private _paginator: MatPaginator;
     @ViewChild(MatSort) private _sort: MatSort;
 
