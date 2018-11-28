@@ -1,0 +1,6 @@
+<button
+    (click)="selectCity(city)"
+    *ngFor="let city of cityList"
+    [disabled]="selectedCity === city">{{ city }}</button>
+
+<h1 *ngIf="selectedCity != null">Welcome to {{ selectedCity }} ({{ selectedCity.length }})</h1>
