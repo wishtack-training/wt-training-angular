@@ -2,12 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DnsRecord } from '../../record/dns-record';
-
-export interface ApiResponse<T> {
-    data: T;
-}
-
-export type RecordListApiResponse = ApiResponse<Partial<DnsRecord>[]>;
+import { RecordRepository } from '../../record/record-repository.service';
 
 @Component({
     selector: 'wt-zone-detail',
@@ -20,7 +15,10 @@ export class ZoneDetailComponent implements OnDestroy, OnInit {
 
     private _subscription: Subscription;
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(
+        private _httpClient: HttpClient,
+        private _recordRepository: RecordRepository
+    ) {
     }
 
     ngOnInit() {
@@ -42,16 +40,8 @@ export class ZoneDetailComponent implements OnDestroy, OnInit {
         //
         // result$.subscribe(data => console.log(data));
 
-        // this._recordRepository.getRecordList()
-        //     .subscribe(recordList => this.recordList = recordList);
-
-
-        const response$ = this._httpClient.get<RecordListApiResponse>('https://wt-zone.getsandbox.com/zones/default/records');
-
-        this._subscription = response$
-            .subscribe(response => {
-                this.recordList = response.data.map(data => new DnsRecord(data));
-            });
+        this._subscription = this._recordRepository.getRecordList()
+            .subscribe(recordList => this.recordList = recordList);
 
     }
 
@@ -61,6 +51,10 @@ export class ZoneDetailComponent implements OnDestroy, OnInit {
 
     shouldShowBottomForm() {
         return this.recordList != null && this.recordList.length > 5;
+    }
+
+    addRecord(record: DnsRecord) {
+        throw new Error('😱 Not implemented yet!');
     }
 
 }
