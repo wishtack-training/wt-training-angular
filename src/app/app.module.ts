@@ -5,9 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { CityPreviewComponent } from './demo/city-preview/city-preview.component';
-import { DemoComponent } from './demo/demo/demo.component';
-import { ReactiveFormDemoComponent } from './demo/reactive-form-demo/reactive-form-demo.component';
+import { DemoModule } from './demo/demo.module';
 import { RecordFormComponent } from './record/record-form/record-form.component';
 import { RecordTableComponent } from './record/record-table/record-table.component';
 import { ZoneDetailComponent } from './zone/zone-detail/zone-detail.component';
@@ -15,9 +13,6 @@ import { ZoneDetailComponent } from './zone/zone-detail/zone-detail.component';
 @NgModule({
     declarations: [
         AppComponent,
-        CityPreviewComponent,
-        DemoComponent,
-        ReactiveFormDemoComponent,
         RecordTableComponent,
         ZoneDetailComponent,
         RecordFormComponent
@@ -25,6 +20,7 @@ import { ZoneDetailComponent } from './zone/zone-detail/zone-detail.component';
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        DemoModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
