@@ -3,10 +3,11 @@
 <wt-record-form (recordSubmit)="addRecord($event)"></wt-record-form>
 
 <wt-record-table
-    [recordList]="getRecordList()"
+    *ngIf="recordList != null"
+    [recordList]="recordList"
     (recordRemove)="removeRecord($event)"></wt-record-table>
 
 <wt-record-form
-    *ngIf="getRecordList().length > 5"
+    *ngIf="shouldShowBottomForm()"
     (recordSubmit)="addRecord($event)"></wt-record-form>
 

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,7 @@ import { ZoneModule } from './zone/zone.module';
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        HttpClientModule,
         ZoneModule
     ],
     bootstrap: [

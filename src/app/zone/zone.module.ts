@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RecordModule } from '../record/record.module';
 import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
@@ -12,6 +13,7 @@ import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
     ],
     imports: [
         CommonModule,
+        HttpClientModule,
         RecordModule
     ]
 })

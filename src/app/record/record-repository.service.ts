@@ -6,18 +6,17 @@ import { DnsRecord } from './dns-record';
 })
 export class RecordRepository {
 
-    private _recordList: DnsRecord[] = [];
-
     getRecordList() {
-        return this._recordList;
+        throw new Error('😱 Not implemented yet!');
     }
 
     addRecord(record: DnsRecord) {
-        this._recordList = [...this._recordList, record];
+        throw new Error('😱 Not implemented yet!');
     }
 
     removeRecord(record: DnsRecord) {
-        this._recordList = this._recordList.filter(_record => _record !== record);
+        throw new Error('😱 Not implemented yet!');
     }
 
 }
+
