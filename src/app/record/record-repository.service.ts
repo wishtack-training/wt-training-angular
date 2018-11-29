@@ -1,5 +1,9 @@
+import { Injectable } from '@angular/core';
 import { DnsRecord } from './dns-record';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class RecordRepository {
 
     private _recordList: DnsRecord[] = [];
