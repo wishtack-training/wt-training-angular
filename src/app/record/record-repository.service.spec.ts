@@ -1,5 +1,5 @@
 import { DnsRecord } from './dns-record';
-import { RecordRepository } from './record-repository';
+import { RecordRepository } from './record-repository.service';
 
 describe('RecordRepository', () => {
 

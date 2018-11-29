@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RecordRepository } from './record/record-repository';
+import { RecordRepository } from './record/record-repository.service';
 
 @Component({
     selector: 'wt-root',

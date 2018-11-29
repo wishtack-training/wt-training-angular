@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DnsRecord } from '../../record/dns-record';
-import { RecordRepository } from '../../record/record-repository';
+import { RecordRepository } from '../../record/record-repository.service';
 
 @Component({
     selector: 'wt-zone-detail',
