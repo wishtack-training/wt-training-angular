@@ -1,32 +1,5 @@
-class BookStore {
-
-    private _bookList: Book[] = [];
-
-    getBookList() {
-        return this._bookList;
-    }
-
-    addBook(book: Book) {
-        this._bookList.push(book);
-    }
-
-    removeBook(book: Book) {
-        this._bookList = this._bookList.filter(_book => book !== _book);
-    }
-
-}
-
-class Book {
-
-    authorName: string;
-    title: string;
-
-    constructor(title: string, authorName: string) {
-        this.authorName = authorName;
-        this.title = title;
-    }
-
-}
+import { Book } from './book';
+import { BookStore } from './book-store';
 
 describe('BookStore', () => {
 
