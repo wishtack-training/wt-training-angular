@@ -10,18 +10,20 @@ class BookStore {
         this._bookList.push(book);
     }
 
-    /**
-     * @deprecated Work in progress
-     */
     removeBook(book: Book) {
-        throw new Error('😱 Not implemented yet!');
+        this._bookList = this._bookList.filter(_book => book !== _book);
     }
+
 }
 
 class Book {
 
-    constructor(title: string, authorName: string) {
+    authorName: string;
+    title: string;
 
+    constructor(title: string, authorName: string) {
+        this.authorName = authorName;
+        this.title = title;
     }
 
 }
@@ -64,7 +66,7 @@ describe('BookStore', () => {
 
     });
 
-    xit('should remove books', () => {
+    it('should remove books', () => {
 
         bookStore.addBook(book1);
         bookStore.addBook(book2);
