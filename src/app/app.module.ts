@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookListContainerComponent } from './book/book-list-container/book-list-container.component';
 import { BookListComponent } from './book/book-list/book-list.component';
+import { BookSearchComponent } from './book/book-search/book-search.component';
 import { DemoComponent } from './demo/demo/demo.component';
 
 @NgModule({
@@ -17,12 +19,14 @@ import { DemoComponent } from './demo/demo/demo.component';
         BookFormComponent,
         BookListContainerComponent,
         BookListComponent,
-        DemoComponent
+        DemoComponent,
+        BookSearchComponent
     ],
     imports: [
         AppRoutingModule,
         BrowserAnimationsModule,
         BrowserModule,
+        HttpClientModule,
         MatButtonModule,
         ReactiveFormsModule
     ],
