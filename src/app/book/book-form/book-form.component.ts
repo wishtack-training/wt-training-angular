@@ -21,7 +21,7 @@ export class BookFormComponent implements OnInit {
 
     submitBook() {
 
-        const book = new Book(this.bookForm.value.title, this.bookForm.value.authorName);
+        const book = new Book(this.bookForm.value);
 
     }
 
