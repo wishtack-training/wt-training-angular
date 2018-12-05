@@ -13,7 +13,12 @@ export class BookStore {
     }
 
     removeBook(book: Book) {
-        this._bookList = this._bookList.filter(_book => book !== _book);
+
+        const index = this._bookList.indexOf(book);
+
+        this._bookList.splice(index, 1);
+
+        // this._bookList = this._bookList.filter(_book => book !== _book);
     }
 
 }
