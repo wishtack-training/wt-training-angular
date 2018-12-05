@@ -14,9 +14,9 @@ import { DemoComponent } from './demo/demo/demo.component';
 @NgModule({
     declarations: [
         AppComponent,
+        BookFormComponent,
         BookListContainerComponent,
         BookListComponent,
-        BookFormComponent,
         DemoComponent
     ],
     imports: [
