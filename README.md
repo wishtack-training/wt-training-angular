@@ -29,3 +29,7 @@ https://www.github.com/wishtack-training/wt-training-angular
 ## Nx Workspaces
 
 https://nrwl.io/nx/guide-nx-workspace
+
+# Jetbrains IDE Support
+
+https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji

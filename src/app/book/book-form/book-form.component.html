@@ -1,4 +1,5 @@
 <form
+    (ngSubmit)="submitBook()"
     [formGroup]="bookForm">
 
     <input formControlName="title" type="text">

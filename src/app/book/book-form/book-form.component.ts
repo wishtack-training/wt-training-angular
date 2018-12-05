@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Book } from '../book';
 
 @Component({
     selector: 'wt-book-form',
@@ -16,6 +17,12 @@ export class BookFormComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    submitBook() {
+
+        const book = new Book(this.bookForm.value.title, this.bookForm.value.authorName);
+
     }
 
 }
