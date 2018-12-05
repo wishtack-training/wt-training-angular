@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
-import { BookFormConfig } from '../book-form/book-form.component';
 import { BookStore } from '../book-store';
 
 @Component({
@@ -9,14 +8,6 @@ import { BookStore } from '../book-store';
     styleUrls: ['./book-list-container.component.scss']
 })
 export class BookListContainerComponent implements OnInit {
-
-    bookFormConfig: BookFormConfig = {
-        title: 'Add Book',
-        titleStyle: {
-            color: '#7757f3'
-        },
-        useH2ForTitle: true
-    };
 
     private _bookStore = new BookStore();
 

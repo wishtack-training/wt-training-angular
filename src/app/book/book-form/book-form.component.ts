@@ -1,13 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 import { Book } from '../book';
-
-export interface BookFormConfig {
-    title?: string;
-    titleFontSize?: number;
-    titleStyle?: any;
-    useH2ForTitle?: boolean;
-}
 
 @Component({
     selector: 'wt-book-form',
@@ -16,7 +10,7 @@ export interface BookFormConfig {
 })
 export class BookFormComponent implements OnInit {
 
-    @Input() config: BookFormConfig;
+    @Input() config = environment.appConfig.bookFormConfig;
     @Output() bookSubmit = new EventEmitter<Book>();
 
     bookForm = new FormGroup({
@@ -32,11 +26,11 @@ export class BookFormComponent implements OnInit {
 
     submitBook() {
 
-        const book = new Book(this.bookForm.value);
+        const book = new Book(this.bookFormConfig.value);
 
         this.bookSubmit.emit(book);
 
-        this.bookForm.reset();
+        this.bookFormConfig.reset();
 
     }
 
