@@ -23,7 +23,6 @@ export class BookListComponent implements OnInit {
     }
 
     getBookList() {
-        console.count('getBookList');
         return this.bookList;
     }
 

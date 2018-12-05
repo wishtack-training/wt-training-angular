@@ -2,10 +2,28 @@
     (ngSubmit)="submitBook()"
     [formGroup]="bookForm">
 
+    <div
+        [ngStyle]="config.titleStyle"
+        [style.fontSize.px]="config.titleFontSize">
+
+        <h2
+            *ngIf="config.useH2ForTitle">{{ config.title }}</h2>
+
+        <span
+            *ngIf="!config.useH2ForTitle">{{ config.title }}</span>
+
+    </div>
+
     <input formControlName="title" type="text">
 
     <input formControlName="authorName" type="text">
 
-    <button type="submit">ADD</button>
+    <button
+        color="primary"
+        mat-button
+        type="submit">ADD
+    </button>
 
 </form>
+
+<ng-content select="[slot='footer']"></ng-content>

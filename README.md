@@ -30,6 +30,13 @@ https://www.github.com/wishtack-training/wt-training-angular
 
 https://nrwl.io/nx/guide-nx-workspace
 
-# Jetbrains IDE Support
+## Jetbrains IDE Support
 
 https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji
+
+## Build time scss switching
+
+https://github.com/wishtack/wishtack-conference-finder/blob/white-labeling-build-time/src/variants/default/_variables.scss
+
+https://github.com/wishtack/wishtack-conference-finder/blob/white-labeling-build-time/angular.json
+
