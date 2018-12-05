@@ -3,15 +3,9 @@
     [formGroup]="bookForm">
 
     <input formControlName="title" type="text">
-    <input type="text">
+
+    <input formControlName="authorName" type="text">
 
     <button type="submit">ADD</button>
 
 </form>
-
-<div>
-    <div>Value: {{ bookForm.value | json }}</div>
-    <div>Pristine: {{ bookForm.get('title').pristine }}</div>
-    <div>Touched: {{ bookForm.get('title').touched }}</div>
-    <div>Touched: {{ bookForm.touched }}</div>
-</div>

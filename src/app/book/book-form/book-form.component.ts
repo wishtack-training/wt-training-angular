@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Book } from '../book';
 
@@ -9,7 +9,10 @@ import { Book } from '../book';
 })
 export class BookFormComponent implements OnInit {
 
+    @Output() bookSubmit = new EventEmitter<Book>();
+
     bookForm = new FormGroup({
+        authorName: new FormControl(),
         title: new FormControl()
     });
 
@@ -22,6 +25,10 @@ export class BookFormComponent implements OnInit {
     submitBook() {
 
         const book = new Book(this.bookForm.value);
+
+        this.bookSubmit.emit(book);
+
+        this.bookForm.reset();
 
     }
 

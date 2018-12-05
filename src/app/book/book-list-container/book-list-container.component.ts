@@ -12,9 +12,10 @@ export class BookListContainerComponent implements OnInit {
     private _bookStore = new BookStore();
 
     ngOnInit() {
-        this._bookStore.addBook(new Book('eXtreme Programming Explained', 'Kent Beck'));
-        this._bookStore.addBook(new Book('XPE', 'Kent Beck'));
-        this._bookStore.addBook(new Book('test', 'Kent Beck'));
+    }
+
+    addBook(book: Book) {
+        this._bookStore.addBook(book);
     }
 
     getBookList() {
