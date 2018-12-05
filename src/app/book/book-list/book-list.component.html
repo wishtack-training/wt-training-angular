@@ -1,0 +1,4 @@
+<div *ngFor="let book of bookList">
+    <span>{{ book.title }} - {{ book.authorName }}</span>
+    <button (click)="removeBook(book)">REMOVE</button>
+</div>
