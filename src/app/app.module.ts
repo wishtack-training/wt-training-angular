@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,16 +12,16 @@ import { DemoComponent } from './demo/demo/demo.component';
 @NgModule({
     declarations: [
         AppComponent,
-        DemoComponent,
         BookListContainerComponent,
         BookListComponent,
-        BookFormComponent
+        BookFormComponent,
+        DemoComponent
     ],
     imports: [
+        AppRoutingModule,
         BrowserModule,
-        AppRoutingModule
+        ReactiveFormsModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

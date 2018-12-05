@@ -23,3 +23,9 @@ https://floobits.com/younes
 https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
+
+# Other stuff
+
+## Nx Workspaces
+
+https://nrwl.io/nx/guide-nx-workspace

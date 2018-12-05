@@ -1,28 +1,12 @@
-<!--<p [style.fontSize.px]="name.length">-->
-<!--Hello {{ name }}-->
-<!--</p>-->
+<p [style.fontSize.px]="name.length">
+    Hello {{ name }}
+</p>
 
 <button
     (click)="reset()"
     [disabled]="name.length < 5">RESET
 </button>
 
-
-<!--<div>-->
-<!--<img [src]="getPictureUrl()" alt="">-->
-<!--</div>-->
-
-<hr>
-
-<form>
-    <button>ADD</button>
-</form>
-
 <div>
-    Book 1 (author 1)
-    <button>REMOVE</button>
-</div>
-<div>
-    Book 2 (author 2)
-    <button>REMOVE</button>
+    <img [src]="getPictureUrl()" alt="">
 </div>
