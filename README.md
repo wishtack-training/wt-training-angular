@@ -45,3 +45,9 @@ https://github.com/wishtack/wishtack-conference-finder/blob/white-labeling-build
 https://medium.com/wishtack/rx-scavenger-the-rxjs-garbage-collector-b050099a00ea
 
 https://github.com/wishtack/wishtack-steroids/tree/master/packages/rx-scavenger
+
+https://angular-checklist.io
+
+# Angular Checklist
+
+https://angular-checklist.io
