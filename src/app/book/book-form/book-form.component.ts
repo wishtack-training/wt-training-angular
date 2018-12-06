@@ -26,11 +26,11 @@ export class BookFormComponent implements OnInit {
 
     submitBook() {
 
-        const book = new Book(this.bookFormConfig.value);
+        const book = new Book(this.bookForm.value);
 
         this.bookSubmit.emit(book);
 
-        this.bookFormConfig.reset();
+        this.bookForm.reset();
 
     }
 

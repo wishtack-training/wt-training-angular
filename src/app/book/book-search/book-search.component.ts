@@ -1,15 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-export interface GoogleVolumesApiResponse {
-    items: Array<{
-        id?: string;
-        volumeInfo?: {
-            title?: string;
-        }
-    }>;
-}
 
 @Component({
     selector: 'wt-book-search',
@@ -18,19 +7,14 @@ export interface GoogleVolumesApiResponse {
 })
 export class BookSearchComponent implements OnDestroy, OnInit {
 
-    private _subscription: Subscription;
-
-    constructor(private _httpClient: HttpClient) {
+    constructor() {
     }
 
     ngOnInit() {
 
-        const bookList$ = this._bookRepository.searchBooks('eXtreme Programming');
-
     }
 
     ngOnDestroy() {
-        this._subscription.unsubscribe();
     }
 
     // Playing with observables
