@@ -1,3 +1,7 @@
-<p>
-    book-search works!
-</p>
+<input
+    [formControl]="keywordsControl"
+    type="text">
+
+<wt-book-list
+    [bookList]="bookList"
+    [canRemove]="false"></wt-book-list>

@@ -1,4 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Scavenger } from '@wishtack/rx-scavenger';
+import { debounceTime, distinctUntilChanged, publishReplay, refCount, switchMap } from 'rxjs/operators';
+import { Book } from '../book';
+import { BookRepository } from '../book-repository.service';
 
 @Component({
     selector: 'wt-book-search',
@@ -7,10 +12,29 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class BookSearchComponent implements OnDestroy, OnInit {
 
-    constructor() {
+    bookList: Book[];
+
+    keywordsControl = new FormControl();
+
+    private _scavenger = new Scavenger(this);
+
+    constructor(private _bookRepository: BookRepository) {
     }
 
     ngOnInit() {
+
+        this.keywordsControl.valueChanges
+            .pipe(
+                debounceTime(100),
+                distinctUntilChanged(),
+                switchMap(keywords => {
+                    return this._bookRepository.searchBooks(keywords);
+                }),
+                publishReplay(1), refCount(),
+                this._scavenger.collect()
+            )
+            .subscribe(bookList => this.bookList = bookList);
+
 
     }
 

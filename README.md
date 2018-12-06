@@ -40,3 +40,8 @@ https://github.com/wishtack/wishtack-conference-finder/blob/white-labeling-build
 
 https://github.com/wishtack/wishtack-conference-finder/blob/white-labeling-build-time/angular.json
 
+## Scavenger
+
+https://medium.com/wishtack/rx-scavenger-the-rxjs-garbage-collector-b050099a00ea
+
+https://github.com/wishtack/wishtack-steroids/tree/master/packages/rx-scavenger

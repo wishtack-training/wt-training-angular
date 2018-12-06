@@ -10,6 +10,7 @@ import { Book } from '../book';
 export class BookListComponent implements OnInit {
 
     @Input() bookList: Book[];
+    @Input() canRemove = true;
     @Output() bookRemove = new EventEmitter<Book>();
 
     constructor() {
