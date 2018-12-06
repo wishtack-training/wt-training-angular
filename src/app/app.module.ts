@@ -11,6 +11,7 @@ import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookListContainerComponent } from './book/book-list-container/book-list-container.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookSearchComponent } from './book/book-search/book-search.component';
+import { CartComponent } from './cart/cart/cart.component';
 import { DemoComponent } from './demo/demo/demo.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DemoComponent } from './demo/demo/demo.component';
         BookListContainerComponent,
         BookListComponent,
         DemoComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        CartComponent
     ],
     imports: [
         AppRoutingModule,

@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Cart } from '../../cart/cart.service';
 import { Book } from '../book';
+
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,10 +12,15 @@ import { Book } from '../book';
 export class BookListComponent implements OnInit {
 
     @Input() bookList: Book[];
+    @Input() canAddToCart = true;
     @Input() canRemove = true;
     @Output() bookRemove = new EventEmitter<Book>();
 
-    constructor() {
+    constructor(private _cart: Cart) {
+    }
+
+    addToCart(book: Book) {
+        this._cart.addBook(book);
     }
 
     ngOnInit() {
@@ -26,5 +33,6 @@ export class BookListComponent implements OnInit {
     getBookList() {
         return this.bookList;
     }
+
 
 }

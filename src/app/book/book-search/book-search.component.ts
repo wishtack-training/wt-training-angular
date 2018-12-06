@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { debounceTime, distinctUntilChanged, publishReplay, refCount, switchMap } from 'rxjs/operators';
+import { Cart } from '../../cart/cart.service';
 import { Book } from '../book';
 import { BookRepository } from '../book-repository.service';
 
@@ -18,7 +19,10 @@ export class BookSearchComponent implements OnDestroy, OnInit {
 
     private _scavenger = new Scavenger(this);
 
-    constructor(private _bookRepository: BookRepository) {
+    constructor(
+        private _bookRepository: BookRepository,
+        private _cart: Cart
+    ) {
     }
 
     ngOnInit() {
@@ -35,6 +39,8 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             )
             .subscribe(bookList => this.bookList = bookList);
 
+        this._cart.onBookAdd$
+            .subscribe(() => console.log('Book Added'));
 
     }
 

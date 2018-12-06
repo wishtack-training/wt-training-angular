@@ -1,5 +1,11 @@
 <div *ngFor="let book of getBookList()">
+
     <span>{{ book.title }} - {{ book.authorName }}</span>
+
+    <button
+        (click)="addToCart(book)"
+        *ngIf="canAddToCart">ADD TO CART
+    </button>
 
     <button
         (click)="removeBook(book)"

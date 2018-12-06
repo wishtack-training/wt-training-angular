@@ -1,0 +1,16 @@
+<h1>Cart</h1>
+
+<div>Count: {{ bookCount$ | async }}</div>
+<div>
+    <button (click)="resetCart()">RESET CART</button>
+</div>
+
+<ng-container *ngIf="bookList$ | async as bookList">
+
+    <wt-book-list
+        [bookList]="bookList"
+        [canAddToCart]="false"
+        (bookRemove)="onBookRemove($event)"></wt-book-list>
+
+</ng-container>
+
