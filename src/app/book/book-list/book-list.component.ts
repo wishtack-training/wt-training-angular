@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cart } from '../../cart/cart.service';
 import { Book } from '../book';
 import { BookCollectionComponent } from '../book-collection-component';
 
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-book-list',
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.scss']
