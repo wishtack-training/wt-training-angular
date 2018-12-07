@@ -40,6 +40,7 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             .subscribe(bookList => this.bookList = bookList);
 
         this._cart.onBookAdd$
+            .pipe(this._scavenger.collect())
             .subscribe(() => console.log('Book Added'));
 
     }

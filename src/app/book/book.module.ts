@@ -1,8 +1,10 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule } from '@angular/material';
 import { BookFormComponent } from './book-form/book-form.component';
+import { BookGridComponent } from './book-grid/book-grid.component';
 import { BookListContainerComponent } from './book-list-container/book-list-container.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookSearchComponent } from './book-search/book-search.component';
@@ -12,20 +14,27 @@ import { BookSearchComponent } from './book-search/book-search.component';
         BookFormComponent,
         BookListComponent,
         BookListContainerComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        BookGridComponent
     ],
     exports: [
         BookFormComponent,
         BookListComponent,
         BookListContainerComponent,
-        BookSearchComponent
+        BookSearchComponent,
+        BookGridComponent
     ],
     imports: [
         CommonModule,
 
         /* Required by <wt-book-form>. */
         MatButtonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        LayoutModule
 
     ]
 })
