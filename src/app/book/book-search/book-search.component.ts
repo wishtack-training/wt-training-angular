@@ -4,6 +4,7 @@ import { Scavenger } from '@wishtack/rx-scavenger';
 import { debounceTime, distinctUntilChanged, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import { Cart } from '../../cart/cart.service';
 import { Book } from '../book';
+import { BookCollectionDisplayMode } from '../book-collection-component';
 import { BookRepository } from '../book-repository.service';
 
 @Component({
@@ -13,8 +14,10 @@ import { BookRepository } from '../book-repository.service';
 })
 export class BookSearchComponent implements OnDestroy, OnInit {
 
-    bookList: Book[];
+    BookCollectionDisplayMode = BookCollectionDisplayMode;
 
+    bookList: Book[];
+    displayMode = BookCollectionDisplayMode.Grid;
     keywordsControl = new FormControl();
 
     private _scavenger = new Scavenger(this);

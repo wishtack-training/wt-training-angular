@@ -4,10 +4,17 @@
     [formControl]="keywordsControl"
     type="text">
 
+<div>
+    <button (click)="displayMode = BookCollectionDisplayMode.Grid">GRID</button>
+    <button (click)="displayMode = BookCollectionDisplayMode.List">LIST</button>
+</div>
+
 <wt-book-list
+    *ngIf="displayMode === BookCollectionDisplayMode.List"
     [bookList]="bookList"
     [canRemove]="false"></wt-book-list>
 
 <wt-book-grid
+    *ngIf="displayMode === BookCollectionDisplayMode.Grid"
     [bookList]="bookList"
     [canRemove]="false"></wt-book-grid>

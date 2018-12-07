@@ -8,6 +8,11 @@
 import { Observable } from 'rxjs';
 import { Book } from './book';
 
+export enum BookCollectionDisplayMode {
+    Grid = 'grid',
+    List = 'list'
+}
+
 export interface BookCollectionComponent {
     bookList: Book[];
     canAddToCart: boolean;
