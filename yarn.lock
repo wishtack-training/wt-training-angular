@@ -4657,6 +4657,11 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
+ng-dynamic-component@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-component/-/ng-dynamic-component-4.0.0.tgz#0962add0b20bf01c2f4c3d1e5d66b6f5cf320959"
+  integrity sha512-EQpT3gIeaz1GUZu063mZinZFMi/w7+Bpgggkm8A5dJffUi8hlBXSAj03z9drDwJEFRC4astfV34FOde4XZ9Ubg==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

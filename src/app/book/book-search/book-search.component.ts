@@ -1,10 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Type } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { debounceTime, distinctUntilChanged, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import { Cart } from '../../cart/cart.service';
 import { Book } from '../book';
-import { BookCollectionDisplayMode } from '../book-collection-component';
+import {
+    BookCollectionComponent,
+    bookCollectionComponentMap,
+    BookCollectionDisplayMode
+} from '../book-collection-component';
+import { BookListComponent } from '../book-list/book-list.component';
 import { BookRepository } from '../book-repository.service';
 
 @Component({
@@ -16,8 +21,8 @@ export class BookSearchComponent implements OnDestroy, OnInit {
 
     BookCollectionDisplayMode = BookCollectionDisplayMode;
 
+    bookCollectionComponentType: Type<BookCollectionComponent> = BookListComponent;
     bookList: Book[];
-    displayMode = BookCollectionDisplayMode.Grid;
     keywordsControl = new FormControl();
 
     private _scavenger = new Scavenger(this);
@@ -49,6 +54,10 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
+    }
+
+    setDisplayMode(displayMode: BookCollectionDisplayMode) {
+        this.bookCollectionComponentType = bookCollectionComponentMap.get(displayMode);
     }
 
     // Playing with observables
@@ -92,5 +101,4 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     //     console.log(data);
     //
     // }
-
 }
