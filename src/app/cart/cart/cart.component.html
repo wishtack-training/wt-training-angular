@@ -1,5 +1,7 @@
 <h1>Cart</h1>
 
+<img [src]="cartPictureUri" alt="">
+
 <div>Count: {{ bookCount$ | async }}</div>
 <div>
     <button (click)="resetCart()">RESET CART</button>

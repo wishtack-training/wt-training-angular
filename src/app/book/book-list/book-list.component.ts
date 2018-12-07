@@ -19,11 +19,11 @@ export class BookListComponent implements OnInit {
     constructor(private _cart: Cart) {
     }
 
-    addToCart(book: Book) {
-        this._cart.addBook(book);
+    ngOnInit() {
     }
 
-    ngOnInit() {
+    addToCart(book: Book) {
+        this._cart.addBook(book);
     }
 
     removeBook(book: Book) {

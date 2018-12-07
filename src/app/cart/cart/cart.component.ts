@@ -10,6 +10,8 @@ import { Cart } from '../cart.service';
 })
 export class CartComponent {
 
+    cartPictureUri = require('./cart.png');
+
     bookCount$ = this._cart.bookCount$;
     bookList$ = this._cart.bookList$;
 
