@@ -48,6 +48,16 @@ https://github.com/wishtack/wishtack-steroids/tree/master/packages/rx-scavenger
 
 https://angular-checklist.io
 
-# Angular Checklist
+## Angular Checklist
 
 https://angular-checklist.io
+
+# E2E
+
+## Protractor beautiful reporter
+
+https://github.com/Evilweed/protractor-beautiful-reporter
+
+## Prtoractor Debug
+
+https://github.com/angular/protractor/blob/master/docs/debugging.md

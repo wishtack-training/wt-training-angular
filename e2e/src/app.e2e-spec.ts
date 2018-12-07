@@ -1,14 +1,21 @@
-import { AppPage } from './app.po';
+import { AppPage } from './app.page';
 
-describe('workspace-project App', () => {
+describe('app', () => {
+
     let page: AppPage;
 
     beforeEach(() => {
         page = new AppPage();
     });
 
-    it('should display welcome message', () => {
-        page.navigateTo();
-        expect(page.getTitleText()).toEqual('Welcome to training!');
+    it('should display welcome message', async () => {
+
+        await page.navigateTo();
+
+        const title = await page.getTitleText();
+
+        expect(title).toEqual('3C Evolution');
+
     });
+
 });

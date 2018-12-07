@@ -1,6 +1,6 @@
 <div *ngFor="let book of getBookList()">
 
-    <span>{{ book.title }} - {{ book.authorName }}</span>
+    <span data-role="book-preview-title">{{ book.title }} - {{ book.authorName }}</span>
 
     <button
         (click)="addToCart(book)"

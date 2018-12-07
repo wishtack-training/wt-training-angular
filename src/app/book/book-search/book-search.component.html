@@ -1,8 +1,9 @@
 <h1>Book search</h1>
 
 <input
-    [formControl]="keywordsControl"
-    type="text">
+    data-role="book-search-input"
+    type="text"
+    [formControl]="keywordsControl">
 
 <div>
     <button (click)="setDisplayMode(BookCollectionDisplayMode.Grid)">GRID</button>
