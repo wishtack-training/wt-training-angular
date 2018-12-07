@@ -9,7 +9,8 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
         HomeLayoutComponent
     ],
     exports: [
-        HomeLayoutComponent
+        HomeLayoutComponent,
+        MatListModule
     ],
     imports: [
         CommonModule,

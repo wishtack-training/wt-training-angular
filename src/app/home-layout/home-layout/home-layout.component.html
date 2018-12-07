@@ -8,9 +8,7 @@
                  fixedInViewport="true">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a href="#" mat-list-item>Link 1</a>
-            <a href="#" mat-list-item>Link 2</a>
-            <a href="#" mat-list-item>Link 3</a>
+            <ng-content select="[slot='sidenav']"></ng-content>
         </mat-nav-list>
     </mat-sidenav>
 

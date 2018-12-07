@@ -1,22 +1,27 @@
-<!--<router-outlet></router-outlet>-->
-
-<!--<hr>-->
-
-<!--<footer>-->
-<!--<div>-->
-<!--<a routerLink="/cart">Cart</a>-->
-<!--</div>-->
-<!--<div>-->
-<!--<a routerLink="/book/search">Search</a>-->
-<!--</div>-->
-<!--</footer>-->
 
 <wt-home-layout>
 
-    <span slot="title">TITLE</span>
+    <!-- Sidenav. -->
+    <ng-container slot="sidenav">
 
-    <div slot="content">
-        <img src="https://robohash.org/test?set=set3">
-    </div>
+        <a
+            mat-list-item
+            routerLink="/book/search">Search</a>
+
+        <a
+            mat-list-item
+            routerLink="/cart">Cart</a>
+
+    </ng-container>
+
+    <!-- Title. -->
+    <ng-container slot="title">
+        <span>TITLE</span>
+    </ng-container>
+
+    <!-- Content. -->
+    <ng-container slot="content">
+        <router-outlet></router-outlet>
+    </ng-container>
 
 </wt-home-layout>
