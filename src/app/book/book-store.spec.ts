@@ -23,13 +23,13 @@ describe('BookStore', () => {
 
         const bookListEmpty = bookStore.getBookList();
 
-        expect(bookListEmpty).toEqual([]);
-
         bookStore.addBook(book1);
         bookStore.addBook(book2);
         bookStore.addBook(book3);
 
         const bookList = bookStore.getBookList();
+
+        expect(bookListEmpty).toEqual([]);
 
         expect(bookList).toEqual([
             book1,

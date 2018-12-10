@@ -9,10 +9,11 @@ export class BookStore {
     }
 
     addBook(book: Book) {
-        this._bookList.push(book);
+        this._bookList = [...this._bookList, book];
     }
 
     removeBook(book: Book) {
         this._bookList = this._bookList.filter(_book => _book !== book);
     }
+
 }
