@@ -1,7 +1,9 @@
-<ng-container *ngFor="let book of bookList">
+<wt-book-preview
+    *ngFor="let book of bookList"
+    [book]="book">
 
-    <wt-book-preview [book]="book"></wt-book-preview>
-
+    <!-- Button is displayed inside book preview thanks to content projection -->
+    <!-- and using <ng-content>. -->
     <button (click)="removeBook(book)">REMOVE</button>
 
-</ng-container>
+</wt-book-preview>
