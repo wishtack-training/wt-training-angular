@@ -1,29 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from '../book';
+import { BookStore } from '../book-store';
 
 @Component({
     selector: 'wt-book-list-container',
     templateUrl: './book-list-container.component.html',
     styleUrls: ['./book-list-container.component.scss']
 })
-export class BookListContainerComponent implements OnInit {
+export class BookListContainerComponent {
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    private _bookStore = new BookStore();
 
     addBook(book: Book) {
-        throw new Error('😱 Not implemented yet!');
+        this._bookStore.addBook(book);
     }
 
     getBookList() {
-        throw new Error('😱 Not implemented yet!');
+        return this._bookStore.getBookList();
     }
 
     removeBook(book: Book) {
-        throw new Error('😱 Not implemented yet!');
+        this._bookStore.removeBook(book);
     }
 
 }
