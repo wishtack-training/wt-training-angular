@@ -1,0 +1,27 @@
+<form
+    (ngSubmit)="submit()"
+    [formGroup]="userForm">
+
+    <input
+        formControlName="firstName"
+        placeholder="first name"
+        type="text">
+
+    <input
+        formControlName="lastName"
+        placeholder="last name"
+        type="text">
+
+    <button
+        [disabled]="!userForm.valid"
+        type="submit">SUBMIT
+    </button>
+
+</form>
+
+<div *ngIf="userForm.get('firstName').touched">
+    <li *ngIf="userForm.hasError('required', 'firstName')">
+        first name is required
+    </li>
+</div>
+
