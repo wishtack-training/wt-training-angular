@@ -1,0 +1,12 @@
+<h1 [style.fontSize.px]="title.length % 10">{{ title }}</h1>
+
+<button
+    [hidden]="title.length < 10"
+    (click)="reset()">RESET
+</button>
+
+<div *ngIf="true">YEAY!</div>
+
+<li *ngFor="let city of cityList">
+    {{ city }}
+</li>
