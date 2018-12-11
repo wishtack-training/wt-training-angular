@@ -13,16 +13,6 @@ export class BookListContainerComponent {
 
     private _bookStore = new BookStore();
 
-    addOrReplaceBook(book: Book) {
-
-        if (this.editedBook != null) {
-            this.replaceEditedBook(book);
-        } else {
-            this.addBook(book);
-        }
-
-    }
-
     addBook(book: Book) {
         this._bookStore.addBook(book);
     }

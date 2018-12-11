@@ -1,9 +1,15 @@
 <wt-book-form
-    (bookSubmit)="addOrReplaceBook($event)"
-    [book]="editedBook"
-    [buttonLabel]="editedBook ? 'SAVE' : 'ADD'"></wt-book-form>
+    (bookSubmit)="addBook($event)"
+    buttonLabel="ADD"></wt-book-form>
 
 <wt-book-list
     [bookList]="getBookList()"
+    [editedBook]="editedBook"
     (bookEdit)="editBook($event)"
-    (bookRemove)="removeBook($event)"></wt-book-list>
+    (bookRemove)="removeBook($event)"
+    (bookSubmit)="replaceEditedBook($event)"></wt-book-list>
+
+<wt-book-form
+    *ngIf="getBookList().length > 5"
+    buttonLabel="ADD"
+    (bookSubmit)="addBook($event)"></wt-book-form>

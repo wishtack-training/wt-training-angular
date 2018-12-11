@@ -8,9 +8,11 @@ import { Book } from '../book';
 })
 export class BookListComponent {
 
+    @Input() editedBook: Book;
     @Input() bookList: Book[];
-    @Output() bookRemove = new EventEmitter<Book>();
     @Output() bookEdit = new EventEmitter<Book>();
+    @Output() bookSubmit = new EventEmitter<Book>();
+    @Output() bookRemove = new EventEmitter<Book>();
 
     editBook(book: Book) {
         this.bookEdit.emit(book);

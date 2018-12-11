@@ -2,10 +2,20 @@
     *ngFor="let book of bookList"
     [book]="book">
 
-    <button (click)="editBook(book)">EDIT</button>
+    <wt-book-form
+        (bookSubmit)="bookSubmit.emit($event)"
+        *ngIf="editedBook === book"
+        [book]="editedBook"
+        buttonLabel="SAVE"></wt-book-form>
 
-    <!-- Button is displayed inside book preview thanks to content projection -->
-    <!-- and using <ng-content>. -->
-    <button (click)="removeBook(book)">REMOVE</button>
+    <ng-container *ngIf="editedBook !== book">
+
+        <button (click)="editBook(book)">EDIT</button>
+
+        <!-- Button is displayed inside book preview thanks to content projection -->
+        <!-- and using <ng-content>. -->
+        <button (click)="removeBook(book)">REMOVE</button>
+
+    </ng-container>
 
 </wt-book-preview>
