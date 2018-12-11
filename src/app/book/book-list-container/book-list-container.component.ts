@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../book';
 
 @Component({
     selector: 'wt-book-list-container',
@@ -11,6 +12,18 @@ export class BookListContainerComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    addBook(book: Book) {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    getBookList() {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    removeBook(book: Book) {
+        throw new Error('😱 Not implemented yet!');
     }
 
 }

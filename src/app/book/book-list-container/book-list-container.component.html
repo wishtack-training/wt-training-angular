@@ -1,3 +1,6 @@
-<p>
-    book-list-container works!
-</p>
+<wt-book-form
+    (bookSubmit)="addBook($event)"></wt-book-form>
+
+<wt-book-list
+    [bookList]="getBookList()"
+    (bookRemove)="removeBook($event)"></wt-book-list>
