@@ -1,3 +1,15 @@
-<p>
-    book-form works!
-</p>
+<form
+    (ngSubmit)="submit()"
+    [formGroup]="bookForm">
+
+    <input
+        formControlName="title"
+        placeholder="title"
+        type="text">
+
+    <input
+        formControlName="authorName"
+        placeholder="author"
+        type="text">
+
+</form>
