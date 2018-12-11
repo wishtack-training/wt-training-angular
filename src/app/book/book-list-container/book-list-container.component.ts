@@ -11,7 +11,8 @@ export class BookListContainerComponent {
 
     editedBook: Book = null;
 
-    private _bookStore = new BookStore();
+    constructor(private _bookStore: BookStore) {
+    }
 
     addBook(book: Book) {
         this._bookStore.addBook(book);

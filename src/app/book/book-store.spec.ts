@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { Book } from './book';
 import { BookStore } from './book-store';
 
@@ -10,12 +11,25 @@ describe('BookStore', () => {
     let book3: Book;
 
     beforeEach(() => {
+        TestBed.configureTestingModule({});
+    });
 
-        bookStore = new BookStore();
+    beforeEach(() => {
 
-        book1 = new Book('eXtreme Programming Explained', 'Kent Beck');
-        book2 = new Book('ReWork', 'Jason Fried');
-        book3 = new Book('eXtreme Programming Explained', 'Kent Beck');
+        bookStore = TestBed.get(BookStore);
+
+        book1 = new Book({
+            title: 'eXtreme Programming Explained',
+            authorName: 'Kent Beck'
+        });
+        book2 = new Book({
+            title: 'ReWork',
+            authorName: 'Jason Fried'
+        });
+        book3 = new Book({
+            title: 'eXtreme Programming Explained',
+            authorName: 'Kent Beck'
+        });
 
     });
 
