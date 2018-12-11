@@ -2,6 +2,8 @@
     *ngFor="let book of bookList"
     [book]="book">
 
+    <button (click)="editBook(book)">EDIT</button>
+
     <!-- Button is displayed inside book preview thanks to content projection -->
     <!-- and using <ng-content>. -->
     <button (click)="removeBook(book)">REMOVE</button>

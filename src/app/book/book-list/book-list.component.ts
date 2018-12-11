@@ -10,6 +10,11 @@ export class BookListComponent {
 
     @Input() bookList: Book[];
     @Output() bookRemove = new EventEmitter<Book>();
+    @Output() bookEdit = new EventEmitter<Book>();
+
+    editBook(book: Book) {
+        this.bookEdit.emit(book);
+    }
 
     removeBook(book: Book) {
         this.bookRemove.emit(book);

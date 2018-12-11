@@ -16,4 +16,17 @@ export class BookStore {
         this._bookList = this._bookList.filter(_book => _book !== book);
     }
 
+    replaceBook(previous: Book, current: Book) {
+
+        this._bookList = this._bookList.map(book => {
+
+            if (book === previous) {
+                return current;
+            }
+
+            return book;
+        });
+
+    }
+
 }

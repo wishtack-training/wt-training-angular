@@ -1,6 +1,9 @@
 <wt-book-form
-    (bookSubmit)="addBook($event)"></wt-book-form>
+    (bookSubmit)="addOrReplaceBook($event)"
+    [book]="editedBook"
+    [buttonLabel]="editedBook ? 'SAVE' : 'ADD'"></wt-book-form>
 
 <wt-book-list
     [bookList]="getBookList()"
+    (bookEdit)="editBook($event)"
     (bookRemove)="removeBook($event)"></wt-book-list>

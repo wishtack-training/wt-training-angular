@@ -9,10 +9,31 @@ import { BookStore } from '../book-store';
 })
 export class BookListContainerComponent {
 
+    editedBook: Book = null;
+
     private _bookStore = new BookStore();
+
+    addOrReplaceBook(book: Book) {
+
+        if (this.editedBook != null) {
+            this.replaceEditedBook(book);
+        } else {
+            this.addBook(book);
+        }
+
+    }
 
     addBook(book: Book) {
         this._bookStore.addBook(book);
+    }
+
+    replaceEditedBook(book: Book) {
+        this._bookStore.replaceBook(this.editedBook, book);
+        this.editedBook = null;
+    }
+
+    editBook(book: Book) {
+        this.editedBook = book;
     }
 
     getBookList() {
@@ -22,5 +43,4 @@ export class BookListContainerComponent {
     removeBook(book: Book) {
         this._bookStore.removeBook(book);
     }
-
 }

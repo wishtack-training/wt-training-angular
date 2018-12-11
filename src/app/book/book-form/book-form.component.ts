@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Book } from '../book';
 
@@ -7,8 +7,10 @@ import { Book } from '../book';
     templateUrl: './book-form.component.html',
     styleUrls: ['./book-form.component.scss']
 })
-export class BookFormComponent implements OnInit {
+export class BookFormComponent implements OnChanges {
 
+    @Input() book: Book;
+    @Input() buttonLabel: string;
     @Output() bookSubmit = new EventEmitter<Book>();
 
     bookForm = new FormGroup({
@@ -16,10 +18,13 @@ export class BookFormComponent implements OnInit {
         authorName: new FormControl()
     });
 
-    constructor() {
-    }
+    ngOnChanges(changes: SimpleChanges) {
 
-    ngOnInit() {
+        if (changes.book != null) {
+            /* @hack forcing undefined instead of null if book is null. */
+            this.bookForm.reset(this.book || undefined);
+        }
+        
     }
 
     submit() {
