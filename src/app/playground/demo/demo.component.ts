@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from '../form-demo/form-demo.component';
 
 @Component({
     selector: 'wt-demo',
@@ -24,4 +25,9 @@ export class DemoComponent {
     reset() {
         this.title = '';
     }
+
+    logUser(user: User) {
+        console.log(user);
+    }
+
 }

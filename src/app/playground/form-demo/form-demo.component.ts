@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+
+export class User {
+    constructor(
+        public firstName: string,
+        public lastName: string
+    ) {
+    }
+}
 
 @Component({
     selector: 'wt-form-demo',
@@ -7,6 +16,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./form-demo.component.scss']
 })
 export class FormDemoComponent {
+
+    @Input() buttonLabel = 'SUBMIT';
+    @Output() userChange = new EventEmitter<User>();
+    @Output() userSubmit = new EventEmitter<User>();
 
     userForm = new FormGroup({
         firstName: new FormControl(null, [
@@ -24,12 +37,22 @@ export class FormDemoComponent {
         /* @hack should be in ngOnInit */
         this.userForm.valueChanges
             .subscribe(data => {
-                console.log(data);
+                // this.userChange.emit(...)
             });
     }
 
     submit() {
-        console.log(this.userForm.value);
+
+        /* @todo create a instance of a user. */
+        const userData = this.userForm.value;
+
+        const user = new User(
+            userData.firstName,
+            userData.lastName
+        );
+
+        this.userSubmit.emit(user);
+
     }
 
 }
