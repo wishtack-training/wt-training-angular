@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import { PlaygroundModule } from './playground/playground.module';
         BookModule,
         BrowserAnimationsModule,
         BrowserModule,
+        HttpClientModule,
         PlaygroundModule,
         ReactiveFormsModule
     ],
