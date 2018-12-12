@@ -2,16 +2,22 @@
     (ngSubmit)="submit()"
     [formGroup]="bookForm">
 
-    <input
-        formControlName="title"
-        placeholder="title"
-        type="text">
+    <mat-form-field>
+        <input
+            formControlName="title"
+            matInput
+            placeholder="title"
+            type="text">
+    </mat-form-field>
 
-    <input
-        formControlName="authorName"
-        placeholder="author"
-        type="text">
+    <mat-form-field>
+        <input
+            formControlName="authorName"
+            matInput
+            placeholder="author"
+            type="text">
+    </mat-form-field>
 
-    <button type="submit">{{ buttonLabel || 'SUBMIT' }}</button>
+    <button mat-raised-button type="submit">{{ buttonLabel || 'SUBMIT' }}</button>
 
 </form>

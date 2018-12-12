@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedFormModule } from '../shared-form/shared-form.module';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookListContainerComponent } from './book-list-container/book-list-container.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -21,7 +21,7 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     ],
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        SharedFormModule
     ]
 })
 export class BookModule {
