@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
@@ -18,6 +19,7 @@ import { PlaygroundModule } from './playground/playground.module';
         BookFormComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         PlaygroundModule,
         ReactiveFormsModule
