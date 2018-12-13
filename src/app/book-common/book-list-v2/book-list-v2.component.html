@@ -1,3 +1,28 @@
-<p>
-    book-list-v2 works!
-</p>
+<mat-list>
+
+    <ng-container *ngFor="let book of bookList">
+
+        <mat-list-item class="wt-book-list-item">
+
+            <img
+                matListAvatar
+                [alt]="book.title"
+                [src]="'https://robohash.org/' + book.title + '?set=set3'">
+
+            <h3 matLine>{{ book.title }}</h3>
+
+            <div matLine>
+                <div *ngIf="book.authorName">by {{ book.authorName }}</div>
+                <div>
+                    <button mat-button>✏️</button>
+                    <button mat-button>🗑️</button>
+                </div>
+            </div>
+
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+    </ng-container>
+
+</mat-list>

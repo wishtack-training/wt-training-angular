@@ -32,11 +32,7 @@ export class BookSearchComponent implements OnInit {
                         );
                 })
             )
-            .subscribe(data => {
-
-                console.log(data);
-
-            });
+            .subscribe(bookList => this.bookList = bookList);
     }
 
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule, MatDividerModule, MatListModule } from '@angular/material';
 import { SharedFormModule } from '../shared-form/shared-form.module';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookListV2Component } from './book-list-v2/book-list-v2.component';
@@ -21,6 +22,9 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     ],
     imports: [
         CommonModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatListModule,
         SharedFormModule
     ]
 })
