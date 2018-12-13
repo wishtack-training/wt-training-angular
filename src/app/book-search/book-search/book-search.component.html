@@ -1,10 +1,6 @@
-<mat-form-field>
-    <input
-        matInput
-        placeholder="keywords"
-        type="text"
-        [formControl]="keywordsControl">
-</mat-form-field>
+<wt-book-form
+    (bookChange)="search($event)"
+    (bookSubmit)="search($event)"></wt-book-form>
 
 <wt-book-list-v2
     [bookList]="bookList"
