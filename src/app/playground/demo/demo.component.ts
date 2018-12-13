@@ -5,22 +5,6 @@ import { Subscription } from 'rxjs';
 import { map, pairwise } from 'rxjs/operators';
 import { User } from '../form-demo/form-demo.component';
 
-export interface BookApiListResponse<T> {
-    totalItems: number;
-    items?: T[];
-}
-
-export interface BookApiVolume {
-    id: string;
-    volumeInfo: {
-        title: string;
-        authors: Array<string>
-    };
-}
-
-export type BookApiVolumeListResponse = BookApiListResponse<BookApiVolume>;
-
-
 @Component({
     selector: 'wt-demo',
     templateUrl: './demo.component.html',
@@ -52,15 +36,6 @@ export class DemoComponent implements OnDestroy, OnInit {
                 })
             )
             .subscribe(data => console.log(data));
-
-        const url = 'https://www.googleapis.com/books/v1/volumes?q=eXtreme%20Programming';
-
-
-        this._subscription = this._httpClient.get<BookApiVolumeListResponse>(url)
-            .subscribe(data => {
-                console.log(data.totalItems);
-            });
-
 
         // const data$ = interval(100)
         //     .pipe(
