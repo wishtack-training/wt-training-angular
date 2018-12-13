@@ -3,11 +3,13 @@ export class Book {
 
     id: string;
     authorName: string;
+    pictureUri: string;
     title: string;
 
     constructor(args: Partial<Book> = {}) {
         this.id = args.id;
         this.authorName = args.authorName;
+        this.pictureUri = args.pictureUri;
         this.title = args.title;
     }
 

@@ -8,16 +8,24 @@ import { Book } from '../../book-list-container/book';
 })
 export class BookListV2Component implements OnInit {
 
-    @Input() editedBook: Book;
     @Input() bookList: Book[];
-    @Output() bookEdit = new EventEmitter<Book>();
-    @Output() bookSubmit = new EventEmitter<Book>();
+    @Input() canBuy = false;
+    @Input() canRemove = false;
+    @Output() bookBuy = new EventEmitter<Book>();
     @Output() bookRemove = new EventEmitter<Book>();
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    buy(book: Book) {
+        this.bookBuy.emit(book);
+    }
+
+    remove(book: Book) {
+        this.bookRemove.emit(book);
     }
 
 }

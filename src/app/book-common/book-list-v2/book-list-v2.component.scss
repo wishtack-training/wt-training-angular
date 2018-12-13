@@ -2,3 +2,10 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+/* @hack hacking the avatar. */
+.mat-list-item .wt-book-list-item__picture.mat-list-avatar {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}

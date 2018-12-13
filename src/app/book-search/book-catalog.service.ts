@@ -13,8 +13,11 @@ export interface BookApiListResponse<T> {
 export interface BookApiVolume {
     id: string;
     volumeInfo: {
+        authors: string[];
+        imageLinks: {
+            thumbnail: string;
+        },
         title: string;
-        authors: Array<string>
     };
 }
 
@@ -50,13 +53,15 @@ export class BookCatalog {
 
     private _itemToBook(item: BookApiVolume) {
 
-        const authors = item.volumeInfo.authors;
+        const {authors, imageLinks} = item.volumeInfo;
         const authorName = authors ? authors[0] : null;
+        const pictureUri = imageLinks ? imageLinks.thumbnail : null;
 
         return new Book({
             id: item.id,
-            title: item.volumeInfo.title,
-            authorName
+            authorName,
+            pictureUri,
+            title: item.volumeInfo.title
         });
     }
 }

@@ -5,17 +5,29 @@
         <mat-list-item class="wt-book-list-item">
 
             <img
+                *ngIf="book.pictureUri"
+                class="wt-book-list-item__picture"
                 matListAvatar
                 [alt]="book.title"
-                [src]="'https://robohash.org/' + book.title + '?set=set3'">
+                [src]="book.pictureUri">
 
             <h3 matLine>{{ book.title }}</h3>
 
             <div matLine>
                 <div *ngIf="book.authorName">by {{ book.authorName }}</div>
                 <div>
-                    <button mat-button>✏️</button>
-                    <button mat-button>🗑️</button>
+                    <button
+                        *ngIf="canBuy"
+                        mat-button
+                        color="primary"
+                        (click)="buy(book)">🛒 BUY
+                    </button>
+                    <button
+                        *ngIf="canRemove"
+                        mat-button
+                        color="warn"
+                        (click)="remove(book)">🗑️ REMOVE
+                    </button>
                 </div>
             </div>
 
