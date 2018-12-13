@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedFormModule } from '../shared-form/shared-form.module';
 import { BookFormComponent } from './book-form/book-form.component';
-import { BookListContainerComponent } from './book-list-container/book-list-container.component';
+import { BookListV2Component } from './book-list-v2/book-list-v2.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
 
@@ -10,13 +10,13 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     declarations: [
         BookFormComponent,
         BookListComponent,
-        BookListContainerComponent,
+        BookListV2Component,
         BookPreviewComponent
     ],
     exports: [
         BookFormComponent,
         BookListComponent,
-        BookListContainerComponent,
+        BookListV2Component,
         BookPreviewComponent
     ],
     imports: [
@@ -24,5 +24,5 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
         SharedFormModule
     ]
 })
-export class BookModule {
+export class BookCommonModule {
 }

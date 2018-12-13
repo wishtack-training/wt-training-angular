@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Book } from '../book';
+import { Book } from '../../book-list-container/book';
 
 @Component({
     selector: 'wt-book-form',

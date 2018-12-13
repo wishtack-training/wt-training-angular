@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BookModule } from '../book/book.module';
+import { BookCommonModule } from '../book-common/book-common.module';
 import { SharedFormModule } from '../shared-form/shared-form.module';
 import { BookSearchComponent } from './book-search/book-search.component';
 
@@ -12,7 +12,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
         BookSearchComponent
     ],
     imports: [
-        BookModule,
+        BookCommonModule,
         CommonModule,
         SharedFormModule
     ]

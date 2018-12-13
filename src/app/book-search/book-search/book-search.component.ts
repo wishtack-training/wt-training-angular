@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, onErrorResumeNext, switchMap } from 'rxjs/operators';
-import { Book } from '../../book/book';
+import { Book } from '../../book-list-container/book';
 import { BookCatalog } from '../book-catalog.service';
 
 @Component({

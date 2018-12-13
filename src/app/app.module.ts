@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { BookListContainerModule } from './book-list-container/book-list-container.module';
 import { BookSearchModule } from './book-search/book-search.module';
-import { BookModule } from './book/book.module';
 import { PlaygroundModule } from './playground/playground.module';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { PlaygroundModule } from './playground/playground.module';
         AppComponent
     ],
     imports: [
-        BookModule,
+        BookListContainerModule,
         BookSearchModule,
         BrowserAnimationsModule,
         BrowserModule,

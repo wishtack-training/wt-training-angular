@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Book } from './book';
+import { Book } from '../book-list-container/book';
 import { BookStore } from './book-store';
 
 describe('BookStore', () => {

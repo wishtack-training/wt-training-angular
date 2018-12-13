@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../../book-list-container/book';
 
 @Component({
     selector: 'wt-book-preview',

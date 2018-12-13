@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Book } from '../book/book';
+import { Book } from '../book-list-container/book';
 
 
 export interface BookApiListResponse<T> {
