@@ -3,6 +3,7 @@ import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
 import { Book } from '../../book-list-container/book';
+import { CartService } from '../../cart/cart.service';
 import { BookCatalog } from '../book-catalog.service';
 
 @Component({
@@ -18,7 +19,10 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     private _bookList$: Observable<Book[]>;
     private _scavenger = new Scavenger(this);
 
-    constructor(private _bookCatalog: BookCatalog) {
+    constructor(
+        private _bookCatalog: BookCatalog,
+        private _cartService: CartService
+    ) {
 
         this._bookList$ = this.keywords$
             .pipe(
@@ -42,8 +46,11 @@ export class BookSearchComponent implements OnDestroy, OnInit {
     ngOnDestroy() {
     }
 
+    buy(book: Book) {
+        this._cartService.addBook(book);
+    }
+
     search({title}: { title: string }) {
         this.keywords$.next(title);
     }
-
 }

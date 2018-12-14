@@ -3,6 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { map, pairwise } from 'rxjs/operators';
+import { CartService } from '../../cart/cart.service';
+import { SessionService } from '../../session/session.service';
 import { User } from '../form-demo/form-demo.component';
 
 @Component({
@@ -11,6 +13,8 @@ import { User } from '../form-demo/form-demo.component';
     styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnDestroy, OnInit {
+
+    bookList$ = this._cartService.bookList$;
 
     cityList = [
         'Dijon',
@@ -21,9 +25,15 @@ export class DemoComponent implements OnDestroy, OnInit {
 
     keywordsControl = new FormControl();
 
+    isSignedIn$ = this._sessionService.isSignedIn$;
+
     private _subscription: Subscription;
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(
+        private _cartService: CartService,
+        private _httpClient: HttpClient,
+        private _sessionService: SessionService
+    ) {
     }
 
     ngOnInit() {
@@ -98,6 +108,14 @@ export class DemoComponent implements OnDestroy, OnInit {
 
     ngOnDestroy() {
         this._subscription.unsubscribe();
+    }
+
+    signIn() {
+        this._sessionService.setUserId('USER_ID');
+    }
+
+    signOut() {
+        this._sessionService.signOut();
     }
 
     reset() {

@@ -1,12 +1,2 @@
-<header>
-    <button
-        *ngIf="!(isSignedIn$ | async)"
-        (click)="signIn()">SIGN IN
-    </button>
-    <button
-        *ngIf="isSignedIn$ | async"
-        (click)="signOut()">SIGN OUT
-    </button>
-</header>
-
+<wt-demo></wt-demo>
 <wt-book-search></wt-book-search>

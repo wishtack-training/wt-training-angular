@@ -4,4 +4,5 @@
 
 <wt-book-list-v2
     [bookList]="bookList"
-    [canBuy]="true"></wt-book-list-v2>
+    [canBuy]="true"
+    (bookBuy)="buy($event)"></wt-book-list-v2>

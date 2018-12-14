@@ -1,20 +1,36 @@
-<input [formControl]="keywordsControl" type="text">
+<header>
 
-<wt-form-demo
-    (userSubmit)="logUser($event)"
-    [buttonLabel]="'ADD'"></wt-form-demo>
+    <button
+        *ngIf="!(isSignedIn$ | async)"
+        (click)="signIn()">SIGN IN
+    </button>
 
-<hr>
+    <button
+        *ngIf="isSignedIn$ | async"
+        (click)="signOut()">SIGN OUT
+    </button>
 
-<h1 [style.fontSize.px]="title.length % 10">{{ title }}</h1>
+    <wt-book-list-v2 [bookList]="bookList$ | async"></wt-book-list-v2>
 
-<button
-    [hidden]="title.length < 10"
-    (click)="reset()">RESET
-</button>
+</header>
 
-<div *ngIf="true">YEAY!</div>
+<!--<input [formControl]="keywordsControl" type="text">-->
 
-<li *ngFor="let city of cityList">
-    {{ city }}
-</li>
+<!--<wt-form-demo-->
+<!--(userSubmit)="logUser($event)"-->
+<!--[buttonLabel]="'ADD'"></wt-form-demo>-->
+
+<!--<hr>-->
+
+<!--<h1 [style.fontSize.px]="title.length % 10">{{ title }}</h1>-->
+
+<!--<button-->
+<!--[hidden]="title.length < 10"-->
+<!--(click)="reset()">RESET-->
+<!--</button>-->
+
+<!--<div *ngIf="true">YEAY!</div>-->
+
+<!--<li *ngFor="let city of cityList">-->
+<!--{{ city }}-->
+<!--</li>-->
