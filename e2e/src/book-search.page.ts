@@ -10,7 +10,7 @@ export class BookSearchPage {
         return element(by.css('[data-role="title-input"]')).sendKeys(keywords);
     }
 
-    clickFirstBook() {
+    buyFirstBook() {
         return element.all(by.css('[data-role="buy-button"]')).get(0).click();
     }
 
