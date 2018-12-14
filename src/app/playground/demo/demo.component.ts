@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { map, pairwise } from 'rxjs/operators';
-import { CartService } from '../../cart/cart.service';
+import { CartQuery } from '../../cart/cart.query';
 import { SessionService } from '../../session/session.service';
 import { User } from '../form-demo/form-demo.component';
 
@@ -14,7 +14,8 @@ import { User } from '../form-demo/form-demo.component';
 })
 export class DemoComponent implements OnDestroy, OnInit {
 
-    totalPrice$ = this._cartService.totalPrice$;
+    bookList$ = this._cartQuery.bookList$;
+    totalPrice$ = this._cartQuery.totalPrice$;
 
     cityList = [
         'Dijon',
@@ -30,7 +31,7 @@ export class DemoComponent implements OnDestroy, OnInit {
     private _subscription: Subscription;
 
     constructor(
-        private _cartService: CartService,
+        private _cartQuery: CartQuery,
         private _httpClient: HttpClient,
         private _sessionService: SessionService
     ) {

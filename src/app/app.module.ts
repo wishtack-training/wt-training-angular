@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { BookListContainerModule } from './book-list-container/book-list-container.module';
@@ -20,7 +22,13 @@ import { PlaygroundModule } from './playground/playground.module';
         BrowserModule,
         HttpClientModule,
         PlaygroundModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        environment.production ?
+            [] :
+            [
+                AkitaNgDevtools.forRoot(),
+                // AkitaNgRouterStoreModule.forRoot()
+            ]
     ],
     bootstrap: [AppComponent]
 })
