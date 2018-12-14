@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
 import { Book } from '../../book-list-container/book';
 import { CartService } from '../../cart/cart.service';
@@ -11,9 +11,12 @@ import { BookCatalog } from '../book-catalog.service';
     templateUrl: './book-search.component.html',
     styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent implements OnDestroy, OnInit {
+export class BookSearchComponent implements OnChanges, OnDestroy, OnInit {
 
-    keywords$ = new Subject<string>();
+    @Input() keywords: string;
+    @Output() keywordsChange = new EventEmitter<string>();
+
+    keywords$ = new BehaviorSubject<string>(null);
     bookList: Book[];
 
     private _bookList$: Observable<Book[]>;
@@ -27,7 +30,7 @@ export class BookSearchComponent implements OnDestroy, OnInit {
         this._bookList$ = this.keywords$
             .pipe(
                 distinctUntilChanged(),
-                debounceTime(100),
+                debounceTime(200),
                 switchMap(keywords => {
                     return this._bookCatalog.search(keywords)
                         .pipe(
@@ -36,6 +39,14 @@ export class BookSearchComponent implements OnDestroy, OnInit {
                 }),
                 this._scavenger.collect()
             );
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes['keywords'] != null) {
+            this.keywords$.next(this.keywords);
+        }
 
     }
 
@@ -52,5 +63,6 @@ export class BookSearchComponent implements OnDestroy, OnInit {
 
     search({title}: { title: string }) {
         this.keywords$.next(title);
+        this.keywordsChange.emit(title);
     }
 }
