@@ -11,13 +11,16 @@
                 [alt]="book.title"
                 [src]="book.pictureUri">
 
-            <h3 matLine>{{ book.title }}</h3>
+            <h3
+                data-role="book-title"
+                matLine>{{ book.title }}</h3>
 
             <div matLine>
                 <div *ngIf="book.authorName">by {{ book.authorName }}</div>
                 <div>
                     <button
                         *ngIf="canBuy"
+                        data-role="buy-button"
                         mat-button
                         color="primary"
                         (click)="buy(book)">🛒 BUY
