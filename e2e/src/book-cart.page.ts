@@ -9,4 +9,5 @@ export class BookCartPage {
     getFirstBookTitle() {
         return element.all(by.css('[data-role="book-title"]')).get(0).getText();
     }
+
 }

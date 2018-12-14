@@ -4,6 +4,7 @@
  *
  * $Id: $
  */
+import { browser } from 'protractor';
 import { BookCartPage } from './book-cart.page';
 import { BookSearchPage } from './book-search.page';
 
@@ -20,15 +21,20 @@ describe('book search', () => {
         await bookSearchPage.search('eXtreme Programming');
     });
 
-    it('should buy first book', async () => {
+    it('should update url', async () => {
+        const url = await browser.getCurrentUrl();
+        expect(url).toContain('eXtreme%20Programming');
+    });
+
+    xit('should buy first book', async () => {
         await bookSearchPage.clickFirstBook();
     });
 
-    it('should go to cart', async () => {
+    xit('should go to cart', async () => {
         await bookCartPage.go();
     });
 
-    it('should check that the book is there', async () => {
+    xit('should check that the book is there', async () => {
         const title = await bookCartPage.getFirstBookTitle();
         expect(title.toLowerCase()).toContain('extreme programming');
     });

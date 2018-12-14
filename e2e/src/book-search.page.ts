@@ -13,4 +13,5 @@ export class BookSearchPage {
     clickFirstBook() {
         return element.all(by.css('[data-role="buy-button"]')).get(0).click();
     }
+
 }
