@@ -21,4 +21,3 @@ export class CartStore extends Store<CartState> {
     }
 
 }
-

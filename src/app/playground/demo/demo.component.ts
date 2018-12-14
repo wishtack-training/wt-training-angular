@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Scavenger } from '@wishtack/rx-scavenger';
 import { Subscription } from 'rxjs';
 import { map, pairwise } from 'rxjs/operators';
 import { CartQuery } from '../../cart/cart.query';
 import { SessionService } from '../../session/session.service';
-import { User } from '../form-demo/form-demo.component';
 
 @Component({
     selector: 'wt-demo',
@@ -29,6 +29,7 @@ export class DemoComponent implements OnDestroy, OnInit {
     isSignedIn$ = this._sessionService.isSignedIn$;
 
     private _subscription: Subscription;
+    private _scavenger = new Scavenger(this);
 
     constructor(
         private _cartQuery: CartQuery,
@@ -44,7 +45,8 @@ export class DemoComponent implements OnDestroy, OnInit {
                 pairwise(),
                 map(([previous, current]) => {
                     return current.length - previous.length;
-                })
+                }),
+                this._scavenger.collect()
             )
             .subscribe(data => console.log(data));
 
@@ -108,7 +110,6 @@ export class DemoComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this._subscription.unsubscribe();
     }
 
     signIn() {
@@ -117,14 +118,6 @@ export class DemoComponent implements OnDestroy, OnInit {
 
     signOut() {
         this._sessionService.signOut();
-    }
-
-    reset() {
-        this.title = '';
-    }
-
-    logUser(user: User) {
-        console.log(user);
     }
 
 }
