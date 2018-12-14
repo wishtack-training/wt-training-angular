@@ -1,6 +1,27 @@
-<h1>WTF!?</h1>
-<router-outlet></router-outlet>
-<footer>
-    <div><a routerLink="/demo">Demo</a></div>
-    <div><a routerLink="/form">Form</a></div>
-</footer>
+<!--<h1>WTF!?</h1>-->
+<!--<router-outlet></router-outlet>-->
+<!--<footer>-->
+<!--<div><a routerLink="/demo">Demo</a></div>-->
+<!--<div><a routerLink="/form">Form</a></div>-->
+<!--</footer>-->
+
+<wt-layout-default>
+
+    <!-- Title. -->
+    <ng-container slot="title">
+        <span>TITLE</span>
+    </ng-container>
+
+    <!-- Content. -->
+    <ng-container slot="content">
+        <router-outlet></router-outlet>
+    </ng-container>
+
+    <!-- Links. -->
+
+    <!-- Extra bonus. -->
+    <ng-container slot="extra">
+        BLABLA
+    </ng-container>
+
+</wt-layout-default>

@@ -4,12 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { BookListContainerModule } from './book-list-container/book-list-container.module';
 import { BookSearchModule } from './book-search/book-search.module';
+import { LayoutDefaultModule } from './layout-default/layout-default.module';
 import { DemoComponent } from './playground/demo/demo.component';
 import { FormDemoComponent } from './playground/form-demo/form-demo.component';
 import { PlaygroundModule } from './playground/playground.module';
@@ -39,6 +41,7 @@ export const routes: Routes = [
         BrowserAnimationsModule,
         BrowserModule,
         HttpClientModule,
+        LayoutDefaultModule,
         PlaygroundModule,
         ReactiveFormsModule,
         RouterModule.forRoot(routes),
@@ -46,7 +49,7 @@ export const routes: Routes = [
             [] :
             [
                 AkitaNgDevtools.forRoot(),
-                // AkitaNgRouterStoreModule.forRoot()
+                AkitaNgRouterStoreModule.forRoot()
             ]
     ],
     bootstrap: [AppComponent]
