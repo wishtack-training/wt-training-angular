@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
 import { Book } from '../../book-list-container/book';
 import { BookCatalog } from '../book-catalog.service';
@@ -12,7 +12,7 @@ import { BookCatalog } from '../book-catalog.service';
 })
 export class BookSearchComponent implements OnDestroy, OnInit {
 
-    keywords$ = new Subject<string>();
+    keywords$ = new BehaviorSubject<string>('eXtreme Programming');
     bookList: Book[];
 
     private _bookList$: Observable<Book[]>;

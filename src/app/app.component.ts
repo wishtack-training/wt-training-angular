@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpTestingController } from '@angular/common/http/testing';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { SessionService } from './session/session.service';
 
 
@@ -11,7 +12,12 @@ export class AppComponent {
 
     isSignedIn$ = this._sessionService.isSignedIn$;
 
-    constructor(private _sessionService: SessionService) {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _sessionService: SessionService,
+        private _httpTestingController: HttpTestingController) {
+        window['changeDetectorRef'] = this._changeDetectorRef;
+        window['httpTestingController'] = this._httpTestingController;
     }
 
     signIn() {
@@ -20,6 +26,9 @@ export class AppComponent {
 
     signOut() {
         this._sessionService.signOut();
+    }
+
+    flush() {
     }
 
 }
