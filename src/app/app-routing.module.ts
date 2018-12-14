@@ -1,28 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BookSearchModule } from './book-search/book-search.module';
-import { BookSearchComponent } from './book-search/book-search/book-search.component';
-import { CartModule } from './cart/cart.module';
-import { CartComponent } from './cart/cart/cart.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingModule } from './landing/landing.module';
+import { LandingComponent } from './landing/landing/landing.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        component: LandingComponent
+    },
+    {
         path: 'book',
-        children: [
-            {
-                path: 'search',
-                component: BookSearchComponent
-            },
-            {
-                path: 'cart',
-                component: CartComponent
-            },
-            {
-                path: '**',
-                redirectTo: 'search'
-            }
-        ]
+        loadChildren: './views/book/book-views.module#BookViewsModule'
     },
     {
         path: '**',
@@ -32,10 +21,11 @@ export const routes: Routes = [
 
 @NgModule({
     imports: [
-        BookSearchModule,
-        CartModule,
         CommonModule,
-        RouterModule.forRoot(routes)
+        LandingModule,
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule
