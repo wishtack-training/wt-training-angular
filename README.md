@@ -1,5 +1,3 @@
-https://insiders.liveshare.vsengsaas.visualstudio.com/join?B82E077F6E69B48F3EF8E01703DF105BD52C
-
 # Tools
 
 ## Node Latest
