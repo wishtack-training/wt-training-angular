@@ -12,6 +12,12 @@ export interface BookApiListResponse<T> {
 
 export interface BookApiVolume {
     id: string;
+    saleInfo?: {
+        retailPrice?: {
+            amount: number;
+            currencyCode: string;
+        }
+    };
     volumeInfo: {
         authors: string[];
         imageLinks: {
@@ -53,14 +59,17 @@ export class BookCatalog {
 
     private _itemToBook(item: BookApiVolume) {
 
-        const {authors, imageLinks} = item.volumeInfo;
+        const {saleInfo, volumeInfo} = item;
+        const {authors, imageLinks} = volumeInfo;
         const authorName = authors ? authors[0] : null;
         const pictureUri = imageLinks ? imageLinks.thumbnail : null;
+        const price = saleInfo ? saleInfo.retailPrice : null;
 
         return new Book({
             id: item.id,
             authorName,
             pictureUri,
+            price,
             title: item.volumeInfo.title
         });
     }

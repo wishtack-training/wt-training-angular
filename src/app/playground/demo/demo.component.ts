@@ -14,7 +14,7 @@ import { User } from '../form-demo/form-demo.component';
 })
 export class DemoComponent implements OnDestroy, OnInit {
 
-    bookList$ = this._cartService.bookList$;
+    totalPrice$ = this._cartService.totalPrice$;
 
     cityList = [
         'Dijon',

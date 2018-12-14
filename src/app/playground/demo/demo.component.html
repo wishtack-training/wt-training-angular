@@ -10,7 +10,7 @@
         (click)="signOut()">SIGN OUT
     </button>
 
-    <wt-book-list-v2 [bookList]="bookList$ | async"></wt-book-list-v2>
+    <div>Price: {{ totalPrice$ | async | currency:'EUR' }}</div>
 
 </header>
 

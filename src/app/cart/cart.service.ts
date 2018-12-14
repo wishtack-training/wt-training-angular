@@ -24,7 +24,27 @@ export class CartService {
     private _cart$ = new BehaviorSubject<Cart>(getInitialCart());
 
     constructor() {
+
         this.bookList$ = this._cart$.pipe(map(cart => cart.bookList));
+
+        this.totalPrice$ = this.bookList$.pipe(map(bookList => {
+
+            const initialPrice = 0;
+
+            return bookList
+
+            /* Some books might not have a price. */
+            /* [{price: null}] => [] */
+                .filter(book => book.price != null)
+
+                .reduce((totalPrice, book) => {
+
+                    return totalPrice + book.price.amount;
+
+                }, initialPrice);
+
+        }));
+
     }
 
     addBook(book: Book) {
