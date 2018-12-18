@@ -1,3 +1,6 @@
+import { Book } from './book';
+import { BookStore } from './book.store';
+
 describe('BookStore', () => {
 
     let bookStore: BookStore;
@@ -16,17 +19,21 @@ describe('BookStore', () => {
 
     });
 
-    xit('should add books', () => {
+    it('should add books', () => {
 
         const bookListEmpty = bookStore.getBookList();
-
-        expect(bookListEmpty).toEqual([]);
 
         bookStore.addBook(book1);
         bookStore.addBook(book2);
         bookStore.addBook(book3);
 
         const bookList = bookStore.getBookList();
+
+        /* Checking immutability. */
+        expect(bookListEmpty).toEqual([]);
+
+        /* Checking that reference doesn't keep changing. */
+        expect(bookStore.getBookList()).toBe(bookList);
 
         expect(bookList).toEqual([
             book1,
@@ -36,7 +43,8 @@ describe('BookStore', () => {
 
     });
 
-    xit('should remove books', () => {
+    it('should remove books', () => {
+
 
         bookStore.addBook(book1);
         bookStore.addBook(book2);
