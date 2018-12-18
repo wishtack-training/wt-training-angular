@@ -1,0 +1,14 @@
+<h1>Hello {{ title }} ({{ title.length }})</h1>
+
+<img [src]="getPictureUri()" alt="">
+
+<button
+    [disabled]="!canReset()"
+    (click)="reset()">RESET
+</button>
+
+<li *ngFor="let city of cityList; let isLast = last;">
+    <span>{{ city }}</span>
+    <span *ngIf="city === 'Lyon'">🎉</span>
+    <hr *ngIf="!isLast">
+</li>
