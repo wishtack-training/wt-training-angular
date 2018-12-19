@@ -3,6 +3,7 @@
 <img
     *ngIf="isPictureDisplayed"
     [alt]="book.authorName"
+    [class.wt-circle]="pictureShape === PictureShape.Circle"
     [src]="getPictureUri()">
 
 <button
