@@ -1,0 +1,6 @@
+<button (click)="addBook()">ADD</button>
+
+<div *ngFor="let book of getBookList()">
+    <span>{{ book.title }}</span>
+    <button (click)="removeBook(book)">REMOVE</button>
+</div>
