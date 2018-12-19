@@ -7,8 +7,7 @@
     (click)="reset()">RESET
 </button>
 
-<li *ngFor="let city of cityList; let isLast = last;">
-    <span>{{ city }}</span>
-    <span *ngIf="city === 'Lyon'">🎉</span>
-    <hr *ngIf="!isLast">
-</li>
+<wt-city-preview
+    *ngFor="let city of cityList"
+    [city]="city"
+    (cityVote)="onCityVote(city, $event)"></wt-city-preview>

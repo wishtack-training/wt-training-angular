@@ -33,4 +33,8 @@ export class DemoComponent implements OnInit {
         this.title = '';
     }
 
+    onCityVote(city: string, vote: number) {
+        console.log(city, vote);
+    }
+
 }
