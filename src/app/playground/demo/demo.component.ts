@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'wt-demo',
@@ -13,8 +14,14 @@ export class DemoComponent implements OnInit {
     ];
 
     title = 'training';
+    cityForm = new FormGroup({
+        city: new FormControl(),
+        score: new FormControl()
+    });
 
     ngOnInit() {
+
+        this.cityForm.valueChanges.subscribe(console.log);
 
         setInterval(() => this.title += '.', 1000);
 
@@ -37,4 +44,8 @@ export class DemoComponent implements OnInit {
         console.log(city, vote);
     }
 
+    submit() {
+        console.log(this.cityForm.value);
+        this.cityForm.reset();
+    }
 }

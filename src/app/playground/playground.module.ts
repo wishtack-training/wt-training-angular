@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
@@ -39,7 +40,8 @@ import { NavComponent } from './nav/nav.component';
         MatListModule,
         MatGridListModule,
         MatCardModule,
-        MatMenuModule
+        MatMenuModule,
+        ReactiveFormsModule
     ]
 })
 export class PlaygroundModule {

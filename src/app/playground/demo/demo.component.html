@@ -11,3 +11,15 @@
     *ngFor="let city of cityList"
     [city]="city"
     (cityVote)="onCityVote(city, $event)"></wt-city-preview>
+
+<form
+    [formGroup]="cityForm"
+    (ngSubmit)="submit()">
+
+    <input formControlName="city" type="text">
+
+    <input formControlName="score" type="number">
+
+    <button type="submit">ADD</button>
+
+</form>
