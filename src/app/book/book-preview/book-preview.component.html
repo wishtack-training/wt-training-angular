@@ -1,7 +1,10 @@
 <p>{{ book.title }} by {{ book.authorName }}</p>
 
 <img
+    *ngIf="isPictureDisplayed"
     [alt]="book.authorName"
     [src]="getPictureUri()">
 
-<button (click)="removeBook()">REMOVE</button>
+<button
+    (click)="removeBook()">REMOVE
+</button>

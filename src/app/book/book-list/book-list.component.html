@@ -1,4 +1,6 @@
 <wt-book-preview
     *ngFor="let book of bookList"
+    [isPictureDisplayed]="false"
+    [pictureShape]="'circle'"
     [book]="book"
     (bookRemove)="removeBook(book)"></wt-book-preview>

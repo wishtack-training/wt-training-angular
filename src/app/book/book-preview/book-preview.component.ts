@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../book';
 
+export enum PictureShape {
+    Circle = 'circle',
+    Square = 'square'
+}
+
 @Component({
     selector: 'wt-book-preview',
     templateUrl: './book-preview.component.html',
@@ -9,6 +14,8 @@ import { Book } from '../book';
 export class BookPreviewComponent {
 
     @Input() book: Book;
+    @Input() isPictureDisplayed = true;
+    @Input() pictureShape = PictureShape.Circle;
     @Output() bookRemove = new EventEmitter<void>();
 
     removeBook() {
@@ -19,4 +26,5 @@ export class BookPreviewComponent {
         const authorName = encodeURIComponent(this.book.authorName);
         return `https://robohash.org/${authorName}?set=set4`;
     }
+
 }
