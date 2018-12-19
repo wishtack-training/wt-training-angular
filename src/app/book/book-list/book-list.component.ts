@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../book';
-import { BookStore } from '../book.store';
 
 @Component({
     selector: 'wt-book-list',
@@ -9,18 +8,11 @@ import { BookStore } from '../book.store';
 })
 export class BookListComponent {
 
-    private _bookStore = new BookStore();
-
-    addBook() {
-        this._bookStore.addBook(new Book('eXtreme Programming Explained', 'Kent Beck'));
-    }
-
-    getBookList() {
-        return this._bookStore.getBookList();
-    }
+    @Input() bookList: Book[];
+    @Output() bookRemove = new EventEmitter<Book>();
 
     removeBook(book: Book) {
-        this._bookStore.removeBook(book);
+        this.bookRemove.emit(book);
     }
 
 }

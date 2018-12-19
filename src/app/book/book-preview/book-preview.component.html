@@ -1,0 +1,7 @@
+<p>{{ book.title }} by {{ book.authorName }}</p>
+
+<img
+    [alt]="book.authorName"
+    [src]="getPictureUri()">
+
+<button (click)="removeBook()">REMOVE</button>

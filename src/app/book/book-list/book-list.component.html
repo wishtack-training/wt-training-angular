@@ -1,6 +1,4 @@
-<button (click)="addBook()">ADD</button>
-
-<div *ngFor="let book of getBookList()">
-    <span>{{ book.title }}</span>
-    <button (click)="removeBook(book)">REMOVE</button>
-</div>
+<wt-book-preview
+    *ngFor="let book of bookList"
+    [book]="book"
+    (bookRemove)="removeBook(book)"></wt-book-preview>
