@@ -1,79 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AuthorFormComponent } from '../../author/author-form/author-form.component';
 import { Book } from '../book';
 
-export function isNullOrEmpty(value: string) {
-
-    if (value == null) {
-        return true;
-    }
-
-    return value.length > 0;
-
-}
-
-export const isValidAuthorName: ValidatorFn = (control): null | {
-    invalidAuthor?: {
-        reason: string;
-    }
-} => {
-
-    if (control.value == null) {
-        return null;
-    }
-
-    if (control.value.toLowerCase().includes('younes')) {
-        return {
-            invalidAuthor: {
-                reason: `"younes" is a forbidden author!`
-            }
-        };
-    }
-
-    return null;
-
-};
-
-export const ageOrBirthYearRequired: ValidatorFn = (control) => {
-
-    if (isNullOrEmpty(control.value.age)
-        && isNullOrEmpty(control.value.birthYear)) {
-        return {
-            ageOrBirthYearRequired: true
-        };
-    }
-
-    return null;
-};
-
-export const any = (fieldList: string[]): ValidatorFn => (control) => {
-
-    const value = fieldList
-        .map(field => control.value[field])
-        .find(_value => !isNullOrEmpty(_value));
-
-    if (value === undefined) {
-        return {
-            any: true
-        };
-    }
-
-    return null;
-
-};
-
-export function createAuthorFormGroup() {
-    return new FormGroup({
-        age: new FormControl(),
-        birthYear: new FormControl(),
-        name: new FormControl(null, [
-            Validators.required,
-            isValidAuthorName
-        ])
-    }, [
-        any(['age', 'birthYear'])
-    ]);
-}
 
 @Component({
     selector: 'wt-book-form',
@@ -84,16 +13,19 @@ export class BookFormComponent {
 
     @Output() bookSubmit = new EventEmitter<Book>();
 
+    authorListControl = new FormArray([]);
     bookForm = new FormGroup({
-        author: createAuthorFormGroup(),
+        authorList: this.authorListControl,
         title: new FormControl()
     });
 
     submitBook() {
 
+        const author = this.bookForm.value.authorList[0];
+
         const book = new Book({
             title: this.bookForm.value.title,
-            authorName: this.bookForm.value.author.name
+            authorName: author ? author.name : null
         });
 
         this.bookSubmit.emit(book);
@@ -102,4 +34,7 @@ export class BookFormComponent {
 
     }
 
+    addAuthor() {
+        this.authorListControl.push(AuthorFormComponent.createAuthorFormGroup());
+    }
 }

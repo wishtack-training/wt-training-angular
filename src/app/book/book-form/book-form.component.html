@@ -5,16 +5,28 @@
     <input formControlName="title" placeholder="title" type="text">
 
     <!-- Author. -->
-    <wt-author-form [authorFormGroup]="bookForm.get('author')"></wt-author-form>
+    <div
+        *ngFor="let control of bookForm.get('authorList').controls">
+        <wt-author-form
+            [authorFormGroup]="control"></wt-author-form>
+    </div>
 
-    <button
-        [disabled]="!bookForm.valid"
-        type="submit">ADD
-    </button>
+    <div>
+        <button
+            type="button"
+            (click)="addAuthor()">ADD AUTHOR
+        </button>
+    </div>
+
+    <div>
+        <button
+            [disabled]="!bookForm.valid"
+            type="submit">ADD
+        </button>
+    </div>
 
     <ng-container *ngIf="bookForm.getError('invalidAuthor', 'authorName') as authorNameError">
         <div>{{ authorNameError.reason }}</div>
     </ng-container>
-
 
 </form>
