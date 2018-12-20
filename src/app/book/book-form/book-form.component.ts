@@ -18,6 +18,7 @@ export class BookFormComponent implements OnInit {
         authorList: this.authorListControl,
         title: new FormControl()
     });
+    isFavoriteAuthorSelectorDisplayed = false;
 
     ngOnInit() {
 
@@ -64,4 +65,10 @@ export class BookFormComponent implements OnInit {
     addAuthor() {
         this.authorListControl.push(AuthorFormComponent.createAuthorFormGroup());
     }
+
+    onAuthorSelect(author) {
+        this.authorListControl.controls[0].patchValue(author);
+        this.isFavoriteAuthorSelectorDisplayed = false;
+    }
+
 }

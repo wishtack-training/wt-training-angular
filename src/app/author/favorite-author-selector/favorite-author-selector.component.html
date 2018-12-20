@@ -1,0 +1,4 @@
+<button
+    *ngFor="let author of favoriteAuthorList"
+    type="button"
+    (click)="authorSelect.emit(author)">{{ author.name }}</button>
