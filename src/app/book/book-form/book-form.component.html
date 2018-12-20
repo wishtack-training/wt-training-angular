@@ -5,13 +5,7 @@
     <input formControlName="title" placeholder="title" type="text">
 
     <!-- Author. -->
-    <ng-container formGroupName="author">
-
-        <input formControlName="age" placeholder="age" type="number">
-        <input formControlName="birthYear" placeholder="birth year" type="number">
-        <input formControlName="name" placeholder="name" type="text">
-
-    </ng-container>
+    <wt-author-form [authorFormGroup]="bookForm.get('author')"></wt-author-form>
 
     <button
         [disabled]="!bookForm.valid"
