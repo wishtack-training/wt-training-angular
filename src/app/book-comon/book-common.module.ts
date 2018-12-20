@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthorModule } from '../author/author.module';
 import { BookFormComponent } from './book-form/book-form.component';
-import { BookListContainerComponent } from './book-list-container/book-list-container.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
 
@@ -11,13 +10,11 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     declarations: [
         BookFormComponent,
         BookListComponent,
-        BookListContainerComponent,
         BookPreviewComponent
     ],
     exports: [
         BookFormComponent,
         BookListComponent,
-        BookListContainerComponent,
         BookPreviewComponent
     ],
     imports: [
@@ -26,5 +23,5 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
         ReactiveFormsModule
     ]
 })
-export class BookModule {
+export class BookCommonModule {
 }

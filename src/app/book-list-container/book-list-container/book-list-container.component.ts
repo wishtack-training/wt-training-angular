@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Book } from '../book';
-import { BookStore } from '../book-store';
+import { Book } from '../../book-comon/book';
+import { BookStore } from '../../book-comon/book-store';
 
 @Component({
     selector: 'wt-book-list-container',

@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
-    declarations: [BookSearchComponent],
+    declarations: [
+        BookSearchComponent
+    ],
+    exports: [
+        BookSearchComponent
+    ],
     imports: [
         CommonModule
-    ],
-    exports: [BookSearchComponent]
+    ]
 })
 export class BookSearchModule {
 }
