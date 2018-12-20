@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { AuthorFormComponent } from '../../author/author-form/author-form.component';
 import { Book } from '../book';
@@ -9,7 +9,7 @@ import { Book } from '../book';
     templateUrl: './book-form.component.html',
     styleUrls: ['./book-form.component.scss']
 })
-export class BookFormComponent {
+export class BookFormComponent implements OnInit {
 
     @Output() bookSubmit = new EventEmitter<Book>();
 
@@ -18,6 +18,33 @@ export class BookFormComponent {
         authorList: this.authorListControl,
         title: new FormControl()
     });
+
+    ngOnInit() {
+
+        this.addAuthor();
+
+        // this.bookForm.patchValue({
+        //     title: 'test',
+        //     authorList: [
+        //         {
+        //             age: 12,
+        //             name: 'test'
+        //         }
+        //     ]
+        // });
+
+        const bookFormDataString = localStorage.getItem('bookForm');
+
+        if (bookFormDataString != null) {
+            this.bookForm.reset(JSON.parse(bookFormDataString));
+        }
+
+        this.bookForm.valueChanges
+            .subscribe(value => {
+                localStorage.setItem('bookForm', JSON.stringify(value))
+            });
+
+    }
 
     submitBook() {
 
