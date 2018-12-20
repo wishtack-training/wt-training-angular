@@ -2,9 +2,16 @@
     [formGroup]="bookForm"
     (ngSubmit)="submitBook()">
 
-    <input formControlName="title" type="text">
+    <input formControlName="title" placeholder="title" type="text">
 
-    <input formControlName="authorName" type="text">
+    <!-- Author. -->
+    <ng-container formGroupName="author">
+
+        <input formControlName="age" placeholder="age" type="number">
+        <input formControlName="birthYear" placeholder="birth year" type="number">
+        <input formControlName="name" placeholder="name" type="text">
+
+    </ng-container>
 
     <button
         [disabled]="!bookForm.valid"
