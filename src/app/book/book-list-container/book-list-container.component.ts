@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from '../book';
 import { BookStore } from '../book-store';
 
@@ -7,11 +7,9 @@ import { BookStore } from '../book-store';
     templateUrl: './book-list-container.component.html',
     styleUrls: ['./book-list-container.component.scss']
 })
-export class BookListContainerComponent implements OnInit {
+export class BookListContainerComponent {
 
-    private _bookStore = new BookStore();
-
-    ngOnInit() {
+    constructor(private _bookStore: BookStore) {
     }
 
     addBook(book: Book) {
