@@ -1,3 +1,7 @@
-<p>
-    book-search works!
-</p>
+<mat-form-field>
+    <input
+        matInput
+        [formControl]="keywordsControl" type="text">
+</mat-form-field>
+
+<wt-book-list [bookList]="bookList"></wt-book-list>

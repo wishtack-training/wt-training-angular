@@ -1,31 +1,45 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
-export interface GoogleVolumeListResponse {
-    items: Array<{
-        volumeInfo: {
-            title: string;
-        }
-    }>;
-}
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Scavenger } from '@wishtack/rx-scavenger';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
+import { Book } from '../../book-comon/book';
+import { BookCatalog } from '../book-catalog.service';
 
 @Component({
     selector: 'wt-book-search',
     templateUrl: './book-search.component.html',
     styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent implements OnInit {
+export class BookSearchComponent implements OnDestroy, OnInit {
 
-    constructor(private _httpClient: HttpClient) {
+    keywordsControl = new FormControl();
+    bookList: Book[];
+    bookList$: Observable<Book[]>;
+
+    private _scavenger = new Scavenger(this);
+
+    constructor(private _bookCatalog: BookCatalog) {
+        this.bookList$ = this.keywordsControl.valueChanges
+            .pipe(
+                debounceTime(100),
+                distinctUntilChanged(),
+                switchMap(keywords => {
+                    return this._bookCatalog.search(keywords)
+                        .pipe(onErrorResumeNext());
+                })
+            );
     }
 
     ngOnInit() {
 
-        this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes?q=eXtreme%20Programming')
-            .subscribe(data => {
-                // console.log(data.items);
-            });
+        this.bookList$
+            .pipe(this._scavenger.collect())
+            .subscribe(bookList => this.bookList = bookList);
 
+    }
+
+    ngOnDestroy() {
     }
 
 }
