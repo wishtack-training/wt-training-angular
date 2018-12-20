@@ -14,8 +14,8 @@ export class BookListContainerComponent implements OnInit {
     ngOnInit() {
     }
 
-    addBook() {
-        this._bookStore.addBook(new Book('eXtreme Programming Explained', 'Kent Beck'));
+    addBook(book: Book) {
+        this._bookStore.addBook(book);
     }
 
     getBookList() {
