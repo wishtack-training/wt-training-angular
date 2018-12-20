@@ -6,6 +6,14 @@
 
     <input formControlName="authorName" type="text">
 
-    <button type="submit">ADD</button>
+    <button
+        [disabled]="!bookForm.valid"
+        type="submit">ADD
+    </button>
+
+    <ng-container *ngIf="bookForm.getError('invalidAuthor', 'authorName') as authorNameError">
+        <div>{{ authorNameError.reason }}</div>
+    </ng-container>
+
 
 </form>
