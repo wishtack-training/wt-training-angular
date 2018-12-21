@@ -15,11 +15,18 @@ export enum PictureShape {
 export class BookPreviewComponent {
 
     @Input() book: Book;
+    @Input() canBuy = false;
+    @Input() canRemove = false;
     @Input() isPictureDisplayed = true;
     @Input() pictureShape = PictureShape.Circle;
+    @Output() bookBuy = new EventEmitter<void>();
     @Output() bookRemove = new EventEmitter<void>();
 
     PictureShape = PictureShape;
+
+    buyBook() {
+        this.bookBuy.emit();
+    }
 
     removeBook() {
         this.bookRemove.emit();
@@ -27,8 +34,6 @@ export class BookPreviewComponent {
 
     getPictureUri() {
         const authorName = encodeURIComponent(this.book.authorName);
-        console.count('getPictureUri');
         return `https://robohash.org/${authorName}?set=set4`;
     }
-
 }

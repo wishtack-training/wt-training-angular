@@ -1,5 +1,8 @@
 <wt-book-preview
     *ngFor="let book of bookList"
-    [pictureShape]="'circle'"
     [book]="book"
+    [canBuy]="canBuy"
+    [canRemove]="canRemove"
+    [pictureShape]="'circle'"
+    (bookBuy)="buyBook(book)"
     (bookRemove)="removeBook(book)"></wt-book-preview>

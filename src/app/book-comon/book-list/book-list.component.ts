@@ -10,10 +10,17 @@ import { Book } from '../book';
 export class BookListComponent {
 
     @Input() bookList: Book[];
+    @Input() canBuy = false;
+    @Input() canRemove = true;
+    @Output() bookBuy = new EventEmitter<Book>();
     @Output() bookRemove = new EventEmitter<Book>();
 
     removeBook(book: Book) {
         this.bookRemove.emit(book);
+    }
+
+    buyBook(book: Book) {
+        this.bookBuy.emit(book);
     }
 
 }
