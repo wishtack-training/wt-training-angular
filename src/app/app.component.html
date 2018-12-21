@@ -4,11 +4,13 @@
     fxLayout.gt-sm="row"
     fxLayoutAlign="space-evenly stretch">
 
-    <wt-cart
-        fxFlex
-        fxHide fxShow.gt-sm></wt-cart>
+    <nav>
+        <div><a routerLink="/demo">Demo</a></div>
+        <div><a routerLink="/observables">Observables</a></div>
+    </nav>
 
-    <wt-book-search
-        fxFlex></wt-book-search>
+    <div fxFlex>
+        <router-outlet></router-outlet>
+    </div>
 
 </div>
