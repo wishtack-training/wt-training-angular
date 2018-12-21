@@ -69,9 +69,9 @@ export class BookSearchViewComponent implements OnDestroy, OnInit {
             });
 
         /* Subscribe to bookList. */
-        // this.bookList$
-        //     .pipe(this._scavenger.collect())
-        //     .subscribe(bookList => this.bookList = bookList);
+        this.bookList$
+            .pipe(this._scavenger.collect())
+            .subscribe(bookList => this.bookList = bookList);
 
     }
 

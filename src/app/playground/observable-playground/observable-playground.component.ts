@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, of } from 'rxjs';
-import { bufferCount, filter, map, onErrorResumeNext } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'wt-observable-playground',
@@ -11,35 +10,50 @@ export class ObservablePlaygroundComponent implements OnInit {
 
     ngOnInit() {
 
-        const data$ = interval(100);
+        const subject = new BehaviorSubject(null);
 
-        const dataTransformed$ = data$
-            .pipe(
-                map(value => value % 10),
-                bufferCount(3),
-                filter(value => {
+        subject.next({
+            isSignedIn: false
+        });
 
-                    if (value[0] === 7) {
-                        throw new Error('test');
-                    }
+        subject.next({
+            isSignedIn: true
+        });
 
-                    return value[0] > 5;
-                })
-            );
+        subject.subscribe(console.log);
 
-        const subscription = dataTransformed$
-            .pipe(
-                onErrorResumeNext(of([1, 1, 1]))
-            )
-            .subscribe({
-                next: data => console.log(data),
-                error: err => console.error('ERROR!'),
-                complete: () => {
-                    console.log('Done!');
-                }
-            });
+        subject.next({
+            isSignedIn: false
+        });
 
-        // subscription.unsubscribe();
+
+        // const data$ = interval(100);
+        //
+        // const dataTransformed$ = data$
+        //     .pipe(
+        //         map(value => value % 10),
+        //         bufferCount(3),
+        //         filter(value => {
+        //
+        //             if (value[0] === 7) {
+        //                 throw new Error('test');
+        //             }
+        //
+        //             return value[0] > 5;
+        //         })
+        //     );
+        //
+        // dataTransformed$
+        //     .pipe(
+        //         onErrorResumeNext(of([1, 1, 1]))
+        //     )
+        //     .subscribe({
+        //         next: data => console.log(data),
+        //         error: err => console.error('ERROR!'),
+        //         complete: () => {
+        //             console.log('Done!');
+        //         }
+        //     });
 
     }
 

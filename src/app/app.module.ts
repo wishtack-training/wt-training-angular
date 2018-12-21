@@ -7,7 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LayoutDefaultModule } from './layout-default/layout-default.module';
+import { PlaygroundModule } from './playground/playground.module';
 import { SharedModule } from './shared/shared.module';
+import { ToolbarModule } from './toolbar/toolbar.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { SharedModule } from './shared/shared.module';
         HttpClientModule,
         LayoutDefaultModule,
         MatListModule,
-        SharedModule
+        PlaygroundModule,
+        SharedModule,
+        ToolbarModule
     ],
     bootstrap: [AppComponent]
 })
