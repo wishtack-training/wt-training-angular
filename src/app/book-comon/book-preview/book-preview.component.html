@@ -1,4 +1,8 @@
-<p>{{ book.title }} by {{ book.authorName }}</p>
+<span>
+    <span data-role="book-title">{{ book.title }}</span>
+    <span> by </span>
+    <span>{{ book.authorName }}</span>
+</span>
 
 <img
     *ngIf="isPictureDisplayed"
@@ -8,6 +12,7 @@
 
 <button
     *ngIf="canBuy"
+    data-role="book-buy-button"
     (click)="buyBook()">BUY
 </button>
 

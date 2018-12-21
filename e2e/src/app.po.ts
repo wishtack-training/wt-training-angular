@@ -6,6 +6,6 @@ export class AppPage {
     }
 
     getTitleText() {
-        return element(by.css('wt-root h1')).getText();
+        return element(by.css('[data-role="title"]')).getText();
     }
 }
