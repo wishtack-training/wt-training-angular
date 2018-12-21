@@ -1,32 +1,5 @@
-import { browser } from 'protractor';
-import { getDataRoleSelector, getElementByRole, getFirstElementByRole } from './helpers/get-element-by-role';
-
-class SearchPage {
-
-    go() {
-        return browser.get('/book/search');
-    }
-
-    search(keywords: string) {
-        return getElementByRole('book-search-input').sendKeys(keywords);
-    }
-
-    buyFirstBook() {
-        return getFirstElementByRole('book-buy-button').click();
-    }
-
-}
-
-class CartPage {
-
-    go() {
-        return browser.get('/book/cart');
-    }
-
-    getFirstBookTitle() {
-        return getFirstElementByRole('book-title').getText();
-    }
-}
+import { CartPage } from './cart.page';
+import { SearchPage } from './search.page';
 
 describe('book search', () => {
 

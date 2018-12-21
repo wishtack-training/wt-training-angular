@@ -52,6 +52,8 @@ export class BookSearchViewComponent implements OnDestroy, OnInit {
 
     ngOnInit() {
 
+        console.warn('something something...');
+
         /* Syncing query params with form. */
         this._keywords$
             .pipe(this._scavenger.collect())
