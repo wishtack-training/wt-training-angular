@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookCommonModule } from '../../book-comon/book-common.module';
 import { BookSearchModule } from '../../book-search/book-search.module';
-import { BookSearchComponent } from '../../book-search/book-search/book-search.component';
 import { CartModule } from '../../cart/cart.module';
 import { CartComponent } from '../../cart/cart/cart.component';
+import { SharedFormsModule } from '../../shared-forms/shared-forms.module';
+import { BookSearchViewComponent } from './book-search-view/book-search-view.component';
 
 const bookRoutes: Routes = [
     {
         path: 'search',
-        component: BookSearchComponent
+        component: BookSearchViewComponent
     },
     {
         path: 'cart',
@@ -18,11 +20,19 @@ const bookRoutes: Routes = [
 ];
 
 @NgModule({
+    declarations: [
+        BookSearchViewComponent
+    ],
+    exports: [
+        BookSearchViewComponent
+    ],
     imports: [
-        BookSearchModule,
+        BookCommonModule,
         CartModule,
         CommonModule,
-        RouterModule.forChild(bookRoutes)
+        CommonModule,
+        RouterModule.forChild(bookRoutes),
+        SharedFormsModule
     ]
 })
 export class BookViewsModule {

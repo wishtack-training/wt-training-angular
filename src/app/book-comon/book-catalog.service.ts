@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Book } from '../book-comon/book';
+import { Book } from './book';
 
 
 export interface GoogleVolumeListResponse {
