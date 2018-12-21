@@ -7,21 +7,26 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DemoComponent } from './playground/demo/demo.component';
-import { ObservablePlaygroundComponent } from './playground/observable-playground/observable-playground.component';
+import { BookSearchComponent } from './book-search/book-search/book-search.component';
+import { CartComponent } from './cart/cart/cart.component';
 
 export const routes: Routes = [
     {
-        path: 'demo',
-        component: DemoComponent
-    },
-    {
-        path: 'observables',
-        component: ObservablePlaygroundComponent
+        path: 'book',
+        children: [
+            {
+                path: 'search',
+                component: BookSearchComponent
+            },
+            {
+                path: 'cart',
+                component: CartComponent
+            }
+        ]
     },
     {
         path: '**',
-        redirectTo: '/demo'
+        redirectTo: '/book/search'
     }
 ];
 
