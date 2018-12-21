@@ -1,16 +1,17 @@
-<div
-    fxFill
-    fxLayout="column"
-    fxLayout.gt-sm="row"
-    fxLayoutAlign="space-evenly stretch">
+<wt-layout-default>
 
-    <nav>
-        <div><a routerLink="/demo">Demo</a></div>
-        <div><a routerLink="/observables">Observables</a></div>
-    </nav>
+    <ng-container slot="title">
+        <span>HELLO!</span>
+    </ng-container>
 
-    <div fxFlex>
+    <ng-container slot="links">
+        <a mat-list-item href="#">Link 1</a>
+        <a mat-list-item href="#">Link 2</a>
+        <a mat-list-item href="#">Link 3</a>
+    </ng-container>
+
+    <ng-container slot="content">
         <router-outlet></router-outlet>
-    </div>
+    </ng-container>
 
-</div>
+</wt-layout-default>
