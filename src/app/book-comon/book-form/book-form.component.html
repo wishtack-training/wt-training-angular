@@ -7,7 +7,7 @@
 
     <!-- Author. -->
     <div
-        *ngFor="let control of bookForm.get('authorList').controls">
+        *ngFor="let control of authorListControl.controls">
         <wt-author-form
             [authorFormGroup]="control"></wt-author-form>
     </div>
@@ -34,9 +34,5 @@
             type="submit">ADD
         </button>
     </div>
-
-    <ng-container *ngIf="bookForm.getError('invalidAuthor', 'authorName') as authorNameError">
-        <div>{{ authorNameError.reason }}</div>
-    </ng-container>
 
 </form>
