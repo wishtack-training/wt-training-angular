@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from '../../book-comon/book';
+import { CartQuery } from '../cart.query';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -9,11 +10,12 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent {
 
-    constructor(private _cart: CartService) {
-    }
+    bookList$ = this._cartQuery.bookList$;
 
-    getBookList() {
-        return this._cart.getBookList();
+    constructor(
+        private _cart: CartService,
+        private _cartQuery: CartQuery
+    ) {
     }
 
     removeBook(book: Book) {

@@ -1,56 +1,34 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { push } from '@datorama/akita';
 import { Book } from '../book-comon/book';
+import { CartStore } from './cart.store';
 
-/*
- * Store.
- */
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
 
-    /*
-     * Queries.
-     */
-
-    bookList$: Observable<Book[]>;
-    size$: Observable<number>;
-
-    /*
-     * State.
-     */
-    private _bookList$ = new BehaviorSubject<Book[]>([]);
-
-    constructor() {
-        this.bookList$ = this._bookList$.asObservable();
-        this.size$ = this.bookList$
-            .pipe(
-                map(bookList => bookList.length)
-            );
+    constructor(private _cartStore: CartStore) {
     }
-
-    getBookList() {
-        return this._bookList$.value;
-    }
-
-    /*
-     * Actions.
-     */
 
     addBook(book: Book) {
-        this._updateBookList([...this.getBookList(), book]);
+        this._updateBookList(bookList => push(bookList, book));
     }
 
     removeBook(book: Book) {
-        const bookList = this.getBookList()
-            .filter(_book => _book !== book);
-        this._updateBookList(bookList);
+        this._updateBookList(bookList => {
+            return bookList.filter(_book => _book !== book);
+        });
     }
 
-    private _updateBookList(bookList: Book[]) {
-        this._bookList$.next(bookList);
+    private _updateBookList(callback: (bookList: Book[]) => Book[]) {
+        this._cartStore.update(state => {
+            return {
+                ...state,
+                bookList: callback(state.bookList)
+            };
+        });
     }
 
 }
+

@@ -1,4 +1,4 @@
 <wt-book-list
-    [bookList]="getBookList()"
+    [bookList]="bookList$ | async"
     [canRemove]="true"
     (bookRemove)="removeBook($event)"></wt-book-list>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CartService } from '../../cart/cart.service';
+import { CartQuery } from '../../cart/cart.query';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +9,9 @@ import { CartService } from '../../cart/cart.service';
 })
 export class ToolbarComponent {
 
-    cartSize$ = this._cart.size$;
+    cartSize$ = this._cartQuery.size$;
 
-    constructor(private _cart: CartService) {
+    constructor(private _cartQuery: CartQuery) {
     }
 
 }
