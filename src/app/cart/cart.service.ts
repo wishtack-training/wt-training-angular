@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Book } from './book';
+import { Book } from '../book-comon/book';
 
 @Injectable({
     providedIn: 'root'
 })
-export class BookStore {
+export class CartService {
 
     private _bookList: Book[] = [];
 

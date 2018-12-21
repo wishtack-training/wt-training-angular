@@ -1,9 +1,9 @@
-import { Book } from './book';
-import { BookStore } from './book-store';
+import { Book } from '../book-comon/book';
+import { CartService } from './cart.service';
 
 describe('BookStore', () => {
 
-    let bookStore: BookStore;
+    let bookStore: CartService;
 
     let book1: Book;
     let book2: Book;
@@ -11,7 +11,7 @@ describe('BookStore', () => {
 
     beforeEach(() => {
 
-        bookStore = new BookStore();
+        bookStore = new CartService();
 
         book1 = new Book('eXtreme Programming Explained', 'Kent Beck');
         book2 = new Book('ReWork', 'Jason Fried');

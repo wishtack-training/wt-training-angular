@@ -7,4 +7,5 @@
 <wt-book-list
     [bookList]="bookList"
     [canBuy]="true"
-    [canRemove]="false"></wt-book-list>
+    [canRemove]="false"
+    (bookBuy)="buyBook($event)"></wt-book-list>
