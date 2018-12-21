@@ -35,7 +35,7 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             );
     }
 
-    ngOnInit() {
+    async ngOnInit() {
 
         this.bookList$
             .pipe(this._scavenger.collect())

@@ -6,33 +6,31 @@
  */
 
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BookSearchComponent } from './book-search/book-search/book-search.component';
-import { CartComponent } from './cart/cart/cart.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingModule } from './landing/landing.module';
+import { LandingComponent } from './landing/landing/landing.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        component: LandingComponent
+    },
+    {
         path: 'book',
-        children: [
-            {
-                path: 'search',
-                component: BookSearchComponent
-            },
-            {
-                path: 'cart',
-                component: CartComponent
-            }
-        ]
+        loadChildren: './views/book-views/book-views.module#BookViewsModule'
     },
     {
         path: '**',
-        redirectTo: '/book/search'
+        redirectTo: '/'
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        LandingModule,
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule
