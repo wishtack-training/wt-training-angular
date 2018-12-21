@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthorFormComponent } from '../../author/author-form/author-form.component';
 import { Book } from '../book';
 
@@ -11,6 +13,7 @@ import { Book } from '../book';
 })
 export class BookFormComponent implements OnInit {
 
+    @Output() bookChange: Observable<Book>;
     @Output() bookSubmit = new EventEmitter<Book>();
 
     authorListControl = new FormArray([]);
@@ -20,9 +23,14 @@ export class BookFormComponent implements OnInit {
     });
     isFavoriteAuthorSelectorDisplayed = false;
 
-    ngOnInit() {
+    constructor() {
+        this.bookChange = this.bookForm.valueChanges
+            .pipe(
+                map(value => this._valueToBook(value))
+            );
+    }
 
-        this.addAuthor();
+    ngOnInit() {
 
         // this.bookForm.patchValue({
         //     title: 'test',
@@ -49,12 +57,7 @@ export class BookFormComponent implements OnInit {
 
     submitBook() {
 
-        const author = this.bookForm.value.authorList[0];
-
-        const book = new Book({
-            title: this.bookForm.value.title,
-            authorName: author ? author.name : null
-        });
+        const book = this._valueToBook(this.bookForm.value);
 
         this.bookSubmit.emit(book);
 
@@ -69,6 +72,14 @@ export class BookFormComponent implements OnInit {
     onAuthorSelect(author) {
         this.authorListControl.controls[0].patchValue(author);
         this.isFavoriteAuthorSelectorDisplayed = false;
+    }
+
+    private _valueToBook(value: any): Book {
+        const author = value.authorList[0];
+        return new Book({
+            title: value.title,
+            authorName: author ? author.name : null
+        });
     }
 
 }
