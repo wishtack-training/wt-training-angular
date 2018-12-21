@@ -8,6 +8,7 @@ import { BookListContainerModule } from './book-list-container/book-list-contain
 import { BookSearchModule } from './book-search/book-search.module';
 import { CartModule } from './cart/cart.module';
 import { PlaygroundModule } from './playground/playground.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { PlaygroundModule } from './playground/playground.module';
         BrowserModule,
         CartModule,
         HttpClientModule,
-        PlaygroundModule
+        PlaygroundModule,
+        SharedModule
     ],
     bootstrap: [AppComponent]
 })

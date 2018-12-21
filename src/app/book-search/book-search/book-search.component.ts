@@ -41,6 +41,8 @@ export class BookSearchComponent implements OnDestroy, OnInit {
             .pipe(this._scavenger.collect())
             .subscribe(bookList => this.bookList = bookList);
 
+        this.keywordsControl.setValue('eXtreme Programming');
+
     }
 
     ngOnDestroy() {
