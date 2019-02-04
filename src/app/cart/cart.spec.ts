@@ -1,53 +1,34 @@
-class Book {
-
-    title: string;
-    author: string;
-    price: number;
-
-    constructor(title: string, author: string, price: number) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
-    }
-
-}
-
-class Cart {
-
-    private _bookList: Book[] = [];
-
-    addBook(book: Book) {
-        this._bookList.push(book);
-    }
-
-    getBookList() {
-        return this._bookList;
-    }
-
-    /**
-     * @deprecated not implemented yet
-     * @param book
-     */
-    removeBook(book: Book) {
-        throw new Error('😱 Not implemented yet!');
-    }
-}
+import { Book } from './book';
+import { Cart } from './cart';
 
 describe('Cart', () => {
 
+    let book1: Book;
+    let book2: Book;
+    let book3: Book;
+    let cart: Cart;
+
+    beforeEach(() => {
+
+        book1 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
+        book2 = new Book('ReWork', 'Jason Fried', 20);
+        book3 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
+
+        cart = new Cart();
+
+    });
+
     it('should add books', () => {
 
-        const book1 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
-        const book2 = new Book('ReWork', 'Jason Fried', 20);
-        const book3 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
-
-        const cart = new Cart();
+        const emptyBookList = cart.getBookList();
 
         cart.addBook(book1);
         cart.addBook(book2);
         cart.addBook(book3);
 
         const bookList = cart.getBookList();
+
+        expect(emptyBookList).toEqual([]);
 
         expect(bookList).toEqual([
             book1,
@@ -57,13 +38,7 @@ describe('Cart', () => {
 
     });
 
-    xit('should remove books', () => {
-
-        const book1 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
-        const book2 = new Book('ReWork', 'Jason Fried', 20);
-        const book3 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
-
-        const cart = new Cart();
+    it('should remove books', () => {
 
         cart.addBook(book1);
         cart.addBook(book2);
