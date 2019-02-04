@@ -17,7 +17,7 @@ WARNING: Do not enable "vim" mode.
 https://guide-angular.wishtack.io
 
 ## Floobits
-https://floobits.com/wishtack
+https://floobits.com/younes
 
 ## Repo
 https://www.github.com/wishtack-training/wt-training-angular
