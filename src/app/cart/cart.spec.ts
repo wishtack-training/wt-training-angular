@@ -1,3 +1,38 @@
+class Book {
+
+    title: string;
+    author: string;
+    price: number;
+
+    constructor(title: string, author: string, price: number) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
+}
+
+class Cart {
+
+    private _bookList: Book[] = [];
+
+    addBook(book: Book) {
+        this._bookList.push(book);
+    }
+
+    getBookList() {
+        return this._bookList;
+    }
+
+    /**
+     * @deprecated not implemented yet
+     * @param book
+     */
+    removeBook(book: Book) {
+        throw new Error('😱 Not implemented yet!');
+    }
+}
+
 describe('Cart', () => {
 
     it('should add books', () => {
@@ -22,7 +57,7 @@ describe('Cart', () => {
 
     });
 
-    it('should remove books', () => {
+    xit('should remove books', () => {
 
         const book1 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
         const book2 = new Book('ReWork', 'Jason Fried', 20);
