@@ -17,6 +17,13 @@
         placeholder="price"
         type="number">
 
-    <button type="submit">ADD</button>
+    <button
+        type="submit"
+        [disabled]="!bookForm.valid">ADD
+    </button>
+
+    <ng-container *ngIf="bookForm.get('title') as titleControl">
+        <div *ngIf="titleControl.touched && titleControl.hasError('required')">Title is required.</div>
+    </ng-container>
 
 </form>

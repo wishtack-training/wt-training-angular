@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from '../book';
 
 @Component({
@@ -12,7 +12,10 @@ export class BookFormComponent {
     @Output() bookSubmit = new EventEmitter<Book>();
 
     bookForm = new FormGroup({
-        title: new FormControl(),
+        title: new FormControl(null, [
+            Validators.required,
+            Validators.minLength(3)
+        ]),
         author: new FormControl(),
         price: new FormControl()
     });
