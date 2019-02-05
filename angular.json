@@ -10,6 +10,7 @@
             "prefix": "wt",
             "schematics": {
                 "@schematics/angular:component": {
+                    "spec": false,
                     "style": "scss"
                 }
             },
