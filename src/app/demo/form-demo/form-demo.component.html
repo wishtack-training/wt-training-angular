@@ -1,0 +1,12 @@
+<form
+    [formGroup]="cityForm"
+    (ngSubmit)="onBookSubmit()">
+
+    <input
+        formControlName="name"
+        placeholder="city name"
+        type="text">
+
+    <button type="submit">ADD</button>
+
+</form>
