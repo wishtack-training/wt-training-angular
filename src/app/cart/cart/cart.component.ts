@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../../book/book';
 import { Cart } from '../cart';
 
 @Component({
@@ -11,12 +11,8 @@ export class CartComponent {
 
     private _cart = new Cart();
 
-    addBook() {
-        const title = prompt('Please enter a title.');
-        this._cart.addBook(new Book({
-            title,
-            price: 90.01
-        }));
+    addBook(book: Book) {
+        this._cart.addBook(book);
     }
 
     getBookList() {
@@ -26,5 +22,4 @@ export class CartComponent {
     removeBook(book: Book) {
         this._cart.removeBook(book);
     }
-
 }

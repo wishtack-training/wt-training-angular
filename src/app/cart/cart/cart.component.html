@@ -1,7 +1,4 @@
-<button
-    type="button"
-    (click)="addBook()">ADD
-</button>
+<wt-book-form (bookSubmit)="addBook($event)"></wt-book-form>
 
 <div *ngFor="let book of getBookList()">
 
