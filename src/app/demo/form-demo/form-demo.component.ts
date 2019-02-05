@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./form-demo.component.scss']
 })
 export class FormDemoComponent implements OnInit {
+
+    @Output() citySubmit = new EventEmitter<string>();
 
     cityForm = new FormGroup({
         name: new FormControl()
@@ -24,9 +26,14 @@ export class FormDemoComponent implements OnInit {
 
     }
 
-    onBookSubmit() {
-        console.log(this.cityForm.value);
+    onCitySubmit() {
+
+        const city = this.cityForm.value.name;
+
+        this.citySubmit.emit(city);
+
         this.cityForm.reset();
+
     }
 
 }

@@ -27,4 +27,8 @@ export class DemoComponent {
     onCityDblclick(city: string) {
         console.log(`💩 ${city}`);
     }
+
+    addCity(city: string) {
+        this.cityList = [...this.cityList, city];
+    }
 }

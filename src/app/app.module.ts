@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart/cart.component';
+import { CityPreviewComponent } from './demo/city-preview/city-preview.component';
 import { DemoComponent } from './demo/demo/demo.component';
 import { FormDemoComponent } from './demo/form-demo/form-demo.component';
 
@@ -13,7 +14,8 @@ import { FormDemoComponent } from './demo/form-demo/form-demo.component';
         AppComponent,
         CartComponent,
         DemoComponent,
-        FormDemoComponent
+        FormDemoComponent,
+        CityPreviewComponent
     ],
     imports: [
         AppRoutingModule,

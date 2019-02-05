@@ -1,11 +1,18 @@
+<wt-form-demo (citySubmit)="addCity($event)"></wt-form-demo>
+
 <ul>
     <li *ngFor="let city of cityList; let isLast = last">
-        <span>{{ city }}</span>
+
+        <wt-city-preview
+            [city]="city"></wt-city-preview>
+
         <button
             (click)="onCityClick(city)"
             (dblclick)="onCityDblclick(city)">Select
         </button>
+
         <hr *ngIf="!isLast">
+
     </li>
 </ul>
 
