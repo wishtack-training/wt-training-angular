@@ -7,24 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
 import { CartComponent } from './cart/cart/cart.component';
-import { CityPreviewComponent } from './demo/city-preview/city-preview.component';
-import { DemoComponent } from './demo/demo/demo.component';
-import { FormDemoComponent } from './demo/form-demo/form-demo.component';
+import { DemoModule } from './demo/demo.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CartComponent,
-        DemoComponent,
-        FormDemoComponent,
-        CityPreviewComponent,
-        BookFormComponent
+        BookFormComponent,
+        CartComponent
     ],
     imports: [
         AppRoutingModule,
+        BrowserAnimationsModule,
         BrowserModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule
+        DemoModule,
+        ReactiveFormsModule
     ],
     bootstrap: [AppComponent]
 })
