@@ -13,6 +13,7 @@ import { GoogleVolumeList } from '../google-volume-list';
 export class BookSearchComponent implements OnInit {
 
     keywordsControl = new FormControl();
+    bookList: Book[];
 
     constructor(
         private _httpClient: HttpClient
@@ -38,13 +39,19 @@ export class BookSearchComponent implements OnInit {
             .get<GoogleVolumeList>(`https://www.googleapis.com/books/v1/volumes?hl=en&q=${encodedKeywords}`)
             .subscribe(data => {
 
-                const bookList = data.items.map(item => {
+                this.bookList = data.items.map(item => {
+
+                    const {authors, id, title} = item.volumeInfo;
+                    const [author] = authors;
+                    const price = get(item.saleInfo, 'retailPrice', 'amount');
+                    const pictureUri = get(item.volumeInfo, 'imageLinks', 'smallThumbnail');
 
                     return new Book({
-                        id: item.volumeInfo.id,
-                        author: item.volumeInfo.authors[0],
-                        title: item.volumeInfo.title,
-                        price: get(item.saleInfo, 'retailPrice', 'amount')
+                        id,
+                        author,
+                        title,
+                        pictureUri,
+                        price
                     });
 
                 });

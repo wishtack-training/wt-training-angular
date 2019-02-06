@@ -1,1 +1,13 @@
-<input [formControl]="keywordsControl" type="text">
+<div>
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            [formControl]="keywordsControl">
+    </mat-form-field>
+</div>
+
+<wt-book-card
+    *ngFor="let book of bookList"
+    class="wt-book-card"
+    [book]="book"></wt-book-card>

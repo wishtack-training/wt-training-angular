@@ -5,6 +5,7 @@ export class Book {
     title: string;
     author: string;
     isbn: string;
+    pictureUri: string;
     price: number;
 
     constructor(args: Partial<Book> = {}) {
@@ -12,6 +13,7 @@ export class Book {
         this.title = args.title;
         this.author = args.author;
         this.isbn = args.isbn;
+        this.pictureUri = args.pictureUri;
         this.price = args.price;
     }
 

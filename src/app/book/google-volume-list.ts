@@ -6,6 +6,9 @@ export interface GoogleVolume {
     };
     volumeInfo: {
         id: string;
+        imageLinks: {
+            smallThumbnail: string;
+        };
         title: string;
         authors: string[];
     };
