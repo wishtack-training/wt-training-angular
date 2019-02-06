@@ -9,7 +9,8 @@ import { Cart } from '../cart';
 })
 export class CartComponent {
 
-    private _cart = new Cart();
+    constructor(private _cart: Cart) {
+    }
 
     addBook(book: Book) {
         this._cart.addBook(book);
