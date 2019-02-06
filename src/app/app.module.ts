@@ -1,26 +1,32 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookModule } from './book/book.module';
 import { CartComponent } from './cart/cart/cart.component';
-import { DemoModule } from './demo/demo.module';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CartComponent
+        CartComponent,
+        NavComponent
     ],
     imports: [
         AppRoutingModule,
-        BookModule,
         BrowserAnimationsModule,
         BrowserModule,
-        DemoModule,
-        HttpClientModule
+        HttpClientModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
     ],
     bootstrap: [AppComponent]
 })
