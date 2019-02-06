@@ -1,63 +1,46 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { get } from '@wishtack/get';
+import { Scavenger } from '@wishtack/rx-scavenger';
+import { retryBackoff } from 'backoff-rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { Book } from '../book';
-import { GoogleVolumeList } from '../google-volume-list';
+import { BookSearchService } from '../book-search.service';
 
 @Component({
     selector: 'wt-book-search',
     templateUrl: './book-search.component.html',
     styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent implements OnInit {
+export class BookSearchComponent implements OnInit, OnDestroy {
 
     keywordsControl = new FormControl();
     bookList: Book[];
 
+    private _scavenger = new Scavenger(this);
+
     constructor(
-        private _httpClient: HttpClient
+        private _bookSearchService: BookSearchService
     ) {
 
     }
 
     ngOnInit() {
-        this.keywordsControl.valueChanges
-            .subscribe(keywords => {
-                console.log(keywords);
-            });
 
-        this.search('eXtreme Programming');
+        const keywords$ = this.keywordsControl.valueChanges;
 
-    }
+        keywords$
+            .pipe(
+                debounceTime(100),
+                switchMap(keywords => this._bookSearchService.search(keywords)),
+                retryBackoff(100),
+                this._scavenger.collect()
+            )
+            .subscribe(bookList => this.bookList = bookList);
 
-    search(keywords: string) {
-
-        const encodedKeywords = encodeURIComponent(keywords);
-
-        this._httpClient
-            .get<GoogleVolumeList>(`https://www.googleapis.com/books/v1/volumes?hl=en&q=${encodedKeywords}`)
-            .subscribe(data => {
-
-                this.bookList = data.items.map(item => {
-
-                    const {authors, id, title} = item.volumeInfo;
-                    const [author] = authors;
-                    const price = get(item.saleInfo, 'retailPrice', 'amount');
-                    const pictureUri = get(item.volumeInfo, 'imageLinks', 'smallThumbnail');
-
-                    return new Book({
-                        id,
-                        author,
-                        title,
-                        pictureUri,
-                        price
-                    });
-
-                });
-
-            });
+        this.keywordsControl.setValue('eXtreme Programming');
 
     }
 
+    ngOnDestroy() {
+    }
 }

@@ -535,6 +535,11 @@
   resolved "https://registry.yarnpkg.com/@wishtack/get/-/get-1.0.3.tgz#40c27cbd0703b0bfdeb079f548b882333bff5adc"
   integrity sha512-CHwbuQDboFJeggCgEI8NpJZ0+8bb7TiXD+iYcDF4fMnZ2Dhi2bCmJG+3Q94nLnalbJX18dXHQbgxmhRAe33jiQ==
 
+"@wishtack/rx-scavenger@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@wishtack/rx-scavenger/-/rx-scavenger-1.0.4.tgz#d854ffd205cc3252e08e901750259ed98f800c2d"
+  integrity sha512-BifKM0HtbdQ2kh639bfO0/45Mltk7IqUYnZ5bmL+gKT5X6YdkU/jdb9mBgf2a7bXTtIi8Rm+DoO+ich7+gwuLg==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
