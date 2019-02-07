@@ -1,11 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LandingModule } from './views/landing/landing.module';
+import { LandingComponent } from './views/landing/landing/landing.component';
 
-const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path: '',
+        component: LandingComponent
+    },
+    {
+        path: 'book',
+        loadChildren: './views/book-views/book-views.module#BookViewsModule'
+    },
+    {
+        path: '**',
+        redirectTo: ''
+    }
+];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    imports: [
+        LandingModule,
+        RouterModule.forRoot(routes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule {
 }
