@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookSearchModule } from './book-search/book-search.module';
+import { LayoutDefaultModule } from './layout-default/layout-default.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { BookSearchModule } from './book-search/book-search.module';
         AppRoutingModule,
         BookSearchModule,
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        LayoutDefaultModule
     ],
     bootstrap: [
         AppComponent
