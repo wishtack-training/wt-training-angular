@@ -1,12 +1,12 @@
 import { Book } from '../book/book';
-import { Cart } from './cart';
+import { CartService } from './cart.service';
 
 describe('Cart', () => {
 
     let book1: Book;
     let book2: Book;
     let book3: Book;
-    let cart: Cart;
+    let cart: CartService;
 
     beforeEach(() => {
 
@@ -14,7 +14,7 @@ describe('Cart', () => {
         book2 = new Book('ReWork', 'Jason Fried', 20);
         book3 = new Book('eXtreme Programming Explained', 'Kent Beck', 10);
 
-        cart = new Cart();
+        cart = new CartService();
 
     });
 

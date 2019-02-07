@@ -4,7 +4,7 @@ import { Book } from '../book/book';
 @Injectable({
     providedIn: 'root'
 })
-export class Cart {
+export class CartService {
 
     private _bookList: Book[] = [];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookSearchComponent } from './book/book-search/book-search.component';
 import { BookModule } from './book/book.module';
+import { CartModule } from './cart/cart.module';
 import { CartComponent } from './cart/cart/cart.component';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         BookModule,
+        CartModule,
         RouterModule.forRoot(routes)
     ],
     exports: [RouterModule]

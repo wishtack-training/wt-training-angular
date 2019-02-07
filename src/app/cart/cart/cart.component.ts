@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from '../../book/book';
-import { Cart } from '../cart';
+import { CartService } from '../cart.service';
 
 @Component({
     selector: 'wt-cart',
@@ -9,7 +9,7 @@ import { Cart } from '../cart';
 })
 export class CartComponent {
 
-    constructor(private _cart: Cart) {
+    constructor(private _cart: CartService) {
     }
 
     getBookList() {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Cart } from '../../cart/cart';
+import { CartService } from '../../cart/cart.service';
 import { Book } from '../book';
 
 @Component({
@@ -12,7 +12,7 @@ export class BookCardComponent {
 
     @Input() book: Book;
 
-    constructor(private _cart: Cart) {
+    constructor(private _cart: CartService) {
     }
 
     buy() {

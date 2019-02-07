@@ -7,13 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart/cart.component';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CartComponent,
         NavComponent
     ],
     imports: [
