@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,10 +14,12 @@ import { LayoutDefaultModule } from './layout-default/layout-default.module';
     ],
     imports: [
         AppRoutingModule,
-        BookSearchModule,
         BrowserModule,
         BrowserAnimationsModule,
-        LayoutDefaultModule
+        /* @TODO: These modules should not stay here. */
+        BookSearchModule,
+        LayoutDefaultModule,
+        MatListModule
     ],
     bootstrap: [
         AppComponent
