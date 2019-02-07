@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { LayoutDefaultModule } from './layout-default/layout-default.module';
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         /* @TODO: These modules should not stay here. */
         BookSearchModule,
         LayoutDefaultModule,

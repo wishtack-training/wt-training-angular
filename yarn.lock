@@ -530,6 +530,11 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
+"@wishtack/get@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@wishtack/get/-/get-1.0.3.tgz#40c27cbd0703b0bfdeb079f548b882333bff5adc"
+  integrity sha512-CHwbuQDboFJeggCgEI8NpJZ0+8bb7TiXD+iYcDF4fMnZ2Dhi2bCmJG+3Q94nLnalbJX18dXHQbgxmhRAe33jiQ==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
