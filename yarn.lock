@@ -535,6 +535,11 @@
   resolved "https://registry.yarnpkg.com/@wishtack/get/-/get-1.0.3.tgz#40c27cbd0703b0bfdeb079f548b882333bff5adc"
   integrity sha512-CHwbuQDboFJeggCgEI8NpJZ0+8bb7TiXD+iYcDF4fMnZ2Dhi2bCmJG+3Q94nLnalbJX18dXHQbgxmhRAe33jiQ==
 
+"@wishtack/rx-scavenger@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@wishtack/rx-scavenger/-/rx-scavenger-1.0.4.tgz#d854ffd205cc3252e08e901750259ed98f800c2d"
+  integrity sha512-BifKM0HtbdQ2kh639bfO0/45Mltk7IqUYnZ5bmL+gKT5X6YdkU/jdb9mBgf2a7bXTtIi8Rm+DoO+ich7+gwuLg==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -999,6 +1004,11 @@ backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
   integrity sha1-MasayLEpNjRj41s+u2n038+6eUc=
+
+backoff-rxjs@^6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/backoff-rxjs/-/backoff-rxjs-6.3.2.tgz#3d4b4d294d39179e75a8cab6c8c2c5534d229da3"
+  integrity sha512-bSBdhvr2pR+ulBqQyLFkdbViYLvIL43MQ42agUXKTpQI1l8vVxs4aM8sF62Fl5B88mq8+oM/g51hS5SnSllL2w==
 
 balanced-match@^1.0.0:
   version "1.0.0"
