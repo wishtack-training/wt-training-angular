@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "playground": "tsc playground.ts --lib es2015 && node playground.js",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "e2e:local": "protractor e2e/protractor.conf.js"
     },
     "private": true,
     "dependencies": {

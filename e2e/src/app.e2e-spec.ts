@@ -2,6 +2,7 @@ import { browser, logging } from 'protractor';
 import { AppPage } from './app.po';
 
 describe('workspace-project App', () => {
+
     let page: AppPage;
 
     beforeEach(() => {
@@ -10,7 +11,7 @@ describe('workspace-project App', () => {
 
     it('should display welcome message', () => {
         page.navigateTo();
-        expect(page.getTitleText()).toEqual('Welcome to training!');
+        expect(page.getTitleText()).toEqual('Book Shop');
     });
 
     afterEach(async () => {
