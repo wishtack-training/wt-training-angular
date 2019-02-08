@@ -15,12 +15,10 @@ export class AuthService {
     signIn({email, password}: { email: string; password: string; }): Observable<void> {
 
         /* @TODO: Implement an authentication API & authenticate. */
-
-        this._sessionStore.reset();
-        this._sessionStore.update({
+        this._sessionStore.update(() => ({
             email,
             name: 'Foo BAR'
-        });
+        }));
 
         return EMPTY;
 
