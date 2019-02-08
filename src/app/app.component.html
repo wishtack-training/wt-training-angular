@@ -9,7 +9,8 @@
             <button
                 *ngIf="isSignedIn$ | async"
                 color="warn"
-                mat-raised-button>SIGN OUT
+                mat-raised-button
+                (click)="signOut()">SIGN OUT
             </button>
         </div>
     </div>

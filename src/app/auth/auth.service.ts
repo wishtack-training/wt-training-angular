@@ -26,4 +26,8 @@ export class AuthService {
 
     }
 
+    signOut() {
+        this._sessionStore.reset();
+    }
+
 }

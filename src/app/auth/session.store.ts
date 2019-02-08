@@ -19,7 +19,8 @@ export function createInitialState(): SessionState {
     providedIn: 'root'
 })
 @StoreConfig({
-    name: 'session'
+    name: 'session',
+    resettable: true
 })
 export class SessionStore extends Store<SessionState> {
 
