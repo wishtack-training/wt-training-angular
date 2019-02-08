@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookSharedModule } from '../book-shared/book-shared.module';
 import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
         BookSearchComponent
     ],
     imports: [
+        BookSharedModule,
         CommonModule,
         ReactiveFormsModule
     ]

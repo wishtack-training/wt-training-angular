@@ -40,9 +40,7 @@ export class BookSearchComponent implements OnDestroy, OnInit {
                 retryBackoff(100),
                 this._scavenger.collect()
             )
-            .subscribe(bookList => {
-                console.log(bookList);
-            });
+            .subscribe(bookList => this.bookList = bookList);
 
     }
 

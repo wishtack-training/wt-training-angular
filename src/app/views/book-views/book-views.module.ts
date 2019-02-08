@@ -2,17 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BookSearchModule } from '../../book-search/book-search.module';
-import { BookSearchComponent } from '../../book-search/book-search/book-search.component';
+import { BookSearchViewComponent } from './book-search-view/book-search-view.component';
 
 export const bookRoutes = [
     {
         path: 'search',
-        component: BookSearchComponent
+        component: BookSearchViewComponent
     }
 ];
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        BookSearchViewComponent
+    ],
     imports: [
         BookSearchModule,
         CommonModule,

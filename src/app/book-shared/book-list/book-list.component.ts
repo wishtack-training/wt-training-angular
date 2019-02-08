@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Book } from '../book';
 
 @Component({
     selector: 'wt-book-list',
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent {
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    @Input() bookList: Book[];
 
 }
