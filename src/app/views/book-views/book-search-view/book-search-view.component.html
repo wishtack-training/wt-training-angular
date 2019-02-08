@@ -1,1 +1,3 @@
-<wt-book-search></wt-book-search>
+<wt-book-search
+    [keywords]="keywords$ | async"
+    (keywordsChange)="updateRoute($event)"></wt-book-search>
