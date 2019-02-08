@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import { LayoutDefaultModule } from './layout-default/layout-default.module';
         AppComponent
     ],
     imports: [
+        ...environment.production ? [] : [AkitaNgDevtools.forRoot({actionsBlacklist: ['@@INIT']})],
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
