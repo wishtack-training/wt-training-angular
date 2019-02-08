@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
 
@@ -13,7 +13,7 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
         BookPreviewComponent
     ],
     imports: [
-        CommonModule
+        SharedModule
     ]
 })
 export class BookSharedModule {

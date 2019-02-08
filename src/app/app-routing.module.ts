@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LandingModule } from './views/landing/landing.module';
 import { LandingComponent } from './views/landing/landing/landing.component';
 
@@ -21,7 +21,9 @@ export const routes: Routes = [
 @NgModule({
     imports: [
         LandingModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
 import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { LandingComponent } from './landing/landing.component';
         LandingComponent
     ],
     imports: [
-        CommonModule
+        SharedModule
     ]
 })
 export class LandingModule {
