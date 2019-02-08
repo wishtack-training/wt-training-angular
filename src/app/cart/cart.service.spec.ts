@@ -1,19 +1,33 @@
+import { TestBed } from '@angular/core/testing';
 import { Book } from '../book-shared/book';
 import { CartService } from './cart.service';
 
 describe('CartService', () => {
 
-    it('should add books to cart', () => {
+    let book1: Book;
+    let book2: Book;
 
-        const cartService = new CartService();
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+    });
 
-        const book1 = new Book({
+    beforeEach(() => {
+
+        book1 = new Book({
             title: 'eXtreme Programming Explained'
         });
-        const book2 = new Book({
+
+        book2 = new Book({
             title: 'Clean Code',
             pictureUri: null
         });
+
+    });
+
+    let cartService: CartService;
+    beforeEach(() => cartService = TestBed.get(CartService));
+
+    it('should add books to cart', () => {
 
         cartService.addBook(book1);
         cartService.addBook(book2);
