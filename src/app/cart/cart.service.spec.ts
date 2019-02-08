@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Book } from '../book-shared/book';
 import { CartService } from './cart.service';
+import { CartStore } from './cart.store';
 
 describe('CartService', () => {
 
@@ -27,12 +28,15 @@ describe('CartService', () => {
     let cartService: CartService;
     beforeEach(() => cartService = TestBed.get(CartService));
 
+    let cartStore: CartStore;
+    beforeEach(() => cartStore = TestBed.get(CartStore));
+
     it('should add books to cart', () => {
 
         cartService.addBook(book1);
         cartService.addBook(book2);
 
-        const bookList = cartService.getBookList();
+        const bookList = cartStore._value().bookList;
 
         expect(bookList).toEqual([
             book1,

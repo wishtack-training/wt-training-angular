@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { push } from '@datorama/akita';
 import { Book } from '../book-shared/book';
+import { CartStore } from './cart.store';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
 
-    private _bookList: Book[] = [];
-
-    addBook(book: Book) {
-        this._bookList = push(this._bookList, book);
+    constructor(private _cartStore: CartStore) {
     }
 
-    getBookList() {
-        return this._bookList;
+    addBook(book: Book) {
+
+        this._cartStore.setState(state => {
+            return {
+                bookList: push(state.bookList, book)
+            };
+        });
+
     }
 
 }
