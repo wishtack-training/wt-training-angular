@@ -1,16 +1,29 @@
-interface Serializable {
-    serialize(): string;
+import { interval } from 'rxjs';
+import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { map } from 'rxjs/operators';
+
+function getTemperature(city) {
+    return interval(500)
+        .pipe(
+            map(value => {
+                return {
+                    city,
+                    temperature: Math.round(Math.random() * 30)
+                };
+            })
+        );
 }
 
-class Customer implements Serializable {
+const city$ = interval(3000)
+    .pipe(
+        map(value => {
+            return ['Luxembourg', 'Lyon', 'Paris'][value % 3];
+        })
+    );
 
-    readonly firstName: string;
-    lastName: string;
 
-    serialize() {
-        return this.firstName;
-    }
-
-}
-
-console.log(new Customer());
+city$
+    .pipe(
+        switchMap(city => getTemperature(city))
+    )
+    .subscribe(console.log);
