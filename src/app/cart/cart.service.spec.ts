@@ -1,3 +1,4 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Book } from '../book-shared/book';
 import { CartService } from './cart.service';
@@ -9,7 +10,11 @@ describe('CartService', () => {
     let book2: Book;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+        TestBed.configureTestingModule({
+            imports: [
+                HttpClientTestingModule
+            ]
+        });
     });
 
     beforeEach(() => {
@@ -19,8 +24,7 @@ describe('CartService', () => {
         });
 
         book2 = new Book({
-            title: 'Clean Code',
-            pictureUri: null
+            title: 'Clean Code'
         });
 
     });
@@ -31,10 +35,30 @@ describe('CartService', () => {
     let cartStore: CartStore;
     beforeEach(() => cartStore = TestBed.get(CartStore));
 
+    let httpTestingController: HttpTestingController;
+    beforeEach(() => httpTestingController = TestBed.get(HttpTestingController));
+
+    afterEach(() => {
+        httpTestingController.verify();
+    });
+
     it('should add books to cart', () => {
 
-        cartService.addBook(book1);
-        cartService.addBook(book2);
+        cartService.addBook(book1).subscribe();
+
+        const request1 = httpTestingController.expectOne('https://api.wishtack.io/users/123/books');
+
+        cartService.addBook(book2).subscribe();
+
+        const request2 = httpTestingController.expectOne('https://api.wishtack.io/users/123/books');
+
+        request1.flush({
+            title: 'eXtreme Programming Explained'
+        });
+
+        request2.flush({
+            title: 'Clean Code'
+        });
 
         const bookList = cartStore._value().bookList;
 
@@ -42,6 +66,7 @@ describe('CartService', () => {
             book1,
             book2
         ]);
+
 
     });
 
