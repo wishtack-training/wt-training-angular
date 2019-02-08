@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { bookRouteResolver } from '../book-route-resolver';
 
 @Component({
     selector: 'wt-book-search-view',
@@ -32,7 +33,7 @@ export class BookSearchViewComponent {
             };
         }
 
-        this._router.navigate(['/book', 'search'], {
+        this._router.navigate(bookRouteResolver.searchBookRoute(), {
             queryParams
         });
     }

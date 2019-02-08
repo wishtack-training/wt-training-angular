@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { bookRouteResolver } from './views/book-views/book-route-resolver';
 
 @Component({
     selector: 'wt-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'training';
+
+    bookRouteResolver = bookRouteResolver;
+
 }

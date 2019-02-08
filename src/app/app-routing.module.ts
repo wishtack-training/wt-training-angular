@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { bookRouteResolver } from './views/book-views/book-route-resolver';
 import { LandingModule } from './views/landing/landing.module';
 import { LandingComponent } from './views/landing/landing/landing.component';
 
@@ -9,7 +10,7 @@ export const routes: Routes = [
         component: LandingComponent
     },
     {
-        path: 'book',
+        path: bookRouteResolver.BASE_PATH,
         loadChildren: './views/book-views/book-views.module#BookViewsModule'
     },
     {

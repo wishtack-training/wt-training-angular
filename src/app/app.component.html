@@ -4,7 +4,7 @@
 
     <div slot="sidenav">
         <a mat-list-item routerLink="">Home</a>
-        <a mat-list-item routerLink="/book/search">Search</a>
+        <a mat-list-item [routerLink]="bookRouteResolver.searchBookRoute()">Search</a>
     </div>
 
     <router-outlet slot="content"></router-outlet>
