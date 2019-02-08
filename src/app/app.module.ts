@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatListModule } from '@angular/material';
+import { MatButtonModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +21,7 @@ import { LayoutDefaultModule } from './layout-default/layout-default.module';
         /* @TODO: These modules should not stay here. */
         BookSearchModule,
         LayoutDefaultModule,
+        MatButtonModule,
         MatListModule
     ],
     bootstrap: [

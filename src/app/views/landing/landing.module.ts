@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material';
 import { SharedModule } from '../../shared/shared.module';
 import { LandingComponent } from './landing/landing.component';
 
@@ -10,6 +11,7 @@ import { LandingComponent } from './landing/landing.component';
         LandingComponent
     ],
     imports: [
+        MatButtonModule,
         SharedModule
     ]
 })

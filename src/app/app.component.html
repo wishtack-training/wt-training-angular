@@ -5,6 +5,13 @@
     <div slot="sidenav">
         <a mat-list-item routerLink="">Home</a>
         <a mat-list-item [routerLink]="bookRouteResolver.searchBookRoute()">Search</a>
+        <div mat-list-item>
+            <button
+                *ngIf="isSignedIn$ | async"
+                color="warn"
+                mat-raised-button>SIGN OUT
+            </button>
+        </div>
     </div>
 
     <router-outlet slot="content"></router-outlet>
