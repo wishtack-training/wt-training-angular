@@ -37,11 +37,16 @@ class Group {
 
 }
 
+enum FoodConstraint {
+    GlutenIntolerant = 'gluten-intolerant',
+    Vegan = 'vegan'
+}
+
 class Person {
 
     firstName: string;
     lastName: string;
-    foodConstraintList: string[];
+    foodConstraintList: FoodConstraint[];
 
     constructor(args: Partial<Person> = {}) {
         this.firstName = args.firstName;
@@ -65,12 +70,12 @@ describe('Group', () => {
         person1 = new Person({
             firstName: 'Foo',
             lastName: 'BAR',
-            foodConstraintList: ['vegan']
+            foodConstraintList: [FoodConstraint.Vegan]
         });
         person2 = new Person({
             firstName: 'John',
             lastName: 'DOE',
-            foodConstraintList: ['gluten-intolerant', 'vegan']
+            foodConstraintList: [FoodConstraint.GlutenIntolerant, FoodConstraint.Vegan]
         });
         person3 = new Person({
             firstName: 'John',
