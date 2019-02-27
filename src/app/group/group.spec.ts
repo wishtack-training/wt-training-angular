@@ -19,15 +19,34 @@ class Group {
     }
 
     getFoodConstraintList(): string[] {
-        throw new Error('😱 Not implementedt yet!');
+
+        const foodConstraintListList = this._personList
+            .map(person => person.foodConstraintList);
+
+        const foodConstraintList = [].concat(...foodConstraintListList);
+
+        const foodConstraintSet = new Set(foodConstraintList);
+
+        const uniqueFoodConstraintList = Array.from(foodConstraintSet);
+
+        uniqueFoodConstraintList.sort();
+
+        return uniqueFoodConstraintList;
+
     }
 
 }
 
-
 class Person {
 
-    constructor(firstName: string, lastName: string, foodConstraintList: string[]) {
+    firstName: string;
+    lastName: string;
+    foodConstraintList: string[];
+
+    constructor(args: Partial<Person> = {}) {
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
+        this.foodConstraintList = args.foodConstraintList;
     }
 
 }
@@ -43,21 +62,21 @@ describe('Group', () => {
 
         group = new Group();
 
-        person1 = new Person(
-            'Foo',
-            'BAR',
-            ['vegan']
-        );
-        person2 = new Person(
-            'John',
-            'DOE',
-            ['gluten-intolerant', 'vegan']
-        );
-        person3 = new Person(
-            'John',
-            'BAR',
-            []
-        );
+        person1 = new Person({
+            firstName: 'Foo',
+            lastName: 'BAR',
+            foodConstraintList: ['vegan']
+        });
+        person2 = new Person({
+            firstName: 'John',
+            lastName: 'DOE',
+            foodConstraintList: ['gluten-intolerant', 'vegan']
+        });
+        person3 = new Person({
+            firstName: 'John',
+            lastName: 'BAR',
+            foodConstraintList: []
+        });
 
     });
 
@@ -105,7 +124,7 @@ describe('Group', () => {
 
     });
 
-    xit('should get group food constraints', () => {
+    it('should get group food constraints', () => {
 
         group.addPerson(person1);
         group.addPerson(person2);
