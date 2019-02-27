@@ -1,10 +1,13 @@
 class Group {
+
+    private _personList: Person[] = [];
+
     addPerson(person: Person) {
-        throw new Error('😱 Not implemented yet!');
+        this._personList.push(person);
     }
 
-    getPersonList(): Person[] {
-        throw new Error('😱 Not implemented yet!');
+    getPersonList() {
+        return this._personList;
     }
 
     removePerson(person: Person) {
@@ -16,8 +19,9 @@ class Group {
     }
 
     getFoodConstraintList(): string[] {
-        throw new Error('😱 Not implemented yet!');
+        throw new Error('😱 Not implementedt yet!');
     }
+
 }
 
 
@@ -57,7 +61,7 @@ describe('Group', () => {
 
     });
 
-    xit('should add people', () => {
+    it('should add people', () => {
 
         group.addPerson(person1);
         group.addPerson(person2);
