@@ -23,3 +23,6 @@ https://floobits.com/younes
 https://www.github.com/wishtack-training/wt-training-angular
 
 ## Checkout today's branch: YYYY-MM-DD.
+
+# AngularJS Repository
+http://github.com/wishtack-training/wt-training-angularjs
