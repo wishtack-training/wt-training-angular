@@ -11,11 +11,11 @@ class Group {
     }
 
     removePerson(person: Person) {
-        throw new Error('😱 Not implemented yet!');
+        this._personList = this._personList.filter(_person => _person !== person);
     }
 
     getCount(): number {
-        throw new Error('😱 Not implemented yet!');
+        return this._personList.length;
     }
 
     getFoodConstraintList(): string[] {
@@ -77,7 +77,7 @@ describe('Group', () => {
 
     });
 
-    xit('should remove people', () => {
+    it('should remove people', () => {
 
         group.addPerson(person1);
         group.addPerson(person2);
@@ -93,7 +93,7 @@ describe('Group', () => {
         ]);
     });
 
-    xit('should get count', () => {
+    it('should get count', () => {
 
         group.addPerson(person1);
         group.addPerson(person2);
