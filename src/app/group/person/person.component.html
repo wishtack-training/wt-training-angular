@@ -1,0 +1,13 @@
+<h2>
+    <span>{{ person.firstName}}</span>
+    <span>{{ person.lastName}}</span>
+</h2>
+
+<img
+    [src]="'https://robohash.org/' + person.firstName"
+    [alt]="person.firstName">
+
+<wt-food-constraint-list
+    [foodConstraintList]="person.foodConstraintList"></wt-food-constraint-list>
+
+<button (click)="removePerson()">REMOVE</button>

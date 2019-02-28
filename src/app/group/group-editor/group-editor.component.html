@@ -5,26 +5,10 @@
 
     <div>Count: {{ getPersonCount() }}</div>
 
-    <div *ngFor="let person of getPersonList()">
-
-        <h2>
-            <span>{{ person.firstName}}</span>
-            <span>{{ person.lastName}}</span>
-        </h2>
-
-        <img
-            [src]="'https://robohash.org/' + person.firstName"
-            [alt]="person.firstName">
-
-        <div>
-            <span *ngFor="let constraint of person.foodConstraintList">
-                {{ constraint }}
-            </span>
-        </div>
-
-        <button (click)="removePerson(person)">REMOVE</button>
-
-    </div>
+    <wt-person
+        *ngFor="let person of getPersonList()"
+        [person]="person"
+        (personRemove)="removePerson(person)"></wt-person>
 
 </section>
 
@@ -32,7 +16,5 @@
 
 <section>
     <h1>Summary</h1>
-    <div *ngFor="let constraint of getGroupConstraintList()">
-        {{ constraint }}
-    </div>
+    <wt-food-constraint-list [foodConstraintList]="getGroupConstraintList()"></wt-food-constraint-list>
 </section>

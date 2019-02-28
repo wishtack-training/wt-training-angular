@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodConstraint } from '../food-constraint';
 import { Group } from '../group';
 import { Person } from '../person';
 
@@ -15,14 +16,19 @@ export class GroupEditorComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.addPerson();
+        this.addPerson();
     }
 
     addPerson() {
 
-        const name = prompt('name');
-
         this.group.addPerson(new Person({
-            firstName: name
+            firstName: 'Foo',
+            lastName: 'BAR',
+            foodConstraintList: [
+                FoodConstraint.GlutenIntolerant,
+                FoodConstraint.Vegan
+            ]
         }));
 
     }
