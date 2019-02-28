@@ -1,26 +1,30 @@
 <section>
     <h1>Group</h1>
 
-    <button>ADD</button>
+    <button (click)="addPerson()">ADD</button>
 
-    <div>Count: 3</div>
+    <div>Count: {{ getPersonCount() }}</div>
 
-    <ul>
-        <li>
-            <span>Foo BAR</span>
-            <span>(Gluten Intolerant, Vegan)</span>
-            <button>REMOVE</button>
-        </li>
-        <li>
-            <span>John DOE</span>
-            <button>REMOVE</button>
-        </li>
-        <li>
-            <span>Foo BAR</span>
-            <span>(Vegan)</span>
-            <button>REMOVE</button>
-        </li>
-    </ul>
+    <div *ngFor="let person of getPersonList()">
+
+        <h2>
+            <span>{{ person.firstName}}</span>
+            <span>{{ person.lastName}}</span>
+        </h2>
+
+        <img
+            [src]="'https://robohash.org/' + person.firstName"
+            [alt]="person.firstName">
+
+        <div>
+            <span *ngFor="let constraint of person.foodConstraintList">
+                {{ constraint }}
+            </span>
+        </div>
+
+        <button (click)="removePerson(person)">REMOVE</button>
+
+    </div>
 
 </section>
 
@@ -28,8 +32,7 @@
 
 <section>
     <h1>Summary</h1>
-    <ul>
-        <li>Gluten Intolerant</li>
-        <li>Vegan</li>
-    </ul>
+    <div *ngFor="let constraint of getGroupConstraintList()">
+        {{ constraint }}
+    </div>
 </section>
