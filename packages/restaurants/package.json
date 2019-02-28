@@ -1,0 +1,12 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "json-server db.json"
+  },
+  "dependencies": {
+    "json-server": "^0.14.2"
+  }
+}

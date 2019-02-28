@@ -1,0 +1,918 @@
+{
+  "restaurants": [
+    {
+      "id": "c476a973-6030-492f-b748-afa774c425f2",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Jetsilk",
+      "city": "Austinburg"
+    },
+    {
+      "id": "8718ad37-daa8-4a5b-9fa0-3b4a48b743a9",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Iplax",
+      "city": "Condon"
+    },
+    {
+      "id": "a007ca60-5561-41a3-bf59-c3d0a99d9514",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Artiq",
+      "city": "Gratton"
+    },
+    {
+      "id": "c350ef02-e3ca-42cb-b57a-8c42c2e994ad",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Typhonica",
+      "city": "Rote"
+    },
+    {
+      "id": "6a028b68-9283-405e-8edc-e470aa2ccb2d",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Overplex",
+      "city": "Martinsville"
+    },
+    {
+      "id": "b31d60c4-1cd1-4831-842b-a488fa6ba9d8",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Twiist",
+      "city": "Farmington"
+    },
+    {
+      "id": "99323dca-e64e-4c36-af8c-6571d01bc148",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Glasstep",
+      "city": "Campo"
+    },
+    {
+      "id": "aa6a12db-da28-4791-a06e-576cbddabe2f",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Organica",
+      "city": "Juarez"
+    },
+    {
+      "id": "d88d1e5f-42ad-4009-a430-8502f7d6c307",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Ecraze",
+      "city": "Genoa"
+    },
+    {
+      "id": "e08155f0-8575-448a-b94b-7ae4f7880032",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Filodyne",
+      "city": "Floris"
+    },
+    {
+      "id": "480e4e61-ea3f-4869-ad73-fc0ff466b91b",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Danja",
+      "city": "Vandiver"
+    },
+    {
+      "id": "33565559-d574-4066-963b-ed7a44239a75",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Sultrax",
+      "city": "Veguita"
+    },
+    {
+      "id": "0307a754-7178-4109-9dac-0ca44cc08ca5",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Bizmatic",
+      "city": "Urie"
+    },
+    {
+      "id": "83e7fa17-f168-40e9-b83a-5a296aba4cca",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Xylar",
+      "city": "Nescatunga"
+    },
+    {
+      "id": "6a352083-2da1-474d-806d-413282a1bd49",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Nexgene",
+      "city": "Starks"
+    },
+    {
+      "id": "114ab80a-2d8a-4348-9fdc-3b622f711738",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Comtrail",
+      "city": "Tyro"
+    },
+    {
+      "id": "cf724fd6-ad22-4523-9626-564eb38c8579",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Imperium",
+      "city": "Riner"
+    },
+    {
+      "id": "e74b3fca-c0c3-427c-a942-584029379d76",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Zillanet",
+      "city": "Loomis"
+    },
+    {
+      "id": "eb9a2cab-2629-4c63-a5cf-e81cca6dc55c",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Prosely",
+      "city": "Bartley"
+    },
+    {
+      "id": "4f04b9b8-513e-4afb-9c14-fd1120810c41",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Vendblend",
+      "city": "Oberlin"
+    },
+    {
+      "id": "cacbeac6-f6e7-490a-93ab-34ac1d3b19c7",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Earthwax",
+      "city": "Torboy"
+    },
+    {
+      "id": "239be65d-acc1-4b9a-b881-f0a0a3cf17da",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Marketoid",
+      "city": "Ivanhoe"
+    },
+    {
+      "id": "05223e6e-ab8d-44c5-bd80-84d9ad0e2ff3",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Xleen",
+      "city": "Century"
+    },
+    {
+      "id": "e6a33f12-250e-4dc7-ae58-662d674256c9",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Mitroc",
+      "city": "Macdona"
+    },
+    {
+      "id": "d341c468-b66b-4c1f-8a72-351f6c3aac77",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Ecrater",
+      "city": "Coral"
+    },
+    {
+      "id": "da1df82b-5f6a-4d6b-a848-b878e6271c2b",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Gallaxia",
+      "city": "Konterra"
+    },
+    {
+      "id": "ac57bc50-e448-428b-9ffb-4dd6a4b30d75",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Farmage",
+      "city": "Newcastle"
+    },
+    {
+      "id": "9c9379fa-bf30-4f54-926b-8b0e96b6222c",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Darwinium",
+      "city": "Bayview"
+    },
+    {
+      "id": "826a7b54-3c39-4260-ac96-2767b9f28dad",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Talendula",
+      "city": "Richmond"
+    },
+    {
+      "id": "dbde509a-302a-447e-a160-38eb0ecdf52a",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Cytrex",
+      "city": "Shindler"
+    },
+    {
+      "id": "8760920d-230c-4274-a378-0440ebd39fd0",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Junipoor",
+      "city": "Cornfields"
+    },
+    {
+      "id": "1219b2e6-c530-4415-87c6-19ef25607cb0",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Cubicide",
+      "city": "Falmouth"
+    },
+    {
+      "id": "c3fe8d8b-62c8-4334-81ea-76f6969639f3",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Isostream",
+      "city": "Fairacres"
+    },
+    {
+      "id": "05f68128-296d-49c6-913d-bcf737586d34",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Teraprene",
+      "city": "Canby"
+    },
+    {
+      "id": "96b1198b-1a09-4c5e-8f95-d6e41eb06f11",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Moreganic",
+      "city": "Kennedyville"
+    },
+    {
+      "id": "8b6c19a9-2e2a-45cf-9663-ee826fd7abe9",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Twiggery",
+      "city": "Sunwest"
+    },
+    {
+      "id": "4c255ccc-8d6c-4ee4-93d3-67814de78d54",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Halap",
+      "city": "Tolu"
+    },
+    {
+      "id": "59fdb0e1-a7dc-4326-95f6-51603a03705a",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Globoil",
+      "city": "Healy"
+    },
+    {
+      "id": "6e4dec42-7a64-4e7b-ad28-9efbfc3bf75d",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Exoblue",
+      "city": "Finzel"
+    },
+    {
+      "id": "01414745-3801-4032-be1c-245d076152a1",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Kongene",
+      "city": "Hilltop"
+    },
+    {
+      "id": "6fb29f91-e02f-4ccf-b01c-e3f8c2b4a792",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Maxemia",
+      "city": "Southmont"
+    },
+    {
+      "id": "22e96248-23a4-4f05-8a44-d713f1101c55",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Geekko",
+      "city": "Riegelwood"
+    },
+    {
+      "id": "58d460f1-cd96-4aa2-b945-e1e639aa8daa",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Xelegyl",
+      "city": "Fingerville"
+    },
+    {
+      "id": "897b71e7-02ac-4bca-86a0-2a1c6d104d38",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Zolarex",
+      "city": "Hardyville"
+    },
+    {
+      "id": "ee7c1656-478c-4043-9909-6068621484fa",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Zogak",
+      "city": "Jugtown"
+    },
+    {
+      "id": "2a4e0769-a42b-4e64-b15a-8319e45da0f6",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Acium",
+      "city": "Lorraine"
+    },
+    {
+      "id": "45604323-f680-4414-b1cc-61c586b8822c",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Illumity",
+      "city": "Groton"
+    },
+    {
+      "id": "378c98f7-3140-45fb-a91a-a2003a8f1018",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Snorus",
+      "city": "Gibsonia"
+    },
+    {
+      "id": "fc9ab586-34fc-4669-94d7-4d219fa010fd",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Accel",
+      "city": "Keyport"
+    },
+    {
+      "id": "9556206b-1b93-45be-b5aa-80c9a5c84f11",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Slofast",
+      "city": "Savannah"
+    },
+    {
+      "id": "2d277da8-867c-4b48-ba5f-1094cc1892e0",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Digigen",
+      "city": "Waverly"
+    },
+    {
+      "id": "658559f2-b225-4819-b707-2113fec44896",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Poochies",
+      "city": "Clara"
+    },
+    {
+      "id": "b5e15fca-db28-4a10-9f66-f35e83bcfd43",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Circum",
+      "city": "Bowie"
+    },
+    {
+      "id": "c68b4ab8-51c4-4459-9a0f-61df6cd722da",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Proflex",
+      "city": "Jackpot"
+    },
+    {
+      "id": "c063fb21-b243-443f-8afc-617a18d40040",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Rubadub",
+      "city": "Crayne"
+    },
+    {
+      "id": "7b518231-fa82-4ac3-97c8-a1688ecd5a34",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Nutralab",
+      "city": "Saddlebrooke"
+    },
+    {
+      "id": "aefd62b9-9c5e-4a68-aa75-69b48cbbfd90",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Anacho",
+      "city": "Biehle"
+    },
+    {
+      "id": "da33d2ad-42b5-4610-b77b-14bb45709b5d",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Phuel",
+      "city": "Greenbush"
+    },
+    {
+      "id": "f30ce48a-88df-4f40-a2dc-c3aec258b6e7",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Escenta",
+      "city": "Selma"
+    },
+    {
+      "id": "7c6485a0-4833-4360-9be5-ad4cce4b2067",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Ontagene",
+      "city": "Kansas"
+    },
+    {
+      "id": "6a868f08-25ae-4753-8dcf-a094838febdb",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Straloy",
+      "city": "Wintersburg"
+    },
+    {
+      "id": "b330e004-5d8f-44bb-9b78-fed5b2f7901f",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Voratak",
+      "city": "Slovan"
+    },
+    {
+      "id": "b0277562-5f11-46b8-9da1-70dd2ae9985c",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Freakin",
+      "city": "Roeville"
+    },
+    {
+      "id": "56c90ea0-efb0-414e-a3b8-6c1d50627175",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Calcula",
+      "city": "Stollings"
+    },
+    {
+      "id": "b176fbcb-4345-44b1-a097-22f05fc3af67",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Imant",
+      "city": "Weeksville"
+    },
+    {
+      "id": "a4d1b4bc-2f1f-4924-b1e7-520132dbb570",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Nipaz",
+      "city": "Dante"
+    },
+    {
+      "id": "b4e98559-ce16-4a8b-9b31-3fd6ed00ba9a",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Architax",
+      "city": "Hillsboro"
+    },
+    {
+      "id": "72038195-5acf-413d-b5c4-6258f59245b9",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Senmao",
+      "city": "Caln"
+    },
+    {
+      "id": "55069148-7d6f-4047-9314-c00298214d6d",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Prowaste",
+      "city": "Hayes"
+    },
+    {
+      "id": "6875e454-c2ba-46af-95d1-d81aa7ee5c5a",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Wazzu",
+      "city": "Kempton"
+    },
+    {
+      "id": "66e3ae36-72ff-4519-9cd5-ff66dfccb832",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Barkarama",
+      "city": "Venice"
+    },
+    {
+      "id": "dd9e6122-18d3-4025-97ad-61a6d005eed3",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Envire",
+      "city": "Dunnavant"
+    },
+    {
+      "id": "aad4e2ac-8922-40b5-90d2-95c6f6a8d504",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Eclipsent",
+      "city": "Sanders"
+    },
+    {
+      "id": "c24c3266-757e-42e9-9b35-428facaa0b2d",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Zappix",
+      "city": "Jamestown"
+    },
+    {
+      "id": "3ad3a366-0f66-4935-bed8-0f4dd8a70848",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Enersave",
+      "city": "Whitestone"
+    },
+    {
+      "id": "7b973a43-a311-4d7b-81ac-abe28b80386a",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Buzzness",
+      "city": "Datil"
+    },
+    {
+      "id": "d14a4630-4d1c-42b7-867c-4ebe5821ce30",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Dyno",
+      "city": "Oley"
+    },
+    {
+      "id": "707d73dd-f823-481c-a58e-4fa8ab276223",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Gadtron",
+      "city": "Boonville"
+    },
+    {
+      "id": "a9888e2c-417b-4621-9461-19cd9c4f5bce",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Kidgrease",
+      "city": "Mansfield"
+    },
+    {
+      "id": "e8d58904-ebc4-4756-93b7-8aa17ef47a82",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Edecine",
+      "city": "Cedarville"
+    },
+    {
+      "id": "eeae299d-96aa-42c2-b771-a5288c1b06b2",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Furnitech",
+      "city": "Harborton"
+    },
+    {
+      "id": "b629a3bc-7665-4a4f-bce0-36dbb1e2fd45",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Aquasure",
+      "city": "Brandermill"
+    },
+    {
+      "id": "75576ecc-ea43-4f29-8c41-0dbff4a3afdd",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Bluplanet",
+      "city": "Dowling"
+    },
+    {
+      "id": "7b6e7178-ee03-4195-bf22-01283429a460",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Pyramax",
+      "city": "Enlow"
+    },
+    {
+      "id": "56d210c9-bf9c-4135-93d6-3f23c0f6b411",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Techtrix",
+      "city": "Brandywine"
+    },
+    {
+      "id": "8c69ae16-7efd-4259-b002-9617aa0d06e3",
+      "foodConstraints": [
+        "vegan"
+      ],
+      "name": "Acumentor",
+      "city": "Westwood"
+    },
+    {
+      "id": "5cac8732-0548-4ced-84d4-97383bdc3805",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Digifad",
+      "city": "Avalon"
+    },
+    {
+      "id": "70482070-9302-4697-b3b3-415682983973",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Geekmosis",
+      "city": "Rosburg"
+    },
+    {
+      "id": "cebc9f95-8c04-4cb6-ade4-10b4ea0e948a",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "vegan"
+      ],
+      "name": "Ontality",
+      "city": "Utting"
+    },
+    {
+      "id": "fe210ccd-5bc0-4873-b0fe-00134af8e2d9",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Uncorp",
+      "city": "Brazos"
+    },
+    {
+      "id": "8f113276-6bca-4d8b-97d1-ea723f700681",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Trollery",
+      "city": "Guilford"
+    },
+    {
+      "id": "6fd12a70-d0a8-4c43-afdf-9554c76ec7d1",
+      "foodConstraints": [
+        "gluten-intolerant"
+      ],
+      "name": "Ultrasure",
+      "city": "Nord"
+    },
+    {
+      "id": "d66423f0-6a36-4441-8b70-60a6640c36ea",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Extremo",
+      "city": "Allamuchy"
+    },
+    {
+      "id": "ce3cdf7a-ee48-487b-8059-714ac2bb7314",
+      "foodConstraints": [
+        "vegan",
+        "vegan"
+      ],
+      "name": "Honotron",
+      "city": "Sunriver"
+    },
+    {
+      "id": "0860d9df-ef97-4212-ae3c-700a6b951fbe",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Newcube",
+      "city": "Springville"
+    },
+    {
+      "id": "843106de-2302-4ba7-bb9e-7dae585749d2",
+      "foodConstraints": [
+        "vegan",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Skyplex",
+      "city": "Stewart"
+    },
+    {
+      "id": "d96ac3b8-d200-4de6-9e12-a572685c15c4",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan"
+      ],
+      "name": "Nimon",
+      "city": "Fredericktown"
+    },
+    {
+      "id": "adda1173-2ac7-4c06-aa32-b19e992ab06a",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Scenty",
+      "city": "Crenshaw"
+    },
+    {
+      "id": "cde725ad-59bc-44de-85b5-48197c116a1d",
+      "foodConstraints": [
+        "gluten-intolerant",
+        "vegan",
+        "gluten-intolerant"
+      ],
+      "name": "Gazak",
+      "city": "Lowgap"
+    },
+    {
+      "id": "c78253fb-7902-483c-b339-56f40d09f4e1",
+      "foodConstraints": [
+        "vegan",
+        "gluten-intolerant",
+        "gluten-intolerant"
+      ],
+      "name": "Entogrok",
+      "city": "Mapletown"
+    }
+  ]
+}
