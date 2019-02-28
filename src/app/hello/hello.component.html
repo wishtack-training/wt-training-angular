@@ -1,0 +1,22 @@
+<h1>Welcome {{ getUserName() }}</h1>
+
+<div>{{ now | date:'hh:mm:ss' }}</div>
+
+<ul>
+    <li *ngFor="let city of cityList">
+
+        <span
+            [class.wt-favorite-city]="city === favoriteCity">{{ city }}</span>
+
+        <button
+            [disabled]="city === favoriteCity"
+            (click)="selectFavoriteCity(city)">👍
+        </button>
+
+    </li>
+</ul>
+
+<div *ngIf="favoriteCity">
+    <span>✨{{ favoriteCity }}✨</span>
+    <button (click)="resetFavoriteCity()">RESET</button>
+</div>
