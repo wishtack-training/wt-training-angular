@@ -1,7 +1,4 @@
-export enum FoodConstraint {
-    GlutenIntolerant = 'gluten-intolerant',
-    Vegan = 'vegan'
-}
+import { FoodConstraint } from './food-constraint';
 
 export class Person {
 

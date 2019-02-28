@@ -20,17 +20,22 @@ export class Group {
         return this._personList.length;
     }
 
-    getFoodConstraintList(): string[] {
+    getFoodConstraintList() {
 
+        /* [ [ 'vegan' ], [ 'gluten-intolerant', 'vegan' ], [] ] */
         const foodConstraintListList = this._personList
             .map(person => person.foodConstraintList);
 
+        /* [ 'vegan', 'gluten-intolerant', 'vegan' ] */
         const foodConstraintList = [].concat(...foodConstraintListList);
 
+        /* Set { 'vegan', 'gluten-intolerant' } */
         const foodConstraintSet = new Set(foodConstraintList);
 
+        /* [ 'vegan', 'gluten-intolerant' ] */
         const uniqueFoodConstraintList = Array.from(foodConstraintSet);
 
+        /* [ 'gluten-intolerant', 'vegan' ] */
         uniqueFoodConstraintList.sort();
 
         return uniqueFoodConstraintList;

@@ -1,5 +1,7 @@
+import { FoodConstraint } from './food-constraint';
 import { Group } from './group';
-import { FoodConstraint, Person } from './person';
+import { Person } from './person';
+
 
 describe('Group', () => {
 
