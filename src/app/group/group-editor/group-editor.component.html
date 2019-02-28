@@ -1,5 +1,8 @@
 <section>
+
     <h1>Group</h1>
+
+    <wt-person-form></wt-person-form>
 
     <button (click)="addPerson()">ADD</button>
 
@@ -8,7 +11,7 @@
     <wt-person
         *ngFor="let person of getPersonList()"
         [person]="person"
-        (personRemove)="removePerson(person)"></wt-person>
+        (click)="removePerson(person)"></wt-person>
 
 </section>
 

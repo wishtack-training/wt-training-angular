@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FoodConstraintListComponent } from './group/food-constraint-list/food-constraint-list.component';
 import { GroupEditorComponent } from './group/group-editor/group-editor.component';
+import { PersonFormComponent } from './group/person-form/person-form.component';
 import { PersonComponent } from './group/person/person.component';
 import { HelloComponent } from './hello/hello.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HelloComponent,
-        GroupEditorComponent,
         FoodConstraintListComponent,
-        PersonComponent
+        GroupEditorComponent,
+        HelloComponent,
+        PersonComponent,
+        PersonFormComponent
     ],
     imports: [
+        AppRoutingModule,
         BrowserModule,
-        AppRoutingModule
+        ReactiveFormsModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
