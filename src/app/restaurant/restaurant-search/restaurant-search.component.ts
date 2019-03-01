@@ -1,60 +1,44 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FoodConstraint } from '../../group/food-constraint';
-
-export class Restaurant {
-    id: string;
-    city: string;
-    foodConstraints: FoodConstraint[];
-    name: string;
-
-    constructor(args: Partial<Restaurant> = {}) {
-        this.id = args.id;
-        this.city = args.city;
-        this.foodConstraints = args.foodConstraints;
-        this.name = args.name;
-    }
-
-}
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { RestaurantRepository } from '../restaurant-repository.service';
+import { Restaurant } from './restaurant';
 
 @Component({
     selector: 'wt-restaurant-search',
     templateUrl: './restaurant-search.component.html',
     styleUrls: ['./restaurant-search.component.scss']
 })
-export class RestaurantSearchComponent implements OnInit {
+export class RestaurantSearchComponent implements OnDestroy, OnInit {
 
     keywordsControl = new FormControl();
     restaurantList: Restaurant[];
-
-    private _restaurantsUrl = 'https://restaurants-cfyytauslm.now.sh/restaurants';
+    private _subscription: Subscription;
 
     constructor(
-        private _httpClient: HttpClient,
+        private _restaurantRepository: RestaurantRepository
     ) {
     }
 
     ngOnInit() {
-    }
 
-    search() {
-
-        const keywords = this.keywordsControl.value;
-
-        this._httpClient
-            .get<Partial<Restaurant>[]>(this._restaurantsUrl, {
-                params: {
-                    q: keywords
-                }
-            })
-            .subscribe(dataList => {
-
-                this.restaurantList = dataList
-                    .map(data => new Restaurant(data));
-
+        this._subscription = this.keywordsControl.valueChanges
+            .pipe(
+                debounceTime(100),
+                distinctUntilChanged(),
+                switchMap(keywords => this._restaurantRepository
+                    .searchRestaurants(keywords))
+            )
+            .subscribe(restaurantList => {
+                this.restaurantList = restaurantList;
             });
 
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
 
 }
