@@ -2,10 +2,28 @@
     [formGroup]="personForm"
     (ngSubmit)="submitPerson()">
 
-    <input formControlName="firstName" type="text">
+    <input formControlName="firstName" placeholder="first name" type="text">
 
-    <input formControlName="lastName" type="text">
+    <input
+        *ngIf="personForm.get('lastName')"
+        formControlName="lastName"
+        placeholder="last name"
+        type="text">
 
-    <button type="submit">ADD</button>
+
+    <select formControlName="foodConstraintList" multiple>
+        <option value="gluten-intolerant">Gluten</option>
+        <option value="vegan">Vegan</option>
+    </select>
+
+    <!--    <div formGroupName="foodConstraints">-->
+    <!--        <input formControlName="glutenIntolerant" type="checkbox">-->
+    <!--        <input formControlName="vegan" type="checkbox">-->
+    <!--    </div>-->
+
+    <button
+        type="submit"
+        [disabled]="!personForm.valid">ADD
+    </button>
 
 </form>
