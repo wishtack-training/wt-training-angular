@@ -1,5 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,6 +12,7 @@ import { GroupEditorComponent } from './group/group-editor/group-editor.componen
 import { PersonFormComponent } from './group/person-form/person-form.component';
 import { PersonComponent } from './group/person/person.component';
 import { HelloComponent } from './hello/hello.component';
+import { RestaurantSearchComponent } from './restaurant/restaurant-search/restaurant-search.component';
 
 @NgModule({
     declarations: [
@@ -18,13 +21,18 @@ import { HelloComponent } from './hello/hello.component';
         GroupEditorComponent,
         HelloComponent,
         PersonComponent,
-        PersonFormComponent
+        PersonFormComponent,
+        RestaurantSearchComponent
     ],
     imports: [
         AppRoutingModule,
+        BrowserAnimationsModule,
         BrowserModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule
+        HttpClientModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
     bootstrap: [AppComponent]
 })

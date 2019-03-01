@@ -1,0 +1,16 @@
+<mat-form-field>
+    <input
+        matInput
+        placeholder="keywords"
+        type="text"
+        [formControl]="keywordsControl">
+</mat-form-field>
+
+<button
+    color="primary"
+    mat-raised-button
+    type="submit"
+    (click)="search()">SEARCH
+</button>
+
+<div *ngFor="let restaurant of restaurantList">{{ restaurant.name }}</div>
