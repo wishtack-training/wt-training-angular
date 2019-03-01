@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Person } from '../person';
 
 @Component({
     selector: 'wt-person-form',
@@ -7,6 +8,8 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./person-form.component.scss']
 })
 export class PersonFormComponent implements OnInit {
+
+    @Output() personSubmit = new EventEmitter<Person>();
 
     personForm = new FormGroup({
         firstName: new FormControl(),
@@ -38,7 +41,8 @@ export class PersonFormComponent implements OnInit {
     }
 
     submitPerson() {
-        console.log(this.personForm.value);
+        this.personSubmit.emit(new Person(this.personForm.value));
+        this.personForm.reset();
     }
 
 }

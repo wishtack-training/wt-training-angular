@@ -2,9 +2,7 @@
 
     <h1>Group</h1>
 
-    <wt-person-form></wt-person-form>
-
-    <button (click)="addPerson()">ADD</button>
+    <wt-person-form (personSubmit)="addPerson($event)"></wt-person-form>
 
     <div>Count: {{ getPersonCount() }}</div>
 
