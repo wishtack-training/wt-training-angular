@@ -1,7 +1,16 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,6 +21,7 @@ import { GroupEditorComponent } from './group/group-editor/group-editor.componen
 import { PersonFormComponent } from './group/person-form/person-form.component';
 import { PersonComponent } from './group/person/person.component';
 import { HelloComponent } from './hello/hello.component';
+import { NavComponent } from './nav/nav.component';
 import { RestaurantSearchComponent } from './restaurant/restaurant-search/restaurant-search.component';
 
 @NgModule({
@@ -22,7 +32,8 @@ import { RestaurantSearchComponent } from './restaurant/restaurant-search/restau
         HelloComponent,
         PersonComponent,
         PersonFormComponent,
-        RestaurantSearchComponent
+        RestaurantSearchComponent,
+        NavComponent
     ],
     imports: [
         AppRoutingModule,
@@ -32,7 +43,12 @@ import { RestaurantSearchComponent } from './restaurant/restaurant-search/restau
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
     ],
     bootstrap: [AppComponent]
 })
