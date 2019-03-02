@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/internal/operators/switchMap';
-import { debounceTime, distinctUntilChanged, retry } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, retry, switchMap } from 'rxjs/operators';
 import { RestaurantRepository } from '../restaurant-repository.service';
 import { Restaurant } from './restaurant';
 
