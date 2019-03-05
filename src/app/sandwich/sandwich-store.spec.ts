@@ -11,6 +11,34 @@ enum SandwichConstraint {
     Vegetarian = 'vegetarian'
 }
 
+class SandwichStore {
+    addSandwich(sandwich: Sandwich) {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    getSandwichList(): Sandwich[] {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    removeSandwich(sandwich: Sandwich) {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    searchSandwichesByConstraint(sandwichConstraintList: SandwichConstraint[]): Sandwich[] {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+}
+
+class Sandwich {
+
+    constructor(name: string, sandwichConstraintList: SandwichConstraint[] = []) {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+
+}
+
 describe('SandwichStore', () => {
 
     let sandwichStore: SandwichStore;
