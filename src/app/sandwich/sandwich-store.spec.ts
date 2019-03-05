@@ -5,44 +5,8 @@
  */
 
 
-enum SandwichConstraint {
-    GlutenFree = 'gluten-free',
-    Vegan = 'vegan',
-    Vegetarian = 'vegetarian'
-}
-
-class SandwichStore {
-
-    private _sandwichList: Sandwich[] = [];
-
-    addSandwich(sandwich: Sandwich) {
-        this._sandwichList = [...this._sandwichList, sandwich];
-    }
-
-    getSandwichList(): Sandwich[] {
-        return this._sandwichList;
-    }
-
-    removeSandwich(sandwich: Sandwich) {
-        throw new Error('😱 Not implemented yet!');
-    }
-
-    searchSandwichesByConstraint(sandwichConstraintList: SandwichConstraint[]): Sandwich[] {
-        throw new Error('😱 Not implemented yet!');
-    }
-
-}
-
-class Sandwich {
-
-    constructor(
-        public name: string,
-        public sandwichConstraintList: SandwichConstraint[] = []
-    ) {
-    }
-
-
-}
+import { Sandwich, SandwichConstraint } from './sandwich';
+import { SandwichStore } from './sandwich.store';
 
 describe('SandwichStore', () => {
 
@@ -87,7 +51,7 @@ describe('SandwichStore', () => {
 
     });
 
-    xit('should remove sandwiches', () => {
+    it('should remove sandwiches', () => {
 
         sandwichStore.addSandwich(sandwich1);
         sandwichStore.addSandwich(sandwich2);
