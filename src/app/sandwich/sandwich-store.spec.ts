@@ -12,12 +12,15 @@ enum SandwichConstraint {
 }
 
 class SandwichStore {
+
+    private _sandwichList: Sandwich[] = [];
+
     addSandwich(sandwich: Sandwich) {
-        throw new Error('😱 Not implemented yet!');
+        this._sandwichList = [...this._sandwichList, sandwich];
     }
 
     getSandwichList(): Sandwich[] {
-        throw new Error('😱 Not implemented yet!');
+        return this._sandwichList;
     }
 
     removeSandwich(sandwich: Sandwich) {
@@ -32,8 +35,10 @@ class SandwichStore {
 
 class Sandwich {
 
-    constructor(name: string, sandwichConstraintList: SandwichConstraint[] = []) {
-        throw new Error('😱 Not implemented yet!');
+    constructor(
+        public name: string,
+        public sandwichConstraintList: SandwichConstraint[] = []
+    ) {
     }
 
 
@@ -62,13 +67,17 @@ describe('SandwichStore', () => {
 
     });
 
-    xit('should add sandwiches', () => {
+    it('should add sandwiches', () => {
+
+        const emptySandwichList = sandwichStore.getSandwichList();
 
         sandwichStore.addSandwich(sandwich1);
         sandwichStore.addSandwich(sandwich2);
         sandwichStore.addSandwich(sandwich3);
 
         const sandwichList = sandwichStore.getSandwichList();
+
+        expect(emptySandwichList).toEqual([]);
 
         expect(sandwichList).toEqual([
             sandwich1,
