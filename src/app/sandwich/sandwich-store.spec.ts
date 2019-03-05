@@ -85,7 +85,23 @@ describe('SandwichStore', () => {
     });
 
     xit('should like a sandwich', () => {
+
+        // sandwichStore.addSandwich(sandwich1);
+        // sandwichStore.addSandwich(sandwich2);
+        // sandwichStore.addSandwich(sandwich3);
+        //
+        // sandwichStore.likeSandwich(sandwich1);
+        // sandwichStore.likeSandwich(sandwich1);
+        //
+        // const sandwichList = sandwichStore.getSandwichList();
+        //
+        // expect(sandwichList[0]).toEqual(new Sandwich({
+        //     name: 'Jambon beurre',
+        //     score: 2
+        // }));
+
         throw new Error('😱 Not implemented yet!');
+
     });
 
 });
