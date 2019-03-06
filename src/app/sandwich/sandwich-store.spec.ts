@@ -19,14 +19,19 @@ describe('SandwichStore', () => {
 
         sandwichStore = new SandwichStore();
 
-        sandwich1 = new Sandwich({name: 'Jambon beurre'});
+        sandwich1 = new Sandwich({
+            id: 'jambon-beurre',
+            name: 'Jambon beurre'
+        });
         sandwich2 = new Sandwich({
+            id: 'le-vert',
             name: 'Le vert',
             constraintList: [
                 SandwichConstraint.Vegetarian
             ]
         });
         sandwich3 = new Sandwich({
+            id: 'sans-gout',
             name: 'Sans Gout',
             constraintList: [
                 SandwichConstraint.GlutenFree,
@@ -63,7 +68,7 @@ describe('SandwichStore', () => {
         sandwichStore.addSandwich(sandwich2);
         sandwichStore.addSandwich(sandwich3);
 
-        sandwichStore.removeSandwich(sandwich2);
+        sandwichStore.removeSandwich(sandwich2.id);
 
         const sandwichList = sandwichStore.getSandwichList();
 
@@ -91,23 +96,18 @@ describe('SandwichStore', () => {
 
     });
 
-    xit('should like a sandwich', () => {
+    it('should like a sandwich', () => {
 
-        // sandwichStore.addSandwich(sandwich1);
-        // sandwichStore.addSandwich(sandwich2);
-        // sandwichStore.addSandwich(sandwich3);
-        //
-        // sandwichStore.likeSandwich(sandwich1);
-        // sandwichStore.likeSandwich(sandwich1);
-        //
-        // const sandwichList = sandwichStore.getSandwichList();
-        //
-        // expect(sandwichList[0]).toEqual(new Sandwich({
-        //     name: 'Jambon beurre',
-        //     score: 2
-        // }));
+        sandwichStore.addSandwich(sandwich1);
+        sandwichStore.addSandwich(sandwich2);
+        sandwichStore.addSandwich(sandwich3);
 
-        throw new Error('😱 Not implemented yet!');
+        sandwichStore.likeSandwich(sandwich1.id);
+        sandwichStore.likeSandwich(sandwich1.id);
+
+        const sandwichList = sandwichStore.getSandwichList();
+
+        expect(sandwichList[0].score).toEqual(2);
 
     });
 
