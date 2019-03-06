@@ -1,0 +1,13 @@
+<div>{{ now | date:'hh:mm:ss' }}</div>
+
+<h1>{{ sandwich.name | titlecase }}</h1>
+
+<button
+    [class.disabled]="hasVeganConstraint()"
+    [disabled]="hasVeganConstraint()"
+    (click)="addVeganConstraint()">ADD VEGAN CONSTRAINT
+</button>
+
+<div *ngFor="let constraint of sandwich.constraintList">
+    {{ constraint }}
+</div>
