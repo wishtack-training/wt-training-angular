@@ -23,4 +23,8 @@ export class SandwichGalleryComponent {
         this._sandwichStore.removeSandwich(sandwichId);
     }
 
+    shouldShowBottomForm() {
+        return this.getSandwichList().length > 5;
+    }
+
 }

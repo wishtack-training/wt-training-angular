@@ -5,3 +5,7 @@
     *ngFor="let sandwich of getSandwichList()"
     [sandwich]="sandwich"
     (sandwichRemove)="removeSandwich($event)"></wt-sandwich-preview>
+
+<wt-sandwich-form
+    *ngIf="shouldShowBottomForm()"
+    (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
