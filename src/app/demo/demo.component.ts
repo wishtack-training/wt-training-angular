@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Sandwich, SandwichConstraint } from '../sandwich/sandwich';
 
 @Component({
@@ -7,6 +8,14 @@ import { Sandwich, SandwichConstraint } from '../sandwich/sandwich';
     styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+
+    ingredientForm = new FormGroup({
+        isToxic: new FormControl(),
+        name: new FormControl(null, [
+            Validators.required
+        ]),
+        quantity: new FormControl()
+    });
 
     sandwich = new Sandwich({
         id: 'le-vert',
@@ -38,5 +47,9 @@ export class DemoComponent implements OnInit {
                 SandwichConstraint.Vegan
             ]
         });
+    }
+
+    addIngredient() {
+        console.log(this.ingredientForm.value);
     }
 }

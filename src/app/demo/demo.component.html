@@ -1,3 +1,26 @@
+<form
+    [formGroup]="ingredientForm"
+    (ngSubmit)="addIngredient()">
+
+    <input
+        formControlName="name"
+        placeholder="ingredient"
+        type="text">
+
+    <input
+        formControlName="quantity"
+        placeholder="quantity"
+        type="number">
+
+    <button
+        type="submit"
+        [disabled]="!ingredientForm.valid">ADD
+    </button>
+
+</form>
+
+<hr>
+
 <div>{{ now | date:'hh:mm:ss' }}</div>
 
 <h1>{{ sandwich.name | titlecase }}</h1>
