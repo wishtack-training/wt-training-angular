@@ -1,9 +1,6 @@
 <button (click)="addSandwich()">ADD SANDWICH</button>
 
-<div *ngFor="let sandwich of getSandwichList()">
-
-    <h1>{{ sandwich.name }}</h1>
-
-    <button (click)="removeSandwich(sandwich.id)">REMOVE</button>
-
-</div>
+<wt-sandwich-preview
+    *ngFor="let sandwich of getSandwichList()"
+    [sandwich]="sandwich"
+    (sandwichRemove)="removeSandwich($event)"></wt-sandwich-preview>

@@ -15,7 +15,7 @@ export class SandwichGalleryComponent {
     addSandwich() {
         const sandwich = new Sandwich({
             id: (this._currentId++).toString(),
-            name: prompt('name?')
+            name: 'Sandwich'
         });
         this._sandwichStore.addSandwich(sandwich);
     }
