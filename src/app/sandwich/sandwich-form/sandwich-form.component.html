@@ -29,10 +29,20 @@
                 </mat-select>
             </mat-form-field>
 
+            <div *ngIf="sandwichForm.hasError('sandwichConstraints', 'constraintList')">
+                {{ sandwichForm.getError('sandwichConstraints', 'constraintList').message }}
+            </div>
+
+
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Submit</button>
+            <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!sandwichForm.valid">Submit
+            </button>
         </mat-card-actions>
 
     </mat-card>
