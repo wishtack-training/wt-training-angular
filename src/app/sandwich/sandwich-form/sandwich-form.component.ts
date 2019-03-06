@@ -17,6 +17,7 @@ export class SandwichFormComponent {
 
     onSubmit() {
         const sandwich = new Sandwich(this.sandwichForm.value);
+        this.sandwichForm.reset();
         this.sandwichSubmit.emit(sandwich);
     }
 
