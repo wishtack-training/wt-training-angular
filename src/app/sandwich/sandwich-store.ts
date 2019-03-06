@@ -2,10 +2,18 @@ import { Sandwich, SandwichConstraint } from './sandwich';
 
 export class SandwichStore {
 
+    private _currentId = 0;
     private _sandwichList: Sandwich[] = [];
 
     addSandwich(sandwich: Sandwich) {
+
+        sandwich = new Sandwich({
+            ...sandwich,
+            id: (this._currentId++).toString()
+        });
+
         this._sandwichList = [...this._sandwichList, sandwich];
+
     }
 
     getSandwichList(): Sandwich[] {

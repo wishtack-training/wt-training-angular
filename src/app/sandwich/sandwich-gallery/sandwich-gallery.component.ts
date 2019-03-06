@@ -9,14 +9,9 @@ import { SandwichStore } from '../sandwich-store';
 })
 export class SandwichGalleryComponent {
 
-    private _currentId = 0;
     private _sandwichStore = new SandwichStore();
 
-    addSandwich() {
-        const sandwich = new Sandwich({
-            id: (this._currentId++).toString(),
-            name: 'Sandwich'
-        });
+    addSandwich(sandwich: Sandwich) {
         this._sandwichStore.addSandwich(sandwich);
     }
 

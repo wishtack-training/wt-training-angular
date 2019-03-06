@@ -1,4 +1,5 @@
-<button (click)="addSandwich()">ADD SANDWICH</button>
+<wt-sandwich-form
+    (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
 <wt-sandwich-preview
     *ngFor="let sandwich of getSandwichList()"
