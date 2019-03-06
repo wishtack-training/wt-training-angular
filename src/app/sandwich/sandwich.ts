@@ -6,11 +6,14 @@ export enum SandwichConstraint {
 
 export class Sandwich {
 
-    constructor(
-        public name: string,
-        public sandwichConstraintList: SandwichConstraint[] = []
-    ) {
-    }
+    constraintList: SandwichConstraint[];
+    name: string;
+    score: number;
 
+    constructor(args: Partial<Sandwich> = {}) {
+        this.name = args.name;
+        this.constraintList = args.constraintList;
+        this.score = args.score;
+    }
 
 }

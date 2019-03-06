@@ -6,7 +6,7 @@
 
 
 import { Sandwich, SandwichConstraint } from './sandwich';
-import { SandwichStore } from './sandwich.store';
+import { SandwichStore } from './sandwich-store';
 
 describe('SandwichStore', () => {
 
@@ -19,15 +19,21 @@ describe('SandwichStore', () => {
 
         sandwichStore = new SandwichStore();
 
-        sandwich1 = new Sandwich('Jambon beurre');
-        sandwich2 = new Sandwich('Le vert', [
-            SandwichConstraint.Vegetarian
-        ]);
-        sandwich3 = new Sandwich('Sans Gout', [
-            SandwichConstraint.GlutenFree,
-            SandwichConstraint.Vegan,
-            SandwichConstraint.Vegetarian,
-        ]);
+        sandwich1 = new Sandwich({name: 'Jambon beurre'});
+        sandwich2 = new Sandwich({
+            name: 'Le vert',
+            constraintList: [
+                SandwichConstraint.Vegetarian
+            ]
+        });
+        sandwich3 = new Sandwich({
+            name: 'Sans Gout',
+            constraintList: [
+                SandwichConstraint.GlutenFree,
+                SandwichConstraint.Vegan,
+                SandwichConstraint.Vegetarian,
+            ]
+        });
 
     });
 
