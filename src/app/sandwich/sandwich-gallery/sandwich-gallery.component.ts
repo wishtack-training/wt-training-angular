@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Sandwich } from '../sandwich';
 import { SandwichStore } from '../sandwich-store';
 
 @Component({
@@ -6,17 +7,25 @@ import { SandwichStore } from '../sandwich-store';
     templateUrl: './sandwich-gallery.component.html',
     styleUrls: ['./sandwich-gallery.component.scss']
 })
-export class SandwichGalleryComponent implements OnInit {
+export class SandwichGalleryComponent {
 
-    sandwichStore = new SandwichStore();
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    private _currentId = 0;
+    private _sandwichStore = new SandwichStore();
 
     addSandwich() {
-        prompt('name ?');
+        const sandwich = new Sandwich({
+            id: (this._currentId++).toString(),
+            name: prompt('name?')
+        });
+        this._sandwichStore.addSandwich(sandwich);
     }
+
+    getSandwichList() {
+        return this._sandwichStore.getSandwichList();
+    }
+
+    removeSandwich(sandwichId: string) {
+        this._sandwichStore.removeSandwich(sandwichId);
+    }
+
 }

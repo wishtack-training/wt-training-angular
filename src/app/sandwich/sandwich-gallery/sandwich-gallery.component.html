@@ -1,14 +1,9 @@
 <button (click)="addSandwich()">ADD SANDWICH</button>
 
-<div>
-    <span>Jambon Beurre</span>
-    <button>REMOVE</button>
-</div>
-<div>
-    <span>Le Vert</span>
-    <button>REMOVE</button>
-</div>
-<div>
-    <span>...</span>
-    <button>REMOVE</button>
+<div *ngFor="let sandwich of getSandwichList()">
+
+    <h1>{{ sandwich.name }}</h1>
+
+    <button (click)="removeSandwich(sandwich.id)">REMOVE</button>
+
 </div>
