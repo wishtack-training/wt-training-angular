@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Sandwich } from '../sandwich';
 import { SandwichStore } from '../sandwich-store';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-sandwich-gallery',
     templateUrl: './sandwich-gallery.component.html',
     styleUrls: ['./sandwich-gallery.component.scss']
 })
 export class SandwichGalleryComponent {
 
-    private _sandwichStore = new SandwichStore();
+    constructor(private _sandwichStore: SandwichStore) {
+    }
 
     addSandwich(sandwich: Sandwich) {
         this._sandwichStore.addSandwich(sandwich);

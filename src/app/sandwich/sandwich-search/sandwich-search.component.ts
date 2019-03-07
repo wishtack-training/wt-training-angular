@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { debounceTime, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
 import { Sandwich } from '../sandwich';
-import { SandwichRepository, SandwichSearchParams } from '../sandwich-repository.service';
+import { SandwichRepository } from '../sandwich-repository.service';
 
 
 @Component({
@@ -26,9 +25,7 @@ export class SandwichSearchComponent implements OnInit {
 
     ngOnInit() {
 
-        const params$: Observable<SandwichSearchParams> = this.sandwichSearchForm.valueChanges;
-
-        const sandwichList$ = params$
+        const sandwichList$ = this.sandwichSearchForm.valueChanges
             .pipe(
                 debounceTime(100),
                 switchMap(params => {

@@ -1,5 +1,9 @@
+import { Injectable } from '@angular/core';
 import { Sandwich, SandwichConstraint } from './sandwich';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class SandwichStore {
 
     private _currentId = 0;
