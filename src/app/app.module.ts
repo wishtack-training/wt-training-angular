@@ -7,7 +7,8 @@ import {
     MatInputModule,
     MatListModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSliderModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +41,7 @@ import { SandwichSearchComponent } from './sandwich/sandwich-search/sandwich-sea
         MatInputModule,
         MatListModule,
         MatSelectModule,
+        MatSliderModule,
         MatRadioModule
     ],
     providers: [],
