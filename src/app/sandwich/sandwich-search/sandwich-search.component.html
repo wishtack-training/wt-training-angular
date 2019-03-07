@@ -1,7 +1,6 @@
 <form
     class="sandwich-search__form"
-    [formGroup]="sandwichSearchForm"
-    (ngSubmit)="search(params)">
+    [formGroup]="sandwichSearchForm">
 
     <mat-form-field>
         <input matInput placeholder="Name" formControlName="keywords">
@@ -14,12 +13,6 @@
         max="10"
         step="0.1"
         thumbLabel></mat-slider>
-
-    <button
-        color="primary"
-        mat-raised-button
-        type="submit">SEARCH
-    </button>
 
 </form>
 
