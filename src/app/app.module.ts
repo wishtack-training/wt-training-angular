@@ -1,7 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatInputModule, MatRadioModule, MatSelectModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatListModule,
+    MatRadioModule,
+    MatSelectModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -31,6 +38,7 @@ import { SandwichSearchComponent } from './sandwich/sandwich-search/sandwich-sea
         MatButtonModule,
         MatCardModule,
         MatInputModule,
+        MatListModule,
         MatSelectModule,
         MatRadioModule
     ],

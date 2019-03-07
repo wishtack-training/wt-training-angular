@@ -14,8 +14,8 @@ export class SandwichPreviewComponent {
     @Input() shouldShowRemove = true;
     @Output() sandwichRemove = new EventEmitter<string>();
 
-    removeSandwich(sandwichId: string) {
-        this.sandwichRemove.emit(sandwichId);
+    removeSandwich() {
+        this.sandwichRemove.emit(this.sandwich.id);
     }
 
 }

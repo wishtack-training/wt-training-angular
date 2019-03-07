@@ -1,8 +1,25 @@
-<h1>{{ sandwich.name }}</h1>
+<mat-card class="sandwich-preview__card">
 
-<button
-    *ngIf="shouldShowRemove"
-    (click)="removeSandwich(sandwich.id)">Remove
-</button>
+    <mat-card-header>
+        <mat-card-title>{{ sandwich.name }}</mat-card-title>
+        <mat-card-subtitle *ngIf="sandwich.price">
+            {{ sandwich.price.amount | currency:sandwich.price.currency }}
+        </mat-card-subtitle>
+    </mat-card-header>
 
-<div *ngFor="let constraint of sandwich.constraintList">{{ constraint }}</div>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item
+                *ngFor="let constraint of sandwich.constraintList">{{ constraint | titlecase }}</mat-list-item>
+        </mat-list>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button
+            *ngIf="shouldShowRemove"
+            mat-button
+            (click)="removeSandwich()">REMOVE
+        </button>
+    </mat-card-actions>
+
+</mat-card>
