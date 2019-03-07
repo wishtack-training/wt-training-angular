@@ -11,6 +11,7 @@ export class SandwichPreviewComponent {
 
     @Input() buttonLabel = 'Remove';
     @Input() sandwich: Sandwich;
+    @Input() shouldShowRemove = true;
     @Output() sandwichRemove = new EventEmitter<string>();
 
     removeSandwich(sandwichId: string) {

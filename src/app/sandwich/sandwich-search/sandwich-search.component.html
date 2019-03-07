@@ -1,0 +1,18 @@
+<form [formGroup]="sandwichSearchForm" (ngSubmit)="search()">
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Name" formControlName="keywords">
+    </mat-form-field>
+
+    <button
+        color="primary"
+        mat-raised-button
+        type="submit">SEARCH
+    </button>
+
+</form>
+
+<wt-sandwich-preview
+    *ngFor="let sandwich of sandwichList"
+    [sandwich]="sandwich"
+    [shouldShowRemove]="false"></wt-sandwich-preview>

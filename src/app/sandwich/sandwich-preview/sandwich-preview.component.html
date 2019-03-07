@@ -1,5 +1,8 @@
 <h1>{{ sandwich.name }}</h1>
 
-<button (click)="removeSandwich(sandwich.id)">Remove</button>
+<button
+    *ngIf="shouldShowRemove"
+    (click)="removeSandwich(sandwich.id)">Remove
+</button>
 
 <div *ngFor="let constraint of sandwich.constraintList">{{ constraint }}</div>

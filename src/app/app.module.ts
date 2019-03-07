@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatInputModule, MatRadioModule, MatSelectModule } from '@angular/material';
@@ -10,6 +11,7 @@ import { DemoComponent } from './demo/demo.component';
 import { SandwichFormComponent } from './sandwich/sandwich-form/sandwich-form.component';
 import { SandwichGalleryComponent } from './sandwich/sandwich-gallery/sandwich-gallery.component';
 import { SandwichPreviewComponent } from './sandwich/sandwich-preview/sandwich-preview.component';
+import { SandwichSearchComponent } from './sandwich/sandwich-search/sandwich-search.component';
 
 @NgModule({
     declarations: [
@@ -17,18 +19,20 @@ import { SandwichPreviewComponent } from './sandwich/sandwich-preview/sandwich-p
         DemoComponent,
         SandwichGalleryComponent,
         SandwichPreviewComponent,
-        SandwichFormComponent
+        SandwichFormComponent,
+        SandwichSearchComponent
     ],
     imports: [
-        BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatInputModule,
+        BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
         MatButtonModule,
+        MatCardModule,
+        MatInputModule,
         MatSelectModule,
-        MatRadioModule,
-        MatCardModule
+        MatRadioModule
     ],
     providers: [],
     bootstrap: [AppComponent]
