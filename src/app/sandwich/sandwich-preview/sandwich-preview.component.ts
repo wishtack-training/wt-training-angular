@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Sandwich } from '../sandwich';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-sandwich-preview',
     templateUrl: './sandwich-preview.component.html',
     styleUrls: ['./sandwich-preview.component.scss']

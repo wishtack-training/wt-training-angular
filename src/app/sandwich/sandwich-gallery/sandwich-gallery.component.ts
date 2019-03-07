@@ -27,4 +27,7 @@ export class SandwichGalleryComponent {
         return this.getSandwichList().length > 5;
     }
 
+    likeSandwich(sandwichId: string) {
+        this._sandwichStore.likeSandwich(sandwichId);
+    }
 }

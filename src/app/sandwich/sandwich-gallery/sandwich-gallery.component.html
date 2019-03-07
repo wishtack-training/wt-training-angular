@@ -1,10 +1,15 @@
 <wt-sandwich-form
     (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
-<wt-sandwich-preview
-    *ngFor="let sandwich of getSandwichList()"
-    [sandwich]="sandwich"
-    (sandwichRemove)="removeSandwich($event)"></wt-sandwich-preview>
+<ng-container *ngFor="let sandwich of getSandwichList()">
+
+    <wt-sandwich-preview
+        [sandwich]="sandwich"
+        (sandwichRemove)="removeSandwich($event)"></wt-sandwich-preview>
+
+    <button (click)="likeSandwich(sandwich.id)">LIKE</button>
+
+</ng-container>
 
 <wt-sandwich-form
     *ngIf="shouldShowBottomForm()"
