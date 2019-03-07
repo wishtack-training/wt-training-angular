@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SandwichGalleryComponent } from './sandwich/sandwich-gallery/sandwich-gallery.component';
-import { SandwichSearchViewComponent } from './views/sandwich-search-view/sandwich-search-view.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
     {
         path: 'search',
-        component: SandwichSearchViewComponent
+        loadChildren: './views/sandwich-search-view/sandwich-search-view.module#SandwichSearchViewModule'
     },
     {
-        path: 'gallery',
-        component: SandwichGalleryComponent
+        path: 'landing',
+        component: LandingComponent
     },
     {
         path: '**',
-        redirectTo: 'search'
+        redirectTo: 'landing'
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule

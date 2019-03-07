@@ -26,7 +26,7 @@ export class SandwichSearchViewComponent implements OnInit {
     }
 
     onKeywordsChange(keywords: string) {
-        this._router.navigate(['.'], {
+        this._router.navigate(['/search'], {
             queryParams: {
                 keywords
             }
