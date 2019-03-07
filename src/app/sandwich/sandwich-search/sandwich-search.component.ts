@@ -1,14 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { debounceTime, map, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
+import { debounceTime, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
 import { Sandwich } from '../sandwich';
+import { SandwichRepository, SandwichSearchParams } from '../sandwich-repository.service';
 
-interface SandwichSearchParams {
-    keywords: string;
-    maxPrice: number;
-}
 
 @Component({
     selector: 'wt-sandwich-search',
@@ -24,7 +20,7 @@ export class SandwichSearchComponent implements OnInit {
     });
 
     constructor(
-        private _httpClient: HttpClient
+        private _sandwichRepository: SandwichRepository
     ) {
     }
 
@@ -36,7 +32,7 @@ export class SandwichSearchComponent implements OnInit {
             .pipe(
                 debounceTime(100),
                 switchMap(params => {
-                    return this.search(params)
+                    return this._sandwichRepository.search(params)
                         .pipe(
                             retry(3),
                             onErrorResumeNext()
@@ -58,30 +54,5 @@ export class SandwichSearchComponent implements OnInit {
 
     }
 
-    search(params: SandwichSearchParams): Observable<Sandwich[]> {
-
-        const {keywords, maxPrice} = params;
-
-        const queryParams: any = {};
-
-
-        if (maxPrice != null) {
-            queryParams['price.amount_lte'] = maxPrice.toString();
-        }
-
-        if (keywords != null) {
-            queryParams.q = keywords;
-        }
-
-        return this._httpClient.get<Partial<Sandwich>[]>('https://api-oowrismgwd.now.sh/sandwiches', {
-            params: queryParams
-        })
-            .pipe(
-                map(dataList => {
-                    return dataList.map(data => new Sandwich(data));
-                })
-            );
-
-    }
 
 }
