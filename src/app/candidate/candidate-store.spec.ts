@@ -24,12 +24,11 @@ class CandidateStore {
         this._candidateList = [...this._candidateList, candidate];
     }
 
-    /**
-     * @deprecated WIP.
-     */
     removeCandidate(candidate: Candidate) {
-        throw new Error('😱 Not implemented yet!');
+        this._candidateList = this._candidateList
+            .filter(_candidate => _candidate !== candidate);
     }
+
 }
 
 describe('CandidateStore', () => {
@@ -79,7 +78,7 @@ describe('CandidateStore', () => {
 
     });
 
-    xit('should remove candidates', () => {
+    it('should remove candidates', () => {
 
         candidateStore.addCandidate(candidate1);
         candidateStore.addCandidate(candidate2);
