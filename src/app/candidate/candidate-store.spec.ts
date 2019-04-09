@@ -1,3 +1,41 @@
+class Candidate {
+
+    firstName: string;
+    lastName: string;
+    skillList: string[];
+
+    constructor(firstName: string, lastName: string, skillList: string[]) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.skillList = skillList;
+    }
+
+}
+
+class CandidateStore {
+
+    /**
+     * @deprecated WIP.
+     */
+    getCandidateList(): Candidate[] {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    /**
+     * @deprecated WIP.
+     */
+    addCandidate(candidate: Candidate) {
+        throw new Error('😱 Not implemented yet!');
+    }
+
+    /**
+     * @deprecated WIP.
+     */
+    removeCandidate(candidate: Candidate) {
+        throw new Error('😱 Not implemented yet!');
+    }
+}
+
 describe('CandidateStore', () => {
 
     let candidateStore: CandidateStore;
@@ -24,13 +62,18 @@ describe('CandidateStore', () => {
             'Python'
         ]);
 
+    });
+
+    xit('should add candidates', () => {
+
+        const emptyCandidateList = candidateStore.getCandidateList();
+
         candidateStore.addCandidate(candidate1);
         candidateStore.addCandidate(candidate2);
         candidateStore.addCandidate(candidate3);
 
-    });
-
-    xit('should add candidates', () => {
+        /* Making sure that `emptyCandidateList` is not messed with. */
+        expect(emptyCandidateList.length).toEqual(0);
 
         expect(candidateStore.getCandidateList()).toEqual([
             candidate1,
@@ -41,6 +84,10 @@ describe('CandidateStore', () => {
     });
 
     xit('should remove candidates', () => {
+
+        candidateStore.addCandidate(candidate1);
+        candidateStore.addCandidate(candidate2);
+        candidateStore.addCandidate(candidate3);
 
         candidateStore.removeCandidate(candidate2);
 
