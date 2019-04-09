@@ -2,5 +2,11 @@
 
 <wt-candidate-preview
     *ngFor="let candidate of getCandidateList()"
-    [candidate]="candidate"
-    (candidateRemove)="removeCandidate(candidate)"></wt-candidate-preview>
+    [candidate]="candidate">
+
+    <!-- Projected content. -->
+    <div>
+        <button (click)="removeCandidate(candidate)">REMOVE</button>
+    </div>
+
+</wt-candidate-preview>

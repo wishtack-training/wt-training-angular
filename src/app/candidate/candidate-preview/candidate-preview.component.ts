@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Candidate } from '../candidate';
 
 @Component({
@@ -9,10 +9,5 @@ import { Candidate } from '../candidate';
 export class CandidatePreviewComponent {
 
     @Input() candidate: Candidate;
-    @Output() candidateRemove = new EventEmitter();
-
-    removeCandidate() {
-        this.candidateRemove.emit();
-    }
 
 }
