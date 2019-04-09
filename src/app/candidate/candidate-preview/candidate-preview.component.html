@@ -1,5 +1,10 @@
 <hr>
-<span>{{ candidate.firstName }}</span>
+<h1>{{ candidate.firstName }}</h1>
+
+<img
+    class="wt-candidate-picture"
+    [src]="getPictureUri()"
+    [alt]="candidate.firstName">
 
 <wt-skill-list
     [skillList]="candidate.skillList"></wt-skill-list>

@@ -10,4 +10,8 @@ export class CandidatePreviewComponent {
 
     @Input() candidate: Candidate;
 
+    getPictureUri() {
+        return `https://robohash.org/${this.candidate.firstName}?set=set4`;
+    }
+
 }
