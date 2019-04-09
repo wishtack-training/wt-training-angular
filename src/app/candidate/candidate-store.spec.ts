@@ -14,18 +14,14 @@ class Candidate {
 
 class CandidateStore {
 
-    /**
-     * @deprecated WIP.
-     */
-    getCandidateList(): Candidate[] {
-        throw new Error('😱 Not implemented yet!');
+    private _candidateList: Candidate[] = [];
+
+    getCandidateList() {
+        return this._candidateList;
     }
 
-    /**
-     * @deprecated WIP.
-     */
     addCandidate(candidate: Candidate) {
-        throw new Error('😱 Not implemented yet!');
+        this._candidateList = [...this._candidateList, candidate];
     }
 
     /**
@@ -64,7 +60,7 @@ describe('CandidateStore', () => {
 
     });
 
-    xit('should add candidates', () => {
+    it('should add candidates', () => {
 
         const emptyCandidateList = candidateStore.getCandidateList();
 
