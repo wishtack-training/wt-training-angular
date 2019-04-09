@@ -1,0 +1,11 @@
+<ul>
+
+    <li *ngFor="let skill of skillList">
+        <button
+            [disabled]="!isSkillEnabled(skill)"
+            (click)="selectSkill(skill)">{{ skill }}</button>
+    </li>
+
+</ul>
+
+<h1 *ngIf="mainSkill != null">{{ mainSkill }}</h1>
