@@ -1,14 +1,6 @@
 <button (click)="addCandidate()">ADD CANDIDATE</button>
 
-<ul>
-    <li *ngFor="let candidate of getCandidateList()">
-
-        <span>{{ candidate.firstName }}</span>
-
-        <wt-skill-list
-            [skillList]="candidate.skillList"></wt-skill-list>
-
-        <button (click)="removeCandidate(candidate)">REMOVE</button>
-
-    </li>
-</ul>
+<wt-candidate-preview
+    *ngFor="let candidate of getCandidateList()"
+    [candidate]="candidate"
+    (candidateRemove)="removeCandidate(candidate)"></wt-candidate-preview>
