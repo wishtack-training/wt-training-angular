@@ -1,0 +1,8 @@
+<button (click)="addCandidate()">ADD CANDIDATE</button>
+
+<ul>
+    <li *ngFor="let candidate of getCandidateList()">
+        <span>{{ candidate.firstName }}</span>
+        <button (click)="removeCandidate(candidate)">REMOVE</button>
+    </li>
+</ul>
