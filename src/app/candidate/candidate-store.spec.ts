@@ -13,19 +13,25 @@ describe('CandidateStore', () => {
 
         candidateStore = new CandidateStore();
 
-        candidate1 = new Candidate('Foo', 'BAR', [
-            'Angular',
-            'JavaScript'
-        ]);
-        candidate2 = new Candidate('John', 'DOE', [
-            'Angular',
-            'JavaScript',
-            'Python'
-        ]);
-        candidate3 = new Candidate('Tony', 'STARK', [
-            'Kite-surf',
-            'Python'
-        ]);
+        candidate1 = new Candidate({
+            firstName: 'Foo', lastName: 'BAR', skillList: [
+                'Angular',
+                'JavaScript'
+            ]
+        });
+        candidate2 = new Candidate({
+            firstName: 'John', lastName: 'DOE', skillList: [
+                'Angular',
+                'JavaScript',
+                'Python'
+            ]
+        });
+        candidate3 = new Candidate({
+            firstName: 'Tony', lastName: 'STARK', skillList: [
+                'Kite-surf',
+                'Python'
+            ]
+        });
 
     });
 

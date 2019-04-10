@@ -4,10 +4,10 @@ export class Candidate {
     lastName: string;
     skillList: string[];
 
-    constructor(firstName?: string, lastName?: string, skillList: string[] = []) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.skillList = skillList;
+    constructor(args: Partial<Candidate>) {
+        this.firstName = args.firstName;
+        this.lastName = args.lastName;
+        this.skillList = args.skillList || [];
     }
 
 }

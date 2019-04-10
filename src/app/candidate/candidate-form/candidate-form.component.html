@@ -1,0 +1,15 @@
+<form
+    [formGroup]="candidateForm"
+    (ngSubmit)="submitCandidate()">
+
+    <mat-form-field>
+        <input formControlName="firstName" placeholder="First Name" type="text" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input formControlName="lastName" placeholder="Last Name" type="text" matInput>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">SUBMIT</button>
+
+</form>

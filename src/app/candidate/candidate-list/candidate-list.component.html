@@ -1,4 +1,4 @@
-<button (click)="addCandidate()">ADD CANDIDATE</button>
+<wt-candidate-form (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
 
 <wt-candidate-preview
     *ngFor="let candidate of getCandidateList()"
