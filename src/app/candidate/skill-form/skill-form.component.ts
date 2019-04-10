@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { resetForm } from '../../helpers/reset-form';
-import { Skill } from './skill';
 
 @Component({
     selector: 'wt-skill-form',
@@ -10,17 +8,14 @@ import { Skill } from './skill';
 })
 export class SkillFormComponent {
 
-    @Output() skillSubmit = new EventEmitter<Skill>();
+    @Input() skillFormGroup: FormGroup;
 
-    skillForm: FormGroup;
-
-    constructor() {
-        this.skillForm = new FormGroup({
+    static createSkillFormGroup() {
+        return new FormGroup({
             name: new FormControl(null, [
                 Validators.required
             ]),
             level: new FormControl(null, [
-                Validators.required,
                 Validators.min(0),
                 Validators.max(5)
             ])
@@ -28,15 +23,7 @@ export class SkillFormComponent {
     }
 
     get nameControl() {
-        return this.skillForm.get('name');
-    }
-
-    submitSkill() {
-
-        const skill = new Skill(this.skillForm.value);
-        resetForm(this.skillForm);
-        this.skillSubmit.emit(skill);
-
+        return this.skillFormGroup.get('name');
     }
 
 }

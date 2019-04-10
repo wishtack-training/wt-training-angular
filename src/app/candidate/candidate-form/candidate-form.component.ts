@@ -1,14 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { resetForm } from '../../helpers/reset-form';
 import { Candidate } from '../candidate';
+import { Skill } from '../skill-form/skill';
+import { SkillFormComponent } from '../skill-form/skill-form.component';
 
 @Component({
     selector: 'wt-candidate-form',
     templateUrl: './candidate-form.component.html',
     styleUrls: ['./candidate-form.component.scss']
 })
-export class CandidateFormComponent implements OnInit {
+export class CandidateFormComponent {
 
     /**
      * 1. @Input
@@ -28,7 +30,7 @@ export class CandidateFormComponent implements OnInit {
             firstName: new FormControl(),
             lastName: new FormControl(),
             skillList: new FormArray([
-                this._createSkillFormGroup()
+                SkillFormComponent.createSkillFormGroup()
             ])
         });
     }
@@ -37,38 +39,28 @@ export class CandidateFormComponent implements OnInit {
         return this.candidateForm.get('skillList') as FormArray;
     }
 
-    ngOnInit() {
-        this.candidateForm.valueChanges.subscribe(value => console.log(value));
-    }
-
     addSkill() {
-        this.skillListFormArray.push(this._createSkillFormGroup());
+        this.skillListFormArray.push(SkillFormComponent.createSkillFormGroup());
     }
 
     submitCandidate() {
 
-        const candidate = new Candidate(this.candidateForm.value);
+        const skillList = this.candidateForm.value.skillList
+            .map(skill => new Skill(skill));
+
+        const candidate = new Candidate({
+            ...this.candidateForm.value,
+            skillList
+        });
 
         this.candidateSubmit.emit(candidate);
 
         resetForm(this.candidateForm);
 
         this.candidateForm.setControl('skillList', new FormArray([
-            this._createSkillFormGroup()
+            SkillFormComponent.createSkillFormGroup()
         ]));
 
-    }
-
-    private _createSkillFormGroup() {
-        return new FormGroup({
-            name: new FormControl(null, [
-                Validators.required
-            ]),
-            level: new FormControl(null, [
-                Validators.min(0),
-                Validators.max(5)
-            ])
-        });
     }
 
 }

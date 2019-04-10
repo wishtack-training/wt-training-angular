@@ -10,19 +10,9 @@
         <input formControlName="lastName" placeholder="Last Name" type="text" matInput>
     </mat-form-field>
 
-    <div
+    <wt-skill-form
         *ngFor="let control of skillListFormArray.controls"
-        [formGroup]="control">
-
-        <mat-form-field>
-            <input formControlName="name" placeholder="Skill" type="text" matInput>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input formControlName="level" placeholder="Level" type="number" matInput>
-        </mat-form-field>
-
-    </div>
+        [skillFormGroup]="control"></wt-skill-form>
 
     <button
         mat-button
