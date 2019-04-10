@@ -10,10 +10,31 @@
         <input formControlName="lastName" placeholder="Last Name" type="text" matInput>
     </mat-form-field>
 
-    <wt-skill-form (skillSubmit)="addSkill($event)"></wt-skill-form>
+    <div
+        *ngFor="let control of skillListFormArray.controls"
+        [formGroup]="control">
 
-    <wt-skill-list [skillList]="skillList"></wt-skill-list>
+        <mat-form-field>
+            <input formControlName="name" placeholder="Skill" type="text" matInput>
+        </mat-form-field>
 
-    <button mat-raised-button type="submit">SUBMIT</button>
+        <mat-form-field>
+            <input formControlName="level" placeholder="Level" type="number" matInput>
+        </mat-form-field>
+
+    </div>
+
+    <button
+        mat-button
+        type="button"
+        [disabled]="!skillListFormArray.valid"
+        (click)="addSkill()">ADD SKILL
+    </button>
+
+    <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!candidateForm.valid">SUBMIT
+    </button>
 
 </form>
