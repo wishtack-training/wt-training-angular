@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { resetForm } from '../../helpers/reset-form';
 
 export class Skill {
 
@@ -21,26 +21,30 @@ export class Skill {
 })
 export class SkillFormComponent {
 
-    nameControl = new FormControl(null, [
-        Validators.required
-    ]);
-    levelControl = new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(5)
-    ]);
     skillForm: FormGroup;
 
     constructor() {
         this.skillForm = new FormGroup({
-            name: this.nameControl,
-            level: this.levelControl
+            name: new FormControl(null, [
+                Validators.required
+            ]),
+            level: new FormControl(null, [
+                Validators.required,
+                Validators.min(0),
+                Validators.max(5)
+            ])
         });
     }
 
+    get nameControl() {
+        return this.skillForm.get('name');
+    }
+
     submitSkill() {
+
         const skill = new Skill(this.skillForm.value);
-        this.skillForm.reset();
+        resetForm(this.skillForm);
+
     }
 
 }
