@@ -22,4 +22,7 @@ https://floobits.com/younes
 ## Repo
 https://www.github.com/wishtack-training/wt-training-angular
 
+## ngTemplateOutlet
+https://stackblitz.com/edit/wt-ng-template-outlet
+
 ## Checkout today's branch: YYYY-MM-DD.
