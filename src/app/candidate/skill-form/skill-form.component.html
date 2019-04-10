@@ -1,0 +1,27 @@
+<form
+    [formGroup]="skillForm"
+    (ngSubmit)="submitSkill()">
+
+    <input formControlName="name" type="text">
+
+    <input formControlName="level" type="number">
+
+    <button
+        type="submit"
+        [disabled]="!skillForm.valid">ADD SKILL
+    </button>
+
+</form>
+
+<ul *ngIf="!skillForm.valid">
+    <!-- Name errors. -->
+    <li *ngIf="nameControl.touched && nameControl.hasError('required')">
+        Name is required.
+    </li>
+
+    <!-- Level errors. -->
+    <li *ngIf="skillForm.getError('max', 'level') as error">
+        <span *ngIf="error.actual > error.max && error.actual <= 5 * error.max">Really!?</span>
+        <span *ngIf="error.actual > 5 * error.max">Seriously!!!!????? 😱</span>
+    </li>
+</ul>
