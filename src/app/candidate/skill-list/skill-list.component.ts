@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Skill } from '../skill-form/skill';
 
 @Component({
     selector: 'wt-skill-list',
@@ -7,6 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class SkillListComponent {
 
-    @Input() skillList: string[];
+    @Input() skillList: Skill[];
 
 }

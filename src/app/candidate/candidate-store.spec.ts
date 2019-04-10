@@ -1,5 +1,6 @@
 import { Candidate } from './candidate';
 import { CandidateStore } from './candidate-store';
+import { Skill } from './skill-form/skill';
 
 describe('CandidateStore', () => {
 
@@ -15,21 +16,21 @@ describe('CandidateStore', () => {
 
         candidate1 = new Candidate({
             firstName: 'Foo', lastName: 'BAR', skillList: [
-                'Angular',
-                'JavaScript'
+                new Skill({name: 'Angular'}),
+                new Skill({name: 'JavaScript'})
             ]
         });
         candidate2 = new Candidate({
             firstName: 'John', lastName: 'DOE', skillList: [
-                'Angular',
-                'JavaScript',
-                'Python'
+                new Skill({name: 'Angular'}),
+                new Skill({name: 'JavaScript'}),
+                new Skill({name: 'Python'})
             ]
         });
         candidate3 = new Candidate({
             firstName: 'Tony', lastName: 'STARK', skillList: [
-                'Kite-surf',
-                'Python'
+                new Skill({name: 'Kite-surf'}),
+                new Skill({name: 'Python'})
             ]
         });
 

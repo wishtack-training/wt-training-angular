@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { resetForm } from '../../helpers/reset-form';
 import { Candidate } from '../candidate';
+import { Skill } from '../skill-form/skill';
 
 @Component({
     selector: 'wt-candidate-form',
@@ -25,11 +26,24 @@ export class CandidateFormComponent {
         firstName: new FormControl(),
         lastName: new FormControl()
     });
+    skillList: Skill[] = [];
 
     submitCandidate() {
-        const candidate = new Candidate(this.candidateForm.value);
-        resetForm(this.candidateForm);
+
+        const candidate = new Candidate({
+            ...this.candidateForm.value,
+            skillList: this.skillList
+        });
+
         this.candidateSubmit.emit(candidate);
+
+        resetForm(this.candidateForm);
+        this.skillList = [];
+
+    }
+
+    addSkill(skill: Skill) {
+        this.skillList = [...this.skillList, skill];
     }
 
 }

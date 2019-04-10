@@ -1,18 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { resetForm } from '../../helpers/reset-form';
-
-export class Skill {
-
-    name: string;
-    level: number;
-
-    constructor(args: Partial<Skill> = {}) {
-        this.name = args.name;
-        this.level = args.level;
-    }
-
-}
+import { Skill } from './skill';
 
 @Component({
     selector: 'wt-skill-form',
@@ -20,6 +9,8 @@ export class Skill {
     styleUrls: ['./skill-form.component.scss']
 })
 export class SkillFormComponent {
+
+    @Output() skillSubmit = new EventEmitter<Skill>();
 
     skillForm: FormGroup;
 
@@ -44,6 +35,7 @@ export class SkillFormComponent {
 
         const skill = new Skill(this.skillForm.value);
         resetForm(this.skillForm);
+        this.skillSubmit.emit(skill);
 
     }
 
