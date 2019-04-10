@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
-class Skill {
+export class Skill {
 
     name: string;
     level: number;
@@ -40,7 +40,7 @@ export class SkillFormComponent {
 
     submitSkill() {
         const skill = new Skill(this.skillForm.value);
-        console.log(skill);
+        this.skillForm.reset();
     }
 
 }

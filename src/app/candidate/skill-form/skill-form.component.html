@@ -2,9 +2,21 @@
     [formGroup]="skillForm"
     (ngSubmit)="submitSkill()">
 
-    <input formControlName="name" type="text">
+    <mat-form-field>
+        <input
+            formControlName="name"
+            matInput
+            placeholder="Name"
+            type="text">
+    </mat-form-field>
 
-    <input formControlName="level" type="number">
+    <mat-form-field>
+        <input
+            formControlName="level"
+            matInput
+            placeholder="Level"
+            type="number">
+    </mat-form-field>
 
     <button
         type="submit"
