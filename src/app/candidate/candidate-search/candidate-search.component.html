@@ -2,6 +2,8 @@
     <input [formControl]="keywordsControl" matInput type="text">
 </mat-form-field>
 
+<div *ngIf="error">💩</div>
+
 <wt-candidate-card
     *ngFor="let candidate of candidateList"
     [candidate]="candidate"></wt-candidate-card>

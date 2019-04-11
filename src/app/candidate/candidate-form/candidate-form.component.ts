@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { resetForm } from '../../helpers/reset-form';
-import { Candidate } from '../candidate';
-import { Skill } from '../skill-form/skill';
+import { Candidate, createCandidate } from '../candidate';
 import { SkillFormComponent } from '../skill-form/skill-form.component';
 
 @Component({
@@ -45,13 +44,7 @@ export class CandidateFormComponent {
 
     submitCandidate() {
 
-        const skillList = this.candidateForm.value.skillList
-            .map(skill => new Skill(skill));
-
-        const candidate = new Candidate({
-            ...this.candidateForm.value,
-            skillList
-        });
+        const candidate = createCandidate(this.candidateForm.value);
 
         this.candidateSubmit.emit(candidate);
 
