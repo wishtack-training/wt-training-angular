@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { catchError, debounceTime, map, shareReplay, switchMap } from 'rxjs/operators';
-import { Candidate, createCandidate } from '../candidate';
+import { Observable } from 'rxjs';
+import { debounceTime, map, shareReplay, startWith, switchMap } from 'rxjs/operators';
+import { Candidate } from '../../candidate/candidate';
+import { CandidateSearch } from '../candidate-search.service';
 
 export type CandidateSearchResponse = Partial<Candidate>[];
 
@@ -20,7 +20,7 @@ export class CandidateSearchComponent implements OnInit {
     candidateList$: Observable<Candidate[]>;
     candidateCount$: Observable<number>;
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(private _candidateSearch: CandidateSearch) {
     }
 
     ngOnInit() {
@@ -29,8 +29,9 @@ export class CandidateSearchComponent implements OnInit {
 
         const candidateSearchResult$ = keywords$
             .pipe(
+                startWith('angular'),
                 debounceTime(50),
-                switchMap(keywords => this._searchCandidates(keywords)),
+                switchMap(keywords => this._candidateSearch.searchCandidates(keywords)),
                 shareReplay({
                     bufferSize: 1,
                     refCount: true
@@ -40,8 +41,6 @@ export class CandidateSearchComponent implements OnInit {
         this.error$ = candidateSearchResult$.pipe(map(result => result.error));
         this.candidateList$ = candidateSearchResult$.pipe(map(result => result.candidateList));
         this.candidateCount$ = this.candidateList$.pipe(map(candidateList => candidateList.length));
-
-        this.keywordsControl.setValue('angular');
 
         // interval(100)
         //     .pipe(
@@ -63,37 +62,6 @@ export class CandidateSearchComponent implements OnInit {
         //         complete: () => console.log('DONE')
         //     });
 
-
-    }
-
-    private _searchCandidates(keywords: string): Observable<{
-        error,
-        candidateList: Candidate[]
-    }> {
-
-        return this._httpClient.get<CandidateSearchResponse>('https://api-izghradzzu.now.sh/candidates', {
-            params: {
-                q: keywords
-            }
-        })
-            .pipe(
-                map(candidateDataList => {
-                    return candidateDataList.map(candidateData => createCandidate(candidateData));
-                }),
-                map(candidateList => {
-                    return {
-                        candidateList,
-                        error: null
-                    };
-                }),
-                catchError(error => {
-                    console.error(error);
-                    return of({
-                        candidateList: null,
-                        error
-                    });
-                })
-            );
 
     }
 }
