@@ -2,8 +2,11 @@
     <input [formControl]="keywordsControl" matInput type="text">
 </mat-form-field>
 
-<div *ngIf="error">💩</div>
+<div *ngIf="error$ | async">💩</div>
+
+<h2>Found: {{ candidateCount$ | async }} candidates</h2>
 
 <wt-candidate-card
-    *ngFor="let candidate of candidateList"
+    *ngFor="let candidate of candidateList$ | async"
     [candidate]="candidate"></wt-candidate-card>
+

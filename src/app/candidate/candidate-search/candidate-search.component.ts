@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { catchError, debounceTime, map, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, map, shareReplay, switchMap } from 'rxjs/operators';
 import { Candidate, createCandidate } from '../candidate';
 
 export type CandidateSearchResponse = Partial<Candidate>[];
@@ -14,9 +14,11 @@ export type CandidateSearchResponse = Partial<Candidate>[];
 })
 export class CandidateSearchComponent implements OnInit {
 
-    candidateList: Candidate[];
     keywordsControl = new FormControl();
-    error;
+
+    error$: Observable<any>;
+    candidateList$: Observable<Candidate[]>;
+    candidateCount$: Observable<number>;
 
     constructor(private _httpClient: HttpClient) {
     }
@@ -28,16 +30,18 @@ export class CandidateSearchComponent implements OnInit {
         const candidateSearchResult$ = keywords$
             .pipe(
                 debounceTime(50),
-                switchMap(keywords => this._searchCandidates(keywords))
+                switchMap(keywords => this._searchCandidates(keywords)),
+                shareReplay({
+                    bufferSize: 1,
+                    refCount: true
+                })
             );
 
-        candidateSearchResult$.subscribe(({error, candidateList}) => {
-            this.candidateList = candidateList;
-            this.error = error;
-        });
+        this.error$ = candidateSearchResult$.pipe(map(result => result.error));
+        this.candidateList$ = candidateSearchResult$.pipe(map(result => result.candidateList));
+        this.candidateCount$ = this.candidateList$.pipe(map(candidateList => candidateList.length));
 
         this.keywordsControl.setValue('angular');
-
 
         // interval(100)
         //     .pipe(
