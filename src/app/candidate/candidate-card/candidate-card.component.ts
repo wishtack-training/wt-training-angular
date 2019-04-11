@@ -13,4 +13,9 @@ export class CandidateCardComponent implements OnInit {
     ngOnInit() {
     }
 
+    getPictureUri() {
+        const name = encodeURIComponent(this.candidate.firstName);
+        return `https://robohash.org/${name}?set=set4`;
+    }
+
 }

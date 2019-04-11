@@ -2,6 +2,6 @@
     <input [formControl]="keywordsControl" matInput type="text">
 </mat-form-field>
 
-<wt-candidate-preview
+<wt-candidate-card
     *ngFor="let candidate of candidateList"
-    [candidate]="candidate"></wt-candidate-preview>
+    [candidate]="candidate"></wt-candidate-card>

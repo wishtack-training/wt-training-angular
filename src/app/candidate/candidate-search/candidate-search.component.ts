@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { interval } from 'rxjs';
 import { filter, map, onErrorResumeNext, take } from 'rxjs/operators';
 import { Candidate } from '../candidate';
+import { Skill } from '../skill-form/skill';
 
 
 @Component({
@@ -15,7 +16,12 @@ export class CandidateSearchComponent implements OnInit {
 
     candidateList = [
         new Candidate({
-            firstName: 'Foo'
+            firstName: 'Foo',
+            skillList: [
+                new Skill({
+                    name: 'angular'
+                })
+            ]
         })
     ];
     keywordsControl = new FormControl();
@@ -27,7 +33,8 @@ export class CandidateSearchComponent implements OnInit {
 
         this.keywordsControl.valueChanges.subscribe(data => console.log(data));
 
-        const candidateList$ = this._httpClient.get<Partial<Candidate>[]>('https://api-izghradzzu.now.sh/candidates');
+        const candidateList$ = this._httpClient
+            .get<Partial<Candidate>[]>('https://api-izghradzzu.now.sh/candidates');
 
         // candidateList$
         //     .subscribe({
