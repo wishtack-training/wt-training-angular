@@ -1,0 +1,7 @@
+<mat-form-field>
+    <input [formControl]="keywordsControl" matInput type="text">
+</mat-form-field>
+
+<wt-candidate-preview
+    *ngFor="let candidate of candidateList"
+    [candidate]="candidate"></wt-candidate-preview>
