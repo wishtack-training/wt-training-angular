@@ -2,23 +2,35 @@
     buttonLabel="ADD"
     (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
 
-<wt-candidate-card
-    *ngFor="let candidate of getCandidateList()"
-    [candidate]="candidate">
+<div *ngFor="let candidate of getCandidateList(); let last=last">
 
-    <!-- Projected content. -->
-    <div *ngIf="editedCandidate !== candidate">
+    <wt-candidate-card [candidate]="candidate">
 
-        <button (click)="editCandidate(candidate)">EDIT</button>
+        <!-- Projected content. -->
+        <div *ngIf="editedCandidate !== candidate">
 
-        <button (click)="removeCandidate(candidate)">REMOVE</button>
+            <button
+                mat-button
+                color="accent"
+                (click)="editCandidate(candidate)">EDIT
+            </button>
 
-    </div>
+            <button
+                mat-button
+                color="warn"
+                (click)="removeCandidate(candidate)">REMOVE
+            </button>
 
-    <wt-candidate-form
-        *ngIf="editedCandidate === candidate"
-        buttonLabel="SAVE"
-        [candidate]="editedCandidate"
-        (candidateSubmit)="updateCandidate($event)"></wt-candidate-form>
+        </div>
 
-</wt-candidate-card>
+        <wt-candidate-form
+            *ngIf="editedCandidate === candidate"
+            buttonLabel="SAVE"
+            [candidate]="editedCandidate"
+            (candidateSubmit)="updateCandidate($event)"></wt-candidate-form>
+
+    </wt-candidate-card>
+
+    <hr *ngIf="!last">
+
+</div>

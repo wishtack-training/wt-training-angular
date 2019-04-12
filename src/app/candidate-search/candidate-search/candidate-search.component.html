@@ -8,5 +8,9 @@
 
 <wt-candidate-card
     *ngFor="let candidate of candidateList$ | async"
-    [candidate]="candidate"></wt-candidate-card>
+    [candidate]="candidate">
+
+    <button mat-button color="primary">HIRE</button>
+
+</wt-candidate-card>
 
