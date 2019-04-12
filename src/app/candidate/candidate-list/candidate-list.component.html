@@ -1,20 +1,13 @@
 <wt-candidate-form
-    *ngIf="editedCandidate == null"
     buttonLabel="ADD"
     (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
 
-<wt-candidate-form
-    *ngIf="editedCandidate != null"
-    buttonLabel="SAVE"
-    [candidate]="editedCandidate"
-    (candidateSubmit)="updateCandidate($event)"></wt-candidate-form>
-
-<wt-candidate-preview
+<wt-candidate-card
     *ngFor="let candidate of getCandidateList()"
     [candidate]="candidate">
 
     <!-- Projected content. -->
-    <div>
+    <div *ngIf="editedCandidate !== candidate">
 
         <button (click)="editCandidate(candidate)">EDIT</button>
 
@@ -22,8 +15,10 @@
 
     </div>
 
-</wt-candidate-preview>
+    <wt-candidate-form
+        *ngIf="editedCandidate === candidate"
+        buttonLabel="SAVE"
+        [candidate]="editedCandidate"
+        (candidateSubmit)="updateCandidate($event)"></wt-candidate-form>
 
-<wt-candidate-form
-    *ngIf="getCandidateList().length > 3"
-    (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
+</wt-candidate-card>
