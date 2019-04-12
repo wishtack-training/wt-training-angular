@@ -1,4 +1,8 @@
-<wt-candidate-form (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
+<wt-candidate-form
+    buttonLabel="ADD"
+    [candidate]="editedCandidate"
+    (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
+
 
 <wt-candidate-preview
     *ngFor="let candidate of getCandidateList()"
@@ -6,7 +10,15 @@
 
     <!-- Projected content. -->
     <div>
+
+        <button (click)="editCandidate(candidate)">EDIT</button>
+
         <button (click)="removeCandidate(candidate)">REMOVE</button>
+
     </div>
 
 </wt-candidate-preview>
+
+<wt-candidate-form
+    *ngIf="getCandidateList().length > 3"
+    (candidateSubmit)="addCandidate($event)"></wt-candidate-form>

@@ -9,8 +9,9 @@ import { CandidateStore } from '../candidate-store';
 })
 export class CandidateListComponent {
 
-    private _candidateStore = new CandidateStore();
+    editedCandidate: Candidate;
 
+    private _candidateStore = new CandidateStore();
 
     addCandidate(candidate: Candidate) {
         this._candidateStore.addCandidate(candidate);
@@ -22,6 +23,10 @@ export class CandidateListComponent {
 
     removeCandidate(candidate: Candidate) {
         this._candidateStore.removeCandidate(candidate);
+    }
+
+    editCandidate(candidate: Candidate) {
+        this.editedCandidate = candidate;
     }
 
 }

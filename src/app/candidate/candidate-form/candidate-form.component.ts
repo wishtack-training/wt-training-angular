@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { resetForm } from '../../helpers/reset-form';
 import { Candidate, createCandidate } from '../candidate';
@@ -9,7 +9,7 @@ import { SkillFormComponent } from '../skill-form/skill-form.component';
     templateUrl: './candidate-form.component.html',
     styleUrls: ['./candidate-form.component.scss']
 })
-export class CandidateFormComponent {
+export class CandidateFormComponent implements OnChanges, OnInit {
 
     /**
      * 1. @Input
@@ -19,6 +19,9 @@ export class CandidateFormComponent {
      * 5. constructor.
      * 6. Lifecycle hooks: ngOn*
      */
+
+    @Input() buttonLabel = 'SUBMIT';
+    @Input() candidate: Candidate;
 
     @Output() candidateSubmit = new EventEmitter<Candidate>();
 
@@ -34,6 +37,32 @@ export class CandidateFormComponent {
 
     get skillListFormArray() {
         return this.candidateForm.get('skillList') as FormArray;
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.group('changes');
+        console.log(changes);
+        console.groupEnd();
+
+        if (changes.candidate) {
+            this._resetForm(this.candidate);
+        }
+
+    }
+
+    private _resetForm(candidate: Candidate) {
+        const skillListFormGroupList = candidate.skillList
+            .map(() => SkillFormComponent.createSkillFormGroup());
+        const skillListFormArray = new FormArray(skillListFormGroupList);
+        this.candidateForm.setControl('skillList', skillListFormArray);
+        this.candidateForm.reset(candidate);
+    }
+
+    ngOnInit() {
+        console.group('init');
+        console.log(this.candidate);
+        console.log(this.buttonLabel);
+        console.groupEnd();
     }
 
     addSkill() {
