@@ -1,8 +1,13 @@
 <wt-candidate-form
+    *ngIf="editedCandidate == null"
     buttonLabel="ADD"
-    [candidate]="editedCandidate"
     (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
 
+<wt-candidate-form
+    *ngIf="editedCandidate != null"
+    buttonLabel="SAVE"
+    [candidate]="editedCandidate"
+    (candidateSubmit)="updateCandidate($event)"></wt-candidate-form>
 
 <wt-candidate-preview
     *ngFor="let candidate of getCandidateList()"

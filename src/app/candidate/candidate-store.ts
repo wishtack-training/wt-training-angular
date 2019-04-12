@@ -17,4 +17,16 @@ export class CandidateStore {
             .filter(_candidate => _candidate !== candidate);
     }
 
+    replaceCandidate({current, previous}: { current: Candidate; previous: Candidate }) {
+        this._candidateList = this._candidateList
+            .map(_candidate => {
+
+                if (_candidate === previous) {
+                    return current;
+                }
+
+                return _candidate;
+            });
+    }
+
 }

@@ -29,4 +29,15 @@ export class CandidateListComponent {
         this.editedCandidate = candidate;
     }
 
+    updateCandidate(candidate: Candidate) {
+
+        this._candidateStore.replaceCandidate({
+            previous: this.editedCandidate,
+            current: candidate
+        });
+
+        this.editedCandidate = undefined;
+
+    }
+
 }
