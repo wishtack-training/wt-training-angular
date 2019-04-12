@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CandidateSearchComponent } from './candidate-search/candidate-search/candidate-search.component';
-import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 import { LandingComponent } from './landing/landing.component';
 
 export const routes: Routes = [
@@ -15,13 +14,16 @@ export const routes: Routes = [
     },
     {
         path: 'candidates',
-        component: CandidateListComponent
+        loadChildren: './views/candidate-list-view/candidate-list-view.component#CandidateListViewModule',
+
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule

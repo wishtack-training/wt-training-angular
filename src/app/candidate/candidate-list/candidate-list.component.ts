@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 import { Candidate } from '../candidate';
 import { CandidateCardModule } from '../candidate-card/candidate-card.component';
 import { CandidateFormModule } from '../candidate-form/candidate-form.component';
@@ -53,7 +54,13 @@ export class CandidateListComponent {
         CommonModule,
         CandidateCardModule,
         CandidateFormModule,
-        MatButtonModule
+        MatButtonModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: CandidateListComponent
+            }
+        ])
     ]
 })
 export class CandidateListModule {
