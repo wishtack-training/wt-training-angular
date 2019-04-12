@@ -28,9 +28,7 @@ export class CandidateFormComponent {
         this.candidateForm = new FormGroup({
             firstName: new FormControl(),
             lastName: new FormControl(),
-            skillList: new FormArray([
-                SkillFormComponent.createSkillFormGroup()
-            ])
+            skillList: new FormArray([])
         });
     }
 
@@ -50,9 +48,7 @@ export class CandidateFormComponent {
 
         resetForm(this.candidateForm);
 
-        this.candidateForm.setControl('skillList', new FormArray([
-            SkillFormComponent.createSkillFormGroup()
-        ]));
+        this.candidateForm.setControl('skillList', new FormArray([]));
 
     }
 

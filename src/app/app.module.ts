@@ -39,7 +39,6 @@ import { DemoComponent } from './demo/demo.component';
         MatButtonModule,
         MatCardModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
