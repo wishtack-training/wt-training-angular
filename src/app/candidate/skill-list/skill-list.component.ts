@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
 import { Skill } from '../skill-form/skill';
 
 @Component({
@@ -9,5 +10,16 @@ import { Skill } from '../skill-form/skill';
 export class SkillListComponent {
 
     @Input() skillList: Skill[];
+
+}
+
+@NgModule({
+    declarations: [SkillListComponent],
+    exports: [SkillListComponent],
+    imports: [
+        CommonModule
+    ]
+})
+export class SkillListModule {
 
 }

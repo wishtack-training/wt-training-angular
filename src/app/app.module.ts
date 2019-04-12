@@ -17,11 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateSearchComponent } from './candidate-search/candidate-search/candidate-search.component';
-import { CandidateCardComponent } from './candidate/candidate-card/candidate-card.component';
-import { CandidateFormModule } from './candidate/candidate-form/candidate-form.component';
-import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
-import { CandidatePreviewComponent } from './candidate/candidate-preview/candidate-preview.component';
-import { SkillListComponent } from './candidate/skill-list/skill-list.component';
+import { CandidateCardModule } from './candidate/candidate-card/candidate-card.component';
+import { CandidateListModule } from './candidate/candidate-list/candidate-list.component';
 import { DemoComponent } from './demo/demo.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavComponent } from './nav/nav.component';
@@ -29,20 +26,17 @@ import { NavComponent } from './nav/nav.component';
 @NgModule({
     declarations: [
         AppComponent,
-        CandidateListComponent,
-        CandidatePreviewComponent,
         CandidateSearchComponent,
-        CandidateCardComponent,
         DemoComponent,
         LandingComponent,
-        NavComponent,
-        SkillListComponent
+        NavComponent
     ],
     imports: [
         AppRoutingModule,
         BrowserAnimationsModule,
         BrowserModule,
-        CandidateFormModule,
+        CandidateCardModule,
+        CandidateListModule,
         FormsModule,
         HttpClientModule,
         LayoutModule,

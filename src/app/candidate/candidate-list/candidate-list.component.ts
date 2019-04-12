@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material';
 import { Candidate } from '../candidate';
+import { CandidateCardModule } from '../candidate-card/candidate-card.component';
+import { CandidateFormModule } from '../candidate-form/candidate-form.component';
 import { CandidateStore } from '../candidate-store';
 
 @Component({
@@ -40,4 +44,17 @@ export class CandidateListComponent {
 
     }
 
+}
+
+@NgModule({
+    declarations: [CandidateListComponent],
+    exports: [CandidateListComponent],
+    imports: [
+        CommonModule,
+        CandidateCardModule,
+        CandidateFormModule,
+        MatButtonModule
+    ]
+})
+export class CandidateListModule {
 }

@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material';
 import { Candidate } from '../candidate';
+import { SkillListModule } from '../skill-list/skill-list.component';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,3 +23,16 @@ export class CandidateCardComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [CandidateCardComponent],
+    exports: [CandidateCardComponent],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        SkillListModule
+    ]
+})
+export class CandidateCardModule {
+}
+
