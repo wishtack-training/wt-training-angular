@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material';
-import { Candidate } from '../candidate';
-import { CandidateCardModule } from '../candidate-card/candidate-card.component';
-import { CandidateFormModule } from '../candidate-form/candidate-form.component';
-import { CandidateStore } from '../candidate-store';
+import { Candidate } from '../../candidate/candidate';
+import { CandidateCardModule } from '../../candidate/candidate-card/candidate-card.component';
+import { CandidateFormModule } from '../../candidate/candidate-form/candidate-form.component';
+import { CandidateStore } from '../../candidate/candidate-store';
 
 @Component({
     selector: 'wt-candidate-list',
