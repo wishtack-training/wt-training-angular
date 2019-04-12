@@ -2,7 +2,7 @@
     buttonLabel="ADD"
     (candidateSubmit)="addCandidate($event)"></wt-candidate-form>
 
-<div *ngFor="let candidate of getCandidateList(); let last=last">
+<ng-container *ngFor="let candidate of getCandidateList(); let last=last">
 
     <wt-candidate-card [candidate]="candidate">
 
@@ -33,4 +33,4 @@
 
     <hr *ngIf="!last">
 
-</div>
+</ng-container>

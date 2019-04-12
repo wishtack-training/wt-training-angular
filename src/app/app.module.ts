@@ -1,7 +1,17 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +24,7 @@ import { CandidatePreviewComponent } from './candidate/candidate-preview/candida
 import { SkillFormComponent } from './candidate/skill-form/skill-form.component';
 import { SkillListComponent } from './candidate/skill-list/skill-list.component';
 import { DemoComponent } from './demo/demo.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +36,8 @@ import { DemoComponent } from './demo/demo.component';
         SkillFormComponent,
         CandidateFormComponent,
         CandidateSearchComponent,
-        CandidateCardComponent
+        CandidateCardComponent,
+        NavComponent
     ],
     imports: [
         AppRoutingModule,
@@ -37,7 +49,12 @@ import { DemoComponent } from './demo/demo.component';
         MatInputModule,
         MatButtonModule,
         MatCardModule,
-        FormsModule
+        FormsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
     ],
     bootstrap: [AppComponent]
 })
