@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateSearchComponent } from './candidate-search/candidate-search/candidate-search.component';
@@ -29,8 +28,8 @@ import { DemoComponent } from './demo/demo.component';
         CandidateCardComponent
     ],
     imports: [
-        BrowserModule,
         AppRoutingModule,
+        BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         ReactiveFormsModule,
