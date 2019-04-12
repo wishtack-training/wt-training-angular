@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { resetForm } from '../../helpers/reset-form';
 import { Candidate, createCandidate } from '../candidate';
-import { SkillFormComponent } from '../skill-form/skill-form.component';
+import { SkillFormComponent, SkillFormModule } from '../skill-form/skill-form.component';
 
 @Component({
     selector: 'wt-candidate-form',
@@ -81,4 +83,19 @@ export class CandidateFormComponent implements OnChanges, OnInit {
 
     }
 
+}
+
+@NgModule({
+    declarations: [CandidateFormComponent],
+    exports: [CandidateFormComponent],
+    imports: [
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        SkillFormModule,
+        CommonModule
+    ]
+})
+export class CandidateFormModule {
 }

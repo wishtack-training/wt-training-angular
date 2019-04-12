@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @Component({
     selector: 'wt-skill-form',
@@ -27,3 +29,17 @@ export class SkillFormComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [SkillFormComponent],
+    exports: [SkillFormComponent],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule
+    ]
+})
+export class SkillFormModule {
+}
+

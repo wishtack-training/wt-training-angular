@@ -18,43 +18,43 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateSearchComponent } from './candidate-search/candidate-search/candidate-search.component';
 import { CandidateCardComponent } from './candidate/candidate-card/candidate-card.component';
-import { CandidateFormComponent } from './candidate/candidate-form/candidate-form.component';
+import { CandidateFormModule } from './candidate/candidate-form/candidate-form.component';
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 import { CandidatePreviewComponent } from './candidate/candidate-preview/candidate-preview.component';
-import { SkillFormComponent } from './candidate/skill-form/skill-form.component';
 import { SkillListComponent } from './candidate/skill-list/skill-list.component';
 import { DemoComponent } from './demo/demo.component';
+import { LandingComponent } from './landing/landing.component';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        DemoComponent,
         CandidateListComponent,
-        SkillListComponent,
         CandidatePreviewComponent,
-        SkillFormComponent,
-        CandidateFormComponent,
         CandidateSearchComponent,
         CandidateCardComponent,
-        NavComponent
+        DemoComponent,
+        LandingComponent,
+        NavComponent,
+        SkillListComponent
     ],
     imports: [
         AppRoutingModule,
-        BrowserModule,
         BrowserAnimationsModule,
+        BrowserModule,
+        CandidateFormModule,
+        FormsModule,
         HttpClientModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
+        LayoutModule,
         MatButtonModule,
         MatCardModule,
-        FormsModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatSidenavModule,
+        MatFormFieldModule,
         MatIconModule,
-        MatListModule
+        MatInputModule,
+        MatListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        ReactiveFormsModule
     ],
     bootstrap: [AppComponent]
 })
