@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { Cart } from './cart.service';
+import { Sandwich } from './sandwich';
 
 describe('CartService', () => {
 
@@ -11,20 +12,18 @@ describe('CartService', () => {
 
     xit('should add sandwich', () => {
 
-        // const burger = new Sandwich('Burger', 10);
-        // const butterButter = new Sandwich('Butter & Butter', 4.3);
-        //
-        // cart.addSandwich(burger);
-        // cart.addSandwich(butterButter);
-        //
-        // const sandwichList = cart.getSandwichList();
-        //
-        // expect(sandwichList).toEqual([
-        //     burger,
-        //     butterButter
-        // ]);
+        const burger = new Sandwich('Burger', 10);
+        const butterButter = new Sandwich('Butter & Butter', 4.3);
 
-        throw new Error('🚧 work in progress!');
+        cart.addSandwich(burger);
+        cart.addSandwich(butterButter);
+
+        const sandwichList = cart.getSandwichList();
+
+        expect(sandwichList).toEqual([
+            burger,
+            butterButter
+        ]);
 
     });
 
