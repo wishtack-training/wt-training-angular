@@ -6,4 +6,13 @@ describe('CartService', () => {
 
     beforeEach(() => TestBed.configureTestingModule({}));
 
+    xit('should add sandwich', () => {
+        throw new Error('🚧 work in progress!');
+    });
+
+    xit('should calculate total price', () => {
+        throw new Error('🚧 work in progress!');
+    });
+
+
 });
