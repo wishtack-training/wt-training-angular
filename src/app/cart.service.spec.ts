@@ -6,6 +6,9 @@ describe('CartService', () => {
 
     beforeEach(() => TestBed.configureTestingModule({}));
 
+    let cartService: CartService;
+    beforeEach(() => cartService = TestBed.get(CartService));
+
     xit('should add sandwich', () => {
         // add sandwich with a price of 4.3
         // add another sandwich with a price of 10
