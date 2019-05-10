@@ -6,22 +6,14 @@ import { Sandwich } from './sandwich';
     providedIn: 'root'
 })
 export class Cart {
+    private _sandwichList: Sandwich[] = [];
 
-    constructor() {
-    }
-
-    /**
-     * @deprecated work in progress
-     */
     addSandwich(sandwich: Sandwich) {
-        throw new Error('🚧 work in progress!');
+        this._sandwichList = [...this._sandwichList, sandwich];
     }
 
-    /**
-     * @deprecated work in progress
-     */
-    getSandwichList(): Sandwich[] {
-        throw new Error('🚧 work in progress!');
+    getSandwichList() {
+        return this._sandwichList;
     }
 
 }
