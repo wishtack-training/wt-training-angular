@@ -1,19 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CartService } from './cart.service';
+import { Cart } from './cart.service';
 
 describe('CartService', () => {
 
     beforeEach(() => TestBed.configureTestingModule({}));
 
-    let cartService: CartService;
-    beforeEach(() => cartService = TestBed.get(CartService));
+    let cart: Cart;
+    beforeEach(() => cart = TestBed.get(Cart));
 
     xit('should add sandwich', () => {
-        // add sandwich with a price of 4.3
-        // add another sandwich with a price of 10
-        // check both sandwiches are in the cart.. we might need a getSandwichList method.
+
+        // const burger = new Sandwich('Burger', 10);
+        // const butterButter = new Sandwich('Butter & Butter', 4.3);
+        //
+        // cart.addSandwich(burger);
+        // cart.addSandwich(butterButter);
+        //
+        // const sandwichList = cart.getSandwichList();
+        //
+        // expect(sandwichList).toEqual([
+        //     burger,
+        //     butterButter
+        // ]);
+
         throw new Error('🚧 work in progress!');
+
     });
 
     xit('should calculate total price', () => {
