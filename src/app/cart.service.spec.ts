@@ -12,8 +12,8 @@ describe('CartService', () => {
 
     xit('should add sandwich', () => {
 
-        const burger = new Sandwich('Burger', 10);
-        const butterButter = new Sandwich('Butter & Butter', 4.3);
+        const burger = new Sandwich({title: 'Burger', price: 10});
+        const butterButter = new Sandwich({title: 'Butter & Butter', price: 4.3});
 
         cart.addSandwich(burger);
         cart.addSandwich(butterButter);
