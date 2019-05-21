@@ -16,7 +16,7 @@ describe('Cart', () => {
 
     });
 
-    xit('should add sandwich', () => {
+    it('should add sandwich', () => {
 
         cart.addSandwich(burger);
         cart.addSandwich(butter);

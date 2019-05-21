@@ -1,15 +1,19 @@
 import { Sandwich } from './sandwich';
 
 export class Cart {
+
+    private _sandwichList: Sandwich[] = [];
+
     addSandwich(sandwich: Sandwich) {
-        throw new Error('🚧 work in progress!');
+        this._sandwichList.push(sandwich);
     }
 
-    getSandwichList(): Sandwich[] {
-        throw new Error('🚧 work in progress!');
+    getSandwichList() {
+        return this._sandwichList;
     }
 
     getTotalPrice(): number {
         throw new Error('🚧 work in progress!');
     }
+
 }

@@ -1,6 +1,9 @@
 export class Sandwich {
-    constructor(title: string, price: number) {
-        throw new Error('🚧 work in progress!');
+
+    constructor(
+        public title: string,
+        public price: number
+    ) {
     }
 
 }
