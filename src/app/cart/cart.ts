@@ -12,8 +12,8 @@ export class Cart {
         return this._sandwichList;
     }
 
-    getTotalPrice(): number {
-        throw new Error('🚧 work in progress!');
+    getTotalPrice() {
+        return this._sandwichList.reduce((total, sandwich) => total + sandwich.price, 0);
     }
 
 }

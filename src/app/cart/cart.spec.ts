@@ -30,7 +30,7 @@ describe('Cart', () => {
 
     });
 
-    xit('should get total price', () => {
+    it('should get total price', () => {
 
         cart.addSandwich(burger);
         cart.addSandwich(butter);
