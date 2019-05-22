@@ -1,17 +1,18 @@
 <button (click)="addSandwich()">ADD</button>
 
-<ul>
-    <li
-        *ngFor="let sandwich of getSandwichList(); let even=even"
-        [class.wt-even]="even">
+<div
+    *ngFor="let sandwich of getSandwichList(); let even=even">
 
-        <span>{{ sandwich.title }}</span>
-        <span>{{ sandwich.price | currency:'EUR' }}</span>
+    <wt-sandwich-preview
+        class="wt-border"
+        [class.wt-even]="even"
+        [sandwich]="sandwich">
 
         <button (click)="removeSandwich(sandwich)">REMOVE</button>
 
-    </li>
-</ul>
+    </wt-sandwich-preview>
+
+</div>
 
 <ng-container *ngIf="!isEmpty()">
 

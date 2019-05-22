@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cart } from '../cart';
 import { Sandwich } from '../sandwich';
 
@@ -7,9 +7,20 @@ import { Sandwich } from '../sandwich';
     templateUrl: './cart-detail.component.html',
     styleUrls: ['./cart-detail.component.scss']
 })
-export class CartDetailComponent {
+export class CartDetailComponent implements OnInit {
 
     private _cart = new Cart();
+
+    ngOnInit() {
+        this._cart.addSandwich(new Sandwich({
+            title: 'Burger',
+            price: 10
+        }));
+        this._cart.addSandwich(new Sandwich({
+            title: '2 x Beurre',
+            price: 4
+        }));
+    }
 
     addSandwich() {
 

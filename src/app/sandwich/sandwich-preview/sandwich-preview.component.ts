@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Sandwich } from '../../cart/sandwich';
 
 @Component({
@@ -8,22 +8,6 @@ import { Sandwich } from '../../cart/sandwich';
 })
 export class SandwichPreviewComponent {
 
-    sandwich = new Sandwich({
-        title: 'Burger',
-        price: 10,
-        ingredientList: [
-            'Du gras',
-            'Du pain'
-        ]
-    });
-    isAlreadyBought = false;
-
-    canBuy() {
-        return this.sandwich.price != null;
-    }
-
-    buy() {
-        this.isAlreadyBought = true;
-    }
+    @Input() sandwich: Sandwich;
 
 }

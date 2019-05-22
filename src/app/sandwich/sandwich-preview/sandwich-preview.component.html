@@ -7,8 +7,4 @@
     </li>
 </ul>
 
-<button
-    *ngIf="isAlreadyBought"
-    [disabled]="!canBuy()"
-    (click)="buy()">BUY
-</button>
+<ng-content></ng-content>
