@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Sandwich } from '../../cart/sandwich';
 
@@ -9,6 +9,7 @@ import { Sandwich } from '../../cart/sandwich';
 })
 export class SandwichFormComponent {
 
+    @Input() buttonLabel = 'SUBMIT';
     @Output() sandwichSubmit = new EventEmitter<Sandwich>();
 
     sandwichForm = new FormGroup({
