@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SandwichPreviewComponent } from './sandwich/sandwich-preview/sandwich-preview.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SandwichPreviewComponent
     ],
     imports: [
         BrowserModule,

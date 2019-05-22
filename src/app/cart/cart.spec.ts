@@ -9,8 +9,8 @@ describe('Cart', () => {
 
     beforeEach(() => {
 
-        burger = new Sandwich('Burger', 10);
-        butter = new Sandwich('Jambon & Beurre', 5);
+        burger = new Sandwich({title: 'Burger', price: 10});
+        butter = new Sandwich({title: 'Jambon & Beurre', price: 5});
 
         cart = new Cart();
 

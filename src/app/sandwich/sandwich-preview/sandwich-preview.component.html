@@ -1,0 +1,14 @@
+<h1>{{ sandwich.title }}</h1>
+<div>{{ sandwich.price | currency:'USD' }}</div>
+
+<ul>
+    <li *ngFor="let ingredient of sandwich.ingredientList">
+        {{ ingredient }}
+    </li>
+</ul>
+
+<button
+    *ngIf="isAlreadyBought"
+    [disabled]="!canBuy()"
+    (click)="buy()">BUY
+</button>
