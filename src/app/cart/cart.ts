@@ -16,4 +16,9 @@ export class Cart {
         return this._sandwichList.reduce((total, sandwich) => total + sandwich.price, 0);
     }
 
+    removeSandwich(sandwich: Sandwich) {
+        this._sandwichList = this._sandwichList
+            .filter(_sandwich => _sandwich !== sandwich);
+    }
+
 }

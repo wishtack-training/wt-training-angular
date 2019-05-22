@@ -43,5 +43,19 @@ describe('Cart', () => {
 
     });
 
+    it('should remove sandwich', () => {
+
+        cart.addSandwich(burger);
+        cart.addSandwich(butter);
+
+        cart.removeSandwich(burger);
+
+        const sandwichList = cart.getSandwichList();
+        expect(sandwichList).toEqual([
+            butter
+        ]);
+
+    });
+
 });
 
