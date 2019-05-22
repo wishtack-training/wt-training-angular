@@ -1,0 +1,25 @@
+<button (click)="addSandwich()">ADD</button>
+
+<ul>
+    <li
+        *ngFor="let sandwich of getSandwichList(); let even=even"
+        [class.wt-even]="even">
+
+        <span>{{ sandwich.title }}</span>
+        <span>{{ sandwich.price | currency:'EUR' }}</span>
+
+        <button (click)="removeSandwich(sandwich)">REMOVE</button>
+
+    </li>
+</ul>
+
+<ng-container *ngIf="!isEmpty()">
+
+    <hr>
+
+    <div>
+        Total Price: {{ getTotalPrice() | currency:'EUR' }}
+    </div>
+
+</ng-container>
+
