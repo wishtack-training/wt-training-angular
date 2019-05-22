@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Cart } from '../cart';
 import { Sandwich } from '../sandwich';
 
@@ -7,30 +7,12 @@ import { Sandwich } from '../sandwich';
     templateUrl: './cart-detail.component.html',
     styleUrls: ['./cart-detail.component.scss']
 })
-export class CartDetailComponent implements OnInit {
+export class CartDetailComponent {
 
     private _cart = new Cart();
 
-    ngOnInit() {
-        this._cart.addSandwich(new Sandwich({
-            title: 'Burger',
-            price: 10
-        }));
-        this._cart.addSandwich(new Sandwich({
-            title: '2 x Beurre',
-            price: 4
-        }));
-    }
-
-    addSandwich() {
-
-        const title = prompt('Title');
-        const price = parseInt(prompt('Price'), 10);
-
-        const sandwich = new Sandwich({title, price});
-
+    addSandwich(sandwich: Sandwich) {
         this._cart.addSandwich(sandwich);
-
     }
 
     getSandwichList() {
@@ -48,5 +30,4 @@ export class CartDetailComponent implements OnInit {
     removeSandwich(sandwich: Sandwich) {
         this._cart.removeSandwich(sandwich);
     }
-
 }

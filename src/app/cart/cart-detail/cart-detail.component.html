@@ -1,4 +1,4 @@
-<button (click)="addSandwich()">ADD</button>
+<wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
 <div
     *ngFor="let sandwich of getSandwichList(); let even=even">

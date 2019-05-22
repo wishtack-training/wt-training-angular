@@ -1,0 +1,11 @@
+<form
+    [formGroup]="sandwichForm"
+    (ngSubmit)="submit()">
+
+    <input formControlName="title" placeholder="Title" type="text">
+
+    <input formControlName="price" placeholder="Price" type="number">
+
+    <button type="submit">ADD</button>
+
+</form>
