@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { auditTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { auditTime, distinctUntilChanged, map, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
 import { Sandwich } from '../../cart/sandwich';
 import { SandwichSearch } from '../sandwich-search.service';
 
@@ -18,19 +19,19 @@ export interface ApiSandwich {
     templateUrl: './sandwich-search.component.html',
     styleUrls: ['./sandwich-search.component.scss']
 })
-export class SandwichSearchComponent implements OnInit {
+export class SandwichSearchComponent implements OnInit, OnDestroy {
 
     searchForm = new FormGroup({
         keywords: new FormControl()
     });
     sandwichList: Sandwich[];
 
+    private _sandwichList$: Observable<Sandwich[]>;
+    private _subscription: Subscription;
+
     constructor(
         private _sandwichSearch: SandwichSearch
     ) {
-    }
-
-    ngOnInit() {
 
         const keywords$ = this.searchForm.get('keywords').valueChanges
             .pipe(
@@ -39,12 +40,32 @@ export class SandwichSearchComponent implements OnInit {
                 auditTime(100)
             );
 
-        keywords$
+        this._sandwichList$ = keywords$
             .pipe(
-                switchMap(keywords => this._sandwichSearch.search(keywords))
-            )
-            .subscribe(sandwichList => this.sandwichList = sandwichList);
+                switchMap(keywords => {
+                    return this._sandwichSearch.search(keywords)
+                        .pipe(
+                            retry(3),
+                            onErrorResumeNext()
+                        );
+                })
+            );
 
+    }
+
+    ngOnInit() {
+
+        this._subscription = this._sandwichList$
+            .subscribe({
+                next: sandwichList => this.sandwichList = sandwichList,
+                error: err => console.error('🤕')
+            });
+
+    }
+
+    ngOnDestroy() {
+        /* @todo RxScavenger. */
+        this._subscription.unsubscribe();
     }
 
 }
