@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { auditTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { Sandwich } from '../../cart/sandwich';
+import { SandwichSearch } from '../sandwich-search.service';
 
 export interface ApiSandwich {
     name: string;
@@ -17,34 +18,33 @@ export interface ApiSandwich {
     templateUrl: './sandwich-search.component.html',
     styleUrls: ['./sandwich-search.component.scss']
 })
-export class SandwichSearchComponent {
+export class SandwichSearchComponent implements OnInit {
 
     searchForm = new FormGroup({
         keywords: new FormControl()
     });
     sandwichList: Sandwich[];
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(
+        private _sandwichSearch: SandwichSearch
+    ) {
     }
 
-    search() {
+    ngOnInit() {
 
-        const keywords = this.searchForm.value.keywords;
+        const keywords$ = this.searchForm.get('keywords').valueChanges
+            .pipe(
+                map(keywords => keywords.trim()),
+                distinctUntilChanged(),
+                auditTime(100)
+            );
 
-        this._httpClient.get<ApiSandwich[]>(`https://sandwich.now.sh/sandwiches`, {
-            params: {
-                q: keywords
-            }
-        })
-            .subscribe(dataList => {
-
-                this.sandwichList = dataList.map(data => new Sandwich({
-                    title: data.name,
-                    ingredientList: data.ingredientList,
-                    price: data.price.amount
-                }));
-
-            });
+        keywords$
+            .pipe(
+                switchMap(keywords => this._sandwichSearch.search(keywords))
+            )
+            .subscribe(sandwichList => this.sandwichList = sandwichList);
 
     }
+
 }
