@@ -1,23 +1,50 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Sandwich } from '../../cart/sandwich';
+
+export interface ApiSandwich {
+    name: string;
+    price: {
+        amount: number,
+        currency: string
+    };
+    ingredientList: string[];
+}
 
 @Component({
     selector: 'wt-sandwich-search',
     templateUrl: './sandwich-search.component.html',
     styleUrls: ['./sandwich-search.component.scss']
 })
-export class SandwichSearchComponent implements OnInit {
+export class SandwichSearchComponent {
+
+    searchForm = new FormGroup({
+        keywords: new FormControl()
+    });
+    sandwichList: Sandwich[];
 
     constructor(private _httpClient: HttpClient) {
     }
 
-    ngOnInit() {
+    search() {
 
-        const response$ = this._httpClient.get('https://sandwich.now.sh/sandwiches');
+        const keywords = this.searchForm.value.keywords;
 
-        response$
-            .subscribe(data => console.log(data));
+        this._httpClient.get<ApiSandwich[]>(`https://sandwich.now.sh/sandwiches`, {
+            params: {
+                q: keywords
+            }
+        })
+            .subscribe(dataList => {
+
+                this.sandwichList = dataList.map(data => new Sandwich({
+                    title: data.name,
+                    ingredientList: data.ingredientList,
+                    price: data.price.amount
+                }));
+
+            });
 
     }
-
 }

@@ -1,3 +1,10 @@
-<p>
-    sandwich-search works!
-</p>
+<form [formGroup]="searchForm" (ngSubmit)="search()">
+    <input formControlName="keywords" type="text">
+    <button type="submit">SUBMIT</button>
+</form>
+
+<hr>
+
+<wt-sandwich-preview
+    *ngFor="let sandwich of sandwichList"
+    [sandwich]="sandwich"></wt-sandwich-preview>
