@@ -1,4 +1,4 @@
-import { Cart } from './cart';
+import { Cart } from './cart.service';
 import { Sandwich } from './sandwich';
 
 describe('Cart', () => {

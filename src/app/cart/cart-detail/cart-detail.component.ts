@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cart } from '../cart';
+import { Cart } from '../cart.service';
 import { Sandwich } from '../sandwich';
 
 @Component({
@@ -9,7 +9,8 @@ import { Sandwich } from '../sandwich';
 })
 export class CartDetailComponent {
 
-    private _cart = new Cart();
+    constructor(private _cart: Cart) {
+    }
 
     addSandwich(sandwich: Sandwich) {
         this._cart.addSandwich(sandwich);

@@ -6,4 +6,8 @@
 
 <wt-sandwich-preview
     *ngFor="let sandwich of sandwichList"
-    [sandwich]="sandwich"></wt-sandwich-preview>
+    [sandwich]="sandwich">
+
+    <button (click)="buy(sandwich)">BUY</button>
+
+</wt-sandwich-preview>

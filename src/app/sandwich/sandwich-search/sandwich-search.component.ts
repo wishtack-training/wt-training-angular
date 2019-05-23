@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { auditTime, distinctUntilChanged, map, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
+import { Cart } from '../../cart/cart.service';
 import { Sandwich } from '../../cart/sandwich';
 import { SandwichSearch } from '../sandwich-search.service';
 
@@ -30,6 +31,7 @@ export class SandwichSearchComponent implements OnInit, OnDestroy {
     private _subscription: Subscription;
 
     constructor(
+        private _cart: Cart,
         private _sandwichSearch: SandwichSearch
     ) {
 
@@ -68,4 +70,7 @@ export class SandwichSearchComponent implements OnInit, OnDestroy {
         this._subscription.unsubscribe();
     }
 
+    buy(sandwich: Sandwich) {
+        this._cart.addSandwich(sandwich);
+    }
 }
