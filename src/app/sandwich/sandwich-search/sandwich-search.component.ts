@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { auditTime, distinctUntilChanged, map, onErrorResumeNext, retry, switchMap } from 'rxjs/operators';
 import { Cart } from '../../cart/cart.service';
@@ -29,20 +30,23 @@ export class SandwichSearchComponent implements OnInit, OnDestroy {
 
     private _sandwichList$: Observable<Sandwich[]>;
     private _subscription: Subscription;
+    private _keywords$: Observable<string>;
 
     constructor(
         private _cart: Cart,
+        private _route: ActivatedRoute,
+        private _router: Router,
         private _sandwichSearch: SandwichSearch
     ) {
 
-        const keywords$ = this.searchForm.get('keywords').valueChanges
+        this._keywords$ = this.searchForm.get('keywords').valueChanges
             .pipe(
                 map(keywords => keywords.trim()),
                 distinctUntilChanged(),
                 auditTime(100)
             );
 
-        this._sandwichList$ = keywords$
+        this._sandwichList$ = this._keywords$
             .pipe(
                 switchMap(keywords => {
                     return this._sandwichSearch.search(keywords)
@@ -56,6 +60,19 @@ export class SandwichSearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+
+        this._keywords$
+            .subscribe(keywords => this._router.navigate(['/search'], {
+                queryParams: {
+                    q: keywords
+                }
+            }));
+
+        this._route.queryParamMap
+            .pipe(
+                map(queryParamMap => queryParamMap.get('q'))
+            )
+            .subscribe(keywords => this.searchForm.get('keywords').setValue(keywords));
 
         this._subscription = this._sandwichList$
             .subscribe({
