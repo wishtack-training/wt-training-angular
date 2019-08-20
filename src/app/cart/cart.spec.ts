@@ -1,3 +1,6 @@
+import { Cart } from './cart';
+import { Sandwich } from './sandwich';
+
 describe('Cart', () => {
 
     let cart: Cart;
