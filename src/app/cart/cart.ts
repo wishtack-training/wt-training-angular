@@ -8,13 +8,10 @@ export class Cart {
     }
 
     addSandwich(sandwich: Sandwich) {
-        this._sandwichList.push(sandwich);
+        this._sandwichList = [...this._sandwichList, sandwich];
     }
 
     removeSandwich(sandwich: Sandwich) {
-        const index = this._sandwichList.indexOf(sandwich);
-        if (index !== -1) {
-            this._sandwichList.splice(index, 1);
-        }
+        this._sandwichList = this._sandwichList.filter(_sandwich => _sandwich !== sandwich);
     }
 }

@@ -19,13 +19,13 @@ describe('Cart', () => {
 
         const emptySandwichList = cart.getSandwichList();
 
-        expect(emptySandwichList).toEqual([]);
-
         cart.addSandwich(burger);
         cart.addSandwich(butter);
         cart.addSandwich(cheese);
 
         const sandwichList = cart.getSandwichList();
+
+        expect(emptySandwichList).toEqual([]);
 
         expect(sandwichList).toEqual([
             burger,
