@@ -20,4 +20,16 @@ export class Cart {
             .map(sandwich => sandwich.price)
             .reduce((total, price) => total + price, 0);
     }
+
+    replaceSandwich(previous: Sandwich, current: Sandwich) {
+        this._sandwichList = this._sandwichList
+            .map(sandwich => {
+
+                if (sandwich === previous) {
+                    return current;
+                }
+
+                return sandwich;
+            });
+    }
 }

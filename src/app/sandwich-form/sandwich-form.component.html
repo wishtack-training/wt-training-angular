@@ -5,10 +5,7 @@
     <input formControlName="title" type="text">
     <input formControlName="price" type="number">
 
-    <button type="submit">ADD</button>
+    <button type="submit">{{ buttonLabel || 'SUBMIT' }}</button>
 
 </form>
-
-<hr>
-<h2>Preview:</h2>
-<wt-sandwich-preview [sandwich]="editedSandwich$ | async"></wt-sandwich-preview>
+<!--<wt-sandwich-preview [sandwich]="editedSandwich$ | async"></wt-sandwich-preview>-->

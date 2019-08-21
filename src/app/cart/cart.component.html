@@ -1,4 +1,13 @@
-<wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
+<wt-sandwich-form
+    *ngIf="!selectedSandwich"
+    buttonLabel="ADD"
+    (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
+
+<wt-sandwich-form
+    *ngIf="selectedSandwich"
+    buttonLabel="SAVE"
+    [sandwich]="selectedSandwich"
+    (sandwichSubmit)="replaceSandwich(selectedSandwich, $event)"></wt-sandwich-form>
 
 <hr>
 
@@ -8,10 +17,12 @@
     <li *ngFor="let sandwich of getSandwichList()">
 
         <wt-sandwich-preview [sandwich]="sandwich">
-            <button (click)="removeSandwich(sandwich)">REMOVE</button>
+            <button type="button" (click)="editSandwich(sandwich)">EDIT</button>
+            <button type="button" (click)="removeSandwich(sandwich)">REMOVE</button>
         </wt-sandwich-preview>
 
     </li>
 </ul>
 
 <div *ngIf="!isCartEmpty()">Total: {{ getTotalPrice() }}</div>
+

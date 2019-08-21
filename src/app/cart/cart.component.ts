@@ -9,6 +9,8 @@ import { Sandwich } from './sandwich';
 })
 export class CartComponent implements OnInit {
 
+    selectedSandwich: Sandwich;
+
     private _cart = new Cart();
 
     ngOnInit() {
@@ -34,4 +36,12 @@ export class CartComponent implements OnInit {
         return this._cart.getSandwichList().length === 0;
     }
 
+    editSandwich(sandwich: Sandwich) {
+        this.selectedSandwich = sandwich;
+    }
+
+    replaceSandwich(previous: Sandwich, current: Sandwich) {
+        this._cart.replaceSandwich(previous, current);
+        this.selectedSandwich = null;
+    }
 }

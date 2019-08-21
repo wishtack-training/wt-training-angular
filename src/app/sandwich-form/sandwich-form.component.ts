@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,8 +9,10 @@ import { Sandwich } from '../cart/sandwich';
     templateUrl: './sandwich-form.component.html',
     styleUrls: ['./sandwich-form.component.scss']
 })
-export class SandwichFormComponent implements OnInit {
+export class SandwichFormComponent implements OnChanges, OnInit {
 
+    @Input() buttonLabel: string;
+    @Input() sandwich: Sandwich;
     @Output() sandwichSubmit = new EventEmitter<Sandwich>();
 
     sandwichForm = new FormGroup({
@@ -18,6 +20,12 @@ export class SandwichFormComponent implements OnInit {
         price: new FormControl()
     });
     editedSandwich$: Observable<Sandwich>;
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.sandwich) {
+            this._updateForm(this.sandwich);
+        }
+    }
 
     ngOnInit() {
         this.editedSandwich$ = this.sandwichForm.valueChanges
@@ -32,4 +40,12 @@ export class SandwichFormComponent implements OnInit {
         this.sandwichForm.reset();
     }
 
+    private _updateForm(sandwich: Sandwich) {
+        if (sandwich == null) {
+            this.sandwichForm.reset();
+            return;
+        }
+
+        this.sandwichForm.setValue(sandwich);
+    }
 }
