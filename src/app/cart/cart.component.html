@@ -1,21 +1,4 @@
-<form (ngSubmit)="addSandwich()">
-    <input
-        [ngModel]="editedSandwich.title"
-        (ngModelChange)="updateSandwichTitle($event)"
-        name="title"
-        placeholder="title"
-        type="text">
-    <input
-        [(ngModel)]="editedSandwich.price"
-        name="price"
-        placeholder="price"
-        type="number">
-    <button type="submit">ADD</button>
-</form>
-
-<wt-sandwich-preview *ngIf="editedSandwich" [sandwich]="editedSandwich"></wt-sandwich-preview>
-
-<!--<wt-sandwich-form></wt-sandwich-form>-->
+<wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
 <hr>
 

@@ -9,16 +9,13 @@ import { Sandwich } from './sandwich';
 })
 export class CartComponent implements OnInit {
 
-    editedSandwich = new Sandwich();
-
     private _cart = new Cart();
 
     ngOnInit() {
     }
 
-    addSandwich() {
-        this._cart.addSandwich(this.editedSandwich);
-        this.editedSandwich = new Sandwich();
+    addSandwich(sandwich: Sandwich) {
+        this._cart.addSandwich(sandwich);
     }
 
     getSandwichList() {
@@ -37,7 +34,4 @@ export class CartComponent implements OnInit {
         return this._cart.getSandwichList().length === 0;
     }
 
-    updateSandwichTitle(title: string) {
-        this.editedSandwich = new Sandwich(title, this.editedSandwich.price);
-    }
 }

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { DemoComponent } from './demo/demo.component';
+import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
 import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.component';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.co
         AppComponent,
         DemoComponent,
         CartComponent,
-        SandwichPreviewComponent
+        SandwichPreviewComponent,
+        SandwichFormComponent
     ],
     imports: [
         AppRoutingModule,

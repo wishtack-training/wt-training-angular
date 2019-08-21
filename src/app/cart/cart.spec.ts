@@ -10,9 +10,9 @@ describe('Cart', () => {
 
     beforeEach(() => {
         cart = new Cart();
-        burger = new Sandwich('Burger', 12);
-        butter = new Sandwich('Double Beurre', 6);
-        cheese = new Sandwich('Cheese', 10);
+        burger = new Sandwich({title: 'Burger', price: 12});
+        butter = new Sandwich({title: 'Double Beurre', price: 6});
+        cheese = new Sandwich({title: 'Cheese', price: 10});
     });
 
     it('should add sandwiches', () => {
