@@ -23,7 +23,6 @@ import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.co
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

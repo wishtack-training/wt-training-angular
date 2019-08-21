@@ -11,7 +11,8 @@ export class CartComponent implements OnInit {
 
     selectedSandwich: Sandwich;
 
-    private _cart = new Cart();
+    constructor(private _cart: Cart) {
+    }
 
     ngOnInit() {
     }
