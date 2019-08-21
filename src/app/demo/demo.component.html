@@ -11,3 +11,11 @@
 <div *ngFor="let city of cityList">
     {{ city }}
 </div>
+
+<form
+    [formGroup]="cityInfoForm"
+    (ngSubmit)="submit()">
+    <input formControlName="city" type="text">
+    <input formControlName="temperature" type="number">
+    <button [disabled]="!cityInfoForm.valid" type="submit">SUBMIT</button>
+</form>

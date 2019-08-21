@@ -13,9 +13,6 @@ export class CartComponent implements OnInit {
 
     private _cart = new Cart();
 
-    constructor() {
-    }
-
     ngOnInit() {
     }
 
@@ -40,4 +37,7 @@ export class CartComponent implements OnInit {
         return this._cart.getSandwichList().length === 0;
     }
 
+    updateSandwichTitle(title: string) {
+        this.editedSandwich = new Sandwich(title, this.editedSandwich.price);
+    }
 }

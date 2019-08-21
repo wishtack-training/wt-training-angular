@@ -1,6 +1,7 @@
 <form (ngSubmit)="addSandwich()">
     <input
-        [(ngModel)]="editedSandwich.title"
+        [ngModel]="editedSandwich.title"
+        (ngModelChange)="updateSandwichTitle($event)"
         name="title"
         placeholder="title"
         type="text">

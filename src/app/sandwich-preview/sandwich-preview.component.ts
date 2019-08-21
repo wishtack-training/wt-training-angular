@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Sandwich } from '../cart/sandwich';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-sandwich-preview',
     templateUrl: './sandwich-preview.component.html',
     styleUrls: ['./sandwich-preview.component.scss']
@@ -9,5 +10,10 @@ import { Sandwich } from '../cart/sandwich';
 export class SandwichPreviewComponent {
 
     @Input() sandwich: Sandwich;
+
+    shouldShowPrice() {
+        console.count('shouldShowPrice');
+        return this.sandwich.price != null;
+    }
 
 }
