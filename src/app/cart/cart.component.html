@@ -1,13 +1,6 @@
 <wt-sandwich-form
-    *ngIf="!selectedSandwich"
     buttonLabel="ADD"
     (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
-
-<wt-sandwich-form
-    *ngIf="selectedSandwich"
-    buttonLabel="SAVE"
-    [sandwich]="selectedSandwich"
-    (sandwichSubmit)="replaceSandwich(selectedSandwich, $event)"></wt-sandwich-form>
 
 <hr>
 
@@ -16,10 +9,18 @@
 <ul>
     <li *ngFor="let sandwich of getSandwichList()">
 
-        <wt-sandwich-preview [sandwich]="sandwich">
+        <wt-sandwich-preview
+            *ngIf="selectedSandwich !== sandwich"
+            [sandwich]="sandwich">
             <button type="button" (click)="editSandwich(sandwich)">EDIT</button>
             <button type="button" (click)="removeSandwich(sandwich)">REMOVE</button>
         </wt-sandwich-preview>
+
+        <wt-sandwich-form
+            *ngIf="selectedSandwich === sandwich"
+            buttonLabel="SAVE"
+            [sandwich]="selectedSandwich"
+            (sandwichSubmit)="replaceSandwich(selectedSandwich, $event)"></wt-sandwich-form>
 
     </li>
 </ul>
