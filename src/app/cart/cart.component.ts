@@ -9,7 +9,7 @@ import { Sandwich } from './sandwich';
 })
 export class CartComponent implements OnInit {
 
-    _cart = new Cart();
+    private _cart = new Cart();
 
     constructor() {
     }

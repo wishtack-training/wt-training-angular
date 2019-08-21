@@ -4,14 +4,19 @@
     <button type="submit">ADD</button>
 </form>
 
+<!--<wt-sandwich-form></wt-sandwich-form>-->
+
 <hr>
 
 <div *ngIf="isCartEmpty()">NO ITEMS!</div>
 
 <ul>
     <li *ngFor="let sandwich of getSandwichList()">
-        <span>{{ sandwich.title }} ({{ sandwich.price | currency:'EUR' }})</span>
-        <button (click)="removeSandwich(sandwich)">REMOVE</button>
+
+        <wt-sandwich-preview [sandwich]="sandwich">
+            <button (click)="removeSandwich(sandwich)">REMOVE</button>
+        </wt-sandwich-preview>
+
     </li>
 </ul>
 
