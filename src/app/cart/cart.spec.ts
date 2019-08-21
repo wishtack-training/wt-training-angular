@@ -52,4 +52,14 @@ describe('Cart', () => {
 
     });
 
+    it('should compute total price', () => {
+
+        cart.addSandwich(burger);
+        cart.addSandwich(butter);
+        cart.addSandwich(cheese);
+
+        expect(cart.getTotalPrice()).toEqual(28);
+
+    });
+
 });

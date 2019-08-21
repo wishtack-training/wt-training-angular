@@ -14,4 +14,10 @@ export class Cart {
     removeSandwich(sandwich: Sandwich) {
         this._sandwichList = this._sandwichList.filter(_sandwich => _sandwich !== sandwich);
     }
+
+    getTotalPrice() {
+        return this._sandwichList
+            .map(sandwich => sandwich.price)
+            .reduce((total, price) => total + price, 0);
+    }
 }
