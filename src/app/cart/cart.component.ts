@@ -9,6 +9,8 @@ import { Sandwich } from './sandwich';
 })
 export class CartComponent implements OnInit {
 
+    editedSandwich = new Sandwich();
+
     private _cart = new Cart();
 
     constructor() {
@@ -17,9 +19,9 @@ export class CartComponent implements OnInit {
     ngOnInit() {
     }
 
-    addSandwich({event, title, priceString}: { event: Event, title: string, priceString: string }) {
-        event.preventDefault();
-        this._cart.addSandwich(new Sandwich(title, parseFloat(priceString)));
+    addSandwich() {
+        this._cart.addSandwich(this.editedSandwich);
+        this.editedSandwich = new Sandwich();
     }
 
     getSandwichList() {
@@ -37,4 +39,5 @@ export class CartComponent implements OnInit {
     isCartEmpty() {
         return this._cart.getSandwichList().length === 0;
     }
+
 }
