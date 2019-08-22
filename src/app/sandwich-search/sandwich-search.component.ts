@@ -62,7 +62,7 @@ export class SandwichSearchComponent implements OnInit {
             .pipe(
                 map(itemList => {
                     return itemList
-                        .map(item => new Sandwich({title: item.name, price: item.price.amount}));
+                        .map(item => new Sandwich({id: item.id, title: item.name, price: item.price.amount}));
                 })
             );
     }

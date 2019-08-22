@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DemoComponent } from './demo/demo.component';
+import { Routes } from '@angular/router';
 import { helpRouteHelper } from './help/help-route-helper';
+import { SandwichSearchComponent } from './sandwich-search/sandwich-search.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
     {
-        path: 'demo',
-        component: DemoComponent
+        path: 'search',
+        component: SandwichSearchComponent
     },
     {
         path: helpRouteHelper.HELP_PATH,
@@ -15,19 +14,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: '/demo'
+        redirectTo: '/search'
     }
 ];
 
-@NgModule({
-    imports: [
-        RouterModule.forRoot(routes, {
-            preloadingStrategy: PreloadAllModules
-        })
-    ],
-    exports: [
-        RouterModule
-    ]
-})
-export class AppRoutingModule {
-}

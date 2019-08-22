@@ -3,13 +3,19 @@
     placeholder="keywords"
     type="text">
 
-<wt-sandwich-preview
-    *ngFor="let sandwich of sandwichList"
-    [sandwich]="sandwich">
+<div class="wt-sandwich-list-container">
 
-    <button
-        (click)="buy(sandwich)"
-        type="button">BUY
-    </button>
+    <wt-sandwich-preview
+        class="wt-sandwich-preview"
+        *ngFor="let sandwich of sandwichList"
+        [sandwich]="sandwich">
 
-</wt-sandwich-preview>
+        <button
+            (click)="buy(sandwich)"
+            mat-button
+            type="button">BUY
+        </button>
+
+    </wt-sandwich-preview>
+
+</div>

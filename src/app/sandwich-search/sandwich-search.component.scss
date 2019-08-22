@@ -1,0 +1,11 @@
+.wt-sandwich-list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.wt-sandwich-preview {
+    margin: 20px;
+}

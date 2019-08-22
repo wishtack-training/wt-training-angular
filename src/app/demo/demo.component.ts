@@ -35,6 +35,7 @@ export class DemoComponent implements OnInit {
 
     ngOnInit() {
         // setInterval(() => this.name += '.', 1000);
+
         this.cityInfoForm.valueChanges
             .subscribe(value => {
                 console.log(value);
