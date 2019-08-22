@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { appRouteHelper } from './app-route-helper';
+import { helpRouteHelper } from './help/help-route-helper';
 
 @Component({
     selector: 'wt-root',
@@ -7,6 +7,6 @@ import { appRouteHelper } from './app-route-helper';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    appRouteHelper = appRouteHelper;
+    appRouteHelper = helpRouteHelper;
 }
 

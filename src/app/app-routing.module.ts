@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { appRouteHelper } from './app-route-helper';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './demo/demo.component';
-import { HelpComponent } from './help/help.component';
+import { helpRouteHelper } from './help/help-route-helper';
 
 
 const routes: Routes = [
@@ -11,8 +10,8 @@ const routes: Routes = [
         component: DemoComponent
     },
     {
-        path: `${appRouteHelper.HELP_PATH}/:topic`,
-        component: HelpComponent
+        path: helpRouteHelper.HELP_PATH,
+        loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
     },
     {
         path: '**',
@@ -22,7 +21,9 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        })
     ],
     exports: [
         RouterModule

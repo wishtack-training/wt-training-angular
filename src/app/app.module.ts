@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { DemoComponent } from './demo/demo.component';
-import { HelpComponent } from './help/help.component';
 import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
 import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.component';
 import { SandwichSearchComponent } from './sandwich-search/sandwich-search.component';
@@ -20,8 +19,7 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
         CartComponent,
         SandwichPreviewComponent,
         SandwichFormComponent,
-        SandwichSearchComponent,
-        HelpComponent
+        SandwichSearchComponent
     ],
     imports: [
         AppRoutingModule,

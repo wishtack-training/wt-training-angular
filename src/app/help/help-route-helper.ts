@@ -1,4 +1,4 @@
-export const appRouteHelper = {
+export const helpRouteHelper = {
 
     HELP_PATH: 'help',
 
