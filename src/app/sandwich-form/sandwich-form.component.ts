@@ -14,12 +14,20 @@ export class SandwichFormComponent implements OnChanges, OnInit {
     @Input() buttonLabel: string;
     @Input() sandwich: Sandwich;
     @Output() sandwichSubmit = new EventEmitter<Sandwich>();
+    @Output() sandwichChange: Observable<Sandwich>;
 
     sandwichForm = new FormGroup({
         title: new FormControl(null, [Validators.required]),
         price: new FormControl()
     });
     editedSandwich$: Observable<Sandwich>;
+
+    constructor() {
+        this.sandwichChange = this.sandwichForm.valueChanges
+            .pipe(
+                map(value => new Sandwich(value))
+            );
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.sandwich) {
