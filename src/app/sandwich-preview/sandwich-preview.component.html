@@ -1,4 +1,6 @@
-<span>{{ sandwich.title }}</span>
-<span *ngIf="shouldShowPrice()">({{ sandwich.price | currency:'EUR' }})</span>
+<div>
+    <span>{{ sandwich.title }}</span>
+    <span *ngIf="shouldShowPrice()">({{ sandwich.price | currency:'EUR' }})</span>
 
-<ng-content></ng-content>
+    <ng-content></ng-content>
+</div>

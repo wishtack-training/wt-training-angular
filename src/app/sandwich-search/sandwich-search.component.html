@@ -1,0 +1,15 @@
+<input
+    [formControl]="keywordsControl"
+    placeholder="keywords"
+    type="text">
+
+<wt-sandwich-preview
+    *ngFor="let sandwich of sandwichList"
+    [sandwich]="sandwich">
+
+    <button
+        (click)="buy(sandwich)"
+        type="button">BUY
+    </button>
+
+</wt-sandwich-preview>
