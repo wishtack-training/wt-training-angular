@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CityInfo } from './demo/demo.component';
+import { appRouteHelper } from './app-route-helper';
 
 @Component({
     selector: 'wt-root',
@@ -7,10 +7,6 @@ import { CityInfo } from './demo/demo.component';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'training';
-
-    logCityInfo(cityInfo: CityInfo) {
-        console.log(cityInfo);
-    }
+    appRouteHelper = appRouteHelper;
 }
 

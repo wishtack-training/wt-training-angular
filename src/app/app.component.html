@@ -1,3 +1,7 @@
-<wt-sandwich-search></wt-sandwich-search>
-<hr>
-<wt-cart></wt-cart>
+<header>HEADER</header>
+<router-outlet></router-outlet>
+<footer>
+    <li><a routerLink="/demo">Demo</a></li>
+    <li><a [routerLink]="appRouteHelper.getHelpRoute('tld')">What is a TLD?</a></li>
+    <li><a [routerLink]="appRouteHelper.getHelpRoute('cctld')">What is a ccTLD?</a></li>
+</footer>
