@@ -6,10 +6,12 @@
     </h1>
 
     <div slot="links">
-        <a mat-list-item routerLink="/search">Search</a>
+        <a mat-list-item routerLink="/en/search">Search</a>
         <a mat-list-item routerLink="/cart">Cart</a>
         <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('tld')">What is a TLD?</a>
         <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('cctld')">What is a ccTLD?</a>
+        <hr>
+        <router-outlet name="extra"></router-outlet>
     </div>
 
     <router-outlet slot="content"></router-outlet>

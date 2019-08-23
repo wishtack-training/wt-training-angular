@@ -1,12 +1,32 @@
 import { Routes } from '@angular/router';
 import { helpRouteHelper } from './help/help-route-helper';
+import { HelpComponent } from './help/help.component';
 import { SandwichSearchComponent } from './sandwich-search/sandwich-search.component';
 
 
 export const routes: Routes = [
     {
-        path: 'search',
-        component: SandwichSearchComponent
+        path: ':lang/search',
+        children: [
+            {
+                path: '',
+                component: SandwichSearchComponent
+            },
+            {
+                path: 'help',
+                children: [
+                    {
+                        path: '',
+                        component: SandwichSearchComponent
+                    },
+                    {
+                        path: '',
+                        outlet: 'extra',
+                        component: HelpComponent
+                    }
+                ]
+            }
+        ]
     },
     {
         path: helpRouteHelper.HELP_PATH,
@@ -14,7 +34,6 @@ export const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: '/search'
+        redirectTo: '/en/search/help'
     }
 ];
-

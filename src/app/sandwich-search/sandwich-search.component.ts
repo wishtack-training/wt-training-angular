@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, debounceTime, map, pluck, retry, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, map, pluck, retry, shareReplay, switchMap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
 import { Sandwich } from '../legacy-cart/sandwich';
 
@@ -54,11 +54,8 @@ export class SandwichSearchComponent implements OnInit {
             .subscribe(sandwichList => this.sandwichList = sandwichList);
 
         keywords$
-            .pipe(
-                debounceTime(300)
-            )
             .subscribe(keywords => {
-                this._router.navigate(['/search'], {
+                this._router.navigate([this._route.url], {
                     queryParams: {
                         keywords
                     }
@@ -67,11 +64,6 @@ export class SandwichSearchComponent implements OnInit {
 
         this._route.queryParams.pipe(pluck('keywords'))
             .subscribe(keywords => this.keywordsControl.setValue(keywords));
-
-        const initialKeywords = this._route.snapshot.queryParamMap.get('keywords');
-        if (!initialKeywords) {
-            this.keywordsControl.setValue('Le');
-        }
 
     }
 
