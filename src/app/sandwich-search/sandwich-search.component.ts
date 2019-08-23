@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, map, retry, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, map, pluck, retry, shareReplay, switchMap } from 'rxjs/operators';
 import { Cart } from '../cart/cart';
 import { Sandwich } from '../cart/sandwich';
 
@@ -27,13 +28,17 @@ export class SandwichSearchComponent implements OnInit {
 
     constructor(
         private _cart: Cart,
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _route: ActivatedRoute,
+        private _router: Router
     ) {
     }
 
     ngOnInit() {
 
-        this.keywordsControl.valueChanges
+        const keywords$ = this.keywordsControl.valueChanges;
+
+        keywords$
             .pipe(
                 // debounceTime(100)
                 switchMap(keywords => this._searchSandwiches(keywords)
@@ -48,7 +53,25 @@ export class SandwichSearchComponent implements OnInit {
             )
             .subscribe(sandwichList => this.sandwichList = sandwichList);
 
-        this.keywordsControl.setValue('Le');
+        keywords$
+            .pipe(
+                debounceTime(300)
+            )
+            .subscribe(keywords => {
+                this._router.navigate(['/search'], {
+                    queryParams: {
+                        keywords
+                    }
+                });
+            });
+
+        this._route.queryParams.pipe(pluck('keywords'))
+            .subscribe(keywords => this.keywordsControl.setValue(keywords));
+
+        const initialKeywords = this._route.snapshot.queryParamMap.get('keywords');
+        if (!initialKeywords) {
+            this.keywordsControl.setValue('Le');
+        }
 
     }
 

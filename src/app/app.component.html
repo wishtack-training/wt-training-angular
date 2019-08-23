@@ -1,7 +1,13 @@
-<header>HEADER</header>
-<router-outlet></router-outlet>
-<footer>
-    <li><a routerLink="/demo">Demo</a></li>
-    <li><a [routerLink]="appRouteHelper.getHelpRoute('tld')">What is a TLD?</a></li>
-    <li><a [routerLink]="appRouteHelper.getHelpRoute('cctld')">What is a ccTLD?</a></li>
-</footer>
+<wt-nav>
+
+    <h1 slot="title">🍔</h1>
+    \
+    <div slot="links">
+        <a mat-list-item routerLink="/search">Search</a>
+        <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('tld')">What is a TLD?</a>
+        <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('cctld')">What is a ccTLD?</a>
+    </div>
+
+    <router-outlet slot="content"></router-outlet>
+
+</wt-nav>
