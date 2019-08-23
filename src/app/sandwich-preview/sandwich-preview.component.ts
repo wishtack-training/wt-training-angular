@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Sandwich } from '../cart/sandwich';
+import { Sandwich } from '../legacy-cart/sandwich';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,

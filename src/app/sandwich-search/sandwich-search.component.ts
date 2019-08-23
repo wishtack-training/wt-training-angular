@@ -4,8 +4,8 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, debounceTime, map, pluck, retry, shareReplay, switchMap } from 'rxjs/operators';
-import { Cart } from '../cart/cart';
-import { Sandwich } from '../cart/sandwich';
+import { CartService } from '../cart/cart.service';
+import { Sandwich } from '../legacy-cart/sandwich';
 
 export interface ApiSandwich {
     id: string;
@@ -27,7 +27,7 @@ export class SandwichSearchComponent implements OnInit {
     sandwichList: Sandwich[];
 
     constructor(
-        private _cart: Cart,
+        private _cart: CartService,
         private _httpClient: HttpClient,
         private _route: ActivatedRoute,
         private _router: Router

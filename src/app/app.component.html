@@ -2,7 +2,7 @@
 
     <h1 slot="title">
         🍔
-        <span>({{ getTotalPrice() | currency:'EUR' }})</span>
+        <span>({{ totalPrice$ | async | currency:'EUR' }})</span>
     </h1>
 
     <div slot="links">

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Sandwich } from '../cart/sandwich';
+import { Sandwich } from '../legacy-cart/sandwich';
 
 @Component({
     selector: 'wt-sandwich-form',

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Sandwich } from './sandwich';
 
+/**
+ * @deprecated Use {@Link CartService} instead.
+ */
 @Injectable({
     providedIn: 'root'
 })
