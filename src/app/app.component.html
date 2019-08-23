@@ -1,9 +1,13 @@
 <wt-nav>
 
-    <h1 slot="title">🍔</h1>
-    \
+    <h1 slot="title">
+        🍔
+        <span>({{ getTotalPrice() | currency:'EUR' }})</span>
+    </h1>
+
     <div slot="links">
         <a mat-list-item routerLink="/search">Search</a>
+        <a mat-list-item routerLink="/cart">Cart</a>
         <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('tld')">What is a TLD?</a>
         <a mat-list-item [routerLink]="appRouteHelper.getHelpRoute('cctld')">What is a ccTLD?</a>
     </div>

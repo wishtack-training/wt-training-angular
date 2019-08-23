@@ -12,7 +12,6 @@ export class SandwichPreviewComponent {
     @Input() sandwich: Sandwich;
 
     shouldShowPrice() {
-        console.count('shouldShowPrice');
         return this.sandwich.price != null;
     }
 

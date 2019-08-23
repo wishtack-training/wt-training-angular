@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Cart } from './cart/cart';
 import { helpRouteHelper } from './help/help-route-helper';
 
 @Component({
@@ -8,5 +9,13 @@ import { helpRouteHelper } from './help/help-route-helper';
 })
 export class AppComponent {
     appRouteHelper = helpRouteHelper;
-}
 
+    constructor(private _cart: Cart) {
+    }
+
+    getTotalPrice() {
+        console.count('getTotalPrice');
+        return this._cart.getTotalPrice();
+    }
+
+}
