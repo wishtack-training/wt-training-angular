@@ -8,7 +8,7 @@ export class Cart {
         this._sandwichList = [...this._sandwichList, sandwich];
     }
 
-    getSandwichList(): Sandwich[] {
+    getSandwichList() {
         return this._sandwichList;
     }
 
