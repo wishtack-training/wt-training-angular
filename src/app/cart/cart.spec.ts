@@ -1,24 +1,26 @@
 class Sandwich {
 
-    constructor(title: string, price: number) {
-        throw new Error('🚧 work in progress!');
+    constructor(
+        public title: string,
+        public price: number
+    ) {
     }
 
 }
 
 class Cart {
-    /**
-     * @deprecated WIP
-     */
+
+    private _sandwichList: Sandwich[] = [];
+
     addSandwich(sandwich: Sandwich) {
-        throw new Error('🚧 work in progress!');
+        this._sandwichList.push(sandwich);
     }
 
     /**
      * @deprecated WIP
      */
     getSandwichList(): Sandwich[] {
-        throw new Error('🚧 work in progress!');
+        return this._sandwichList;
     }
 
     /**
@@ -46,7 +48,7 @@ describe('Cart', () => {
 
     });
 
-    xit('🚧 should add sandwich', () => {
+    it('🚧 should add sandwich', () => {
 
         const emptySandwichList = cart.getSandwichList();
 
