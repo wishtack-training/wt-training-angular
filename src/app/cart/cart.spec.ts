@@ -1,3 +1,34 @@
+class Sandwich {
+
+    constructor(title: string, price: number) {
+        throw new Error('🚧 work in progress!');
+    }
+
+}
+
+class Cart {
+    /**
+     * @deprecated WIP
+     */
+    addSandwich(sandwich: Sandwich) {
+        throw new Error('🚧 work in progress!');
+    }
+
+    /**
+     * @deprecated WIP
+     */
+    getSandwichList(): Sandwich[] {
+        throw new Error('🚧 work in progress!');
+    }
+
+    /**
+     * @deprecated 🚧 Work in progress.
+     */
+    removeSandwich(sandwich: Sandwich) {
+        throw new Error('🚧 work in progress!');
+    }
+}
+
 describe('Cart', () => {
 
     let bagel: Sandwich;
