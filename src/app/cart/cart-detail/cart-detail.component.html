@@ -1,10 +1,18 @@
-<button>ADD SANDWICH</button>
+<button
+    type="button"
+    (click)="addBurger()">ADD BURGER
+</button>
 
-<div>
-    <span>Burger 10€</span>
-    <button>REMOVE</button>
-</div>
-<div>
-    <span>Beurre</span>
-    <button>REMOVE</button>
+<button
+    type="button"
+    (click)="addSandwich()">ADD SANDWICH
+</button>
+
+<div *ngFor="let sandwich of getSandwichList()">
+    <span>{{ sandwich.title }}</span>
+    <span>{{ sandwich.price | currency:'EUR' }}</span>
+    <button
+        type="button"
+        (click)="removeSandwich(sandwich)">REMOVE
+    </button>
 </div>
