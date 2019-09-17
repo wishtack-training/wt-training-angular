@@ -849,6 +849,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ngrx/schematics@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-8.3.0.tgz#0a8dab6ed859e28a9acd06399040e6ac54f04701"
+  integrity sha512-18wyj0bOudF+RW6SCuPBVjMNeUgY9uWD+d481xCQ43VttamRAIsmNPmb9e1N/96Kte/HaotF5LNjw3mj/dU7QQ==
+
+"@ngrx/store@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-8.3.0.tgz#f2eaf428ec9e8379801cc37e3f6bffe88c2af472"
+  integrity sha512-QtM5T6/wTYqAlqeW60ptqqrsBwYF7jvQHsh0yE3AnwZIQvSbLFM2t5S2kN+753v4rHiXVRrA5pLaLzjGhAKcSg==
+
 "@ngtools/webpack@8.3.4":
   version "8.3.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.4.tgz#c4cf9a077eecec76cb1a9004fb7f0feade3d43db"

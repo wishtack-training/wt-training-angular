@@ -1,10 +1,5 @@
-<button>ADD SANDWICH</button>
+<button (click)="add()">ADD SANDWICH</button>
 
-<div>
-    <span>Burger 10€</span>
-    <button>REMOVE</button>
-</div>
-<div>
-    <span>Beurre</span>
-    <button>REMOVE</button>
+<div *ngFor="let sandwich of sandwichList$ | async">
+    <span>{{ sandwich.title }}</span>
 </div>
