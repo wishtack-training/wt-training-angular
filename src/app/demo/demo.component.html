@@ -1,29 +1,48 @@
-<form (ngSubmit)="addCity()">
-    <input
-        name="city"
-        placeholder="city"
-        type="text"
-        [(ngModel)]="city">
-    <button type="submit">ADD</button>
+<form
+    [formGroup]="cityInfoForm"
+    (ngSubmit)="addCityInfo()">
+
+    <input formControlName="name" placeholder="city" type="text">
+
+    <select formControlName="coolness">
+        <option value="cool">Cool</option>
+        <option value="not-cool">Not Cool</option>
+    </select>
+
+    <input formControlName="postalCode" placeholder="postalCode" type="text">
+    <input formControlName="region" placeholder="region" type="text">
+
+    <div *ngIf="cityInfoForm.get('name').touched && cityInfoForm.hasError('required', 'name')">Please choose a city
+    </div>
+
+    <div *ngIf="cityInfoForm.hasError('postalCodeOrRegion')">
+        Please enter postal code or region
+    </div>
+
+    <button
+        type="submit"
+        [disabled]="!cityInfoForm.valid">ADD
+    </button>
+
 </form>
 
-<div>
-    <span>{{ title }}</span>
-    <span>&nbsp;</span>
-    <span>({{ title.length }})</span>
-</div>
+<!--<div>-->
+<!--    <span>{{ title }}</span>-->
+<!--    <span>&nbsp;</span>-->
+<!--    <span>({{ title.length }})</span>-->
+<!--</div>-->
 
-<button
-    *ngIf="isResetEnabled()"
-    [class.wt-red]="!isResetEnabled()"
-    [disabled]="!isResetEnabled()"
-    (click)="title = ''">RESET
-</button>
-
-<button (click)="addCity()">ADD CITY</button>
+<!--<button-->
+<!--    *ngIf="isResetEnabled()"-->
+<!--    [class.wt-red]="!isResetEnabled()"-->
+<!--    [disabled]="!isResetEnabled()"-->
+<!--    (click)="title = ''">RESET-->
+<!--</button>-->
 
 <ul>
-    <li *ngFor="let city of cityList">
-        {{ city }}
+    <li *ngFor="let cityInfo of cityInfoList">
+        <span *ngIf="cityInfo.coolness === Coolness.cool">👍</span>
+        <span *ngIf="cityInfo.coolness === Coolness.notCool">👎</span>
+        <span>{{ cityInfo.name }}</span>
     </li>
 </ul>
