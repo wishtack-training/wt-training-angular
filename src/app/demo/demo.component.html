@@ -39,10 +39,7 @@
 <!--    (click)="title = ''">RESET-->
 <!--</button>-->
 
-<ul>
-    <li *ngFor="let cityInfo of cityInfoList">
-        <span *ngIf="cityInfo.coolness === Coolness.cool">👍</span>
-        <span *ngIf="cityInfo.coolness === Coolness.notCool">👎</span>
-        <span>{{ cityInfo.name }}</span>
-    </li>
-</ul>
+<wt-city-info-preview
+    *ngFor="let cityInfo of cityInfoList"
+    [cityInfo]="cityInfo"
+    (vote)="handleVote(cityInfo, $event)"></wt-city-info-preview>

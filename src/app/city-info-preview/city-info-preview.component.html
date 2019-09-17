@@ -1,0 +1,7 @@
+<div>
+    <span *ngIf="cityInfo.coolness === Coolness.cool">👍</span>
+    <span *ngIf="cityInfo.coolness === Coolness.notCool">👎</span>
+    <span>{{ cityInfo.name }}</span>
+    <button (click)="setCoolness(Coolness.cool)">👍</button>
+    <button (click)="setCoolness(Coolness.notCool)">👎</button>
+</div>

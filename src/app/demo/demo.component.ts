@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { filter } from 'rxjs/operators';
-
-export enum Coolness {
-    cool = 'cool',
-    notCool = 'not-cool'
-}
-
-export interface CityInfo {
-    coolness: Coolness;
-    name: string;
-}
+import { CityInfo } from '../city-info-preview/city-info';
+import { Coolness } from '../city-info-preview/coolness.enum';
 
 export const postalCodeOrRegion: ValidatorFn = (control) => {
 
@@ -29,8 +21,6 @@ export const postalCodeOrRegion: ValidatorFn = (control) => {
     styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
-
-    Coolness = Coolness;
 
     cityInfoForm = new FormGroup({
         name: new FormControl(null, [
@@ -51,6 +41,7 @@ export class DemoComponent implements OnInit {
     ];
 
     title = 'Welcome';
+    private voteCount = 0;
 
     ngOnInit() {
 
@@ -79,5 +70,23 @@ export class DemoComponent implements OnInit {
     addCityInfo() {
         this.cityInfoList = [...this.cityInfoList, this.cityInfoForm.value];
         this.cityInfoForm.reset();
+    }
+
+    handleVote(cityInfo: CityInfo, coolness: Coolness) {
+
+        this.cityInfoList = this.cityInfoList
+            .map(_cityInfo => {
+
+                if (_cityInfo === cityInfo) {
+
+                    return {
+                        ...cityInfo,
+                        coolness
+                    };
+                }
+
+                return _cityInfo;
+            });
+
     }
 }
