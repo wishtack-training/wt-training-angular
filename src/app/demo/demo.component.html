@@ -1,3 +1,12 @@
+<form (ngSubmit)="addCity()">
+    <input
+        name="city"
+        placeholder="city"
+        type="text"
+        [(ngModel)]="city">
+    <button type="submit">ADD</button>
+</form>
+
 <div>
     <span>{{ title }}</span>
     <span>&nbsp;</span>

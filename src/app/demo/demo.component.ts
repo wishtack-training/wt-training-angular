@@ -14,6 +14,7 @@ export class DemoComponent implements OnInit {
     ];
 
     title = 'Welcome';
+    city: string;
 
     ngOnInit() {
         setInterval(() => this.title += '.', 200);
@@ -24,6 +25,6 @@ export class DemoComponent implements OnInit {
     }
 
     addCity() {
-        this.cityList = [...this.cityList, 'Test'];
+        this.cityList = [...this.cityList, this.city];
     }
 }
