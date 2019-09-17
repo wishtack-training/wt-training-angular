@@ -1,5 +1,8 @@
-import { NgModuleAnalysis } from '@angular/compiler-cli/src/ngtsc/annotations/src/ng_module';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Compiler, Component, Injector, NgModuleRef, Type } from '@angular/core';
+
+export type NgModuleRefWithBootstrapComponents = NgModuleRef<unknown> & {
+    _bootstrapComponents: Type<unknown>[]
+};
 
 @Component({
     selector: 'wt-root',
@@ -7,22 +10,19 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'training';
-    type: any;
-    ngModuleFactory: any;
+    componentType: any;
 
-    constructor(private _viewContainerRef: ViewContainerRef) {
+    moduleLoader1 = () => import('./demo/demo.module').then(m => m.DemoModule);
+    moduleLoader2 = () => import('./demo-2/demo.module').then(m => m.DemoModule);
+
+    constructor(private _compiler: Compiler, private _injector: Injector) {
     }
 
-    async load() {
-        const module = await import('./demo/demo.module');
-        const ngModule = module.DemoModule as unknown as NgModuleAnalysis;
-        // console.dir(ngModule);
-        console.log(ngModule.ngInjectorDef.factory());
-        this.type = ngModule.ngModuleDef.declarations[0];
-        console.dir(this.type);
-        this._viewContainerRef.createComponent(this.type.ngComponentDef.factory);
+    async load(moduleLoader) {
+        const ngModule = await moduleLoader();
+        const ngModuleFactory = this._compiler.compileModuleSync(ngModule);
+        const ngModuleRef = ngModuleFactory.create(this._injector) as NgModuleRefWithBootstrapComponents;
+        this.componentType = ngModuleRef._bootstrapComponents[0];
     }
-
 
 }
