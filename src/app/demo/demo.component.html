@@ -1,0 +1,20 @@
+<div>
+    <span>{{ title }}</span>
+    <span>&nbsp;</span>
+    <span>({{ title.length }})</span>
+</div>
+
+<button
+    *ngIf="isResetEnabled()"
+    [class.wt-red]="!isResetEnabled()"
+    [disabled]="!isResetEnabled()"
+    (click)="title = ''">RESET
+</button>
+
+<button (click)="addCity()">ADD CITY</button>
+
+<ul>
+    <li *ngFor="let city of cityList">
+        {{ city }}
+    </li>
+</ul>
