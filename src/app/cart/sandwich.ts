@@ -1,8 +1,8 @@
 export class Sandwich {
 
     constructor(
-        public title: string,
-        public price: number
+        public title?: string,
+        public price?: number
     ) {
     }
 

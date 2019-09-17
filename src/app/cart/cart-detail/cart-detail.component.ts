@@ -9,13 +9,13 @@ import { Sandwich } from '../sandwich';
 })
 export class CartDetailComponent {
 
+    sandwich = new Sandwich();
+
     private _cart = new Cart();
 
     addSandwich() {
-        const title = prompt('title');
-        const price = parseFloat(prompt('price'));
-        const sandwich = new Sandwich(title, price);
-        this._cart.addSandwich(sandwich);
+        this._cart.addSandwich(this.sandwich);
+        this.sandwich = new Sandwich();
     }
 
     getSandwichList() {

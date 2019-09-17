@@ -1,12 +1,20 @@
-<button
-    type="button"
-    (click)="addBurger()">ADD BURGER
-</button>
+<form (ngSubmit)="addSandwich()">
 
-<button
-    type="button"
-    (click)="addSandwich()">ADD SANDWICH
-</button>
+    <input
+        name="title"
+        placeholder="title"
+        type="text"
+        [(ngModel)]="sandwich.title">
+
+    <input
+        name="price"
+        placeholder="price"
+        type="number"
+        [(ngModel)]="sandwich.price">
+
+    <button type="submit">ADD SANDWICH</button>
+
+</form>
 
 <div *ngFor="let sandwich of getSandwichList()">
     <span>{{ sandwich.title }}</span>
