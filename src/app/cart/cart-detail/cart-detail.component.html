@@ -1,8 +1,7 @@
 <wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
 <div *ngFor="let sandwich of getSandwichList()">
-    <span>{{ sandwich.title }}</span>
-    <span>{{ sandwich.price | currency:'EUR' }}</span>
+    <wt-sandwich-preview [sandwich]="sandwich"></wt-sandwich-preview>
     <button
         type="button"
         (click)="removeSandwich(sandwich)">REMOVE

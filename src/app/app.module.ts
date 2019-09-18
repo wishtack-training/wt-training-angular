@@ -8,6 +8,7 @@ import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { CityInfoPreviewComponent } from './city-info-preview/city-info-preview.component';
 import { DemoComponent } from './demo/demo.component';
 import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
+import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
         CartDetailComponent,
         DemoComponent,
         CityInfoPreviewComponent,
-        SandwichFormComponent
+        SandwichFormComponent,
+        SandwichPreviewComponent
     ],
     imports: [
         BrowserModule,

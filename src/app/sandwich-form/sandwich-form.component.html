@@ -10,6 +10,9 @@
         placeholder="price"
         type="number">
 
-    <button type="submit">ADD SANDWICH</button>
+    <button
+        type="submit"
+        [disabled]="!sandwichForm.valid">ADD SANDWICH
+    </button>
 
 </form>
