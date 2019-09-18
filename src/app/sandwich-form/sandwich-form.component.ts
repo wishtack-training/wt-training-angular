@@ -9,6 +9,7 @@ import { Sandwich } from '../cart/sandwich';
 })
 export class SandwichFormComponent implements OnChanges {
 
+  @Input() buttonLabel: string;
   @Input() sandwich: Sandwich;
   @Output() sandwichSubmit = new EventEmitter<Sandwich>();
 

@@ -1,13 +1,10 @@
 <wt-sandwich-form
-  *ngIf="selectedSandwich == null"
+  buttonLabel="ADD"
   (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
-<wt-sandwich-form
-  *ngIf="selectedSandwich != null"
-  [sandwich]="selectedSandwich"
-  (sandwichSubmit)="replaceSandwich(selectedSandwich, $event)"></wt-sandwich-form>
-
 <wt-sandwich-list
+  [selectedSandwich]="selectedSandwich"
   [sandwichList]="getSandwichList()"
+  (sandwichReplace)="replaceSandwich($event)"
   (sandwichRemove)="removeSandwich($event)"
   (sandwichSelect)="selectSandwich($event)"></wt-sandwich-list>

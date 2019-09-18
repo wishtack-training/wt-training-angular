@@ -29,8 +29,9 @@ export class CartDetailComponent {
     this.selectedSandwich = sandwich;
   }
 
-  replaceSandwich(previous: Sandwich, current: Sandwich) {
+  replaceSandwich({previous, current}: { previous: Sandwich, current: Sandwich }) {
     this._cart.replaceSandwich(previous, current);
+    this.selectedSandwich = undefined;
   }
 
 }

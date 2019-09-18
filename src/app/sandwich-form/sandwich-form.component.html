@@ -11,8 +11,8 @@
         type="number">
 
     <button
-        type="submit"
-        [disabled]="!sandwichForm.valid">ADD SANDWICH
+      type="submit"
+      [disabled]="!sandwichForm.valid">{{ buttonLabel || 'SUBMIT' }}
     </button>
 
 </form>

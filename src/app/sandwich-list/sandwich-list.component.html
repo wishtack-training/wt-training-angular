@@ -2,6 +2,7 @@
   <wt-sandwich-preview [sandwich]="sandwich">
 
     <button
+      *ngIf="sandwich !== selectedSandwich"
       type="button"
       (click)="selectSandwich(sandwich)">EDIT
     </button>
@@ -10,6 +11,12 @@
       type="button"
       (click)="removeSandwich(sandwich)">REMOVE
     </button>
+
+    <wt-sandwich-form
+      *ngIf="sandwich === selectedSandwich"
+      buttonLabel="SAVE"
+      [sandwich]="sandwich"
+      (sandwichSubmit)="replaceSandwich(sandwich, $event)"></wt-sandwich-form>
 
   </wt-sandwich-preview>
 </div>
