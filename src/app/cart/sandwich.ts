@@ -1,9 +1,11 @@
 export class Sandwich {
 
-    constructor(
-        public title?: string,
-        public price?: number
-    ) {
-    }
+  title: string;
+  price: number;
+
+  constructor(args: Partial<Sandwich> = {}) {
+    this.title = args.title;
+    this.price = args.price;
+  }
 
 }

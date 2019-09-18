@@ -9,13 +9,10 @@ import { Sandwich } from '../sandwich';
 })
 export class CartDetailComponent {
 
-    sandwich = new Sandwich();
-
     private _cart = new Cart();
 
-    addSandwich() {
-        this._cart.addSandwich(this.sandwich);
-        this.sandwich = new Sandwich();
+    addSandwich(sandwich: Sandwich) {
+        this._cart.addSandwich(sandwich);
     }
 
     getSandwichList() {
@@ -26,7 +23,4 @@ export class CartDetailComponent {
         this._cart.removeSandwich(sandwich);
     }
 
-    addBurger() {
-        this._cart.addSandwich(new Sandwich('Burger', 10));
-    }
 }

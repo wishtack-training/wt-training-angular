@@ -1,20 +1,4 @@
-<form (ngSubmit)="addSandwich()">
-
-    <input
-        name="title"
-        placeholder="title"
-        type="text"
-        [(ngModel)]="sandwich.title">
-
-    <input
-        name="price"
-        placeholder="price"
-        type="number"
-        [(ngModel)]="sandwich.price">
-
-    <button type="submit">ADD SANDWICH</button>
-
-</form>
+<wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
 <div *ngFor="let sandwich of getSandwichList()">
     <span>{{ sandwich.title }}</span>
