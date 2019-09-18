@@ -1,9 +1,5 @@
 <wt-sandwich-form (sandwichSubmit)="addSandwich($event)"></wt-sandwich-form>
 
-<div *ngFor="let sandwich of getSandwichList()">
-    <wt-sandwich-preview [sandwich]="sandwich"></wt-sandwich-preview>
-    <button
-        type="button"
-        (click)="removeSandwich(sandwich)">REMOVE
-    </button>
-</div>
+<wt-sandwich-list
+    [sandwichList]="getSandwichList()"
+    (sandwichRemove)="removeSandwich($event)"></wt-sandwich-list>

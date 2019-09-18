@@ -1,0 +1,7 @@
+<div *ngFor="let sandwich of sandwichList">
+    <wt-sandwich-preview [sandwich]="sandwich"></wt-sandwich-preview>
+    <button
+        type="button"
+        (click)="removeSandwich(sandwich)">REMOVE
+    </button>
+</div>
