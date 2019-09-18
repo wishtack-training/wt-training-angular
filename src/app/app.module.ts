@@ -10,6 +10,7 @@ import { DemoComponent } from './demo/demo.component';
 import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
 import { SandwichListComponent } from './sandwich-list/sandwich-list.component';
 import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.component';
+import { SandwichSearchComponent } from './search/sandwich-search.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.co
         CityInfoPreviewComponent,
         SandwichFormComponent,
         SandwichPreviewComponent,
-        SandwichListComponent
+        SandwichListComponent,
+        SandwichSearchComponent
     ],
     imports: [
         BrowserModule,

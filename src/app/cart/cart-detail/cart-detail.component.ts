@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Cart } from '../cart';
 import { Sandwich } from '../sandwich';
 
+
 @Component({
   selector: 'wt-cart-detail',
   templateUrl: './cart-detail.component.html',
@@ -11,7 +12,8 @@ export class CartDetailComponent {
 
   selectedSandwich: Sandwich;
 
-  private _cart = new Cart();
+  constructor(private _cart: Cart) {
+  }
 
   addSandwich(sandwich: Sandwich) {
     this._cart.addSandwich(sandwich);
