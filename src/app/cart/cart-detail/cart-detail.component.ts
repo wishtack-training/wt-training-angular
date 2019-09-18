@@ -9,6 +9,8 @@ import { Sandwich } from '../sandwich';
 })
 export class CartDetailComponent {
 
+  selectedSandwich: Sandwich;
+
   private _cart = new Cart();
 
   addSandwich(sandwich: Sandwich) {
@@ -21,6 +23,14 @@ export class CartDetailComponent {
 
   removeSandwich(sandwich: Sandwich) {
     this._cart.removeSandwich(sandwich);
+  }
+
+  selectSandwich(sandwich: Sandwich) {
+    this.selectedSandwich = sandwich;
+  }
+
+  replaceSandwich(previous: Sandwich, current: Sandwich) {
+    this._cart.replaceSandwich(previous, current);
   }
 
 }

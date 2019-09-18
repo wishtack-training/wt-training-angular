@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Sandwich } from '../cart/sandwich';
 
@@ -7,8 +7,9 @@ import { Sandwich } from '../cart/sandwich';
   templateUrl: './sandwich-form.component.html',
   styleUrls: ['./sandwich-form.component.scss']
 })
-export class SandwichFormComponent {
+export class SandwichFormComponent implements OnChanges {
 
+  @Input() sandwich: Sandwich;
   @Output() sandwichSubmit = new EventEmitter<Sandwich>();
 
   sandwichForm = new FormGroup({
@@ -17,6 +18,12 @@ export class SandwichFormComponent {
     ]),
     price: new FormControl()
   });
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.sandwich) {
+      this.sandwichForm.reset(this.sandwich);
+    }
+  }
 
   submitSandwich() {
     const sandwich = new Sandwich(this.sandwichForm.value);
