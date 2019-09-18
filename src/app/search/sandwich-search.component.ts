@@ -1,4 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
+export interface ApiSandwich {
+  name: string;
+}
 
 @Component({
   selector: 'wt-sandwich-search',
@@ -7,10 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandwichSearchComponent implements OnInit {
 
-  constructor() {
+  constructor(private _httpClient: HttpClient) {
   }
 
   ngOnInit() {
+    this._httpClient.get<ApiSandwich[]>('https://sandwich.now.sh/sandwiches')
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 
 }

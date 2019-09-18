@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,23 +14,24 @@ import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.co
 import { SandwichSearchComponent } from './search/sandwich-search.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        CartDetailComponent,
-        DemoComponent,
-        CityInfoPreviewComponent,
-        SandwichFormComponent,
-        SandwichPreviewComponent,
-        SandwichListComponent,
-        SandwichSearchComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    CartDetailComponent,
+    DemoComponent,
+    CityInfoPreviewComponent,
+    SandwichFormComponent,
+    SandwichPreviewComponent,
+    SandwichListComponent,
+    SandwichSearchComponent
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
