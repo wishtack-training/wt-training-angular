@@ -37,9 +37,6 @@ export class SandwichSearchComponent implements OnInit {
 
     const sandwichList$ = keywords$.pipe(
       switchMap(keywords => this._sandwichSearch.searchSandwiches(keywords))
-      // @todo try concatMap
-      // @todo try exhaustMap
-      // @todo try mergeMap
     );
 
     sandwichList$.subscribe(sandwichList => this.sandwichList = sandwichList);
