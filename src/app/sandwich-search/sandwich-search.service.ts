@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map, retry } from 'rxjs/operators';
 import { Sandwich } from '../cart/sandwich';
 
 export interface ApiSandwich {
@@ -31,7 +31,12 @@ export class SandwichSearch {
         map(itemList => itemList.map(item => new Sandwich({
           title: item.name,
           price: item.price.amount
-        })))
+        }))),
+        retry(3),
+        catchError(err => {
+          console.warn(err);
+          return EMPTY;
+        })
       );
   }
 
