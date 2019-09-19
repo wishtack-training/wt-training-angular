@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { concat, defer, Observable, of } from 'rxjs';
-import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
 import { Sandwich } from '../cart/sandwich';
 import { SandwichSearch } from './sandwich-search.service';
 
@@ -22,24 +22,29 @@ function getControlValue(control: FormControl): Observable<string> {
   templateUrl: './sandwich-search.component.html',
   styleUrls: ['./sandwich-search.component.scss']
 })
-export class SandwichSearchComponent implements OnInit {
+export class SandwichSearchComponent {
 
   keywordsControl = new FormControl();
-  sandwichList: Sandwich[];
+
+  sandwichList$: Observable<Sandwich[]>;
+  sandwichCount$: Observable<number>;
+  isDisplayed = true;
 
   constructor(private _sandwichSearch: SandwichSearch) {
-  }
-
-  ngOnInit() {
 
     /* Forcing valueChanges to start with current value. */
     const keywords$ = getControlValue(this.keywordsControl);
 
-    const sandwichList$ = keywords$.pipe(
-      switchMap(keywords => this._sandwichSearch.searchSandwiches(keywords))
+    this.sandwichList$ = keywords$.pipe(
+      switchMap(keywords => this._sandwichSearch.searchSandwiches(keywords)),
+      shareReplay({
+        bufferSize: 1,
+        refCount: true
+      })
     );
 
-    sandwichList$.subscribe(sandwichList => this.sandwichList = sandwichList);
+    this.sandwichCount$ = this.sandwichList$
+      .pipe(map(sandwichList => sandwichList.length));
 
   }
 

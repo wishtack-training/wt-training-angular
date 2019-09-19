@@ -1,5 +1,13 @@
 <input [formControl]="keywordsControl" type="text">
 
-<wt-sandwich-preview
-  *ngFor="let sandwich of sandwichList"
-  [sandwich]="sandwich"></wt-sandwich-preview>
+<button (click)="isDisplayed = !isDisplayed">{{ isDisplayed ? 'HIDE' : 'SHOW'}}</button>
+
+<div *ngIf="isDisplayed">
+
+  <div>{{ sandwichCount$ | async }}</div>
+
+  <wt-sandwich-preview
+    *ngFor="let sandwich of sandwichList$ | async"
+    [sandwich]="sandwich"></wt-sandwich-preview>
+
+</div>
