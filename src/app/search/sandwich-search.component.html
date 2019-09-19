@@ -1,14 +1,6 @@
-<input type="text">
+<input [formControl]="keywordsControl" type="text">
 
 
-<ul>
-  <li>Sandwich 1
-    <button>BUY</button>
-  </li>
-  <li>Sandwich 2
-    <button>BUY</button>
-  </li>
-  <li>Sandwich 3
-    <button>BUY</button>
-  </li>
-</ul>
+<wt-sandwich-preview
+  *ngFor="let sandwich of sandwichList"
+  [sandwich]="sandwich"></wt-sandwich-preview>
