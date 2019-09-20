@@ -1,0 +1,20 @@
+<mat-card class="wt-sandwich-card">
+  <mat-card-header>
+    <mat-card-title>{{ sandwich.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <span>({{ sandwich.price | currency:'EUR' }})</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img
+    class="wt-sandwich-picture"
+    mat-card-image
+    [src]="'https://source.unsplash.com/featured?sandwich;' + sandwich.title">
+  <mat-card-content>
+    <p>
+
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card-actions>
+</mat-card>
