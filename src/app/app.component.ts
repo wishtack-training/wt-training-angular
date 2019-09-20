@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'wt-root',
@@ -7,4 +8,36 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'training';
+
+  formGroup = new FormGroup({});
+
+  formConfigList = [
+    {
+      name: 'title',
+      type: 'input',
+      validators: [
+        'required',
+        {
+          type: 'minlength'
+        }
+      ]
+    },
+    {
+      name: 'description',
+      type: 'textarea'
+    },
+    {
+      name: 'address',
+      type: 'address'
+    }
+  ];
+
+  constructor() {
+
+    this.formConfigList.forEach(config => {
+      this.formGroup.addControl(config.name, new FormControl());
+    });
+
+  }
+
 }

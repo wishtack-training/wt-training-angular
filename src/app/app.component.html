@@ -1,9 +1,19 @@
-<wt-nav>
+<ng-container *ngFor="let config of formConfigList">
 
-  <div slot="sidenav">
-    <a mat-list-item routerLink="/search">Search</a>
-  </div>
+  <ng-container [ngSwitch]="config.type">
 
-  <router-outlet slot="content"></router-outlet>
+    <input
+      *ngSwitchCase="'input'"
+      [placeholder]="config.name"
+      [formControl]="formGroup.get(config.name)" type="text">
 
-</wt-nav>
+    <textarea
+      *ngSwitchCase="'textarea'"
+      [placeholder]="config.name"
+      [formControl]="formGroup.get(config.name)" type="text"></textarea>
+
+  </ng-container>
+
+</ng-container>
+
+{{ formGroup.value | json }}
