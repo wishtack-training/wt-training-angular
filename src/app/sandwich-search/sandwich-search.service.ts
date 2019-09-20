@@ -29,17 +29,26 @@ export class SandwichSearch {
       params
     })
       .pipe(
-        map(itemList => itemList.map(item => new Sandwich({
-          id: item.id,
-          title: item.name,
-          price: item.price.amount
-        }))),
+        map(itemList => itemList.map(this._itemToSandwich)),
         retry(3),
         catchError(err => {
           console.warn(err);
           return EMPTY;
         })
       );
+  }
+
+  getSandwich(sandwichId: string): Observable<Sandwich> {
+    return this._httpClient.get(`https://sandwich.now.sh/sandwiches/${encodeURIComponent(sandwichId)}`)
+      .pipe(map(this._itemToSandwich));
+  }
+
+  private _itemToSandwich(item: ApiSandwich) {
+    return new Sandwich({
+      id: item.id,
+      title: item.name,
+      price: item.price.amount
+    });
   }
 
 }

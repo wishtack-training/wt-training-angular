@@ -17,7 +17,6 @@ import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { CityInfoPreviewComponent } from './city-info-preview/city-info-preview.component';
 import { DemoComponent } from './demo/demo.component';
 import { NavComponent } from './nav/nav.component';
-import { SandwichCardComponent } from './sandwich-card/sandwich-card.component';
 import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
 import { SandwichListComponent } from './sandwich-list/sandwich-list.component';
 import { SandwichPreviewComponent } from './sandwich-preview/sandwich-preview.component';
@@ -33,7 +32,6 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
     SandwichPreviewComponent,
     SandwichListComponent,
     SandwichSearchComponent,
-    SandwichCardComponent,
     NavComponent
   ],
   imports: [
