@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { concat, defer, Observable, of } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
+import { CartService } from '../cart-v2/cart.service';
 import { Sandwich } from '../cart/sandwich';
 import { SandwichSearch } from './sandwich-search.service';
 
@@ -30,7 +31,10 @@ export class SandwichSearchComponent {
   sandwichCount$: Observable<number>;
   isDisplayed = true;
 
-  constructor(private _sandwichSearch: SandwichSearch) {
+  constructor(
+    private _cartService: CartService,
+    private _sandwichSearch: SandwichSearch
+  ) {
 
     /* Forcing valueChanges to start with current value. */
     const keywords$ = getControlValue(this.keywordsControl);
@@ -51,6 +55,10 @@ export class SandwichSearchComponent {
   /* Just for fun... */
   preloadSandwichModule() {
     import('../views/sandwich/sandwich-views.module');
+  }
+
+  buySandwich(sandwich: Sandwich) {
+    this._cartService.addSandwich(sandwich);
   }
 
 }

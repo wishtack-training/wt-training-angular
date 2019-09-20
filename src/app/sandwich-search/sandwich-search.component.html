@@ -6,7 +6,10 @@
   *ngFor="let sandwich of sandwichList$ | async"
   [sandwich]="sandwich">
 
-  <button mat-button>BUY</button>
+  <button
+    mat-button
+    (click)="buySandwich(sandwich)">BUY
+  </button>
   <button
     mat-button
     [routerLink]="['/sandwich', sandwich.id]"

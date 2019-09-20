@@ -1,5 +1,10 @@
 <wt-nav>
 
+  <div slot="toolbar">
+    {{ totalPrice$ | async | json }}
+    {{ totalPrice$ | async | json }}
+  </div>
+
   <div slot="sidenav">
     <a mat-list-item routerLink="/search">Search</a>
   </div>
