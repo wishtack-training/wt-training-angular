@@ -10,6 +10,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +50,9 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
+    AkitaNgRouterStoreModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
