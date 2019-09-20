@@ -1,8 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { SandwichSearchComponent } from './sandwich-search/sandwich-search.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'search',
+    component: SandwichSearchComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'search'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

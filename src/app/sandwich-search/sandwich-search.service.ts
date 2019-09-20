@@ -5,6 +5,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { Sandwich } from '../cart/sandwich';
 
 export interface ApiSandwich {
+  id: string;
   name: string;
   price: {
     amount: number
@@ -29,6 +30,7 @@ export class SandwichSearch {
     })
       .pipe(
         map(itemList => itemList.map(item => new Sandwich({
+          id: item.id,
           title: item.name,
           price: item.price.amount
         }))),

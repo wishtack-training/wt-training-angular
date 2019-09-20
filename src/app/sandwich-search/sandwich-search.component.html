@@ -2,12 +2,11 @@
 
 <button (click)="isDisplayed = !isDisplayed">{{ isDisplayed ? 'HIDE' : 'SHOW'}}</button>
 
-<div *ngIf="isDisplayed">
+<wt-sandwich-preview
+  *ngFor="let sandwich of sandwichList$ | async"
+  [sandwich]="sandwich">
 
-  <div>{{ sandwichCount$ | async }}</div>
+  <button mat-button>BUY</button>
+  <button mat-button>DETAIL</button>
 
-  <wt-sandwich-preview
-    *ngFor="let sandwich of sandwichList$ | async"
-    [sandwich]="sandwich"></wt-sandwich-preview>
-
-</div>
+</wt-sandwich-preview>
