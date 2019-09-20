@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -53,8 +54,19 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
     MatListModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot()
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
+
+  constructor(private _injector: Injector) {
+  }
+
+  ngDoBootstrap(appRef: ApplicationRef) {
+    customElements.define(
+      'wt-search',
+      createCustomElement(SandwichSearchComponent, {injector: this._injector})
+    );
+  }
+
+
 }

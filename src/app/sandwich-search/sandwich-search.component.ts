@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { concat, defer, Observable, of } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
@@ -24,6 +24,9 @@ function getControlValue(control: FormControl): Observable<string> {
   styleUrls: ['./sandwich-search.component.scss']
 })
 export class SandwichSearchComponent {
+
+  @Input() buttonLabel: string;
+  @Output() sandwichBuy = new EventEmitter();
 
   keywordsControl = new FormControl();
 
@@ -59,6 +62,7 @@ export class SandwichSearchComponent {
 
   buySandwich(sandwich: Sandwich) {
     this._cartService.addSandwich(sandwich);
+    this.sandwichBuy.emit(sandwich);
   }
 
 }
