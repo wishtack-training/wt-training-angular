@@ -7,6 +7,10 @@
   [sandwich]="sandwich">
 
   <button mat-button>BUY</button>
-  <button mat-button>DETAIL</button>
+  <button
+    mat-button
+    [routerLink]="['/sandwich', sandwich.id]"
+    (mouseenter)="preloadSandwichModule()">DETAIL
+  </button>
 
 </wt-sandwich-preview>

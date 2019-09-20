@@ -1,8 +1,13 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +16,7 @@ import { AppComponent } from './app.component';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { CityInfoPreviewComponent } from './city-info-preview/city-info-preview.component';
 import { DemoComponent } from './demo/demo.component';
+import { NavComponent } from './nav/nav.component';
 import { SandwichCardComponent } from './sandwich-card/sandwich-card.component';
 import { SandwichFormComponent } from './sandwich-form/sandwich-form.component';
 import { SandwichListComponent } from './sandwich-list/sandwich-list.component';
@@ -27,7 +33,8 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
     SandwichPreviewComponent,
     SandwichListComponent,
     SandwichSearchComponent,
-    SandwichCardComponent
+    SandwichCardComponent,
+    NavComponent
   ],
   imports: [
     AppRoutingModule,
@@ -37,7 +44,12 @@ import { SandwichSearchComponent } from './sandwich-search/sandwich-search.compo
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   bootstrap: [AppComponent]
 })

@@ -48,4 +48,9 @@ export class SandwichSearchComponent {
 
   }
 
+  /* Just for fun... */
+  preloadSandwichModule() {
+    import('../views/sandwich/sandwich-views.module');
+  }
+
 }
