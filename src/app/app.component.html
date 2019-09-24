@@ -328,10 +328,8 @@
 
 <div class="content" role="main">
 
-  <div>Drag this to your bookmarks and click on it...</div>
-  <a href="javascript:(()=>{const blocks=document.querySelectorAll('#csb-devtools>*');blocks[0].style.display='none';blocks[1].style.flex=1})()">Hide browser</a>
-  <div>... or just run the following code in your console</div>
-  <pre><code>document.querySelector('#csb-devtools>*').style.display='none'</code></pre>
+  <div>✨ Drag this link to your bookmarks and click on it to toggle codesandbox browser frame. ✨</div>
+  <a href="javascript:(()=>{const blocks=document.querySelectorAll('#csb-devtools>*');const browserStyle=blocks[0].style;browserStyle.display=browserStyle.display==='none'?'block':'none';blocks[1].style.flex=1})()">Toggle browser</a>
   <hr>
 
   <!-- Highlight Card -->
