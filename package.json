@@ -5,9 +5,12 @@
     "ng": "ng",
     "start": "ng serve --disable-host-check",
     "build": "ng build",
+    "jest": "jest --watch",
+    "jest:singlerun": "jest",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "jest:singlerun": "jest"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +37,8 @@
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "24.9.0",
+    "jest-preset-angular": "7.1.1",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
