@@ -5,12 +5,11 @@
     "ng": "ng",
     "start": "ng serve --disable-host-check",
     "build": "ng build",
-    "jest": "jest --watch",
+    "jest": "jest --watchAll",
     "jest:singlerun": "jest",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "jest:singlerun": "jest"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
