@@ -328,9 +328,9 @@
 
 <div class="content" role="main">
 
-  <span>Drag this to your bookmarks and click on it...</span>
-  <a href="javascript:(()=>{document.querySelector('#csb-devtools>*').style.display='none'})()">Hide browser</a>
-  <span>... or just run the following code in your console</span>
+  <div>Drag this to your bookmarks and click on it...</div>
+  <a href="javascript:(()=>{const blocks=document.querySelectorAll('#csb-devtools>*');blocks[0].style.display='none';blocks[1].style.flex=1})()">Hide browser</a>
+  <div>... or just run the following code in your console</div>
   <pre><code>document.querySelector('#csb-devtools>*').style.display='none'</code></pre>
   <hr>
 
