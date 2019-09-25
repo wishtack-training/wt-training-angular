@@ -2,6 +2,10 @@
 
 This is a template for codesandbox, you can fork it here: https://codesandbox.io/s/github/wishtack/codesandbox-angular-testing/tree/master/
 
+<p align="center">
+    <img src="https://github.com/wishtack/codesandbox-angular-testing/raw/master/screenshot.png" alt="Codesandbox Angular Testing">
+</p>
+
 ## Run Karma
 ```sh
 yarn test
