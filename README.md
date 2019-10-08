@@ -30,3 +30,11 @@ yarn ng g m app-routing
 ```sh
 yarn ng add @datorama/akita
 ```
+
+## Akita user store
+
+```sh
+yarn ng g query user/user
+yarn ng g store user/user
+yarn ng g akita-service user/user
+```
