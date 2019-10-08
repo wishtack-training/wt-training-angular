@@ -4,6 +4,10 @@
 
 [💻 Codesandbox](https://codesandbox.io/s/github/wishtack-training/wt-training-angular/tree/2019-10-08)
 
+[🐙 Github API Nest](https://github.com/wishtack-training/nest-todos)
+
+[⚡️ API Url](https://todos.yjaaidi.now.sh/)
+
 # Commands
 
 ## Add SCAM schematic
