@@ -1,1 +1,7 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="logIn()">
+  <input type="text" formControlName="email">
+  <input type="password" formControlName="password">
+  <button type="submit">LOG IN</button>
+</form>
+
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
