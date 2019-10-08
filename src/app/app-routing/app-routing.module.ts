@@ -10,18 +10,20 @@ import {
   UserProfileComponent,
   UserProfileModule
 } from '../user-profile/user-profile.component';
+import { appRouteHelper } from './app.route-helper';
 
 export const routes: Routes = [
   {
-    path: 'login',
+    /* /login */
+    path: appRouteHelper.LOGIN_PATH,
     component: LoginComponent
   },
   {
-    path: 'settings',
+    path: appRouteHelper.SETTINGS_PATH,
     component: SettingsComponent
   },
   {
-    path: 'user-profile',
+    path: appRouteHelper.USER_PROFILE_PATH,
     component: UserProfileComponent
   },
   {

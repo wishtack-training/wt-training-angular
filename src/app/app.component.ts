@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { appRouteHelper } from './app-routing/app.route-helper';
 import { SettingsQuery } from './settings/settings.query';
 import { UserQuery } from './user/user.query';
 
@@ -10,6 +11,7 @@ import { UserQuery } from './user/user.query';
 export class AppComponent {
   isToolbarDisplayed$ = this._settingsQuery.isToolbarDisplayed$;
   email$ = this._userQuery.email$;
+  appRouteHelper = appRouteHelper;
 
   constructor(
     private _settingsQuery: SettingsQuery,

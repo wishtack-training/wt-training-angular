@@ -10,8 +10,7 @@ import { UserQuery } from '../user/user.query';
 export class UserProfileComponent {
   pictureUri$ = this._userQuery.pictureUri$;
 
-  constructor(private _userQuery: UserQuery) {
-  }
+  constructor(private _userQuery: UserQuery) {}
 }
 
 @NgModule({
@@ -19,5 +18,4 @@ export class UserProfileComponent {
   imports: [CommonModule],
   exports: [UserProfileComponent]
 })
-export class UserProfileModule {
-}
+export class UserProfileModule {}

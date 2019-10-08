@@ -3,6 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
+import { appRouteHelper } from '../app-routing/app.route-helper';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
     this._userService
       .logIn(this.loginForm.value)
       .pipe(
-        tap(() => this._router.navigate(['/user-profile'])),
+        tap(() => this._router.navigate(appRouteHelper.userProfileRoute())),
         catchError(() => (this.errorMessage = 'Invalid credentials'))
       )
       .subscribe();
