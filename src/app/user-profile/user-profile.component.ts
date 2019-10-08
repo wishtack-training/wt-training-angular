@@ -1,26 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { UserQuery } from '../user/user.query';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent {
+  pictureUri$ = this._userQuery.pictureUri$;
 
-  constructor() {
+  constructor(private _userQuery: UserQuery) {
   }
-
-  ngOnInit() {
-  }
-
 }
 
 @NgModule({
   declarations: [UserProfileComponent],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [UserProfileComponent]
 })
 export class UserProfileModule {
