@@ -895,6 +895,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@datorama/akita-ng-router-store@^3.1.3":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@datorama/akita-ng-router-store/-/akita-ng-router-store-3.1.4.tgz#3ee352ea7ea21cead884532af098f5b5b154c82f"
+  integrity sha512-Oljnqy5CUIjz5s3FVAS9D0GERa2yEIKR9O51FwmOY5WVehWc5BN7DPOKHvQFy150Ys9Xe0C1P3e17/VYpmyvhw==
+  dependencies:
+    tslib "^1.9.0"
+
+"@datorama/akita-ngdevtools@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@datorama/akita-ngdevtools/-/akita-ngdevtools-3.0.2.tgz#399e0706b33f56a8efea5501d633f11086dc9618"
+  integrity sha512-0pXxI1/4/avsM7KoIuNvkgvrvbbA0HBobCYR9aq3BhnyTo+v+Sle6iVzzqcD8keNB69+GobVeiJWIXF5sLaFhQ==
+  dependencies:
+    tslib "^1.9.0"
+
 "@datorama/akita@^4.10.7":
   version "4.10.7"
   resolved "https://registry.yarnpkg.com/@datorama/akita/-/akita-4.10.7.tgz#03807b2e6520df6531499e9478f4d0b053bffc08"

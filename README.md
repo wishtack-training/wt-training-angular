@@ -28,5 +28,5 @@ yarn ng g m app-routing
 ## Akita installation
 
 ```sh
-yarn add @datorama/akita
+yarn ng add @datorama/akita
 ```

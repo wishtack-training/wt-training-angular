@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "codesandbox-angular-testing"
+    }
+  },
+  "defaultProject": "codesandbox-angular-testing",
+  "cli": {
+    "defaultCollection": "@datorama/akita"
+  }
 }
