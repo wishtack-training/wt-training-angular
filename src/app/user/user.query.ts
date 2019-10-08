@@ -6,6 +6,7 @@ import { UserState, UserStore } from './user.store';
   providedIn: 'root'
 })
 export class UserQuery extends Query<UserState> {
+  email$ = this.select('email');
   constructor(protected store: UserStore) {
     super(store);
   }
