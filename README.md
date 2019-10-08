@@ -16,3 +16,9 @@ yarn ng g @wishtack/schematics:scam user-profile
 ```sh
 yarn ng g m app-routing
 ```
+
+# Akita installation
+
+```sh
+yarn add @datorama/akita
+```
