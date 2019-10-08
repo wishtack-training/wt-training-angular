@@ -8,6 +8,7 @@ import { UserState, UserStore } from './user.store';
 })
 export class UserQuery extends Query<UserState> {
   email$ = this.select('email');
+  isSignedIn$ = this.select(state => state.email != null);
   pictureUri$: Observable<string>;
 
   constructor(protected store: UserStore) {

@@ -4,5 +4,8 @@ export const appRouteHelper = {
   USER_PROFILE_PATH: 'user-profile',
   userProfileRoute() {
     return ['/', this.USER_PROFILE_PATH];
+  },
+  login() {
+    return ['/', this.LOGIN_PATH];
   }
 };
