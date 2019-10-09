@@ -1,18 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IsSignedInGuard } from '../auth/is-signed-in-guard.service';
 import { appRouteHelper } from './app.route-helper';
 import { IsNotSignedInGuard } from './auth/is-not-signed-in.guard';
+import { IsSignedInGuard } from './auth/is-signed-in.guard';
 import { LoginComponent, LoginModule } from './login/login.component';
-import {
-  SettingsComponent,
-  SettingsModule
-} from './settings/settings.component';
-import {
-  UserProfileComponent,
-  UserProfileModule
-} from './user-profile/user-profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { UserProfileComponent, UserProfileModule } from './user-profile/user-profile.component';
 
 export const routes: Routes = [
   {
@@ -41,7 +35,6 @@ export const routes: Routes = [
     CommonModule,
     LoginModule,
     RouterModule.forRoot(routes),
-    SettingsModule,
     UserProfileModule
   ]
 })
