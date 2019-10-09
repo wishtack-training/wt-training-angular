@@ -32,4 +32,8 @@ export class UserService {
   private _updateUser({ email, token }: { email: string; token: string }) {
     this._userStore.update({ email, token });
   }
+
+  logOut() {
+    this._userStore.reset();
+  }
 }

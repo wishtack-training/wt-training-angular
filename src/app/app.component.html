@@ -1,6 +1,7 @@
 <header *ngIf="isToolbarDisplayed$ | async">
   TOOLBAR
   <div>{{ email$ | async }}</div>
+  <button *ngIf="isSignedIn$ | async" (click)="logOut()">LOG OUT</button>
 </header>
 
 <hr>

@@ -17,7 +17,8 @@ export function createInitialState(): UserState {
   providedIn: 'root'
 })
 @StoreConfig({
-  name: 'user'
+  name: 'user',
+  resettable: true
 })
 export class UserStore extends Store<UserState> {
   constructor() {
