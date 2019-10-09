@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { first, map } from 'rxjs/operators';
-import { appRouteHelper } from '../app-routing/app.route-helper';
+import { appRouteHelper } from '../app.route-helper';
 import { UserQuery } from '../user/user.query';
 
 @Injectable({

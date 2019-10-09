@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { appRouteHelper } from './app-routing/app.route-helper';
+import { appRouteHelper } from './app.route-helper';
 import { SettingsQuery } from './settings/settings.query';
 import { UserQuery } from './user/user.query';
 

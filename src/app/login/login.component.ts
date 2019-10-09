@@ -3,7 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
-import { appRouteHelper } from '../app-routing/app.route-helper';
+import { appRouteHelper } from '../app.route-helper';
 import { UserService } from '../user/user.service';
 
 @Component({
