@@ -14,7 +14,7 @@ describe('SettingsService', () => {
   beforeEach(() => (settingsQuery = TestBed.get(SettingsQuery)));
 
   describe('with toolbar displayed', () => {
-    beforeEach(() => settingsStore.update({isToolbarDisplayed: true}));
+    beforeEach(() => settingsStore.update({ isToolbarDisplayed: true }));
 
     it('should hide toolbar', () => {
       settingsService.hideToolbar();
@@ -30,7 +30,7 @@ describe('SettingsService', () => {
   });
 
   describe('with toolbar hidden', () => {
-    beforeEach(() => settingsStore.update({isToolbarDisplayed: false}));
+    beforeEach(() => settingsStore.update({ isToolbarDisplayed: false }));
 
     it('should show toolbar', () => {
       settingsService.showToolbar();
