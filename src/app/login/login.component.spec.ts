@@ -55,6 +55,8 @@ describe('LoginComponent', () => {
       password: '123456'
     });
 
+    expect(getFormErrorMessage()).toEqual(null);
+
     expect(router.navigate).toHaveBeenCalledWith(['/', 'user-profile']);
   });
 
@@ -68,6 +70,8 @@ describe('LoginComponent', () => {
       email: 'foobar@wishtack.io',
       password: '123456'
     });
+
+    fixture.detectChanges();
 
     expect(getFormErrorMessage()).toEqual('Invalid credentials');
 
@@ -86,6 +90,7 @@ describe('LoginComponent', () => {
   }
 
   function getFormErrorMessage() {
-    return component.errorMessage;
+    const element = getByDataRole(fixture, 'error-message');
+    return element && element.nativeElement.textContent;
   }
 });
