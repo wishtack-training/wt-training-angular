@@ -2,9 +2,15 @@
   data-role="login-form"
   [formGroup]="loginForm"
   (ngSubmit)="logIn()">
-  <input type="text" formControlName="email">
-  <input type="password" formControlName="password">
-  <button type="submit">LOG IN</button>
+  <input
+    data-role="email-input"
+    type="text"
+    formControlName="email">
+  <input
+    data-role="password-input"
+    type="password"
+    formControlName="password">
+  <button data-role="login-form-submit-button" type="submit">LOG IN</button>
 </form>
 
 <div data-role="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
