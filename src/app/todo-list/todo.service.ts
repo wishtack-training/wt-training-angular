@@ -10,8 +10,7 @@ export interface Todo {
   providedIn: 'root'
 })
 export class TodoService {
-  constructor(private _httpClient: HttpClient) {
-  }
+  constructor(private _httpClient: HttpClient) {}
 
   getTodoList() {
     return this._httpClient.get<Todo[]>('https://todos.yjaaidi.now.sh/todos');
