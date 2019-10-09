@@ -8,6 +8,8 @@
 
 [⚡️ API Url](https://todos.yjaaidi.now.sh/)
 
+[📚 Testing Slides](https://slides.com/yjaaidi/angular-testing-workshop#/)
+
 # Commands
 
 ## Add SCAM schematic
