@@ -1,9 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {
+  SettingsComponent,
+  SettingsModule
+} from '../../settings/settings.component';
+
+const settingsRoutes: Routes = [
+  {
+    path: '',
+    component: SettingsComponent
+  }
+];
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule]
+  imports: [CommonModule, RouterModule.forChild(settingsRoutes), SettingsModule]
 })
-export class SettingsViewModule {
-}
+export class SettingsViewModule {}
