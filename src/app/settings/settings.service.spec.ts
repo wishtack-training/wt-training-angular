@@ -13,31 +13,35 @@ describe('SettingsService', () => {
   let settingsQuery: SettingsQuery;
   beforeEach(() => (settingsQuery = TestBed.get(SettingsQuery)));
 
-  it('should hide toolbar', () => {
-    settingsStore.update({isToolbarDisplayed: true});
+  describe('with toolbar displayed', () => {
+    beforeEach(() => settingsStore.update({isToolbarDisplayed: true}));
 
-    settingsService.hideToolbar();
+    it('should hide toolbar', () => {
+      settingsService.hideToolbar();
 
-    expect(settingsQuery.getValue().isToolbarDisplayed).toBe(false);
+      expect(settingsQuery.getValue().isToolbarDisplayed).toBe(false);
+    });
+
+    it('should toggle toolbar', () => {
+      settingsService.toggleToolbar();
+
+      expect(settingsQuery.getValue().isToolbarDisplayed).toBe(false);
+    });
   });
 
-  it('should show toolbar', () => {
-    settingsStore.update({isToolbarDisplayed: false});
+  describe('with toolbar hidden', () => {
+    beforeEach(() => settingsStore.update({isToolbarDisplayed: false}));
 
-    settingsService.showToolbar();
+    it('should show toolbar', () => {
+      settingsService.showToolbar();
 
-    expect(settingsQuery.getValue().isToolbarDisplayed).toBe(true);
-  });
+      expect(settingsQuery.getValue().isToolbarDisplayed).toBe(true);
+    });
 
-  it('should toggle toolbar', () => {
-    settingsStore.update({isToolbarDisplayed: false});
+    it('should toggle toolbar', () => {
+      settingsService.toggleToolbar();
 
-    settingsService.toggleToolbar();
-
-    expect(settingsQuery.getValue().isToolbarDisplayed).toBe(true);
-
-    settingsService.toggleToolbar();
-
-    expect(settingsQuery.getValue().isToolbarDisplayed).toBe(false);
+      expect(settingsQuery.getValue().isToolbarDisplayed).toBe(true);
+    });
   });
 });
