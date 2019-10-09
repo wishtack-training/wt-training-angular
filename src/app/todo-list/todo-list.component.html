@@ -1,1 +1,5 @@
-<p>todo-list works!</p>
+<ul>
+  <li *ngFor="let todo of todoList$ | async">
+    {{ todo.title }}
+  </li>
+</ul>

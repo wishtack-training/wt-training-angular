@@ -8,11 +8,11 @@ import { TodoService } from './todo.service';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
+  todoList$ = this._todoService.getTodoList();
+
   constructor(private _todoService: TodoService) {}
 
-  ngOnInit() {
-    this._todoService.getTodoList().subscribe(console.log);
-  }
+  ngOnInit() {}
 }
 
 @NgModule({
