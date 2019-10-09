@@ -6,6 +6,10 @@ import { IsNotSignedInGuard } from './auth/is-not-signed-in.guard';
 import { IsSignedInGuard } from './auth/is-signed-in.guard';
 import { LoginComponent, LoginModule } from './login/login.component';
 import {
+  TodoListComponent,
+  TodoListModule
+} from './todo-list/todo-list.component';
+import {
   UserProfileComponent,
   UserProfileModule
 } from './user-profile/user-profile.component';
@@ -18,10 +22,16 @@ export const routes: Routes = [
     canActivate: [IsNotSignedInGuard]
   },
   {
+    /* /todos */
+    path: appRouteHelper.TODOS_PATH,
+    component: TodoListComponent,
+    canActivate: [IsSignedInGuard]
+  },
+  {
     path: appRouteHelper.SETTINGS_PATH,
     loadChildren: () =>
-      import('./views/settings-view/settings-view.module').then(
-        m => m.SettingsViewModule
+      import('./views/settings/settings-views.module').then(
+        m => m.SettingsViewsModule
       )
   },
   {
@@ -40,6 +50,7 @@ export const routes: Routes = [
     CommonModule,
     LoginModule,
     RouterModule.forRoot(routes),
+    TodoListModule,
     UserProfileModule
   ]
 })
