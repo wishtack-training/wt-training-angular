@@ -1,34 +1,5 @@
-interface Item {
-  title: string;
-  price: number;
-}
-
-class Cart {
-  private _itemList: Item[] = [];
-
-  addItem(item: Item) {
-    this._itemList.push(item);
-  }
-
-  getItemList() {
-    return this._itemList;
-  }
-
-  removeItem(item: Item) {
-    this._itemList = this._itemList.filter(_item => _item !== item);
-  }
-
-  getTotalPrice(): number {
-    throw new Error('🚧 work in progress!');
-  }
-}
-
-function createItem(title: string, price: number): Item {
-  return {
-    title,
-    price
-  };
-}
+import { Cart } from './cart';
+import { createItem, Item } from './item';
 
 describe('Cart', () => {
 
@@ -67,7 +38,7 @@ describe('Cart', () => {
 
   });
 
-  xit('should get total price', () => {
+  it('should get total price', () => {
 
     cart.addItem(extremeProgramming);
     cart.addItem(rework);
