@@ -1,8 +1,36 @@
+interface Item {
+  title: string;
+  price: number;
+}
+
+class Cart {
+
+  addItem(item: Item) {
+    throw new Error('🚧 work in progress!');
+  }
+
+  getItemList(): Item[] {
+    throw new Error('🚧 work in progress!');
+  }
+
+  removeItem(item: Item) {
+    throw new Error('🚧 work in progress!');
+  }
+
+  getTotalPrice(): number {
+    throw new Error('🚧 work in progress!');
+  }
+}
+
+function createItem(title: string, price: number): Item {
+  throw new Error('🚧 work in progress!');
+}
+
 describe('Cart', () => {
 
   let cart: Cart;
-  let extremeProgramming;
-  let rework;
+  let extremeProgramming: Item;
+  let rework: Item;
 
   beforeEach(() => {
     cart = new Cart();
