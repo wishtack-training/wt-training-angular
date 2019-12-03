@@ -4,18 +4,18 @@ interface Item {
 }
 
 class Cart {
-  private _itemList = [];
+  private _itemList: Item[] = [];
 
   addItem(item: Item) {
     this._itemList.push(item);
   }
 
-  getItemList(): Item[] {
+  getItemList() {
     return this._itemList;
   }
 
   removeItem(item: Item) {
-    throw new Error('🚧 work in progress!');
+    this._itemList = this._itemList.filter(_item => _item !== item);
   }
 
   getTotalPrice(): number {
@@ -54,7 +54,7 @@ describe('Cart', () => {
 
   });
 
-  xit('should remove items', () => {
+  it('should remove items', () => {
 
     cart.addItem(extremeProgramming);
     cart.addItem(rework);
