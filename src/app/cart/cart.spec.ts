@@ -4,13 +4,14 @@ interface Item {
 }
 
 class Cart {
+  private _itemList = [];
 
   addItem(item: Item) {
-    throw new Error('🚧 work in progress!');
+    this._itemList.push(item);
   }
 
   getItemList(): Item[] {
-    throw new Error('🚧 work in progress!');
+    return this._itemList;
   }
 
   removeItem(item: Item) {
@@ -23,7 +24,10 @@ class Cart {
 }
 
 function createItem(title: string, price: number): Item {
-  throw new Error('🚧 work in progress!');
+  return {
+    title,
+    price
+  };
 }
 
 describe('Cart', () => {
@@ -38,7 +42,7 @@ describe('Cart', () => {
     rework = createItem('ReWork', 30);
   });
 
-  xit('should add items', () => {
+  it('should add items', () => {
 
     cart.addItem(extremeProgramming);
     cart.addItem(rework);
