@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from './cart';
+import { createItem, Item } from './item';
 
 @Component({
   selector: 'as-cart',
@@ -8,7 +9,7 @@ import { Cart } from './cart';
 })
 export class CartComponent implements OnInit {
 
-  cart = new Cart();
+  private _cart = new Cart();
 
   constructor() {
   }
@@ -16,4 +17,21 @@ export class CartComponent implements OnInit {
   ngOnInit() {
   }
 
+  addItem() {
+    const item = createItem(prompt('Item name'), Math.random() * 100);
+    this._cart.addItem(item);
+  }
+
+  getItemList() {
+    return this._cart.getItemList();
+  }
+
+  getTotalPrice() {
+    return this._cart.getTotalPrice();
+  }
+
+  removeItem(item: Item) {
+    this._cart.removeItem(item);
+  }
 }
+

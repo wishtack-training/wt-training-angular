@@ -1,13 +1,15 @@
-<button>ADD</button>
+<button (click)="addItem()">ADD</button>
+
 
 <ul>
-  <li>eXtreme Programming Explained: 15
-    <button>REMOVE</button>
-  </li>
-  <li>...
-    <button>REMOVE</button>
+  <li *ngFor="let item of getItemList(); let last=last">
+    <span>{{ item.title }}</span>
+    <span>&nbsp;</span>
+    <span>({{ item.price | currency }})</span>
+    <button (click)="removeItem(item)">REMOVE</button>
+    <hr *ngIf="!last">
   </li>
 
 </ul>
 
-<div>Total price: 25</div>
+<div>Total price: {{ getTotalPrice() | currency }}</div>
