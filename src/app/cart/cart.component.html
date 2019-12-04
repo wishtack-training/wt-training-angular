@@ -1,6 +1,8 @@
 <form [formGroup]="itemFormGroup" (ngSubmit)="addItem()">
 
-  <input formControlName="title" type="text">
+  <input formControlName="title" placeholder="title" type="text">
+
+  <input formControlName="isbn" placeholder="isbn" type="text">
 
   <div *ngIf="itemFormGroup.hasError('required', 'title')">Title is required</div>
 
@@ -10,7 +12,7 @@
 
 </form>
 
-<div>{{ getAllErrors() | json }}</div>
+<div>{{ itemFormGroup.errors | json }}</div>
 
 <ul>
   <li *ngFor="let item of getItemList(); let last=last">

@@ -20,6 +20,17 @@ export const forbidden: ValidatorFn = (control) => {
   } : null;
 };
 
+export const or: (controlNameList: string[]) => ValidatorFn = (controlNameList) => (control) => {
+
+  const isValid = controlNameList.some(name => control.value[name]);
+
+  return isValid ? null : {
+    or: {
+      requiredFields: controlNameList
+    }
+  };
+};
+
 @Component({
   selector: 'as-cart',
   templateUrl: './cart.component.html',
@@ -29,14 +40,16 @@ export class CartComponent implements OnInit {
 
   itemFormGroup = new FormGroup({
     title: new FormControl(null, [
-      Validators.required,
       Validators.maxLength(12),
       forbidden
     ]),
+    isbn: new FormControl(),
     price: new FormControl(null, [
       Validators.min(0)
     ])
-  });
+  }, [
+    or(['title', 'isbn'])
+  ]);
 
   private _cart = new Cart();
 
