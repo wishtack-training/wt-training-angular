@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   }
 
   addItem() {
-    const item = createItem(prompt('Item name'), Math.random() * 100);
+    const item = createItem(this.itemFormGroup.value.title, Math.random() * 100);
     this._cart.addItem(item);
   }
 
