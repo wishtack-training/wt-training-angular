@@ -15,12 +15,33 @@ export class CartComponent implements OnInit {
       Validators.required,
       Validators.maxLength(12)
     ]),
-    price: new FormControl()
+    price: new FormControl(null, [
+      Validators.min(0)
+    ])
   });
 
   private _cart = new Cart();
 
   ngOnInit() {
+  }
+
+  /**
+   * Just a demo to collect errors.
+   * @todo make it recursive.
+   */
+  getAllErrors() {
+
+    const controlEntryList = Object.entries(this.itemFormGroup.controls);
+    const controlErrors = controlEntryList
+      .filter(([_, control]) => !control.valid)
+      .map(([name, control]) => ({name, errors: control.errors}))
+    const errorDict = controlErrors.reduce((acc, {name, errors}) => ({
+      ...acc,
+      [name]: errors
+    }), {});
+
+    return errorDict;
+
   }
 
   addItem() {

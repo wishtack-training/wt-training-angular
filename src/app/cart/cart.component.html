@@ -2,12 +2,15 @@
 
   <input formControlName="title" type="text">
 
+  <div *ngIf="itemFormGroup.hasError('required', 'title')">Title is required</div>
+
   <input formControlName="price" type="number">
 
   <button type="submit" [disabled]="!itemFormGroup.valid">ADD</button>
 
 </form>
 
+<div>{{ getAllErrors() | json }}</div>
 
 <ul>
   <li *ngFor="let item of getItemList(); let last=last">
