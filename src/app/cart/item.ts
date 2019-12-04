@@ -3,7 +3,7 @@ export interface Item {
   price: number;
 }
 
-export function createItem(title: string, price: number): Item {
+export function createItem({title, price}: Item): Item {
   return {
     title,
     price

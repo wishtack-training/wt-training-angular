@@ -11,7 +11,9 @@ import { createItem, Item } from './item';
 export class CartComponent implements OnInit {
 
   itemFormGroup = new FormGroup({
-    title: new FormControl()
+    title: new FormControl(),
+    price: new FormControl(),
+    toto: new FormControl()
   });
 
   private _cart = new Cart();
@@ -20,7 +22,7 @@ export class CartComponent implements OnInit {
   }
 
   addItem() {
-    const item = createItem(this.itemFormGroup.value.title, Math.random() * 100);
+    const item = createItem(this.itemFormGroup.value);
     this._cart.addItem(item);
   }
 

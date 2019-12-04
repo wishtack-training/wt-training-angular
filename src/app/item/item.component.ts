@@ -8,7 +8,7 @@ import { createItem } from '../cart/item';
 })
 export class ItemComponent {
 
-  item = createItem('eXtreme Programming Explained', 5);
+  item = createItem({title: 'eXtreme Programming Explained', price: 5});
   private _interval;
 
   canBuy() {
@@ -23,7 +23,7 @@ export class ItemComponent {
     this.stopMadness();
     this._interval = setInterval(() => {
       // this.item.price = 50 * Math.random();
-      this.item = createItem('eXtreme Programming Explained', 50 * Math.random());
+      this.item = createItem({title: 'eXtreme Programming Explained', price: 50 * Math.random()});
     }, 50);
   }
 

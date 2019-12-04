@@ -9,8 +9,8 @@ describe('Cart', () => {
 
   beforeEach(() => {
     cart = new Cart();
-    extremeProgramming = createItem('eXtreme Programming Explained', 25);
-    rework = createItem('ReWork', 30);
+    extremeProgramming = createItem({title: 'eXtreme Programming Explained', price: 25});
+    rework = createItem({title: 'ReWork', price: 30});
   });
 
   it('should add items', () => {
