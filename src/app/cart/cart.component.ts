@@ -1,7 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Cart } from './cart';
 import { createItem, Item } from './item';
+
+export const forbidden: ValidatorFn = (control) => {
+
+  if (control.value == null) {
+    return null;
+  }
+
+  const forbiddenWords = ['windows'];
+  const isForbidden = forbiddenWords.includes(control.value.toLowerCase().trim());
+
+  return isForbidden ? {
+    forbidden: {
+      value: control.value,
+      forbiddenWords
+    }
+  } : null;
+};
 
 @Component({
   selector: 'as-cart',
@@ -13,7 +30,8 @@ export class CartComponent implements OnInit {
   itemFormGroup = new FormGroup({
     title: new FormControl(null, [
       Validators.required,
-      Validators.maxLength(12)
+      Validators.maxLength(12),
+      forbidden
     ]),
     price: new FormControl(null, [
       Validators.min(0)
