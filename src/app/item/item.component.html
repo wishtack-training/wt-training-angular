@@ -1,7 +1,7 @@
 <h1>{{ item.title }}</h1>
 
-<button *ngIf="!isMadness()" (click)="startMadness()">START MADNESS</button>
-<button *ngIf="isMadness()" (click)="stopMadness()">STOP MADNESS</button>
+<!--<button *ngIf="!isMadness()" (click)="startMadness()">START MADNESS</button>-->
+<!--<button *ngIf="isMadness()" (click)="stopMadness()">STOP MADNESS</button>-->
 
 <div class="price" [class.red]="item.price > 10">{{ item.price | currency:'EUR'  }}</div>
 

@@ -14,15 +14,11 @@
 
 <div>{{ itemFormGroup.errors | json }}</div>
 
-<ul>
-  <li *ngFor="let item of getItemList(); let last=last">
-    <span>{{ item.title }}</span>
-    <span>&nbsp;</span>
-    <span>({{ item.price | currency }})</span>
-    <button (click)="removeItem(item)">REMOVE</button>
-    <hr *ngIf="!last">
-  </li>
 
-</ul>
+<div *ngFor="let item of getItemList(); let last=last">
+  <as-item [item]="item"></as-item>
+  <button (click)="removeItem(item)">REMOVE</button>
+  <hr *ngIf="!last">
+</div>
 
 <div>Total price: {{ getTotalPrice() | currency }}</div>
