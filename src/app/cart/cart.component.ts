@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Cart } from './cart';
 import { createItem, Item } from './item';
 
@@ -9,10 +10,11 @@ import { createItem, Item } from './item';
 })
 export class CartComponent implements OnInit {
 
-  private _cart = new Cart();
+  itemFormGroup = new FormGroup({
+    title: new FormControl()
+  });
 
-  constructor() {
-  }
+  private _cart = new Cart();
 
   ngOnInit() {
   }

@@ -1,5 +1,10 @@
-<button (click)="addItem()">ADD</button>
+<form [formGroup]="itemFormGroup" (ngSubmit)="addItem()">
 
+  <input type="text">
+
+  <button type="submit">ADD</button>
+
+</form>
 
 <ul>
   <li *ngFor="let item of getItemList(); let last=last">
