@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cart } from './cart';
 import { createItem, Item } from './item';
 
@@ -11,9 +11,11 @@ import { createItem, Item } from './item';
 export class CartComponent implements OnInit {
 
   itemFormGroup = new FormGroup({
-    title: new FormControl(),
-    price: new FormControl(),
-    toto: new FormControl()
+    title: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(12)
+    ]),
+    price: new FormControl()
   });
 
   private _cart = new Cart();
@@ -24,6 +26,7 @@ export class CartComponent implements OnInit {
   addItem() {
     const item = createItem(this.itemFormGroup.value);
     this._cart.addItem(item);
+    this.itemFormGroup.reset();
   }
 
   getItemList() {
