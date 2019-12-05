@@ -1,11 +1,11 @@
-<as-item-form (itemSubmit)="addItem($event)"></as-item-form>
+<h1>Cart</h1>
 
 <div *ngFor="let item of getItemList(); let last=last">
-  <as-item [item]="item"></as-item>
-  <button (click)="removeItem(item)">REMOVE</button>
+  <as-item [item]="item">
+    <button (click)="removeItem(item)">REMOVE</button>
+  </as-item>
+
   <hr *ngIf="!last">
 </div>
 
 <div>Total price: {{ getTotalPrice() | currency }}</div>
-
-<as-item-form *ngIf="getItemList().length > 2" (itemSubmit)="addItem($event)"></as-item-form>

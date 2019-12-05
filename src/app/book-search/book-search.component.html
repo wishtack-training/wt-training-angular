@@ -1,7 +1,10 @@
-<!-- 1. Implement form -->
 <input [formControl]="keywordsControl" placeholder="keywords" type="search">
 
-<as-item [item]="{title: 'A'}"></as-item>
-<button>BUY</button>
-<as-item [item]="{title: 'B'}"></as-item>
-<button>BUY</button>
+
+<button (click)="search(keywordsControl.value)">SEARCH</button>
+
+<div *ngFor="let item of itemList">
+  <as-item [item]="item">
+    <button (click)="buyItem(item)">BUY</button>
+  </as-item>
+</div>

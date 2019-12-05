@@ -1,6 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Cart } from '../cart/cart';
+import { createItem, Item } from '../cart/item';
+
+export enum Saleability {
+  ForSale = 'FOR_SALE',
+  NotForSale = 'NOT_FOR_SALE',
+}
+
+export interface GoogleVolumeListResponse {
+  totalItems: number;
+  items: Array<{
+    volumeInfo: {
+      title: string
+    },
+    saleInfo: {
+      saleability: Saleability,
+      listPrice?: {
+        amount: number
+      }
+    }
+  }>;
+}
+
+export const convertVolumeToItem = gItem => {
+
+  const price = gItem.saleInfo.listPrice != null ? gItem.saleInfo.listPrice.amount : null;
+
+  return createItem({
+    title: gItem.volumeInfo.title,
+    price
+  });
+};
 
 @Component({
   selector: 'as-book-search',
@@ -10,22 +42,31 @@ import { FormControl } from '@angular/forms';
 export class BookSearchComponent implements OnInit {
 
   keywordsControl = new FormControl();
+  itemList: Item[];
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _cart: Cart, private _httpClient: HttpClient) {
   }
 
   ngOnInit() {
 
-    this.keywordsControl.valueChanges.subscribe(console.log);
+    this.keywordsControl.valueChanges.subscribe(keywords => {
+      this.search(keywords);
+    });
 
-    /* 2. move this to a search method. */
-    /* 3. use the keywords in the URL. */
-    this._httpClient.get('https://www.googleapis.com/books/v1/volumes?q=ANGULAR').subscribe(data => {
-      /* 4. transform data to Item[]. */
-      console.log(data);
-      /* 5. display items. */
-      /* 6. buy button should add item to cart. */
+  }
+
+  search(keywords: string) {
+    this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
+      params: {
+        filter: 'paid-ebooks',
+        q: keywords
+      }
+    }).subscribe(data => {
+      this.itemList = data.items.map(convertVolumeToItem);
     });
   }
 
+  buyItem(item: Item) {
+    this._cart.addItem(item);
+  }
 }
