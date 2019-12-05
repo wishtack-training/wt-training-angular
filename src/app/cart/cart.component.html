@@ -7,3 +7,5 @@
 </div>
 
 <div>Total price: {{ getTotalPrice() | currency }}</div>
+
+<as-item-form *ngIf="getItemList().length > 2" (itemSubmit)="addItem($event)"></as-item-form>

@@ -1,5 +1,9 @@
+import { Injectable } from '@angular/core';
 import { Item } from './item';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class Cart {
   private _itemList: Item[] = [];
 

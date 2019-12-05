@@ -9,7 +9,11 @@ import { Item } from './item';
 })
 export class CartComponent implements OnInit {
 
-  private _cart = new Cart();
+  private _cart: Cart;
+
+  constructor(cart: Cart) {
+    this._cart = cart;
+  }
 
   ngOnInit() {
   }
