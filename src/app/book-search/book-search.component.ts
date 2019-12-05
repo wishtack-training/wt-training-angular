@@ -82,26 +82,6 @@ export class BookSearchComponent implements OnInit {
 
   }
 
-  search(keywords: string) {
-
-    const data$ = this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
-      params: {
-        filter: 'paid-ebooks',
-        q: keywords
-      }
-    });
-
-    if (this._subscription != null) {
-      this._subscription.unsubscribe();
-    }
-
-
-    this._subscription = data$.subscribe(data => {
-      this.itemList = data.items.map(convertVolumeToItem);
-    });
-
-  }
-
   buyItem(item: Item) {
     this._cart.addItem(item);
   }
