@@ -1,35 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Cart } from './cart';
-import { createItem, Item } from './item';
-
-export const forbidden: ValidatorFn = (control) => {
-
-  if (control.value == null) {
-    return null;
-  }
-
-  const forbiddenWords = ['windows'];
-  const isForbidden = forbiddenWords.includes(control.value.toLowerCase().trim());
-
-  return isForbidden ? {
-    forbidden: {
-      value: control.value,
-      forbiddenWords
-    }
-  } : null;
-};
-
-export const or: (controlNameList: string[]) => ValidatorFn = (controlNameList) => (control) => {
-
-  const isValid = controlNameList.some(name => control.value[name]);
-
-  return isValid ? null : {
-    or: {
-      requiredFields: controlNameList
-    }
-  };
-};
+import { Item } from './item';
 
 @Component({
   selector: 'as-cart',
@@ -38,47 +9,9 @@ export const or: (controlNameList: string[]) => ValidatorFn = (controlNameList) 
 })
 export class CartComponent implements OnInit {
 
-  itemFormGroup = new FormGroup({
-    title: new FormControl(null, [
-      Validators.maxLength(12),
-      forbidden
-    ]),
-    isbn: new FormControl(),
-    price: new FormControl(null, [
-      Validators.min(0)
-    ])
-  }, [
-    or(['title', 'isbn'])
-  ]);
-
   private _cart = new Cart();
 
   ngOnInit() {
-  }
-
-  /**
-   * Just a demo to collect errors.
-   * @todo make it recursive.
-   */
-  getAllErrors() {
-
-    const controlEntryList = Object.entries(this.itemFormGroup.controls);
-    const controlErrors = controlEntryList
-      .filter(([_, control]) => !control.valid)
-      .map(([name, control]) => ({name, errors: control.errors}))
-    const errorDict = controlErrors.reduce((acc, {name, errors}) => ({
-      ...acc,
-      [name]: errors
-    }), {});
-
-    return errorDict;
-
-  }
-
-  addItem() {
-    const item = createItem(this.itemFormGroup.value);
-    this._cart.addItem(item);
-    this.itemFormGroup.reset();
   }
 
   getItemList() {
@@ -91,6 +24,10 @@ export class CartComponent implements OnInit {
 
   removeItem(item: Item) {
     this._cart.removeItem(item);
+  }
+
+  addItem(item: Item) {
+    this._cart.addItem(item);
   }
 }
 

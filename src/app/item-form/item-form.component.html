@@ -1,1 +1,13 @@
-<p>item-form works!</p>
+<form [formGroup]="itemFormGroup" (ngSubmit)="submitItem()">
+
+  <input formControlName="title" placeholder="title" type="text">
+
+  <input formControlName="isbn" placeholder="isbn" type="text">
+
+  <div *ngIf="itemFormGroup.hasError('required', 'title')">Title is required</div>
+
+  <input formControlName="price" type="number">
+
+  <button type="submit" [disabled]="!itemFormGroup.valid">ADD</button>
+
+</form>
