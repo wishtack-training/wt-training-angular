@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { debounceTime, map, switchMap } from 'rxjs/operators';
 import { Cart } from '../cart/cart';
 import { createItem, Item } from '../cart/item';
 
@@ -24,6 +26,11 @@ export interface GoogleVolumeListResponse {
   }>;
 }
 
+
+const handleError = error => {
+  console.error(`Something went wrong but I don't know how to handle it`);
+};
+
 export const convertVolumeToItem = gItem => {
 
   const price = gItem.saleInfo.listPrice != null ? gItem.saleInfo.listPrice.amount : null;
@@ -43,27 +50,56 @@ export class BookSearchComponent implements OnInit {
 
   keywordsControl = new FormControl();
   itemList: Item[];
+  private _subscription: Subscription;
 
   constructor(private _cart: Cart, private _httpClient: HttpClient) {
   }
 
   ngOnInit() {
 
-    this.keywordsControl.valueChanges.subscribe(keywords => {
-      this.search(keywords);
-    });
+    const keywords$ = this.keywordsControl.valueChanges;
+
+    keywords$.pipe(
+      debounceTime(50),
+      switchMap(keywords => {
+        return this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
+          params: {
+            filter: 'paid-ebooks',
+            q: keywords
+          }
+        });
+      }),
+      map((data) => {
+        const itemList = data.items.map(convertVolumeToItem);
+        return {
+          totalCount: data.totalItems,
+          itemList
+        };
+      })
+    )
+      .subscribe(({itemList}) => this.itemList = itemList);
+
 
   }
 
   search(keywords: string) {
-    this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
+
+    const data$ = this._httpClient.get<GoogleVolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
       params: {
         filter: 'paid-ebooks',
         q: keywords
       }
-    }).subscribe(data => {
+    });
+
+    if (this._subscription != null) {
+      this._subscription.unsubscribe();
+    }
+
+
+    this._subscription = data$.subscribe(data => {
       this.itemList = data.items.map(convertVolumeToItem);
     });
+
   }
 
   buyItem(item: Item) {
