@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { CartComponent } from './cart/cart.component';
 
-
 const routes: Routes = [
   {
     path: 'search',
@@ -23,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

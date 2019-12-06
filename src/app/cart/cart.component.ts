@@ -43,6 +43,5 @@ export class CartComponent implements OnInit {
   ]
 })
 export class CartModule {
-
 }
 

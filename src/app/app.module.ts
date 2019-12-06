@@ -5,8 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookSearchModule } from './book-search/book-search.component';
-import { CartModule } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -14,9 +12,7 @@ import { CartModule } from './cart/cart.component';
   ],
   imports: [
     AppRoutingModule,
-    BookSearchModule,
     BrowserModule,
-    CartModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
