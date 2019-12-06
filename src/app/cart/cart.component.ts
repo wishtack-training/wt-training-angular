@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { ItemModule } from '../item/item.component';
 import { Cart } from './cart';
 import { Item } from './item';
 
@@ -30,5 +32,17 @@ export class CartComponent implements OnInit {
   addItem(item: Item) {
     this._cart.addItem(item);
   }
+}
+
+@NgModule({
+  declarations: [CartComponent],
+  exports: [CartComponent],
+  imports: [
+    CommonModule,
+    ItemModule
+  ]
+})
+export class CartModule {
+
 }
 

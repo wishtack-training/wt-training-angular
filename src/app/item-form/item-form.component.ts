@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { createItem, Item } from '../cart/item';
 
 export const forbidden: ValidatorFn = (control) => {
@@ -84,4 +85,15 @@ export class ItemFormComponent implements OnInit {
 
   }
 
+}
+
+@NgModule({
+  declarations: [ItemFormComponent],
+  exports: [ItemFormComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ]
+})
+export class ItemFormModule {
 }
