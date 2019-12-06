@@ -3,9 +3,9 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, debounceTime, switchMap } from 'rxjs/operators';
-import { Cart } from '../cart/cart';
-import { Item } from '../cart/item';
-import { ItemModule } from '../item/item.component';
+import { Cart } from '../../../cart/cart.service';
+import { Item } from '../../../item/item';
+import { ItemModule } from '../../../item/item/item.component';
 import { BookSearchService } from './book-search.service';
 
 @Component({

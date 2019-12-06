@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, NgModule } from '@angular/core';
-import { Item } from '../cart/item';
+import { Item } from '../item';
 
 @Component({
   selector: 'as-item',

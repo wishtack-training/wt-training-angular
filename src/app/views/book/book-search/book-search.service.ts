@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { createItem, Item } from '../cart/item';
+import { createItem, Item } from '../../../item/item';
 
 export enum Saleability {
   ForSale = 'FOR_SALE',

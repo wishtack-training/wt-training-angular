@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { ItemModule } from '../item/item.component';
-import { Cart } from './cart';
-import { Item } from './item';
+import { Cart } from '../../../cart/cart.service';
+import { Item } from '../../../item/item';
+import { ItemModule } from '../../../item/item/item.component';
 
 @Component({
   selector: 'as-cart',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { createItem, Item } from '../cart/item';
+import { createItem, Item } from '../item';
 
 export const forbidden: ValidatorFn = (control) => {
 

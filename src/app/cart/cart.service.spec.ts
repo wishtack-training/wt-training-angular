@@ -1,5 +1,5 @@
-import { Cart } from './cart';
-import { createItem, Item } from './item';
+import { createItem, Item } from '../item/item';
+import { Cart } from './cart.service';
 
 describe('Cart', () => {
 

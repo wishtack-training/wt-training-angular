@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookSearchComponent } from './book-search/book-search.component';
-import { CartComponent } from './cart/cart.component';
+import { BookViewsModule } from './views/book/book-views.module';
 
 const routes: Routes = [
   {
-    path: 'search',
-    component: BookSearchComponent
+    path: 'book',
+    /* Eager. */
+    loadChildren: () => BookViewsModule
   },
   {
     path: 'cart',
-    component: CartComponent
+    /* Lazy. */
+    loadChildren: () => import('./views/cart/cart-views.module').then(m => m.CartViewsModule)
   },
   {
     path: '**',
-    redirectTo: 'search'
+    redirectTo: 'book'
   }
 ];
 
