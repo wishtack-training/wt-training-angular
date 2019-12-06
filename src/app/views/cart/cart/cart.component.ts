@@ -1,37 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
-import { Cart } from '../../../cart/cart.service';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
+import { CartQuery } from '../../../cart/cart.query';
 import { Item } from '../../../item/item';
 import { ItemModule } from '../../../item/item/item.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'as-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
-  constructor(private _cart: Cart) {
-  }
+  itemList$ = this._cartQuery.itemList$;
+  totalPrice$ = this._cartQuery.totalPrice$;
 
-  ngOnInit() {
-  }
-
-  getItemList() {
-    return this._cart.getItemList();
-  }
-
-  getTotalPrice() {
-    return this._cart.getTotalPrice();
+  constructor(private _cartQuery: CartQuery) {
   }
 
   removeItem(item: Item) {
-    this._cart.removeItem(item);
+    throw new Error('😱 Not implemented yet!');
   }
 
-  addItem(item: Item) {
-    this._cart.addItem(item);
-  }
 }
 
 @NgModule({

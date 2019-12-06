@@ -1,11 +1,11 @@
 <h1>Cart</h1>
 
-<div *ngFor="let item of getItemList(); let last=last">
+<div *ngFor="let item of itemList$ | async; let last=last">
   <as-item [item]="item">
     <button (click)="removeItem(item)">REMOVE</button>
   </as-item>
 
   <hr *ngIf="!last">
 </div>
-
-<div>Total price: {{ getTotalPrice() | currency }}</div>
+<hr>
+<div>Total price: {{ totalPrice$ | async | currency }}</div>

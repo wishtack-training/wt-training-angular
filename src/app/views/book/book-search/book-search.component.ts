@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { of } from 'rxjs';
-import { catchError, debounceTime, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, debounceTime, map, pluck, switchMap } from 'rxjs/operators';
 import { AkitaCartService } from '../../../cart/akita-cart.service';
 import { Item } from '../../../item/item';
 import { ItemModule } from '../../../item/item/item.component';
@@ -15,8 +15,8 @@ import { BookSearchService } from './book-search.service';
 })
 export class BookSearchComponent implements OnInit {
   keywordsControl = new FormControl();
-  itemList: Item[];
-  error;
+  itemList$: Observable<Item[]>;
+  error$: Observable<any>;
 
   constructor(
     private _cart: AkitaCartService,
@@ -27,23 +27,23 @@ export class BookSearchComponent implements OnInit {
   ngOnInit() {
     const keywords$ = this.keywordsControl.valueChanges;
 
-    keywords$
+    const result$: Observable<{ error?: any, itemList: Item[] }> = keywords$
       .pipe(
         debounceTime(50),
         switchMap(keywords =>
           this._bookSearchService
             .search(keywords)
-            .pipe(catchError(() => of({error: true, itemList: []})))
+            .pipe(catchError(error => of({error, itemList: []})))
         )
-      )
-      .subscribe({
-        next: ({error, itemList}: { error?: any; itemList: Item[] }) => {
-          this.error = error;
-          this.itemList = itemList;
-        },
-        error: err => console.error('FAIL!'),
-        complete: () => console.log('DONE!')
-      });
+      );
+
+    this.itemList$ = result$.pipe(pluck('itemList'));
+    this.error$ = result$.pipe(map(result => result.error));
+
+    // .subscribe(({error, itemList}: { error?: any; itemList: Item[] }) => {
+    //     this.error = error;
+    //     this.itemList = itemList;
+    //   });
   }
 
   buyItem(item: Item) {

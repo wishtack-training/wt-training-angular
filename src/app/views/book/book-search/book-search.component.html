@@ -1,11 +1,11 @@
 <input [formControl]="keywordsControl" placeholder="keywords" type="search">
 
-<div *ngIf="error">
+<div *ngIf="error$ | async">
   <span>🏴‍☠️ ARGH!!! Something went wrong...</span>
   <button (click)="retry()">RETRY</button>
 </div>
 
-<div *ngFor="let item of itemList">
+<div *ngFor="let item of itemList$ | async">
   <as-item [item]="item">
     <button (click)="buyItem(item)">BUY</button>
   </as-item>
