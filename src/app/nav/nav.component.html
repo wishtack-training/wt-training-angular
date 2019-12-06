@@ -31,6 +31,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{ title }}</span>
+      <ng-content select="[slot=toolbar]"></ng-content>
     </mat-toolbar>
     <ng-content select="[slot=content]"></ng-content>
   </mat-sidenav-content>

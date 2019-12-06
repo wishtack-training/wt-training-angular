@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Cart } from './cart/cart.service';
 import { Link } from './nav/nav.component';
 
 @Component({
@@ -20,4 +21,10 @@ export class AppComponent {
     }
   ];
 
+  constructor(private _cart: Cart) {
+  }
+
+  getTotalPrice() {
+    return this._cart.getTotalPrice();
+  }
 }
