@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { catchError, debounceTime, map, pluck, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 import { AkitaCartService } from '../../../cart/akita-cart.service';
 import { Item } from '../../../item/item';
 import { ItemModule } from '../../../item/item/item.component';
@@ -34,7 +34,11 @@ export class BookSearchComponent implements OnInit {
           this._bookSearchService
             .search(keywords)
             .pipe(catchError(error => of({error, itemList: []})))
-        )
+        ),
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        })
       );
 
     this.itemList$ = result$.pipe(pluck('itemList'));
