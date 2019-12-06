@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, debounceTime, switchMap } from 'rxjs/operators';
 import { Cart } from '../cart/cart';
 import { Item } from '../cart/item';
+import { ItemModule } from '../item/item.component';
 import { BookSearchService } from './book-search.service';
 
 @Component({
@@ -12,32 +14,36 @@ import { BookSearchService } from './book-search.service';
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
-
   keywordsControl = new FormControl();
   itemList: Item[];
   error;
 
-  constructor(private _cart: Cart, private _bookSearchService: BookSearchService) {
+  constructor(
+    private _cart: Cart,
+    private _bookSearchService: BookSearchService
+  ) {
   }
 
   ngOnInit() {
-
     const keywords$ = this.keywordsControl.valueChanges;
 
-    keywords$.pipe(
-      debounceTime(50),
-      switchMap(keywords => this._bookSearchService.search(keywords)
-        .pipe(catchError(() => of({error: true, itemList: []})))),
-    )
+    keywords$
+      .pipe(
+        debounceTime(50),
+        switchMap(keywords =>
+          this._bookSearchService
+            .search(keywords)
+            .pipe(catchError(() => of({error: true, itemList: []})))
+        )
+      )
       .subscribe({
-        next: ({error, itemList}: { error?: any, itemList: Item[] }) => {
+        next: ({error, itemList}: { error?: any; itemList: Item[] }) => {
           this.error = error;
           this.itemList = itemList;
         },
         error: err => console.error('FAIL!'),
         complete: () => console.log('DONE!')
       });
-
   }
 
   buyItem(item: Item) {
@@ -47,5 +53,13 @@ export class BookSearchComponent implements OnInit {
   retry() {
     this.keywordsControl.setValue(this.keywordsControl.value);
   }
-
 }
+
+@NgModule({
+  declarations: [BookSearchComponent],
+  exports: [BookSearchComponent],
+  imports: [CommonModule, ItemModule, ReactiveFormsModule]
+})
+export class BookSearchModule {
+}
+

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
 import { Item } from '../cart/item';
 
 @Component({
@@ -8,4 +9,14 @@ import { Item } from '../cart/item';
 })
 export class ItemComponent {
   @Input() item: Item;
+}
+
+@NgModule({
+  declarations: [ItemComponent],
+  exports: [ItemComponent],
+  imports: [
+    CommonModule
+  ]
+})
+export class ItemModule {
 }
