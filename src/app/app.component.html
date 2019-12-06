@@ -1,15 +1,11 @@
 <as-nav title="Welcome!" [links]="links">
 
   <ng-container slot="toolbar">
-    {{ getTotalPrice() | currency }}
+    <as-cart-stats></as-cart-stats>
   </ng-container>
 
-  <!--  <div slot="sidenav">-->
-  <!--    42-->
-  <!--  </div>-->
-
-  <!--  <router-outlet name="sidenav" slot="sidenav"></router-outlet>-->
-
-  <router-outlet slot="content"></router-outlet>
+  <ng-container slot="content">
+    <router-outlet></router-outlet>
+  </ng-container>
 
 </as-nav>

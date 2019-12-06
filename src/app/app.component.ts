@@ -24,7 +24,4 @@ export class AppComponent {
   constructor(private _cart: Cart) {
   }
 
-  getTotalPrice() {
-    return this._cart.getTotalPrice();
-  }
 }

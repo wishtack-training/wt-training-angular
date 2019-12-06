@@ -6,11 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CartStatsComponent } from './cart/cart-stats/cart-stats.component';
 import { NavModule } from './nav/nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CartStatsComponent
   ],
   imports: [
     AppRoutingModule,

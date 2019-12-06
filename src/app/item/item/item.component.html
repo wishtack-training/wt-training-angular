@@ -1,6 +1,6 @@
 <h1>{{ item.title }}</h1>
 
-<div class="price" [class.red]="item.price > 10">{{ item.price | currency:'EUR'  }}</div>
+<div class="price" [class.red]="isExpensive()">{{ item.price | currency:'EUR'  }}</div>
 
 <!-- Actions. -->
 <ng-content></ng-content>
