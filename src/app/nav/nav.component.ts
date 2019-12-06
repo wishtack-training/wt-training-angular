@@ -1,13 +1,19 @@
 import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+export interface Link {
+  route: string | string[];
+  name: string;
+}
 
 @Component({
   selector: 'as-nav',
@@ -15,8 +21,11 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  @Input() links: Link[];
+  @Input() title: string;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
@@ -24,7 +33,6 @@ export class NavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {
   }
-
 }
 
 @NgModule({
@@ -37,9 +45,9 @@ export class NavComponent {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ]
 })
 export class NavModule {
-
 }

@@ -1,6 +1,9 @@
-<as-nav>
-  <h1>Welcome!</h1>
-  <a routerLink="/book/search">Search</a>
-  <a routerLink="/cart">Cart</a>
-  <router-outlet></router-outlet>
+<as-nav title="Welcome!" [links]="links">
+
+  <!--  <div slot="sidenav">-->
+  <!--    42-->
+  <!--  </div>-->
+
+  <router-outlet slot="content"></router-outlet>
+
 </as-nav>
