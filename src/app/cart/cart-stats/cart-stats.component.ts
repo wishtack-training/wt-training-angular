@@ -1,21 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Cart } from '../cart.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CartQuery } from '../cart.query';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'as-cart-stats',
   templateUrl: './cart-stats.component.html',
   styleUrls: ['./cart-stats.component.css']
 })
-export class CartStatsComponent implements OnInit {
+export class CartStatsComponent {
+  totalPrice$ = this._cartQuery.totalPrice$;
 
-  constructor(private _cart: Cart) {
+  constructor(private _cartQuery: CartQuery) {
   }
-
-  ngOnInit() {
-  }
-
-  getTotalPrice() {
-    return this._cart.getTotalPrice();
-  }
-
 }

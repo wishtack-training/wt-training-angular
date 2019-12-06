@@ -3,7 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, debounceTime, switchMap } from 'rxjs/operators';
-import { Cart } from '../../../cart/cart.service';
+import { AkitaCartService } from '../../../cart/akita-cart.service';
 import { Item } from '../../../item/item';
 import { ItemModule } from '../../../item/item/item.component';
 import { BookSearchService } from './book-search.service';
@@ -19,7 +19,7 @@ export class BookSearchComponent implements OnInit {
   error;
 
   constructor(
-    private _cart: Cart,
+    private _cart: AkitaCartService,
     private _bookSearchService: BookSearchService
   ) {
   }

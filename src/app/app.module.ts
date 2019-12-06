@@ -25,7 +25,6 @@ import { NavModule } from './nav/nav.component';
     NavModule,
     environment.production ? [] : AkitaNgDevtools.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
