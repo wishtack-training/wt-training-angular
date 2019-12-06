@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { persistState } from '@datorama/akita';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '../environments/environment';
 
@@ -11,11 +12,10 @@ import { AppComponent } from './app.component';
 import { CartStatsComponent } from './cart/cart-stats/cart-stats.component';
 import { NavModule } from './nav/nav.component';
 
+persistState();
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    CartStatsComponent
-  ],
+  declarations: [AppComponent, CartStatsComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
