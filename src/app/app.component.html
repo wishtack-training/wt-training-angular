@@ -1,4 +1,4 @@
-<as-nav title="Welcome!" [links]="links">
+<as-nav title="Welcome!" [links]="links$ | async">
 
   <ng-container slot="toolbar">
     <as-cart-stats></as-cart-stats>
