@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookViewsModule } from './views/book/book-views.module';
+import { CartComponent } from './views/cart/cart/cart.component';
 
 const routes: Routes = [
   {
