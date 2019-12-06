@@ -15,7 +15,6 @@ export class CartStatsComponent implements OnInit {
   }
 
   getTotalPrice() {
-    console.count('getTotalPrice');
     return this._cart.getTotalPrice();
   }
 
