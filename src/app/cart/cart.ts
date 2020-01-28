@@ -1,4 +1,4 @@
-interface Book {
+export interface Book {
   title: string;
   price: number;
 }
@@ -19,5 +19,11 @@ export class Cart {
 
   getBookList() {
     return this._books;
+  }
+
+  removeBook(book: Book) {
+    this._books = this._books.filter(_book => {
+      return _book !== book;
+    });
   }
 }

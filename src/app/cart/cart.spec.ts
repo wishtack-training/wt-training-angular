@@ -1,20 +1,25 @@
-import { Cart, createBook } from './cart';
+import { Book, Cart, createBook } from './cart';
 
 describe('Cart', () => {
+  let cart: Cart;
+  let extremeProgrammingExplained: Book;
+  let rework: Book;
 
-  it('should add books', () => {
-    const cart = new Cart();
+  beforeEach(() => {
+    cart = new Cart();
 
-    const extremeProgrammingExplained = createBook({
+    extremeProgrammingExplained = createBook({
       title: 'eXtreme Programming Explained',
       price: 20
     });
 
-    const rework = createBook({
+    rework = createBook({
       title: 'Rework',
       price: 30
     });
+  });
 
+  it('should add books', () => {
     const emptyBookList = cart.getBookList();
 
     cart.addBook(extremeProgrammingExplained);
@@ -24,7 +29,12 @@ describe('Cart', () => {
     expect(cart.getBookList()).toEqual([extremeProgrammingExplained, rework]);
   });
 
-  xit('should remove books', () => {
+  it('should remove books', () => {
+    cart.addBook(extremeProgrammingExplained);
+    cart.addBook(rework);
+
+    cart.removeBook(extremeProgrammingExplained);
+    expect(cart.getBookList()).toEqual([rework]);
   });
 
   xit('should get total price', () => {
