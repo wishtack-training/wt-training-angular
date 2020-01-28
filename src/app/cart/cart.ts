@@ -26,4 +26,10 @@ export class Cart {
       return _book !== book;
     });
   }
+
+  getTotalPrice() {
+    return this._books
+      .map(book => book.price)
+      .reduce((acc, price) => acc + price, 0);
+  }
 }

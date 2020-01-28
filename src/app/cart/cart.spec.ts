@@ -37,6 +37,10 @@ describe('Cart', () => {
     expect(cart.getBookList()).toEqual([rework]);
   });
 
-  xit('should get total price', () => {
+  it('should get total price', () => {
+    cart.addBook(extremeProgrammingExplained);
+    cart.addBook(rework);
+
+    expect(cart.getTotalPrice()).toEqual(50);
   });
 });
