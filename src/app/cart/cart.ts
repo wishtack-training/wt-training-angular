@@ -1,0 +1,23 @@
+interface Book {
+  title: string;
+  price: number;
+}
+
+export function createBook(args: Book): Book {
+  return {
+    title: args.title,
+    price: args.price
+  };
+}
+
+export class Cart {
+  private _books: Book[] = [];
+
+  addBook(book: Book) {
+    this._books = [...this._books, book];
+  }
+
+  getBookList() {
+    return this._books;
+  }
+}
