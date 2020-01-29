@@ -1,8 +1,33 @@
-<form [formGroup]="searchForm" (ngSubmit)="search()">
-  <!--  @todo use material form field. -->
-  <input formControlName="keywords" type="text">
+<form class="book-search-form" [formGroup]="searchForm" (ngSubmit)="search()">
+
+  <mat-form-field>
+    <input formControlName="keywords" matInput placeholder="keywords">
+  </mat-form-field>
+
+  <div class="selectors">
+
+    <!-- Language selector. -->
+    <mat-radio-group class="vertical-radio-selector" formControlName="language">
+      <mat-radio-button [value]="Language.English">🇬🇧</mat-radio-button>
+      <mat-radio-button [value]="Language.French">🇫🇷</mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Order selector. -->
+    <mat-radio-group class="vertical-radio-selector" formControlName="order">
+      <mat-radio-button [value]="Order.Newest">Newest</mat-radio-button>
+      <mat-radio-button [value]="Order.Relevance">Relevance</mat-radio-button>
+    </mat-radio-group>
+
+  </div>
 
   <!--  @todo use checkboxes & radios for filtering and sorting. -->
   <!-- https://developers.google.com/books/docs/v1/reference/volumes/list -->
-  <button type="submit" [disabled]="!searchForm.valid">SEARCH</button>
+  <button
+    mat-button
+    color="primary"
+    type="submit"
+    [disabled]="!searchForm.valid"
+  >
+    SEARCH
+  </button>
 </form>

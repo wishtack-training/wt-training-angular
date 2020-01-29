@@ -1,6 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { removeUndefinedFields } from '../../lib/remove-undefined-fields';
+
+export enum Order {
+  Newest = 'newest',
+  Relevance = 'relevance'
+}
+
+export enum Language {
+  English = 'en',
+  French = 'fr'
+}
 
 @Component({
   selector: 'mc-book-search',
@@ -8,11 +19,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
+
+  Order = Order;
+  Language = Language;
+
   searchForm = new FormGroup({
     keywords: new FormControl(null, [
       Validators.required,
       Validators.minLength(3)
-    ])
+    ]),
+    language: new FormControl(Language.English),
+    order: new FormControl(Order.Newest)
   });
 
   constructor(private _httpClient: HttpClient) {
@@ -27,9 +44,9 @@ export class BookSearchComponent implements OnInit {
   search() {
     const {keywords} = this.searchForm.value;
     const result$ = this._httpClient.get('https://www.googleapis.com/books/v1/volumes', {
-      params: {
+      params: removeUndefinedFields({
         q: keywords
-      }
+      })
     });
 
     result$.subscribe(data => {
