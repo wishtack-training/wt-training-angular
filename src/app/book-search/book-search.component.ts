@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { removeUndefinedFields } from '../../lib/remove-undefined-fields';
-import { Book, createBook } from '../cart/cart';
+import { Book } from '../cart/cart';
+import { BookSearch } from './book-search.service';
 
 export enum Order {
   Newest = 'newest',
@@ -57,7 +57,10 @@ export class BookSearchComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(
+    private _bookSearch: BookSearch,
+    private _httpClient: HttpClient
+  ) {
   }
 
   ngOnInit() {
@@ -68,26 +71,11 @@ export class BookSearchComponent implements OnInit {
 
   search() {
     const {keywords, language, order} = this.searchForm.value;
-    const result$ = this._httpClient.get<VolumeListResponse>(
-      'https://www.googleapis.com/books/v1/volumes',
-      {
-        params: removeUndefinedFields({
-          q: keywords,
-          langRestrict: language,
-          orderBy: order
-        })
-      }
-    );
 
-    result$.subscribe(data => {
-      this.books = data.items.map(item => {
-        return createBook({
-          title: item.volumeInfo.title,
-          pictureUri: item.volumeInfo.imageLinks?.thumbnail,
-          price: item.saleInfo.listPrice?.amount
-        });
-      });
-    });
-
+    this._bookSearch.search({
+      keywords,
+      language,
+      order
+    }).subscribe(books => this.books = books);
   }
 }
