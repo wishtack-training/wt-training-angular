@@ -1,4 +1,5 @@
-<button (click)="addBook()">ADD</button>
+<button mat-button color="primary" (click)="addBook()">ADD</button>
+
 <!--<mc-book-carousel [books]="getBookList()"></mc-book-carousel>-->
 
 <mc-book-card *ngFor="let book of getBookList()" [book]="book"></mc-book-card>

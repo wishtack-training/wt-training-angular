@@ -122,6 +122,13 @@
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.0.0-rc.11.tgz#83fd0ed94ef1a0c0f149a5502b29f382dc4f0106"
   integrity sha512-0CsiykW6BWM/MwZGvEdMQc8MFBsdLLpF19TXF+f7UxHuDzj7brqmquAxyWIpVHlwl+j1Ey/sU28gcPnK+GVDHw==
 
+"@angular/cdk@~9.0.0-rc.8":
+  version "9.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-9.0.0-rc.8.tgz#278806a1d7115d24c04dc5d59eec1ca5116fc86f"
+  integrity sha512-t0tvZGCUiiO/SfsY4LYG8i49d2mlXE1k1qtyXhBB31dJPivkAF6tthDhwt0jMNOMb3hpTfinYHwJOBhy1u0a6w==
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~9.0.0-rc.10":
   version "9.0.0-rc.10"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-9.0.0-rc.10.tgz#888a950638fbe19da3b2d241add02c373fe5b9db"
@@ -188,6 +195,11 @@
   version "9.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-9.0.0-rc.11.tgz#03160f55c97d3006c3728ecaaced48fb140691a3"
   integrity sha512-WpCRLYy6BGn+a6JGI1bRtCFKN0XcgpFxFg/pJUsXP6bND7EaCjlBfasLHr1qg3vPzpcynssMV4mheYjII782jA==
+
+"@angular/material@^9.0.0-rc.8":
+  version "9.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-9.0.0-rc.8.tgz#2d4be3a56eb49023323d86af7d1b650dea269f54"
+  integrity sha512-g7D9fZabdBNzAVDmECumGwC2SqQzL8LHsroUzRmLlXampyHqeUs57xdt0YCkdYY38frAc6eTxTPbIWxm6ERqNA==
 
 "@angular/platform-browser-dynamic@~9.0.0-rc.9":
   version "9.0.0-rc.11"
@@ -3704,6 +3716,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
+
 handle-thing@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
@@ -5842,6 +5859,11 @@ parse5@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
   integrity sha512-VrZ7eOd3T1Fk4XWNXMgiGBK/z0MG48BWG2uQNU4I72fkQuKUTZpl+u9k+CxEG0twMVzSmXEEz12z5Fnw1jIQFA==
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
 
 parseqs@0.0.5:
   version "0.0.5"
