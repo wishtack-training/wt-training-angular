@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Book, createBook } from '../cart/cart';
+import { Component, Input } from '@angular/core';
+import { Book } from '../cart/cart';
 
 @Component({
   selector: 'mc-book-carousel',
@@ -8,20 +8,7 @@ import { Book, createBook } from '../cart/cart';
 })
 export class BookCarouselComponent {
 
-  books = [
-    createBook({
-      title: 'XP',
-      price: 20
-    }),
-    createBook({
-      title: 'ReWork',
-      price: 30
-    }),
-    createBook({
-      title: 'Lean Startup',
-      price: 10
-    }),
-  ];
+  @Input() books: Book[];
 
   selectedBook: Book;
 
