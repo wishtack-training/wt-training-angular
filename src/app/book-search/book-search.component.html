@@ -1,7 +1,8 @@
 <form [formGroup]="searchForm" (ngSubmit)="search()">
   <!--  @todo use material form field. -->
-  <input formControlName="keywords" type="text"/>
+  <input formControlName="keywords" type="text">
+
   <!--  @todo use checkboxes & radios for filtering and sorting. -->
   <!-- https://developers.google.com/books/docs/v1/reference/volumes/list -->
-  <button type="submit">SEARCH</button>
+  <button type="submit" [disabled]="!searchForm.valid">SEARCH</button>
 </form>
