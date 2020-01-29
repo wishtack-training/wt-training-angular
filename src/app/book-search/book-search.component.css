@@ -1,4 +1,4 @@
-:host {
+.book-search-form__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
