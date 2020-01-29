@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,6 +15,9 @@ export class BookSearchComponent implements OnInit {
     ])
   });
 
+  constructor(private _httpClient: HttpClient) {
+  }
+
   ngOnInit() {
     this.searchForm.valueChanges.subscribe(data => {
       console.log(data);
@@ -21,8 +25,16 @@ export class BookSearchComponent implements OnInit {
   }
 
   search() {
-    console.log(this.searchForm.valid);
-    console.log(this.searchForm.value);
+    const {keywords} = this.searchForm.value;
+    const result$ = this._httpClient.get('https://www.googleapis.com/books/v1/volumes', {
+      params: {
+        q: keywords
+      }
+    });
+
+    result$.subscribe(data => {
+    });
+
     // @todo {keywords, orderBy, langRestrict}
   }
 }
