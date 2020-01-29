@@ -67,12 +67,14 @@ export class BookSearchComponent implements OnInit {
   }
 
   search() {
-    const {keywords} = this.searchForm.value;
+    const {keywords, language, order} = this.searchForm.value;
     const result$ = this._httpClient.get<VolumeListResponse>(
       'https://www.googleapis.com/books/v1/volumes',
       {
         params: removeUndefinedFields({
-          q: keywords
+          q: keywords,
+          langRestrict: language,
+          orderBy: order
         })
       }
     );
