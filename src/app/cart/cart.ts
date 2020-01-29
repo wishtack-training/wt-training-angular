@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 
 export interface Book {
   title: string;
+  pictureUri?: string;
   price: number;
 }
 
 export function createBook(args: Book): Book {
   return {
     title: args.title,
+    pictureUri: args.pictureUri,
     price: args.price
   };
 }

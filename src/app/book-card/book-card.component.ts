@@ -8,4 +8,8 @@ import { Book } from '../cart/cart';
 })
 export class BookCardComponent {
   @Input() book: Book;
+
+  getPictureUri() {
+    return this.book.pictureUri ? this.book.pictureUri : `https://source.unsplash.com/featured?${this.book.title}`;
+  }
 }
