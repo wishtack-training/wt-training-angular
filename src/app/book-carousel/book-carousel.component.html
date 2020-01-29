@@ -1,0 +1,7 @@
+<div *ngFor="let book of books">
+  <span [class.selected]="book === selectedBook">{{ book.title }}</span>
+  <span *ngIf="book === selectedBook">✅</span>
+</div>
+
+<button [disabled]="!canGoToPrevious()" (click)="goToPrevious()">PREVIOUS</button>
+<button [disabled]="!canGoToNext()" (click)="goToNext()">NEXT</button>
