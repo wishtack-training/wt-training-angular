@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
+import { BookSearchFormModule } from './book-search/book-search-form/book-search-form.component';
 import { BookSearchHistoryComponent } from './book-search/book-search-history/book-search-history.component';
 import { BookSearchComponent } from './book-search/book-search/book-search.component';
 import { CartComponent } from './cart/cart/cart.component';
@@ -36,7 +37,8 @@ import { CartComponent } from './cart/cart/cart.component';
     MatCheckboxModule,
     MatRadioModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    BookSearchFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

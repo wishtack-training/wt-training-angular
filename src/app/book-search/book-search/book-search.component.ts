@@ -1,37 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, onErrorResumeNext, pluck, scan, switchMap } from 'rxjs/operators';
 import { Book } from '../../cart/cart';
-import { BookQuery, Language, Order } from '../book-query';
+import { BookQuery } from '../book-query';
 import { BookSearch } from '../book-search.service';
 
-export interface VolumeItem {
-  id: string;
-  saleInfo: {
-    listPrice: {
-      amount: number;
-      currencyCode: string;
-    };
-  };
-  volumeInfo: {
-    imageLinks: {
-      thumbnail: string;
-    };
-    title: string;
-  };
-}
-
-export interface GoogleListResponse<TItem> {
-  totalItems: number;
-  items: TItem[];
-}
-
-export type VolumeListResponse = GoogleListResponse<VolumeItem>;
-
-export const slide = (windowSize: number) =>
-  scan((history, query) => [...history, query].slice(-windowSize), []);
+export const slide = <TItem>(windowSize: number) =>
+  scan<TItem, TItem[]>((history, query) => [...history, query].slice(-windowSize), []);
 
 @Component({
   selector: 'mc-book-search',
@@ -39,20 +15,10 @@ export const slide = (windowSize: number) =>
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
-  Order = Order;
-  Language = Language;
-
-  searchForm = new FormGroup({
-    keywords: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(3)
-    ]),
-    language: new FormControl(Language.English),
-    order: new FormControl(Order.Newest)
-  });
-
   books: Book[] = [];
   history: BookQuery[];
+
+  private _query$ = new Subject<BookQuery>();
 
   constructor(
     private _bookSearch: BookSearch,
@@ -61,7 +27,8 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const query$: Observable<BookQuery> = this.searchForm.valueChanges.pipe(
+
+    const result$ = this._query$.pipe(
       debounceTime(50),
       distinctUntilChanged((a, b) => {
         return (
@@ -69,10 +36,7 @@ export class BookSearchComponent implements OnInit {
           a.language === b.language &&
           a.order === b.order
         );
-      })
-    );
-
-    const result$ = query$.pipe(
+      }),
       switchMap(query => {
         return this._bookSearch.search(query).pipe(
           map(books => ({
@@ -96,6 +60,6 @@ export class BookSearchComponent implements OnInit {
   }
 
   search(query: BookQuery) {
-    this.searchForm.patchValue(query);
+    this._query$.next(query);
   }
 }

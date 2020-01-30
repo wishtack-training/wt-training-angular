@@ -1,28 +1,4 @@
-<div class="book-search-form__container">
-  <form class="book-search-form" [formGroup]="searchForm">
-
-    <mat-form-field>
-      <input formControlName="keywords" matInput placeholder="keywords">
-    </mat-form-field>
-
-    <div class="selectors">
-
-      <!-- Language selector. -->
-      <mat-radio-group class="vertical-radio-selector" formControlName="language">
-        <mat-radio-button [value]="Language.English">🇬🇧</mat-radio-button>
-        <mat-radio-button [value]="Language.French">🇫🇷</mat-radio-button>
-      </mat-radio-group>
-
-      <!-- Order selector. -->
-      <mat-radio-group class="vertical-radio-selector" formControlName="order">
-        <mat-radio-button [value]="Order.Newest">Newest</mat-radio-button>
-        <mat-radio-button [value]="Order.Relevance">Relevance</mat-radio-button>
-      </mat-radio-group>
-
-    </div>
-
-  </form>
-</div>
+<mc-book-search-form (queryChange)="search($event)"></mc-book-search-form>
 
 <mc-book-search-history
   [history]="history"

@@ -5,7 +5,30 @@ import { map } from 'rxjs/operators';
 import { removeUndefinedFields } from '../../lib/remove-undefined-fields';
 import { Book, createBook } from '../cart/cart';
 import { BookQuery } from './book-query';
-import { VolumeListResponse } from './book-search/book-search.component';
+
+export interface VolumeItem {
+  id: string;
+  saleInfo: {
+    listPrice: {
+      amount: number;
+      currencyCode: string;
+    };
+  };
+  volumeInfo: {
+    imageLinks: {
+      thumbnail: string;
+    };
+    title: string;
+  };
+}
+
+export interface GoogleListResponse<TItem> {
+  totalItems: number;
+  items: TItem[];
+}
+
+export type VolumeListResponse = GoogleListResponse<VolumeItem>;
+
 
 @Injectable({
   providedIn: 'root'
