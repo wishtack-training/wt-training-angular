@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
+import { BookPicturePipe } from './book-card/book-picture.pipe';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
 import { BookSearchFormModule } from './book-search/book-search-form/book-search-form.component';
 import { BookSearchHistoryComponent } from './book-search/book-search-history/book-search-history.component';
@@ -25,7 +26,8 @@ import { CartComponent } from './cart/cart/cart.component';
     BookCardComponent,
     CartComponent,
     BookSearchComponent,
-    BookSearchHistoryComponent
+    BookSearchHistoryComponent,
+    BookPicturePipe
   ],
   imports: [
     BrowserModule,
