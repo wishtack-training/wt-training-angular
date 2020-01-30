@@ -4,6 +4,17 @@
   width: 300px;
 }
 
+.book-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.3em;
+}
+
+.book-title:hover {
+  white-space: inherit;
+}
+
 .picture {
   height: 250px;
   width: 100%;

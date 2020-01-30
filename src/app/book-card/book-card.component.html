@@ -1,5 +1,5 @@
-<mat-card class="book-card" fxFlex fxLayout="column">
-  <mat-card-title>{{ book.title }}</mat-card-title>
+<mat-card fxFlex fxLayout="column">
+  <mat-card-title class="book-title">{{ book.title }}</mat-card-title>
   <mat-card-subtitle>{{ book.price }}</mat-card-subtitle>
   <mat-card-content class="book-card__content" fxFlex fxLayout="column">
     <img class="picture" fxFlex [src]="getPictureUri()">
