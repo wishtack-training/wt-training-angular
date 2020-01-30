@@ -30,6 +30,9 @@ export interface GoogleListResponse<TItem> {
 
 export type VolumeListResponse = GoogleListResponse<VolumeItem>;
 
+export const slide = (windowSize: number) =>
+  scan((history, query) => [...history, query].slice(-windowSize), []);
+
 @Component({
   selector: 'mc-book-search',
   templateUrl: './book-search.component.html',
@@ -58,28 +61,26 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const query$: Observable<BookQuery> = this.searchForm.valueChanges
-      .pipe(
-        debounceTime(100),
-        distinctUntilChanged((a, b) => {
-          return (
-            a.keywords === b.keywords &&
-            a.language === b.language &&
-            a.order === b.order
-          );
-        }),
-      );
+    const query$: Observable<BookQuery> = this.searchForm.valueChanges.pipe(
+      debounceTime(100),
+      distinctUntilChanged((a, b) => {
+        return (
+          a.keywords === b.keywords &&
+          a.language === b.language &&
+          a.order === b.order
+        );
+      })
+    );
 
     const result$ = query$.pipe(
       switchMap(query => {
-        return this._bookSearch.search(query)
-          .pipe(
-            map(books => ({
-              books,
-              query
-            })),
-            onErrorResumeNext()
-          );
+        return this._bookSearch.search(query).pipe(
+          map(books => ({
+            books,
+            query
+          })),
+          onErrorResumeNext()
+        );
       })
     );
 
@@ -88,12 +89,8 @@ export class BookSearchComponent implements OnInit {
     const successfulQuery$ = result$.pipe(pluck('query'));
 
     successfulQuery$
-      .pipe(
-        scan((history, query) => {
-          return [...history, query];
-        }, [])
-      )
-      .subscribe(history => this.history = history);
+      .pipe(slide(10))
+      .subscribe(history => (this.history = history));
 
     books$.subscribe(books => (this.books = books));
   }
@@ -101,5 +98,4 @@ export class BookSearchComponent implements OnInit {
   search(query: BookQuery) {
     this.searchForm.patchValue(query);
   }
-
 }

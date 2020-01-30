@@ -10,3 +10,7 @@ https://www.jetbrains.com/webstorm/
 npm install -g @angular/cli@next
 ng new training --prefix mc --defaults
 ```
+
+# Links
+
+https://github.com/wishtack-training/wt-training-angular
