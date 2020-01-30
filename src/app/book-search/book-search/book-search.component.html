@@ -1,21 +1,14 @@
 <mc-book-search-form (queryChange)="search($event)"></mc-book-search-form>
 
-<button (click)="isDisplayed = !isDisplayed">TOGGLE</button>
+<mc-book-search-history
+  [history]="history$ | async"
+  (search)="search($event)"></mc-book-search-history>
 
-<div *ngIf="isDisplayed">
+<hr>
 
-
-  <mc-book-search-history
-    [history]="history$ | async"
-    (search)="search($event)"></mc-book-search-history>
-
-  <hr>
-
-  <div class="book-list">
-    <mc-book-card
-      *ngFor="let book of books$ | async"
-      class="book-card"
-      [book]="book"></mc-book-card>
-  </div>
-
+<div class="book-list">
+  <mc-book-card
+    *ngFor="let book of books$ | async"
+    class="book-card"
+    [book]="book"></mc-book-card>
 </div>
