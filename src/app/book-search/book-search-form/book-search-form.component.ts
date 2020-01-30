@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, Output } from '@angular/core';
+import { Component, Input, NgModule, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,8 +14,9 @@ import { BookQuery, Language, Order } from '../book-query';
   templateUrl: './book-search-form.component.html',
   styleUrls: ['./book-search-form.component.css']
 })
-export class BookSearchFormComponent {
+export class BookSearchFormComponent implements OnChanges {
 
+  @Input() query: BookQuery;
   @Output() queryChange: Observable<BookQuery>;
 
   Order = Order;
@@ -35,6 +36,13 @@ export class BookSearchFormComponent {
       .pipe(distinctUntilChanged());
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.query && this.query != null) {
+      this.searchForm.patchValue(this.query, {
+        emitEvent: false
+      });
+    }
+  }
 
 }
 

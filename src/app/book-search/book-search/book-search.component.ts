@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -31,7 +31,8 @@ export class BookSearchComponent implements OnInit {
   books$: Observable<Book[]>;
   history$: Observable<BookQuery[]>;
 
-  private _query$ = new Subject<BookQuery>();
+  query$ = new ReplaySubject<BookQuery>(1);
+  isDisplayed: any;
 
   constructor(
     private _bookSearch: BookSearch,
@@ -40,7 +41,7 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const result$ = this._query$.pipe(
+    const result$ = this.query$.pipe(
       debounceTime(50),
       distinctUntilChanged((a, b) => {
         return (
@@ -75,6 +76,6 @@ export class BookSearchComponent implements OnInit {
   }
 
   search(query: BookQuery) {
-    this._query$.next(query);
+    this.query$.next(query);
   }
 }

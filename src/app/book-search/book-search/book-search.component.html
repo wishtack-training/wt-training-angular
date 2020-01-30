@@ -1,4 +1,6 @@
-<mc-book-search-form (queryChange)="search($event)"></mc-book-search-form>
+<mc-book-search-form
+  [query]="query$ | async"
+  (queryChange)="search($event)"></mc-book-search-form>
 
 <mc-book-search-history
   [history]="history$ | async"
@@ -12,3 +14,8 @@
     class="book-card"
     [book]="book"></mc-book-card>
 </div>
+
+<mc-book-search-form
+  *ngIf="books$ | async"
+  [query]="query$ | async"
+  (queryChange)="search($event)"></mc-book-search-form>
