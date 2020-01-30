@@ -1,3 +1,5 @@
+<h1>Search</h1>
+
 <mc-book-search-form
   [query]="query$ | async"
   (queryChange)="search($event)"></mc-book-search-form>
@@ -8,11 +10,12 @@
 
 <hr>
 
-<div class="book-list">
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
   <mc-book-card
     *ngFor="let book of books$ | async"
     class="book-card"
-    [book]="book"></mc-book-card>
+    [book]="book">XXXX
+  </mc-book-card>
 </div>
 
 <mc-book-search-form

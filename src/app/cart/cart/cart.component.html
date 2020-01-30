@@ -1,1 +1,6 @@
-<mc-book-card *ngFor="let book of getBookList()" [book]="book"></mc-book-card>
+<h1>Cart</h1>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
+  <mc-book-card
+    *ngFor="let book of getBookList()" [book]="book"></mc-book-card>
+</div>

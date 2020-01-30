@@ -18,7 +18,12 @@ export function createBook(args: Book): Book {
   providedIn: 'root'
 })
 export class Cart {
-  private _books: Book[] = [];
+  private _books: Book[] = [
+    createBook({
+      title: 'ReWork',
+      price: 12
+    })
+  ];
 
   addBook(book: Book) {
     this._books = [...this._books, book];
