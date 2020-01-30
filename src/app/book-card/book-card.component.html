@@ -1,6 +1,10 @@
 <mat-card class="book-card" fxFlex fxLayout="column">
   <mat-card-title>{{ book.title }}</mat-card-title>
+  <mat-card-subtitle>{{ book.price }}</mat-card-subtitle>
   <mat-card-content class="book-card__content" fxFlex fxLayout="column">
     <img class="picture" fxFlex [src]="getPictureUri()">
   </mat-card-content>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center">
+    <button mat-button>BUY</button>
+  </mat-card-actions>
 </mat-card>
