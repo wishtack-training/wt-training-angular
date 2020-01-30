@@ -32,7 +32,6 @@ export class BookSearchComponent implements OnInit {
   history$: Observable<BookQuery[]>;
 
   query$ = new ReplaySubject<BookQuery>(1);
-  isDisplayed: any;
 
   constructor(
     private _bookSearch: BookSearch,
