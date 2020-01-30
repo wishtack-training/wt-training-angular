@@ -1,5 +1,5 @@
 <div class="book-search-form__container">
-  <form class="book-search-form" [formGroup]="searchForm" (ngSubmit)="search()">
+  <form class="book-search-form" [formGroup]="searchForm">
 
     <mat-form-field>
       <input formControlName="keywords" matInput placeholder="keywords">
@@ -21,17 +21,15 @@
 
     </div>
 
-    <button
-      mat-button
-      color="primary"
-      type="submit"
-      [disabled]="!searchForm.valid"
-    >
-      SEARCH
-    </button>
   </form>
 </div>
 
+<mc-search-history
+  [history]="[{keywords: 'ReWork'}, {keywords: 'eXtreme Programming'}]"
+  (search)="search($event)"></mc-search-history>
+
 <hr>
 
-<mc-book-card *ngFor="let book of books" [book]="book"></mc-book-card>
+<mc-book-card
+  *ngFor="let book of books"
+  [book]="book"></mc-book-card>

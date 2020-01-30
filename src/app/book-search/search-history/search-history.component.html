@@ -1,0 +1,4 @@
+<div *ngFor="let query of history">
+  <span>{{ query.keywords }}</span>
+  <button (click)="onSearch(query)">SEARCH</button>
+</div>

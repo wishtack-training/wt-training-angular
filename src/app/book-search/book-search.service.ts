@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { removeUndefinedFields } from '../../lib/remove-undefined-fields';
 import { Book, createBook } from '../cart/cart';
-import { VolumeListResponse } from './book-search.component';
+import { VolumeListResponse } from './book-search/book-search.component';
 
 @Injectable({
   providedIn: 'root'

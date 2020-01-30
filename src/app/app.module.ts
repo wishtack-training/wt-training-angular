@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
-import { BookSearchComponent } from './book-search/book-search.component';
+import { BookSearchComponent } from './book-search/book-search/book-search.component';
+import { SearchHistoryComponent } from './book-search/search-history/search-history.component';
 import { CartComponent } from './cart/cart/cart.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CartComponent } from './cart/cart/cart.component';
     BookCarouselComponent,
     BookCardComponent,
     CartComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    SearchHistoryComponent
   ],
   imports: [
     BrowserModule,

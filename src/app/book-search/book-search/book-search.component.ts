@@ -3,18 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
-import { Book } from '../cart/cart';
-import { BookSearch } from './book-search.service';
-
-export enum Order {
-  Newest = 'newest',
-  Relevance = 'relevance'
-}
-
-export enum Language {
-  English = 'en',
-  French = 'fr'
-}
+import { Book } from '../../cart/cart';
+import { BookQuery, Language, Order } from '../book-query';
+import { BookSearch } from '../book-search.service';
 
 export interface VolumeItem {
   id: string;
@@ -66,11 +57,7 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const formValue$: Observable<{
-      keywords: string;
-      language: Language;
-      order: Order;
-    }> = this.searchForm.valueChanges;
+    const formValue$: Observable<BookQuery> = this.searchForm.valueChanges;
 
     const books$ = formValue$.pipe(
       debounceTime(100),
@@ -90,15 +77,8 @@ export class BookSearchComponent implements OnInit {
     books$.subscribe(books => (this.books = books));
   }
 
-  search() {
-    const {keywords, language, order} = this.searchForm.value;
-
-    this._bookSearch
-      .search({
-        keywords,
-        language,
-        order
-      })
-      .subscribe(books => (this.books = books));
+  search(bookQuery: BookQuery) {
+    this.searchForm.patchValue(bookQuery);
   }
+
 }
