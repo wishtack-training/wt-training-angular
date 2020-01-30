@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { removeUndefinedFields } from '../../lib/remove-undefined-fields';
 import { Book, createBook } from '../cart/cart';
+import { BookQuery } from './book-query';
 import { VolumeListResponse } from './book-search/book-search.component';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class BookSearch {
   constructor(private _httpClient: HttpClient) {
   }
 
-  search({keywords, language, order}: { keywords: string; language: string; order: string }): Observable<Book[]> {
+  search({keywords, language, order}: BookQuery): Observable<Book[]> {
 
     return this._httpClient.get<VolumeListResponse>(
       'https://www.googleapis.com/books/v1/volumes',

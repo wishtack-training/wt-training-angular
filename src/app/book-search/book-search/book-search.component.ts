@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, onErrorResumeNext, pluck, scan, switchMap } from 'rxjs/operators';
 import { Book } from '../../cart/cart';
 import { BookQuery, Language, Order } from '../book-query';
 import { BookSearch } from '../book-search.service';
@@ -49,6 +49,7 @@ export class BookSearchComponent implements OnInit {
   });
 
   books: Book[] = [];
+  history: BookQuery[];
 
   constructor(
     private _bookSearch: BookSearch,
@@ -57,28 +58,48 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const formValue$: Observable<BookQuery> = this.searchForm.valueChanges;
+    const query$: Observable<BookQuery> = this.searchForm.valueChanges
+      .pipe(
+        debounceTime(100),
+        distinctUntilChanged((a, b) => {
+          return (
+            a.keywords === b.keywords &&
+            a.language === b.language &&
+            a.order === b.order
+          );
+        }),
+      );
 
-    const books$ = formValue$.pipe(
-      debounceTime(100),
-      distinctUntilChanged((a, b) => {
-        return (
-          a.keywords === b.keywords &&
-          a.language === b.language &&
-          a.order === b.order
-        );
-      }),
-      switchMap(({keywords, language, order}) => {
-        return this._bookSearch.search({keywords, language, order})
-          .pipe(onErrorResumeNext());
+    const result$ = query$.pipe(
+      switchMap(query => {
+        return this._bookSearch.search(query)
+          .pipe(
+            map(books => ({
+              books,
+              query
+            })),
+            onErrorResumeNext()
+          );
       })
     );
+
+    const books$ = result$.pipe(pluck('books'));
+
+    const successfulQuery$ = result$.pipe(pluck('query'));
+
+    successfulQuery$
+      .pipe(
+        scan((history, query) => {
+          return [...history, query];
+        }, [])
+      )
+      .subscribe(history => this.history = history);
 
     books$.subscribe(books => (this.books = books));
   }
 
-  search(bookQuery: BookQuery) {
-    this.searchForm.patchValue(bookQuery);
+  search(query: BookQuery) {
+    this.searchForm.patchValue(query);
   }
 
 }
