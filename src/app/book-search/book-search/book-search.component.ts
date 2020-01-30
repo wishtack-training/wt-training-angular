@@ -1,13 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, onErrorResumeNext, pluck, scan, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  onErrorResumeNext,
+  pluck,
+  scan,
+  shareReplay,
+  switchMap
+} from 'rxjs/operators';
 import { Book } from '../../cart/cart';
 import { BookQuery } from '../book-query';
 import { BookSearch } from '../book-search.service';
 
 export const slide = <TItem>(windowSize: number) =>
-  scan<TItem, TItem[]>((history, query) => [...history, query].slice(-windowSize), []);
+  scan<TItem, TItem[]>(
+    (history, query) => [...history, query].slice(-windowSize),
+    []
+  );
 
 @Component({
   selector: 'mc-book-search',
@@ -15,8 +27,9 @@ export const slide = <TItem>(windowSize: number) =>
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
-  books: Book[] = [];
-  history: BookQuery[];
+
+  books$: Observable<Book[]>;
+  history$: Observable<BookQuery[]>;
 
   private _query$ = new Subject<BookQuery>();
 
@@ -27,7 +40,6 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
     const result$ = this._query$.pipe(
       debounceTime(50),
       distinctUntilChanged((a, b) => {
@@ -45,6 +57,10 @@ export class BookSearchComponent implements OnInit {
           })),
           onErrorResumeNext()
         );
+      }),
+      shareReplay({
+        bufferSize: 1,
+        refCount: true
       })
     );
 
@@ -52,11 +68,10 @@ export class BookSearchComponent implements OnInit {
 
     const successfulQuery$ = result$.pipe(pluck('query'));
 
-    successfulQuery$
-      .pipe(slide(10))
-      .subscribe(history => (this.history = history));
-
-    books$.subscribe(books => (this.books = books));
+    this.books$ = books$;
+    this.history$ = successfulQuery$.pipe(
+      slide(10)
+    );
   }
 
   search(query: BookQuery) {
