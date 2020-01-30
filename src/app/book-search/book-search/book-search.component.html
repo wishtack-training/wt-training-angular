@@ -24,12 +24,15 @@
   </form>
 </div>
 
-<mc-search-history
+<mc-book-search-history
   [history]="history"
-  (search)="search($event)"></mc-search-history>
+  (search)="search($event)"></mc-book-search-history>
 
 <hr>
 
-<mc-book-card
-  *ngFor="let book of books"
-  [book]="book"></mc-book-card>
+<div class="book-list">
+  <mc-book-card
+    *ngFor="let book of books"
+    class="book-card"
+    [book]="book"></mc-book-card>
+</div>

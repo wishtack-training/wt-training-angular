@@ -62,7 +62,7 @@ export class BookSearchComponent implements OnInit {
 
   ngOnInit() {
     const query$: Observable<BookQuery> = this.searchForm.valueChanges.pipe(
-      debounceTime(100),
+      debounceTime(50),
       distinctUntilChanged((a, b) => {
         return (
           a.keywords === b.keywords &&

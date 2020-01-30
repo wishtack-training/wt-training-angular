@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -11,8 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
+import { BookSearchHistoryComponent } from './book-search/book-search-history/book-search-history.component';
 import { BookSearchComponent } from './book-search/book-search/book-search.component';
-import { SearchHistoryComponent } from './book-search/search-history/search-history.component';
 import { CartComponent } from './cart/cart/cart.component';
 
 @NgModule({
@@ -22,7 +24,7 @@ import { CartComponent } from './cart/cart/cart.component';
     BookCardComponent,
     CartComponent,
     BookSearchComponent,
-    SearchHistoryComponent
+    BookSearchHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,9 @@ import { CartComponent } from './cart/cart/cart.component';
     ReactiveFormsModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

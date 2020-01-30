@@ -1,3 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
 .picture {
-    width: 200px;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
 }

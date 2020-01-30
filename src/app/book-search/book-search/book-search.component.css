@@ -22,3 +22,15 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+.book-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.book-card {
+  margin: 10px;
+}

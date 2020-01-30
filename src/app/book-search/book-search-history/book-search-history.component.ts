@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BookQuery } from '../book-query';
 
 @Component({
-  selector: 'mc-search-history',
-  templateUrl: './search-history.component.html',
-  styleUrls: ['./search-history.component.css']
+  selector: 'mc-book-search-history',
+  templateUrl: './book-search-history.component.html',
+  styleUrls: ['./book-search-history.component.css']
 })
-export class SearchHistoryComponent {
+export class BookSearchHistoryComponent {
 
   @Input() history: BookQuery[];
   @Output() search = new EventEmitter<BookQuery>();
