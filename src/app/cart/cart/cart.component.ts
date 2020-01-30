@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cart } from '../cart';
+import { Book, Cart } from '../cart';
 
 @Component({
   selector: 'mc-cart',
@@ -15,4 +15,7 @@ export class CartComponent {
     return this._cart.getBookList();
   }
 
+  remove(book: Book) {
+    this._cart.removeBook(book);
+  }
 }

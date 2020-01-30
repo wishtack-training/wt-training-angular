@@ -11,7 +11,7 @@ import {
   shareReplay,
   switchMap
 } from 'rxjs/operators';
-import { Book } from '../../cart/cart';
+import { Book, Cart, createBook } from '../../cart/cart';
 import { BookQuery } from '../book-query';
 import { BookSearch } from '../book-search.service';
 
@@ -27,7 +27,6 @@ export const slide = <TItem>(windowSize: number) =>
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
-
   books$: Observable<Book[]>;
   history$: Observable<BookQuery[]>;
 
@@ -35,6 +34,7 @@ export class BookSearchComponent implements OnInit {
 
   constructor(
     private _bookSearch: BookSearch,
+    private _cart: Cart,
     private _httpClient: HttpClient
   ) {
   }
@@ -69,12 +69,15 @@ export class BookSearchComponent implements OnInit {
     const successfulQuery$ = result$.pipe(pluck('query'));
 
     this.books$ = books$;
-    this.history$ = successfulQuery$.pipe(
-      slide(10)
-    );
+    this.history$ = successfulQuery$.pipe(slide(10));
   }
 
   search(query: BookQuery) {
     this.query$.next(query);
+  }
+
+  buy(book: Book) {
+    /* @hack clone book because we remove items by reference in cart and we don't have a counter and stuff yet. */
+    this._cart.addBook(createBook(book));
   }
 }

@@ -13,7 +13,8 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
   <mc-book-card
     *ngFor="let book of books$ | async"
-    [book]="book">XXXX
+    [book]="book">
+    <button mat-button (click)="buy(book)">BUY</button>
   </mc-book-card>
 </div>
 
