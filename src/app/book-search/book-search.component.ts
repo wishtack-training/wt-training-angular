@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, onErrorResumeNext, switchMap } from 'rxjs/operators';
 import { Book } from '../cart/cart';
 import { BookSearch } from './book-search.service';
 
@@ -64,18 +66,39 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchForm.valueChanges.subscribe(data => {
-      console.log(data);
-    });
+    const formValue$: Observable<{
+      keywords: string;
+      language: Language;
+      order: Order;
+    }> = this.searchForm.valueChanges;
+
+    const books$ = formValue$.pipe(
+      debounceTime(100),
+      distinctUntilChanged((a, b) => {
+        return (
+          a.keywords === b.keywords &&
+          a.language === b.language &&
+          a.order === b.order
+        );
+      }),
+      switchMap(({keywords, language, order}) => {
+        return this._bookSearch.search({keywords, language, order})
+          .pipe(onErrorResumeNext());
+      })
+    );
+
+    books$.subscribe(books => (this.books = books));
   }
 
   search() {
     const {keywords, language, order} = this.searchForm.value;
 
-    this._bookSearch.search({
-      keywords,
-      language,
-      order
-    }).subscribe(books => this.books = books);
+    this._bookSearch
+      .search({
+        keywords,
+        language,
+        order
+      })
+      .subscribe(books => (this.books = books));
   }
 }
