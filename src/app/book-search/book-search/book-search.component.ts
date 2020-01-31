@@ -15,7 +15,8 @@ import {
   switchMap
 } from 'rxjs/operators';
 import { BookCardModule } from '../../book-card/book-card.component';
-import { Book, Cart, createBook } from '../../cart/cart';
+import { Book, createBook } from '../../cart/cart';
+import { CartService } from '../../cart/cart.service';
 import { BookQuery } from '../book-query';
 import { BookSearchFormModule } from '../book-search-form/book-search-form.component';
 import { BookSearchHistoryModule } from '../book-search-history/book-search-history.component';
@@ -41,7 +42,7 @@ export class BookSearchComponent implements OnInit {
 
   constructor(
     private _bookSearch: BookSearch,
-    private _cart: Cart,
+    private _cart: CartService,
     private _httpClient: HttpClient
   ) {
   }

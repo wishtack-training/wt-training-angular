@@ -51,18 +51,18 @@ export class Cart {
     fromEvent(window, 'storage').subscribe(() => this._loadFromLocalStorage());
   }
 
-  private _loadFromLocalStorage() {
-    this._bookList$.next(
-      JSON.parse(localStorage.getItem('books') ?? null) ?? []
-    );
-  }
-
   addBook(book: Book) {
     this._updateBookList([...this._bookList$.value, book]);
   }
 
   removeBook(book: Book) {
     this._updateBookList(this._bookList$.value.filter(_book => book !== _book));
+  }
+
+  private _loadFromLocalStorage() {
+    this._bookList$.next(
+      JSON.parse(localStorage.getItem('books') ?? null) ?? []
+    );
   }
 
   private _updateBookList(books: Book[]) {

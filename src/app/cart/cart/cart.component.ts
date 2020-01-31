@@ -5,7 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BookCardModule } from '../../book-card/book-card.component';
-import { Book, Cart } from '../cart';
+import { Book } from '../cart';
+import { CartQuery } from '../cart.query';
+import { CartService } from '../cart.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,10 +19,10 @@ export class CartComponent {
 
   now$ = timer(0, 100)
     .pipe(map(() => new Date()));
-  bookList$ = this._cart.bookList$;
-  totalPrice$ = this._cart.totalPrice$;
+  bookList$ = this._cartQuery.bookList$;
+  totalPrice$ = this._cartQuery.totalPrice$;
 
-  constructor(private _cart: Cart) {
+  constructor(private _cart: CartService, private _cartQuery: CartQuery) {
   }
 
   remove(book: Book) {
