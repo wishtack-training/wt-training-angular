@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Book {
@@ -26,7 +26,6 @@ export class Cart {
   private _bookList$ = new BehaviorSubject<Book[]>([]);
 
   constructor() {
-
     this.bookList$ = this._bookList$.asObservable();
 
     this.totalPrice$ = this._bookList$.pipe(
@@ -38,6 +37,24 @@ export class Cart {
       })
     );
 
+    /*
+     * @hack this is just an illustration of how state can be synced with local storage.
+     * Use a state management like Akita, NgRx & Ngxs solution instead.
+     */
+    this._loadFromLocalStorage();
+
+    /* Sync with local storage. */
+    this.bookList$.subscribe(bookList =>
+      localStorage.setItem('books', JSON.stringify(bookList))
+    );
+
+    fromEvent(window, 'storage').subscribe(() => this._loadFromLocalStorage());
+  }
+
+  private _loadFromLocalStorage() {
+    this._bookList$.next(
+      JSON.parse(localStorage.getItem('books') ?? null) ?? []
+    );
   }
 
   addBook(book: Book) {
@@ -52,7 +69,3 @@ export class Cart {
     this._bookList$.next(books);
   }
 }
-
-
-
-
