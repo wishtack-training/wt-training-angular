@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Book {
   title: string;
@@ -20,9 +21,19 @@ export function createBook(args: Book): Book {
 })
 export class Cart {
   bookList$ = new BehaviorSubject<Book[]>([]);
+  totalPrice$: Observable<number>;
+
+  constructor() {
+    this.totalPrice$ = this.bookList$.pipe(map(books => {
+      return books
+        .map(book => book.price)
+        .filter(price => price != null)
+        .reduce((acc, price) => acc + price, 0)
+    }));
+  }
 
   addBook(book: Book) {
-    this.bookList$.next([...this.bookList$.value, book]);
+    this._updateBookList([...this.bookList$.value, book]);
   }
 
   getBookList(): Book[] {
@@ -30,10 +41,14 @@ export class Cart {
   }
 
   removeBook(book: Book) {
-    throw new Error('🚧 work in progress!');
+    this._updateBookList(this.bookList$.value.filter(_book => book !== _book));
   }
 
   getTotalPrice(): number {
     throw new Error('🚧 work in progress!');
+  }
+
+  private _updateBookList(books: Book[]) {
+    this.bookList$.next(books);
   }
 }

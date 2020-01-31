@@ -28,6 +28,10 @@ describe('Cart', () => {
     return cart.bookList$.pipe(first()).toPromise();
   }
 
+  async function getTotalPrice() {
+    return cart.totalPrice$.pipe(first()).toPromise();
+  }
+
   it('should add books', async () => {
     const emptyBookList = await getBookList();
 
@@ -40,6 +44,7 @@ describe('Cart', () => {
 
   it('🎱 should add books', () => {
     testScheduler.run(({cold, expectObservable}) => {
+
       const books = {
         a: extremeProgrammingExplained,
         b: rework
@@ -63,22 +68,22 @@ describe('Cart', () => {
     });
   });
 
-  xit('should remove books', () => {
+  it('should remove books', async () => {
     cart.addBook(extremeProgrammingExplained);
     cart.addBook(rework);
 
     cart.removeBook(extremeProgrammingExplained);
-    expect(cart.getBookList()).toEqual([rework]);
+    expect(await getBookList()).toEqual([rework]);
   });
 
-  xit('should get total price', () => {
+  it('should get total price', async () => {
     cart.addBook(extremeProgrammingExplained);
     cart.addBook(rework);
 
-    expect(cart.getTotalPrice()).toEqual(50);
+    expect(await getTotalPrice()).toEqual(50);
   });
 
-  xit('should get total price even if book has no price', () => {
+  it('should get total price even if book has no price', async () => {
     cart.addBook(extremeProgrammingExplained);
     cart.addBook(rework);
     cart.addBook(
@@ -88,6 +93,6 @@ describe('Cart', () => {
       })
     );
 
-    expect(cart.getTotalPrice()).toEqual(50);
+    expect(await getTotalPrice()).toEqual(50);
   });
 });
