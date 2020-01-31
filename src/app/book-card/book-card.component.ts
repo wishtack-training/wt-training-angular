@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
+import { FlexModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 import { Book } from '../cart/cart';
+import { BookPicturePipeModule } from './book-picture.pipe';
 
 @Component({
   selector: 'mc-book-card',
@@ -8,8 +12,18 @@ import { Book } from '../cart/cart';
 })
 export class BookCardComponent {
   @Input() book: Book;
+}
 
-  getPictureUri() {
-    return this.book.pictureUri ?? `https://source.unsplash.com/featured?${encodeURIComponent(this.book.title)}`;
-  }
+@NgModule({
+  declarations: [BookCardComponent],
+  exports: [BookCardComponent],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    FlexModule,
+    BookPicturePipeModule
+  ]
+})
+export class BookCardModule {
+
 }

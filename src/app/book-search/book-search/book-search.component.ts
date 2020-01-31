@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule, OnInit } from '@angular/core';
+import { FlexModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { Observable, ReplaySubject } from 'rxjs';
 import {
   debounceTime,
@@ -11,8 +14,11 @@ import {
   shareReplay,
   switchMap
 } from 'rxjs/operators';
+import { BookCardModule } from '../../book-card/book-card.component';
 import { Book, Cart, createBook } from '../../cart/cart';
 import { BookQuery } from '../book-query';
+import { BookSearchFormModule } from '../book-search-form/book-search-form.component';
+import { BookSearchHistoryModule } from '../book-search-history/book-search-history.component';
 import { BookSearch } from '../book-search.service';
 
 export const slide = <TItem>(windowSize: number) =>
@@ -36,7 +42,7 @@ export class BookSearchComponent implements OnInit {
   constructor(
     private _bookSearch: BookSearch,
     private _cart: Cart,
-    private _httpClient: HttpClient,
+    private _httpClient: HttpClient
   ) {
   }
 
@@ -81,4 +87,19 @@ export class BookSearchComponent implements OnInit {
     /* @hack clone book because we remove items by reference in cart and we don't have a counter and stuff yet. */
     this._cart.addBook(createBook(book));
   }
+}
+
+@NgModule({
+  declarations: [BookSearchComponent],
+  exports: [BookSearchComponent],
+  imports: [
+    CommonModule,
+    BookSearchFormModule,
+    BookSearchHistoryModule,
+    FlexModule,
+    BookCardModule,
+    MatButtonModule
+  ]
+})
+export class BookSearchModule {
 }

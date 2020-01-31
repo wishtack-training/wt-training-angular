@@ -1,6 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
+import { FlexModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { timer } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BookCardModule } from '../../book-card/book-card.component';
 import { Book, Cart } from '../cart';
 
 @Component({
@@ -23,4 +27,16 @@ export class CartComponent {
     this._cart.removeBook(book);
   }
 
+}
+
+@NgModule({
+  declarations: [CartComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    FlexModule,
+    BookCardModule
+  ]
+})
+export class CartModule {
 }

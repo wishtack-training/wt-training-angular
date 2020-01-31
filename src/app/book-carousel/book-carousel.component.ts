@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
+import { BookCardModule } from '../book-card/book-card.component';
 import { Book } from '../cart/cart';
 
 @Component({
@@ -38,4 +40,15 @@ export class BookCarouselComponent {
   private _getSelectedBookIndex() {
     return this.books.indexOf(this.selectedBook);
   }
+}
+
+@NgModule({
+  declarations: [BookCarouselComponent],
+  exports: [BookCarouselComponent],
+  imports: [
+    CommonModule,
+    BookCardModule
+  ]
+})
+export class BookCarouselModule {
 }
