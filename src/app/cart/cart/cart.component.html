@@ -1,6 +1,6 @@
 <div>{{ now$ | async | date: 'full' }}</div>
 
-<h1>Cart ({{ getTotalPrice() | currency:'EUR' }})</h1>
+<h1>Cart ({{ totalPrice$ | async | currency:'EUR' }})</h1>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
   <mc-book-card *ngFor="let book of getBookList()" [book]="book">

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Book {
   title: string;
@@ -18,26 +19,21 @@ export function createBook(args: Book): Book {
   providedIn: 'root'
 })
 export class Cart {
-  private _books: Book[] = [];
+  bookList$ = new BehaviorSubject<Book[]>([]);
 
   addBook(book: Book) {
-    this._books = [...this._books, book];
+    this.bookList$.next([...this.bookList$.value, book]);
   }
 
-  getBookList() {
-    return this._books;
+  getBookList(): Book[] {
+    throw new Error('🚧 work in progress!');
   }
 
   removeBook(book: Book) {
-    this._books = this._books.filter(_book => {
-      return _book !== book;
-    });
+    throw new Error('🚧 work in progress!');
   }
 
-  getTotalPrice() {
-    return this._books
-      .map(book => book.price)
-      .filter(price => price != null)
-      .reduce((acc, price) => acc + price, 0);
+  getTotalPrice(): number {
+    throw new Error('🚧 work in progress!');
   }
 }
