@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookSearchComponent } from './book-search/book-search/book-search.component';
-import { CartComponent } from './cart/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -9,8 +8,8 @@ export const routes: Routes = [
     component: BookSearchComponent
   },
   {
-    path: 'cart',
-    component: CartComponent
+    path: 'user',
+    loadChildren: () => import('./pages/user.module').then(m => m.UserModule)
   },
   {
     path: '**',
@@ -19,12 +18,8 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }
