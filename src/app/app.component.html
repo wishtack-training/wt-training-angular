@@ -1,6 +1,12 @@
-<header>
-  <a routerLink="/search">search</a>
-  <a routerLink="/user/cart">cart</a>
-</header>
-<hr>
-<router-outlet></router-outlet>
+<mc-nav>
+
+  <div slot="title">{{ totalPrice$ | async | currency }}</div>
+
+  <div slot="sidenav">
+    <a mat-list-item routerLink="/search">Search</a>
+    <a mat-list-item routerLink="/user/cart">Cart</a>
+  </div>
+
+  <router-outlet slot="content"></router-outlet>
+
+</mc-nav>

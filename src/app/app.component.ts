@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Cart } from './cart/cart';
 
 @Component({
   selector: 'mc-root',
@@ -6,8 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  preload() {
-    import('./pages/user.module');
+  totalPrice$ = this._cart.totalPrice$;
+
+  constructor(private _cart: Cart) {
   }
+
 }
 

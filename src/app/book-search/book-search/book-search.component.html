@@ -17,8 +17,3 @@
     <button mat-button (click)="buy(book)">BUY</button>
   </mc-book-card>
 </div>
-
-<mc-book-search-form
-  *ngIf="books$ | async"
-  [query]="query$ | async"
-  (queryChange)="search($event)"></mc-book-search-form>
