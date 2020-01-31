@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
@@ -30,6 +31,7 @@ import { CartComponent } from './cart/cart/cart.component';
     BookPicturePipe
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
