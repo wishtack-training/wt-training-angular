@@ -24,12 +24,14 @@ export class Cart {
   totalPrice$: Observable<number>;
 
   constructor() {
-    this.totalPrice$ = this.bookList$.pipe(map(books => {
-      return books
-        .map(book => book.price)
-        .filter(price => price != null)
-        .reduce((acc, price) => acc + price, 0)
-    }));
+    this.totalPrice$ = this.bookList$.pipe(
+      map(books => {
+        return books
+          .map(book => book.price)
+          .filter(price => price != null)
+          .reduce((acc, price) => acc + price, 0);
+      })
+    );
   }
 
   addBook(book: Book) {
