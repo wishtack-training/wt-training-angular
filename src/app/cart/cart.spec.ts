@@ -43,4 +43,17 @@ describe('Cart', () => {
 
     expect(cart.getTotalPrice()).toEqual(50);
   });
+
+  it('should get total price even if book has no price', () => {
+    cart.addBook(extremeProgrammingExplained);
+    cart.addBook(rework);
+    cart.addBook(createBook({
+      title: 'test',
+      price: undefined
+    }));
+
+    expect(cart.getTotalPrice()).toEqual(50);
+
+  });
+
 });

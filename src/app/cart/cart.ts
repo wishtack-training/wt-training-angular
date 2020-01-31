@@ -18,12 +18,7 @@ export function createBook(args: Book): Book {
   providedIn: 'root'
 })
 export class Cart {
-  private _books: Book[] = [
-    createBook({
-      title: 'ReWork',
-      price: 12
-    })
-  ];
+  private _books: Book[] = [];
 
   addBook(book: Book) {
     this._books = [...this._books, book];
@@ -42,6 +37,7 @@ export class Cart {
   getTotalPrice() {
     return this._books
       .map(book => book.price)
+      .filter(price => price != null)
       .reduce((acc, price) => acc + price, 0);
   }
 }

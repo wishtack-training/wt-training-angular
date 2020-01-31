@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import {
   debounceTime,
@@ -22,6 +22,7 @@ export const slide = <TItem>(windowSize: number) =>
   );
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'mc-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.css']
@@ -35,7 +36,7 @@ export class BookSearchComponent implements OnInit {
   constructor(
     private _bookSearch: BookSearch,
     private _cart: Cart,
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
   ) {
   }
 

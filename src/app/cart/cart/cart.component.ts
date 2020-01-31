@@ -18,4 +18,9 @@ export class CartComponent {
   remove(book: Book) {
     this._cart.removeBook(book);
   }
+
+  getTotalPrice() {
+    console.count('getTotalPrice');
+    return this._cart.getTotalPrice();
+  }
 }
