@@ -20,11 +20,16 @@ export function createBook(args: Book): Book {
   providedIn: 'root'
 })
 export class Cart {
-  bookList$ = new BehaviorSubject<Book[]>([]);
+  bookList$: Observable<Book[]>;
   totalPrice$: Observable<number>;
 
+  private _bookList$ = new BehaviorSubject<Book[]>([]);
+
   constructor() {
-    this.totalPrice$ = this.bookList$.pipe(
+
+    this.bookList$ = this._bookList$.asObservable();
+
+    this.totalPrice$ = this._bookList$.pipe(
       map(books => {
         return books
           .map(book => book.price)
@@ -32,25 +37,22 @@ export class Cart {
           .reduce((acc, price) => acc + price, 0);
       })
     );
+
   }
 
   addBook(book: Book) {
-    this._updateBookList([...this.bookList$.value, book]);
-  }
-
-  getBookList(): Book[] {
-    throw new Error('🚧 work in progress!');
+    this._updateBookList([...this._bookList$.value, book]);
   }
 
   removeBook(book: Book) {
-    this._updateBookList(this.bookList$.value.filter(_book => book !== _book));
-  }
-
-  getTotalPrice(): number {
-    throw new Error('🚧 work in progress!');
+    this._updateBookList(this._bookList$.value.filter(_book => book !== _book));
   }
 
   private _updateBookList(books: Book[]) {
-    this.bookList$.next(books);
+    this._bookList$.next(books);
   }
 }
+
+
+
+

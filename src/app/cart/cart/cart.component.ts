@@ -13,24 +13,14 @@ export class CartComponent {
 
   now$ = timer(0, 100)
     .pipe(map(() => new Date()));
+  bookList$ = this._cart.bookList$;
+  totalPrice$ = this._cart.totalPrice$;
 
   constructor(private _cart: Cart) {
-  }
-
-  getBookList() {
-    return this._cart.getBookList();
   }
 
   remove(book: Book) {
     this._cart.removeBook(book);
   }
 
-  getTotalPrice() {
-    console.count('getTotalPrice');
-    return this._cart.getTotalPrice();
-  }
-
-  noop() {
-
-  }
 }

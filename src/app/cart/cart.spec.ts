@@ -42,6 +42,34 @@ describe('Cart', () => {
     expect(await getBookList()).toEqual([extremeProgrammingExplained, rework]);
   });
 
+  it('should add books', () => {
+
+    const spy = jasmine.createSpy();
+    const subscription = cart.bookList$.subscribe(spy);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith([]);
+
+    spy.calls.reset();
+
+    cart.addBook(extremeProgrammingExplained);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith([extremeProgrammingExplained]);
+
+    spy.calls.reset();
+
+    cart.addBook(rework);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith([extremeProgrammingExplained, rework]);
+
+    spy.calls.reset();
+
+    subscription.unsubscribe();
+
+  });
+
   it('🎱 should add books', () => {
     testScheduler.run(({cold, expectObservable}) => {
 
