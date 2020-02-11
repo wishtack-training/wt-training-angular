@@ -11,7 +11,7 @@ class Cart {
   }
 
   addBook(book: Book) {
-    this.bookList.push(book);
+    this.bookList = [...this.bookList, book];
   }
 }
 
@@ -31,12 +31,12 @@ describe('Cart', () => {
 
     const emptyBookList = cart.getBookList();
 
-    expect(emptyBookList).toEqual([]);
-
     cart.addBook(rework);
     cart.addBook(xpExplained);
 
     const bookList = cart.getBookList();
+
+    expect(emptyBookList).toEqual([]);
 
     expect(bookList).toEqual([rework, xpExplained]);
   });
