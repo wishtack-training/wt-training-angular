@@ -1,34 +1,25 @@
-interface Book {
-  title: string;
-  price: number;
-}
-
-class Cart {
-  private bookList: Book[] = [];
-
-  getBookList() {
-    return this.bookList;
-  }
-
-  addBook(book: Book) {
-    this.bookList = [...this.bookList, book];
-  }
-}
+import { Book, Cart } from './cart';
 
 describe('Cart', () => {
-  it('should add books', () => {
-    const cart = new Cart();
+  let cart: Cart;
+  let rework: Book;
+  let xpExplained: Book;
 
-    const rework = {
+  beforeEach(() => {
+    cart = new Cart();
+
+    rework = {
       title: 'ReWork',
       price: 20
     };
 
-    const xpExplained = {
+    xpExplained = {
       title: 'eXtreme Programming Explained',
       price: 30
     };
+  });
 
+  it('should add books', () => {
     const emptyBookList = cart.getBookList();
 
     cart.addBook(rework);
@@ -41,7 +32,17 @@ describe('Cart', () => {
     expect(bookList).toEqual([rework, xpExplained]);
   });
 
-  xit('should remove books', () => {
+  it('should remove books', () => {
+
+    cart.addBook(rework);
+    cart.addBook(xpExplained);
+
+    cart.removeBook(rework);
+
+    const bookList = cart.getBookList();
+
+    expect(bookList).toEqual([xpExplained]);
+
   });
 
   xit('should get total price', () => {
