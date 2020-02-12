@@ -1,0 +1,26 @@
+<form
+  [formGroup]="searchForm"
+  (ngSubmit)="search()">
+
+  <input formControlName="keywords" type="text"/>
+
+  <select formControlName="language">
+    <option [value]="Language.Fr">🇫🇷</option>
+    <option [value]="Language.En">🇬🇧</option>
+  </select>
+
+  <div>
+    <span>Sort by:</span>
+    <input
+      formControlName="sortBy"
+      type="radio"
+      [value]="SortBy.Newest"><label>Newest</label>
+    <input
+      formControlName="sortBy"
+      type="radio"
+      [value]="SortBy.Relevance"><label>Relevance</label>
+  </div>
+
+  <button [disabled]="!searchForm.valid" type="submit">SEARCH</button>
+</form>
+
