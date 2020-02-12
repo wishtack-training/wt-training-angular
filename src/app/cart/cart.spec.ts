@@ -32,19 +32,22 @@ describe('Cart', () => {
     expect(bookList).toEqual([rework, xpExplained]);
   });
 
-  it('should remove books', () => {
+  describe('with books', () => {
+    beforeEach(() => {
+      cart.addBook(rework);
+      cart.addBook(xpExplained);
+    });
 
-    cart.addBook(rework);
-    cart.addBook(xpExplained);
+    it('should remove books', () => {
+      cart.removeBook(rework);
 
-    cart.removeBook(rework);
+      const bookList = cart.getBookList();
 
-    const bookList = cart.getBookList();
+      expect(bookList).toEqual([xpExplained]);
+    });
 
-    expect(bookList).toEqual([xpExplained]);
-
-  });
-
-  xit('should get total price', () => {
+    it('should get total price', () => {
+      expect(cart.getTotalPrice()).toEqual(50);
+    });
   });
 });

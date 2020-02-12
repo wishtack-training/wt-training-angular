@@ -17,4 +17,10 @@ export class Cart {
   removeBook(book: Book) {
     this.bookList = this.bookList.filter(_book => book !== _book);
   }
+
+  getTotalPrice() {
+    return this.bookList
+      .map(book => book.price)
+      .reduce((acc, value) => acc + value, 0);
+  }
 }
