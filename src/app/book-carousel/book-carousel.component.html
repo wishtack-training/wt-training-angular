@@ -1,0 +1,25 @@
+<h1>{{ selectedBook.title }}</h1>
+
+<button
+  [disabled]="isFirst()"
+  (click)="goToPrevious()">PREVIOUS
+</button>
+
+<button
+  [disabled]="isLast()"
+  (click)="goToNext()">NEXT
+</button>
+
+<hr>
+
+<ul>
+
+  <li *ngFor="let book of books">
+    <span>{{ book.title }}</span>
+    <button
+      *ngIf="book !== selectedBook"
+      (click)="selectBook(book)">SELECT
+    </button>
+  </li>
+
+</ul>
