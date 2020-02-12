@@ -1,4 +1,8 @@
-<h1>{{ selectedBook.title }}</h1>
+<ag-book-card
+  *ngIf="selectedBook"
+  [book]="selectedBook"></ag-book-card>
+
+<hr>
 
 <button
   [disabled]="isFirst()"

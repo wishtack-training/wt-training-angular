@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../cart/cart';
+import { Book } from './../cart/cart';
 
 @Component({
   selector: 'ag-book-carousel',
@@ -13,15 +13,18 @@ export class BookCarouselComponent implements OnInit {
   books: Book[] = [
     {
       title: 'Rework',
-      price: 20
+      price: 20,
+      pictureUri: 'https://images-na.ssl-images-amazon.com/images/I/71SqvmjaM3L.jpg'
     },
     {
       title: 'eXtreme Programming Explained',
-      price: 30
+      price: 30,
+      pictureUri: 'https://images-eu.ssl-images-amazon.com/images/I/51iupjtHU%2BL._SX260_.jpg'
     },
     {
       title: 'Lean Startup',
-      price: 25
+      price: 25,
+      pictureUri: 'https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg'
     }
   ];
 

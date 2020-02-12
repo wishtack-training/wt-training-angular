@@ -1,6 +1,7 @@
 export interface Book {
   title: string;
   price: number;
+  pictureUri?: string;
 }
 
 export class Cart {
