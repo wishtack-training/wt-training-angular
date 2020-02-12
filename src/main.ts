@@ -1,5 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { interval } from 'rxjs';
+import { bufferCount, filter, take } from 'rxjs/operators';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
