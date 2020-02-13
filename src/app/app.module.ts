@@ -6,7 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
-import { BookSearchComponent } from './book-search/book-search.component';
+import { BookSearchComponent } from './book-search/book-search/book-search.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { BookSearchComponent } from './book-search/book-search.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
