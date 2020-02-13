@@ -30,7 +30,11 @@
 
 <div *ngIf="isDisplayed">
   <ng-container *ngFor="let book of books$ | async; let last=last;">
-    <ag-book-card [book]="book"></ag-book-card>
+
+    <ag-book-card [book]="book">
+      <button (click)="buy(book)">BUY</button>
+    </ag-book-card>
+
     <hr *ngIf="!last">
   </ng-container>
 

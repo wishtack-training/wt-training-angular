@@ -1,1 +1,5 @@
-<p>cart works!</p>
+<div *ngFor="let book of getBookList()">
+  <ag-book-card [book]="book">
+    <button (click)="remove(book)">REMOVE</button>
+  </ag-book-card>
+</div>

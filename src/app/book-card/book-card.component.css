@@ -1,3 +1,10 @@
+:host {
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+}
+
 .book-picture {
     object-fit: cover;
     height: 150px;

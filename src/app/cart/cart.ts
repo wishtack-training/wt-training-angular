@@ -1,9 +1,14 @@
+import { Injectable } from '@angular/core';
+
 export interface Book {
   title: string;
   price: number;
   pictureUri?: string;
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 export class Cart {
   private bookList: Book[] = [];
 
