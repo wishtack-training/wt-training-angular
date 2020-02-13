@@ -1,5 +1,6 @@
 <form
   [formGroup]="searchForm"
+  (change)="search()"
   (ngSubmit)="search()">
 
   <input formControlName="keywords" type="text"/>
@@ -21,10 +22,17 @@
       [value]="OrderBy.Relevance"><label>Relevance</label>
   </div>
 
-  <button [disabled]="!searchForm.valid" type="submit">SEARCH</button>
+  <button type="submit" [disabled]="!searchForm.valid">SEARCH</button>
+
 </form>
 
-<ng-container *ngFor="let book of books; let last=last;">
-  <ag-book-card [book]="book"></ag-book-card>
-  <hr *ngIf="!last">
-</ng-container>
+<button (click)="isDisplayed = !isDisplayed">TOGGLE</button>
+
+<div *ngIf="isDisplayed">
+  <ng-container *ngFor="let book of books$ | async; let last=last;">
+    <ag-book-card [book]="book"></ag-book-card>
+    <hr *ngIf="!last">
+  </ng-container>
+
+</div>
+

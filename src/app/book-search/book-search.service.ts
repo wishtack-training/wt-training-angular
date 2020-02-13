@@ -56,6 +56,11 @@ export class BookSearchService {
       })
       .pipe(
         map(data => {
+
+          if (data.items == null) {
+            return null;
+          }
+
           return data.items.map(item => {
             return {
               title: item.volumeInfo.title,
