@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { AppModule } from '../../app.module';
-import { BookSearchService } from '../book-search.service';
+import { BookSearchService } from '../../book-search/book-search.service';
 import { BookSearchComponent } from './book-search.component';
 
 describe('AppComponent', () => {

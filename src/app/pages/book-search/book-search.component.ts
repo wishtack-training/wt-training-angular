@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { interval, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, map, scan, switchMap, withLatestFrom } from 'rxjs/operators';
+import { BookSearchService } from '../../book-search/book-search.service';
 import { Book } from '../../cart/cart';
-import { BookSearchService } from '../book-search.service';
 
 export enum Language {
   En = 'en',
@@ -100,6 +100,7 @@ export class BookSearchComponent implements OnInit {
   search() {
     this._searchTrigger$.next();
   }
+
 }
 
 

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
 import { Book } from '../cart/cart';
 
 @Component({
@@ -7,7 +8,13 @@ import { Book } from '../cart/cart';
   styleUrls: ['./book-card.component.css']
 })
 export class BookCardComponent {
-
   @Input() book: Book;
+}
 
+@NgModule({
+  declarations: [BookCardComponent],
+  exports: [BookCardComponent],
+  imports: [CommonModule]
+})
+export class BookCardModule {
 }

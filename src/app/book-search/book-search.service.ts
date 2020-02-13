@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Book } from '../cart/cart';
-import { Language, OrderBy } from './book-search/book-search.component';
+import { Language, OrderBy } from '../pages/book-search/book-search.component';
 
 
 export interface SearchCriteria {

@@ -1,17 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookSearchComponent } from './book-search/book-search/book-search.component';
 import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
-    path: 'search',
-    component: BookSearchComponent
-  },
-  {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./pages/book-search/book-search.module').then(
+        m => m.BookSearchModule
+      )
   },
   {
     path: '**',
@@ -20,13 +22,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }
