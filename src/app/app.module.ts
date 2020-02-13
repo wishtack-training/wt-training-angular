@@ -9,11 +9,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
 import { BookSearchComponent } from './book-search/book-search/book-search.component';
+import { CartComponent } from './cart/cart.component';
 import { NavComponent } from './nav/nav.component';
 
 
@@ -23,7 +25,8 @@ import { NavComponent } from './nav/nav.component';
     BookCarouselComponent,
     BookCardComponent,
     BookSearchComponent,
-    NavComponent
+    NavComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { NavComponent } from './nav/nav.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })
