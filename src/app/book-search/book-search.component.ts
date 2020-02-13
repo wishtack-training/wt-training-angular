@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Book } from '../cart/cart';
 
 export enum Language {
@@ -65,25 +67,34 @@ export class BookSearchComponent implements OnInit {
   }
 
   search() {
-    const {keywords, language, orderBy} = this.searchForm
-      .value as SearchCriteria;
+    this.books = null;
 
-    this._httpClient
+    this._search(this.searchForm.value).subscribe(books => {
+      this.books = books;
+    });
+  }
+
+  private _search(searchCriteria: SearchCriteria): Observable<Book[]> {
+    const {keywords, language, orderBy} = searchCriteria;
+
+    return this._httpClient
       .get<VolumeListResponse>('https://www.googleapis.com/books/v1/volumes', {
         params: {
-          q: keywords,
+          q: `title:${keywords}`,
           langRestrict: language,
           orderBy
         }
       })
-      .subscribe(data => {
-        this.books = data.items.map(item => {
-          return {
-            title: item.volumeInfo.title,
-            pictureUri: item.volumeInfo.imageLinks.thumbnail,
-            price: item.saleInfo.retailPrice?.amount
-          };
-        });
-      });
+      .pipe(
+        map(data => {
+          return data.items.map(item => {
+            return {
+              title: item.volumeInfo.title,
+              pictureUri: item.volumeInfo.imageLinks?.thumbnail,
+              price: item.saleInfo.retailPrice?.amount
+            };
+          });
+        })
+      );
   }
 }
